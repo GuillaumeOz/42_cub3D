@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.h                                           :+:      :+:    :+:   */
+/*   render_application.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/28 11:26:45 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/12/30 12:26:01 by gozsertt         ###   ########.fr       */
+/*   Created: 2019/12/30 15:06:58 by gozsertt          #+#    #+#             */
+/*   Updated: 2019/12/30 17:22:01 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_H
-# define CUBE3D_H
+#include "cube3d.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include "mlx.h"
-# include <math.h>
+void	clear_application(t_application *application, t_color *color)
+{
+	
+}
 
-# include "cube3d_color.h"
-# include "cube3d_application.h"
+void	put_pixel(t_application application, int x , int y, t_color color)
+{
+	
+}
 
-#endif
+void	render_application(t_application *application)
+{
+	
+}
