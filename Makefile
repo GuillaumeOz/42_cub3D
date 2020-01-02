@@ -6,7 +6,7 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/28 13:23:39 by gozsertt          #+#    #+#              #
-#    Updated: 2019/12/30 18:02:43 by gozsertt         ###   ########.fr        #
+#    Updated: 2020/01/02 15:24:33 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ MLX_SRC 	=	mlx_init_loop.m													\
 
 # Compilation flags
 
-CFLAGS      = -Wno-deprecated-declarations -Wall -Wextra -Werror # -DSTRINGPUTX11 flags from the mlx makefile comp flags $(DEBUG_FLAGS)
+CFLAGS      = -Wno-deprecated-declarations #-Wall -Wextra -Werror # -DSTRINGPUTX11 flags from the mlx makefile comp flags $(DEBUG_FLAGS)
 
 #DEBUG_FLAGS =   -O0 -g															\
                                                                           		\

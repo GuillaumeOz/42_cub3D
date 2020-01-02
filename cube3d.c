@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 10:54:50 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/12/30 15:03:54 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/01/02 10:22:03 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,16 @@ int main()
 	t_color			*color;
 
 	application = malloc_application(400, 400, "test titre");
-	color = malloc_color(255, 255, 255);
+	color = malloc_color(102, 51, 0);
 
 	clear_application(application, color);
+	//draw_ground()
 	//put the event there
 	//mlx_hook(application->win_ptr, ESC_KEY, int x_mask,
     //             int (*funct)(), void *param);
 	//application is running there
+	//render_application(application);
+	render_application(application);
 	run_application(application);
 
 	free_color(color);

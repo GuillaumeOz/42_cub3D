@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 12:07:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/12/30 12:15:25 by gozsertt         ###   ########.fr       */
+/*   Updated: 2019/12/31 14:47:34 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ t_application	create_application(int x, int y, char *title)
 	result.mlx_ptr = mlx_init(); // protect the return value $ env -i <votre-executable>
 	result.win_ptr = mlx_new_window(result.mlx_ptr, result.size_x, result.size_y, result.title); // Same
 	result.img_ptr = mlx_new_image(result.mlx_ptr, result.size_x, result.size_y); //Same
+	result.pixels = mlx_get_data_addr(result.img_ptr, &(result.bits_per_pixels),
+				   &(result.size_line), &(result.endian));
 	return (result);
 }
 
@@ -46,10 +48,4 @@ void			free_application(t_application *to_free)
 {
 	destroy_application(*to_free);
 	free(to_free);
-}
-
-int				run_application(t_application *t_application)
-{
-	mlx_loop(t_application->mlx_ptr);
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 12:38:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/12/30 12:58:52 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/01/02 15:24:37 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,4 @@ void		free_color(t_color *to_free)
 {
 	destroy_color(*to_free);
 	free(to_free);
-}
-
-int			convert_color(t_color color)
-{
-	uchar_	converter[4];
-
-	color.b = converter[0];
-	color.g = converter[1];
-	color.r = converter[2];
-	converter[3] = 0;
-
-	return (*((int *)converter));
 }
