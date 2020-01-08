@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 10:54:50 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/02 10:22:03 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/01/08 19:42:39 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,19 @@ int main()
 	t_application	*application;
 	t_color			*color;
 
+	//allocate map struct
+/*
+	malloc_map_data
+	open the .cub file
+	stock all of the output inside a buff
+	do all of the test
+	do the parsing 
+	And fill the structs like map struct...
+	
+*/
+
+
+	
 	application = malloc_application(400, 400, "test titre");
 	color = malloc_color(102, 51, 0);
 

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 14:11:03 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/02 15:26:37 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/01/08 19:44:23 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,17 @@ char	**malloc_map(int map_x, int map_y)
 	size_t	i;
 
 	i = -1;
-	if (map_y < 1 || map_x < 1)
-		return (NULL);
+	//move this part
+	if (map_y < 2 || map_x < 2)
+		catch_error("Malloc_map error 1");
+	map = get_next_line()
 	while (++i < map_y)
 	{
 		map = (char**)malloc(sizeof(char*));
 		if (map == NULL)
-			return (NULL); //use gnl here
+			catch_error("Malloc_map error 2"); // Use gnl here
 		create_map(map_x, map[i]);
 	}
-	
 }
 
 char	create_map(int map_x, int map_y)

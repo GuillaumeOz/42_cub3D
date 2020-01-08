@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 11:26:45 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/02 15:24:33 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/01/08 17:55:03 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 # include <stdio.h>
 # include <stdlib.h>
-# include "mlx.h"
 # include <math.h>
+# include "mlx.h"
 
-# include "libft.h" 
+# include "libft.h"
+# include "cube3d_catch_error.h"
 # include "cube3d_color.h"
 # include "cube3d_vector.h"
 # include "cube3d_map_data.h"

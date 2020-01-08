@@ -6,7 +6,7 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/28 13:23:39 by gozsertt          #+#    #+#              #
-#    Updated: 2020/01/02 15:24:33 by gozsertt         ###   ########.fr        #
+#    Updated: 2020/01/08 17:52:30 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,10 @@ CC          =   gcc
 MLX_DIR		= 	$(shell find lib/mlx -type d)
 LIB_DIR		=	$(shell find lib/libft -type d)
 SRC_DIR		= 	$(shell find srcs -type d)
-INC_DIR		= 	$(shell find includes -type d) $(shell find lib/mlx -type d)
+INC_DIR		= 	$(shell find includes -type d) $(shell find lib/mlx -type d)	\
+				$(shell find lib/libft/includes -type d)
 OBJ_DIR		=	obj
+MLX_OBJ_DIR =	mlx_obj
 
 vpath %.c $(foreach dir, $(SRC_DIR), $(dir):) $(foreach dir, $(MLX_DIR), $(dir):)
 vpath %.m $(foreach dir, $(MLX_DIR), $(dir):)
@@ -29,11 +31,6 @@ LIB = #libft
 
 SRC = $(foreach dir, $(SRC_DIR), $(foreach file, $(wildcard $(dir)/*.c), $(notdir $(file))))
 
-OBJ1 = $(MLX_SRC:%.c=%.o)
-OBJ2 = $(OBJ1:%.m=%.o)
-MLX_OBJ = $(addprefix $(OBJ_DIR)/, $(OBJ2))
-OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
-
 MLX_SRC 	=	mlx_init_loop.m													\
 				mlx_int_str_to_wordtab.c										\
 				mlx_mouse.m														\
@@ -43,22 +40,13 @@ MLX_SRC 	=	mlx_init_loop.m													\
 				mlx_shaders.c													\
 				mlx_xpm.c														\
 				#mlx_opengl.m			A SUPPR?								\
+				
+MLX_OBJ = $(addprefix $(MLX_OBJ_DIR)/, $(OBJ1:%.m=%.o))
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
 
 # Compilation flags
 
-CFLAGS      = -Wno-deprecated-declarations #-Wall -Wextra -Werror # -DSTRINGPUTX11 flags from the mlx makefile comp flags $(DEBUG_FLAGS)
-
-#DEBUG_FLAGS =   -O0 -g															\
-                                                                          		\
-                -fsanitize=address                                        		\
-                -fsanitize=undefined                                      	 	\
-                -fsanitize=bounds                                        	 	\
-                -fsanitize=nullability-arg                               	 	\
-                -fsanitize=nullability-return                              		\
-                -fsanitize=nullability-assign                               	\
-                -fsanitize-address-use-after-scope                         		\
-            	-fsanitize=integer                                       		\
-#	            -fsanitize=object-size                                    		\
+CFLAGS      = -Wall -Wextra -Werror #-fsanitize=address
 
 IFLAGS		=	$(foreach dir, $(INC_DIR), -I$(dir))
 
@@ -94,13 +82,19 @@ $(OBJ_DIR)/%.o : %.c
 				@$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $<
 				@echo "$(_GREEN)DONE$(_WHITE)"
 
-$(OBJ_DIR)/%.o : %.m
+$(MLX_OBJ_DIR)/%.o : %.c
 				@echo "Compiling $(_YELLOW)$@$(_WHITE) ... \c"
-				@mkdir -p $(OBJ_DIR)
-				@$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $<
+				@mkdir -p $(MLX_OBJ_DIR)
+				@$(CC) -Wno-deprecated-declarations $(IFLAGS) -o $@ -c $<
 				@echo "$(_GREEN)DONE$(_WHITE)"
 
-$(NAME): 		$(MLX_OBJ) $(OBJ) Makefile
+$(MLX_OBJ_DIR)/%.o : %.m
+				@echo "Compiling $(_YELLOW)$@$(_WHITE) ... \c"
+				@mkdir -p $(OBJ_DIR)
+				@$(CC) -Wno-deprecated-declarations $(IFLAGS) -o $@ -c $<
+				@echo "$(_GREEN)DONE$(_WHITE)"
+
+$(NAME):        $(MLX_OBJ) $(OBJ) Makefile
 				@echo "-----\nCreating library $(_YELLOW)$@$(_WHITE) ... \c"
 				@ar -rc $(NAME) $(OBJ) $(MLX_OBJ)
 				@ranlib $(NAME)
