@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.h                                           :+:      :+:    :+:   */
+/*   cube3d_catch_error.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/28 11:26:45 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/09 16:03:01 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/01/07 14:09:39 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/01/07 14:24:15 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_H
-# define CUBE3D_H
+#ifndef CUBE3D_CATCH_ERROR_H
+# define CUBE3D_CATCH_ERROR_H
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <math.h>
-# include "mlx.h"
+typedef struct	s_error
+{
+	char *error_list;
+	char *warning_msg;
+}				t_error;
 
-# include "libft.h"
-# include "cube3d_catch_error.h"
-# include "cube3d_color.h"
-# include "cube3d_vector.h"
-# include "cube3d_config.h"
-# include "cube3d_application.h"
+void catch_error(char *error_msg);
 
 #endif

@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.h                                           :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/28 11:26:45 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/09 16:03:01 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/01/09 10:38:49 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/01/09 17:48:20 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_H
-# define CUBE3D_H
+#include "cube3d.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <math.h>
-# include "mlx.h"
+t_config	*parse_map()
+{
+	
+}
 
-# include "libft.h"
-# include "cube3d_catch_error.h"
-# include "cube3d_color.h"
-# include "cube3d_vector.h"
-# include "cube3d_config.h"
-# include "cube3d_application.h"
-
-#endif
+t_config	*parse_parameters(t_config *data, char **file_ouput, int index)
+{
+	
+}

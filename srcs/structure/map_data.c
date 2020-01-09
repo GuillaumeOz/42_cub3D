@@ -1,46 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_data.c                                         :+:      :+:    :+:   */
+/*   config.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 10:38:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/07 13:45:02 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/01/09 17:37:20 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-t_map	*malloc_map_data(void)
+t_config	*malloc_config(void)
 {
-	t_map	*map_data;
+	t_config	*config;
 
-	map_data = (t_map *)malloc(sizeof(t_map));
-	if (map_data == NULL)
+	config = (t_config *)malloc(sizeof(t_config));
+	if (config == NULL)
 		return (NULL);
-	*map_data = create_map_data();
-	return (map_data);
+	*config = create_config();
+	return (config);
 }
 
-t_map	create_map_data(void)
+t_config	create_config(void)
 {
-	t_map	*map_data;
+	t_config	*config;
 
-	*(map_data)->resolution_size = create_vector(0, 0);
-	map_data->north_texture = ft_strnew(0);
-	map_data->south_texture = ft_strnew(0);
-	map_data->west_texture = ft_strnew(0);
-	map_data->east_texture = ft_strnew(0);
-	map_data->sprite_texture = ft_strnew(0);
-	map_data->floor = malloc_color(0, 0, 0);
-	map_data->ceiling = malloc_color(0, 0 ,0);
-	map_data->map = NULL;
-	return (*map_data);
+	config->title = ft_strnew(0);
+	*(config)->resolution_size = create_vector(0, 0);
+	config->north_texture = ft_strnew(0);
+	config->south_texture = ft_strnew(0);
+	config->west_texture = ft_strnew(0);
+	config->east_texture = ft_strnew(0);
+	config->sprite_texture = ft_strnew(0);
+	config->floor = malloc_color(0, 0, 0);
+	config->ceiling = malloc_color(0, 0 ,0);
+	config->map = NULL;
+	return (*config);
 }
 
-void	destroy_map_data(t_map to_destroy)
+void	destroy_config(t_config to_destroy)
 {
+	free(to_destroy.title);
 	free_vector(&(to_destroy.resolution_size));
 	free(to_destroy.north_texture);
 	free(to_destroy.south_texture);
@@ -52,8 +54,8 @@ void	destroy_map_data(t_map to_destroy)
 	free_map(to_destroy.map); // finish this line
 }
 
-void	free_map_data(t_map *to_free)
+void	free_config(t_config *to_free)
 {
-	destroy_map_data (*to_free);
+	destroy_config (*to_free);
 	free(to_free);
 }
