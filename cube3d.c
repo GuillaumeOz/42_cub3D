@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 10:54:50 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/09 11:07:46 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/01/10 14:57:24 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main()
 {
-	t_map	*data;
+	t_config		*data;
 	t_application	*application;
 	t_color			*color;
 

@@ -6,13 +6,13 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 10:39:51 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/09 17:54:04 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/01/10 19:36:12 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-static void			free_buff(char ***to_free, int index)
+static void	free_buff(char ***to_free, t_data *data, int index, int mode)
 {
 	int i;
 
@@ -22,38 +22,79 @@ static void			free_buff(char ***to_free, int index)
 		free((*to_free)[i]);
 		free((*to_free));
 	}
-	catch_error("Malloc_formatter error 1");
+	free_config(data);
+	if (mode == 0)
+		catch_error("Malloc_formatter error 1");
+	else
+		catch_error("Malloc_formatter error 2");
 }
 
-static	int	check_map(t_data *data, char **file_ouput, int index)
+map_checker()
 {
 	
 }
 
-t_config			*formatter(char *title)
+static void	id_selector(t_config *data, char *file, int index)
+{
+	if (*(file + index)  == 'R')
+		parse_resolution(&(data->resolution_size));
+	else if (*(file + index) == 'N' && *(file + index + 1) == 'O')
+		parse_texture(&(data->north_texture));
+	else if (*(file + index) == 'S' && *(file + index + 1) == 'O')
+		parse_texture(&(data->south_texture));
+	else if (*(file + index) == 'W' && *(file + index + 1) == 'E')
+		parse_texture(&(data->west_texture));
+	else if (*(file + index) == 'E' && *(file + index + 1) == 'A')
+		parse_texture(&(data->east_texture));
+	else if (*(file + index) == 'S')
+		parse_texture(&(data->sprite_texture));
+	else if (*(file + index) == 'F')
+		parse_env(&(data->floor));
+	else if (*(file + index) == 'C')
+		parse_env(&(data->ceiling));
+}
+
+static	int	check_file(t_config *data, char **file, int index)
+{
+	int i;
+	int j;
+
+	i = -1;
+	j = -1;
+	while (++i < index)
+	{
+		while (file[i][++j])
+			id_selector(data, file[i], j);
+		j = -1;
+		//add map checking and parsing 1  1     1
+	}
+	return (SUCCESS);
+}
+
+t_config	*formatter(char *title)
 {
 	t_config	*data;
-	char	**file_output;
-	int		fd;
-	int		ret;
-	int		i;
+	char		**file;
+	int			fd;
+	int			ret;
+	int			i;
 
-	data = malloc_map_data();
-	data->title = ft_strdup(title);ft_strndupfree
+	data = malloc_config();
+	data->title = ft_strdupfree(title, 1);
 	fd = open("../map.cub", O_RDONLY);
-	file_output = NULL;
+	file = NULL;
 	while (ret != 0)
 	{
-		file_output[i] = (char*)malloc(sizeof(char));
-		if (file_output[i] == NULL)
-			destroy_buff(&file_output, i);
-		ret = get_next_line(fd, (&file_output)[i]);
+		file[i] = (char*)malloc(sizeof(char));
+		if (file[i] == NULL)
+			free_buff(&file, data, i, 0);
+		ret = get_next_line(fd, &(file[i]));
 		if (ret == -1)
-			destroy_buff(&file_output, i);
+			free_buff(&file, data, i, 0);
 		i++;
 	}
-	(check_map(data, file_output, i)) == SUCCESS ?
-		data = parse_map(data, file_output, i) : destroy_buff(&file_output, i);
-	data = parse_parameters(data, file_output, i);
+	(check_file(data, file, i)) == SUCCESS ?
+		data = parse_map(data, file, i) : free_buff(&file, data, i, 1);
+	data = parse_parameters(data, file, i);
 	return (data);
 }

@@ -6,7 +6,7 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/28 13:23:39 by gozsertt          #+#    #+#              #
-#    Updated: 2020/01/08 17:52:30 by gozsertt         ###   ########.fr        #
+#    Updated: 2020/01/10 14:49:42 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ MLX_SRC 	=	mlx_init_loop.m													\
 				mlx_shaders.c													\
 				mlx_xpm.c														\
 				#mlx_opengl.m			A SUPPR?								\
-				
+
 MLX_OBJ = $(addprefix $(MLX_OBJ_DIR)/, $(OBJ1:%.m=%.o))
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
 
