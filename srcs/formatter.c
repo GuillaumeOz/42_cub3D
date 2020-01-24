@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 10:39:51 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/24 12:58:14 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/01/24 19:06:39 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,6 @@ static void	free_buff(char ***to_free, t_data *data, int index, int mode)
 		catch_error("Malloc_formatter error 2");
 }
 
-map_checker()
-{
-	
-}
-
 static void	id_selector(t_config *data, char *file, int index)
 {
 	if (*(file + index)  == 'R')
@@ -51,7 +46,12 @@ static void	id_selector(t_config *data, char *file, int index)
 	else if (*(file + index) == 'F')
 		parse_environment(&(data->floor), file + index);
 	else if (*(file + index) == 'C')
-		parse_environment(&(data->ceiling));
+		parse_environment(&(data->ceiling), file + index);
+}
+
+static	int map_checker(char ***map, char **file, int lineindex, int i)
+{
+	
 }
 
 static	int	check_file(t_config *data, char **file, int index)
@@ -66,11 +66,11 @@ static	int	check_file(t_config *data, char **file, int index)
 		while (file[i][++j])
 			id_selector(data, file[i], j);
 		j = -1;
-		// add map checking and parsing
-		//if ( 1  1     1)
-		// if yes break
+		if ((ft_isonlycharset(file[i], " 1")) == SUCCESS)
+			break ;
 	}
-	//map parsing
+	map_checker(&(data->map), file, index, i);	//map parsing
+	parse_map(&(data->map), file, index, i);
 	return (SUCCESS);
 }
 
