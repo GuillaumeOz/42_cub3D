@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:06:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/10 15:07:11 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/01/24 12:43:00 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ t_error	g_cube3d_catch_error[] =
 	{ "Malloc_map error 2", "The map is too small" },
 	{ "Malloc_formatter error 1", "Output file allocation failed" },
 	{ "Malloc_formatter error 2", "The map is invalid" },
+	{ "Malloc_parser error 1", "The texture path can't be malloc" },
+	{ "Malloc_parser error 2", "The texture path can't be malloc" },
 	{ NULL, "The Error has not be catched... Good luck"}
 };
 

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 10:40:05 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/10 19:13:29 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/01/24 12:54:38 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ t_config	create_config(void);
 void		destroy_config(t_config to_destroy);
 void		free_config(t_config *to_free);
 
+void		parse_resolution(t_vector **resolution_size, char *format);
+void		parse_texture(char **texture, char *format);
+void		parse_environment(t_color **environment, char *format);
+
 t_config	*formatter(char *title);
-
-
 
 #endif
