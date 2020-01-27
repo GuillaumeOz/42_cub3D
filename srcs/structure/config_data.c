@@ -28,6 +28,7 @@ t_config	create_config(void)
 	t_config	*config;
 
 	config->title = ft_strnew(0);
+	config->player_stance = 0;
 	*(config)->resolution_size = create_vector(0, 0);
 	config->north_texture = ft_strnew(0);
 	config->south_texture = ft_strnew(0);

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 10:40:05 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/24 13:59:48 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/01/27 15:45:56 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void		parse_resolution(t_vector **resolution_size, char *format);
 void		parse_texture(char **texture, char *format);
 void		parse_environment(t_color **environment, char *format);
 
-t_config	*formatter(char *title);
+void		map_formatter(t_config *data, char **line, int lineindex, int i);
+t_config	*formatter(char *title); // add the file descriptor from main
 
 #endif

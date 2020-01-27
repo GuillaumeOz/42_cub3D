@@ -6,13 +6,13 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 10:39:51 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/24 19:06:39 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/01/27 19:54:44 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-static void	free_buff(char ***to_free, t_data *data, int index, int mode)
+static void	free_buff(char ***to_free, t_data **data, int index, int mode)
 {
 	int i;
 
@@ -22,7 +22,7 @@ static void	free_buff(char ***to_free, t_data *data, int index, int mode)
 		free((*to_free)[i]);
 		free((*to_free));
 	}
-	free_config(data);
+	free_config((*data));
 	if (mode == 0)
 		catch_error("Malloc_formatter error 1");
 	else
@@ -49,12 +49,24 @@ static void	id_selector(t_config *data, char *file, int index)
 		parse_environment(&(data->ceiling), file + index);
 }
 
-static	int map_checker(char ***map, char **file, int lineindex, int i)
+static	int map_checker(t_config *data, char **file, int lineindex, int i)
 {
-	
+	int tmp;
+
+	tmp = i;
+	if ((ft_isonlycharset(file[i], " 1")) == FAILURE)
+		catch_error("Map_checker error 1");
+	while (i++ < lineindex)
+		if ((ft_isonlycharset(file[i], " 102NSEW")) == FAILURE)
+			catch_error("Map_checker error 2");
+	if ((ft_isonlycharset(file[i], " 1")) == FAILURE)
+		catch_error("Map_checker error 3");
+	i = tmp;
+	map_formatter(data, file, lineindex, i);
+	return (SUCCESS);
 }
 
-static	int	check_file(t_config *data, char **file, int index)
+static	int	check_file(t_config **data, char **file, int index)
 {
 	int i;
 	int j;
@@ -64,13 +76,13 @@ static	int	check_file(t_config *data, char **file, int index)
 	while (++i < index)
 	{
 		while (file[i][++j])
-			id_selector(data, file[i], j);
+			id_selector((*data), file[i], j);
 		j = -1;
 		if ((ft_isonlycharset(file[i], " 1")) == SUCCESS)
 			break ;
 	}
-	map_checker(&(data->map), file, index, i);	//map parsing
-	parse_map(&(data->map), file, index, i);
+	map_checker((*data), file, index, i);
+	//parse_map(&(data->map), file, index, i);
 	return (SUCCESS);
 }
 
@@ -90,14 +102,14 @@ t_config	*formatter(char *title)
 	{
 		file[i] = (char*)malloc(sizeof(char));
 		if (file[i] == NULL)
-			free_buff(&file, data, i, 0);
+			free_buff(&file, &data, i, 0);
 		ret = get_next_line(fd, &(file[i]));
 		if (ret == -1)
-			free_buff(&file, data, i, 0);
+			free_buff(&file, &data, i, 0);
 		i++;
 	}
-	(check_file(data, file, i)) == SUCCESS ? // check this... only check the map in this function
-		data = parse_map(data, file, i) : free_buff(&file, data, i, 1); 
-	data = parse_parameters(data, file, i);// redo this part ?
+	//redo this part at this end
+	if ((check_file(&data, file, i)) == SUCCESS)
+		free_buff(&file, data, i, 1);
 	return (data);
 }
