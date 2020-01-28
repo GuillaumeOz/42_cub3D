@@ -6,7 +6,7 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/28 13:23:39 by gozsertt          #+#    #+#              #
-#    Updated: 2020/01/23 19:55:14 by gozsertt         ###   ########.fr        #
+#    Updated: 2020/01/28 20:01:04 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ MLX_DIR		= 	$(shell find lib/mlx -type d)
 LIB_DIR		=	$(shell find lib/libft -type d)
 SRC_DIR		= 	$(shell find srcs -type d)
 INC_DIR		= 	$(shell find includes -type d) $(shell find lib/mlx -type d)	\
-				$(shell find lib/libft/includes -type d)
+	$(shell find lib/libft/includes -type d)
 OBJ_DIR		=	obj
 MLX_OBJ_DIR =	mlx_obj
 
@@ -31,15 +31,15 @@ LIB = #libft
 
 SRC = $(foreach dir, $(SRC_DIR), $(foreach file, $(wildcard $(dir)/*.c), $(notdir $(file))))
 
-MLX_SRC 	=	mlx_init_loop.m													\
-				mlx_int_str_to_wordtab.c										\
-				mlx_mouse.m														\
-				mlx_new_image.m													\
-				mlx_new_window.m												\
-				mlx_png.c														\
-				mlx_shaders.c													\
-				mlx_xpm.c														\
-				#mlx_opengl.m			A SUPPR?								\
+MLX_SRC 	=	mlx_init_loop.m		\
+	mlx_int_str_to_wordtab.c			\
+	mlx_mouse.m			\
+	mlx_new_image.m		\
+	mlx_new_window.m	\
+	mlx_png.c			\
+	mlx_shaders.c		\
+	mlx_xpm.c			\
+	#mlx_opengl.m			A SUPPR?	\
 
 MLX_OBJ = $(addprefix $(MLX_OBJ_DIR)/, $(OBJ1:%.m=%.o))
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
@@ -65,63 +65,70 @@ _WHITE=	$'\x1b[37m
 
 # MAIN part --------------------------------------------------------
 
+install:
+	@make -C libs/libft && make all
+
+re-install:
+	@make -C libs/libft re && make re
+
 all:
-				@echo "\n$(_BLUE)___$(NAME) Setting___\n$(_WHITE)"
-				@make $(NAME)
+	@echo "\n$(_BLUE)___$(NAME) Setting___\n$(_WHITE)"
+	@make $(NAME)
 
 show:
-				@echo "$(_BLUE)SRC :\n$(_YELLOW)$(SRC)$(_WHITE)"
-				@echo "$(_BLUE)OBJ :\n$(_YELLOW)$(OBJ)$(_WHITE)"
-				@echo "$(_BLUE)CFLAGS :\n$(_YELLOW)$(CFLAGS)$(_WHITE)"
-				@echo "$(_BLUE)IFLAGS :\n$(_YELLOW)$(IFLAGS)$(_WHITE)"
-				@echo "$(_BLUE)LFLAGS :\n$(_YELLOW)$(LFLAGS)$(_WHITE)"
+	@echo "$(_BLUE)SRC :\n$(_YELLOW)$(SRC)$(_WHITE)"
+	@echo "$(_BLUE)OBJ :\n$(_YELLOW)$(OBJ)$(_WHITE)"
+	@echo "$(_BLUE)CFLAGS :\n$(_YELLOW)$(CFLAGS)$(_WHITE)"
+	@echo "$(_BLUE)IFLAGS :\n$(_YELLOW)$(IFLAGS)$(_WHITE)"
+	@echo "$(_BLUE)LFLAGS :\n$(_YELLOW)$(LFLAGS)$(_WHITE)"
 
 $(OBJ_DIR)/%.o : %.c
-				@echo "Compiling $(_YELLOW)$@$(_WHITE) ... \c"
-				@mkdir -p $(OBJ_DIR)
-				@$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $<
-				@echo "$(_GREEN)DONE$(_WHITE)"
+	@echo "Compiling $(_YELLOW)$@$(_WHITE) ... \c"
+	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $<
+	@echo "$(_GREEN)DONE$(_WHITE)"
 
 $(MLX_OBJ_DIR)/%.o : %.c
-				@echo "Compiling $(_YELLOW)$@$(_WHITE) ... \c"
-				@mkdir -p $(MLX_OBJ_DIR)
-				@$(CC) -Wno-deprecated-declarations $(IFLAGS) -o $@ -c $<
-				@echo "$(_GREEN)DONE$(_WHITE)"
+	@echo "Compiling $(_YELLOW)$@$(_WHITE) ... \c"
+	@mkdir -p $(MLX_OBJ_DIR)
+	@$(CC) -Wno-deprecated-declarations $(IFLAGS) -o $@ -c $<
+	@echo "$(_GREEN)DONE$(_WHITE)"
 
 $(MLX_OBJ_DIR)/%.o : %.m
-				@echo "Compiling $(_YELLOW)$@$(_WHITE) ... \c"
-				@mkdir -p $(OBJ_DIR)
-				@$(CC) -Wno-deprecated-declarations $(IFLAGS) -o $@ -c $<
-				@echo "$(_GREEN)DONE$(_WHITE)"
+	@echo "Compiling $(_YELLOW)$@$(_WHITE) ... \c"
+	@mkdir -p $(OBJ_DIR)
+	@$(CC) -Wno-deprecated-declarations $(IFLAGS) -o $@ -c $<
+	@echo "$(_GREEN)DONE$(_WHITE)"
 
 $(NAME):        $(MLX_OBJ) $(OBJ) Makefile
-				@echo "-----\nCreating library $(_YELLOW)$@$(_WHITE) ... \c"
-				@ar -rc $(NAME) $(OBJ) $(MLX_OBJ)
-				@ranlib $(NAME)
-				@echo "$(_GREEN)DONE$(_WHITE)\n-----"
+	@echo "-----\nCreating library $(_YELLOW)$@$(_WHITE) ... \c"
+	@ar -rc $(NAME) $(OBJ) $(MLX_OBJ)
+	@ranlib $(NAME)
+	@echo "$(_GREEN)DONE$(_WHITE)\n-----"
 
 debug:			$(MLX_OBJ) $(OBJ) $(NAME) cube3d.c
-				@echo "Creating Binary File $(_YELLOW)$@$(_WHITE) ... \c"
-				@$(CC) $(CFLAGS) $(IFLAGS) cube3d.c -o debug $(LFLAGS) -L . -l cube3d
-				@echo "$(_GREEN)DONE$(_WHITE)\n"
-				@echo "Execution !\n-----"
-				@./debug
+	@echo "Creating Binary File $(_YELLOW)$@$(_WHITE) ... \c"
+	@$(CC) $(CFLAGS) $(IFLAGS) cube3d.c -o debug $(LFLAGS) -L . -l cube3d
+	@echo "$(_GREEN)DONE$(_WHITE)\n"
+	@echo "Execution !\n-----"
+	@./debug
 
-re:				fclean all
+re:	fclean all
 
 mlx_clean:
-				@echo "$(_WHITE)Deleting MLX Objects $(_YELLOW)$(OBJ_DIR)$(_WHITE) ... \c"
-				@$(foreach file, $(MLX_OBJ), rm -rf $(file))
-				@echo "$(_GREEN)DONE$(_WHITE)\n-----"
+	@echo "$(_WHITE)Deleting MLX Objects $(_YELLOW)$(OBJ_DIR)$(_WHITE) ... \c"
+	@$(foreach file, $(MLX_OBJ), rm -rf $(file))
+	@echo "$(_GREEN)DONE$(_WHITE)\n-----"
 clean:
-				@echo "$(_WHITE)Deleting Objects Directory $(_YELLOW)$(OBJ_DIR)$(_WHITE) ... \c"
-				@$(foreach file, $(OBJ), rm -rf $(file))
-				@echo "$(_GREEN)DONE$(_WHITE)\n-----"
+	@echo "$(_WHITE)Deleting Objects Directory $(_YELLOW)$(OBJ_DIR)$(_WHITE) ... \c"
+	@$(foreach file, $(OBJ), rm -rf $(file))
+	@echo "$(_GREEN)DONE$(_WHITE)\n-----"
 
-fclean:			clean
-				@echo "Deleting Binary File $(_YELLOW)$(NAME)$(_WHITE) ... \c"
-				@rm -f $(NAME)
-				@echo "$(_GREEN)DONE$(_WHITE)\n-----"
+fclean:			clean mlx_clean
+	@echo "Deleting Binary File $(_YELLOW)$(NAME)$(_WHITE) ... \c"
+	@$(shell make fclean -C lib/libft)
+	@rm -f $(NAME)
+	@echo "$(_GREEN)DONE$(_WHITE)\n-----"
 
 nh :
 	@echo && echo "$(_GREEN)" "Checking Norme -- Header Files:" && echo "$(_WHITE)";

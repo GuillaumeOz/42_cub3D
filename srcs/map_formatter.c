@@ -6,15 +6,11 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 12:41:05 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/27 19:53:38 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/01/28 16:00:33 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
-
-// characters in the map are checked
-// first and last line composed with " 1"
-// strlen(without " ")
 
 static size_t	strlen_without_char(char *line, char c)
 {
@@ -22,6 +18,7 @@ static size_t	strlen_without_char(char *line, char c)
 	size_t	count;
 
 	i = 0;
+	count = 0;
 	while (line[i])
 	{
 		if(line[i] != c)
@@ -58,13 +55,14 @@ static void		check_parse_map(t_config *data, char **file, int lineindex, int i)
 	size_t	malloc_size;
 	int		j;
 	int		k;
+	int		h;
 
 	malloc_size = 0;
 	k = -1;
 	while (i < lineindex)
 	{
 		j = -1;
-		k = -1;
+		h = -1;
 		if (file[i][0] != '1')
 			catch_error("Check_map error 1");
 		malloc_size = strlen_without_char(file[i], ' ');
@@ -73,7 +71,7 @@ static void		check_parse_map(t_config *data, char **file, int lineindex, int i)
 			catch_error("Check_map error 2");
 		while (file[i][++j])
 			if(file[i][j] != ' ')
-				data->map[k][++k] = file[i][j];
+				data->map[k][++h] = file[i][j];
 		if (file[i][j - 1] != '1')
 			catch_error("Check_map error 3");
 		i++;
@@ -90,10 +88,12 @@ static void		check_player(t_config *data, char **file, int lineindex, int i)
 		while (file[i][++j])
 			if (file[i][j] == 'N' || file[i][j] == 'S' || file[i][j] == 'E'
 				|| file[i][j] == 'W')
+			{
 				if (data->player_stance == 0)
 					data->player_stance = file[i][j];
 				else
 					catch_error("Check_player error 1");
+			}
 		j = -1;
 		i++;
 	}

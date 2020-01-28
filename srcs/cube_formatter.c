@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   formatter.c                                        :+:      :+:    :+:   */
+/*   cube_formatter.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 10:39:51 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/27 19:54:44 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/01/28 17:38:55 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-static void	free_buff(char ***to_free, t_data **data, int index, int mode)
+static void	free_buff(char ***to_free, int index)
 {
 	int i;
 
@@ -22,14 +22,9 @@ static void	free_buff(char ***to_free, t_data **data, int index, int mode)
 		free((*to_free)[i]);
 		free((*to_free));
 	}
-	free_config((*data));
-	if (mode == 0)
-		catch_error("Malloc_formatter error 1");
-	else
-		catch_error("Malloc_formatter error 2");
 }
 
-static void	id_selector(t_config *data, char *file, int index)
+static	void	id_selector(t_config *data, char *file, int index)
 {
 	if (*(file + index)  == 'R')
 		parse_resolution(&(data->resolution_size), file + index);
@@ -82,34 +77,34 @@ static	int	check_file(t_config **data, char **file, int index)
 			break ;
 	}
 	map_checker((*data), file, index, i);
-	//parse_map(&(data->map), file, index, i);
 	return (SUCCESS);
 }
 
-t_config	*formatter(char *title)
+t_config	*cube_formatter(char *title, int fd)
 {
 	t_config	*data;
 	char		**file;
-	int			fd;
 	int			ret;
 	int			i;
 
 	data = malloc_config();
-	data->title = ft_strdupfree(title, 1);
-	fd = open("../map.cub", O_RDONLY);
+	if (data == NULL)
+		catch_error("Formatter error 1");
+	data->title = ft_strdup(title);
 	file = NULL;
+	ret = 1;
+	i = 0;
 	while (ret != 0)
 	{
 		file[i] = (char*)malloc(sizeof(char));
 		if (file[i] == NULL)
-			free_buff(&file, &data, i, 0);
+			catch_error("Formatter error 2");
 		ret = get_next_line(fd, &(file[i]));
 		if (ret == -1)
-			free_buff(&file, &data, i, 0);
+			catch_error("Formatter error 2");
 		i++;
 	}
-	//redo this part at this end
 	if ((check_file(&data, file, i)) == SUCCESS)
-		free_buff(&file, data, i, 1);
+		free_buff(&file, i);
 	return (data);
 }
