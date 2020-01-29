@@ -6,11 +6,12 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 10:39:51 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/28 17:38:55 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/01/29 22:05:08 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
+#include <stdio.h>
 
 static void	free_buff(char ***to_free, int index)
 {
@@ -18,10 +19,8 @@ static void	free_buff(char ***to_free, int index)
 
 	i = -1;
 	while (++i < index)
-	{
 		free((*to_free)[i]);
-		free((*to_free));
-	}
+	free((*to_free));
 }
 
 static	void	id_selector(t_config *data, char *file, int index)
@@ -80,6 +79,27 @@ static	int	check_file(t_config **data, char **file, int index)
 	return (SUCCESS);
 }
 
+char		**cube_realloc(char **file, int size)
+{
+	char	**newfile;
+	int		i;
+
+	i = -1;
+	if (file == NULL)
+		newfile = (char**)malloc(sizeof(char*));
+	else
+	{
+		if (!(newfile = (char**)malloc(sizeof(char*) * size)))
+			return (NULL);
+		while (++i < size)
+			newfile[i] = file[i];
+	}
+	free_buff(&(file), size);
+	if (newfile == NULL)
+		return (NULL);
+	return (newfile);
+}
+
 t_config	*cube_formatter(char *title, int fd)
 {
 	t_config	*data;
@@ -91,18 +111,18 @@ t_config	*cube_formatter(char *title, int fd)
 	if (data == NULL)
 		catch_error("Formatter error 1");
 	data->title = ft_strdup(title);
-	file = NULL;
 	ret = 1;
 	i = 0;
+	file = NULL;
 	while (ret != 0)
 	{
-		file[i] = (char*)malloc(sizeof(char));
-		if (file[i] == NULL)
-			catch_error("Formatter error 2");
+		if (!(file = cube_realloc(file, i)) || file == NULL)
+			catch_error("Cube_formatter error 2");
 		ret = get_next_line(fd, &(file[i]));
 		if (ret == -1)
-			catch_error("Formatter error 2");
+			catch_error("Cube_formatter error 3");
 		i++;
+		printf("%s\n", file[i]);
 	}
 	if ((check_file(&data, file, i)) == SUCCESS)
 		free_buff(&file, i);

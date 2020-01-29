@@ -6,7 +6,7 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/28 13:23:39 by gozsertt          #+#    #+#              #
-#    Updated: 2020/01/29 16:48:04 by gozsertt         ###   ########.fr        #
+#    Updated: 2020/01/29 21:52:43 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
 
 # Compilation flags
 
-CFLAGS      =	-Wall -Wextra -Werror #-fsanitize=address
+CFLAGS      =	-Wall -Wextra -Werror -fsanitize=address -g3
 
 IFLAGS		=	$(foreach dir, $(INC_DIR), -I $(dir))
 

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:06:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/28 14:40:56 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/01/29 20:09:56 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ t_error	g_cube3d_catch_error[] =
 {
 	{ "Main error 1", "Wrong number of arguments" },
 	{ "Main error 2", "The file descriptor is incorrect" },
-	{ "Formatter error 1", "Data can't be allocated" },
-	{ "Formatter error 2", "Output file allocation failed" },
-
+	{ "Cube_formatter error 1", "Data can't be allocated" },
+	{ "Cube_formatter error 2", "Realloc error" },
+	{ "Cube_formatter error 3", "File descriptor error (-1)" },
 	{ "Malloc_formatter error 2", "The map is invalid" },
 	{ "Malloc_parser error 1", "The texture path can't be malloc" },
 	{ "Malloc_parser error 2", "The texture path can't be malloc" },
@@ -41,6 +41,7 @@ void catch_error(char *error_msg)
 	int ret_msg;
 
 	i = -1;
+	debug
 	while (g_cube3d_catch_error[++i].error_list)
 	{
 		ret_msg = ft_strcmp(g_cube3d_catch_error[i].error_list, error_msg);
