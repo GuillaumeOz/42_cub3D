@@ -1,6 +1,6 @@
 /*
 **
-** mlx_opengl.h
+** mlx_opengl.h 
 **
 ** public include, use it after mlx.h
 ** designed only for minilibx_macos

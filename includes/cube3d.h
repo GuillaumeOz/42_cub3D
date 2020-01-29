@@ -24,5 +24,6 @@
 # include "cube3d_vector.h"
 # include "cube3d_config.h"
 # include "cube3d_application.h"
+# define debug write(1, "ICI", 4);
 
 #endif

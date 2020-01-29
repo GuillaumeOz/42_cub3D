@@ -10,10 +10,12 @@
 
 #include "font.c"
 
+
 void	do_loop_hook2(CFRunLoopTimerRef observer, void * info)
 {
   ((mlx_ptr_t *)info)->loop_hook(((mlx_ptr_t *)info)->loop_hook_data);
 }
+
 
 void do_loop_flush(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void * info)
 {
@@ -35,9 +37,13 @@ void do_loop_flush(CFRunLoopObserverRef observer, CFRunLoopActivity activity, vo
     }
 }
 
+
+
+
 void *mlx_init()
 {
   mlx_ptr_t	*new_mlx;
+  int		bidon;
   int		i;
 
   if ((new_mlx = malloc(sizeof(*new_mlx))) == NULL)
