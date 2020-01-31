@@ -6,12 +6,12 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 14:15:36 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/10 15:43:41 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/01/30 11:51:07 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_VECTOR
-# define CUBE3D_VECTOR
+#ifndef CUBE3D_VECTOR_H
+# define CUBE3D_VECTOR_H
 
 typedef struct s_vector
 {

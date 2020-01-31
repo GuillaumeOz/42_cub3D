@@ -22,9 +22,35 @@
 # include "cube3d_catch_error.h"
 # include "cube3d_color.h"
 # include "cube3d_vector.h"
+# include "cube3d_player.h"
 # include "cube3d_config.h"
 # include "cube3d_application.h"
-# define debug write(1, "ICI\n", 5);
+
+enum	e_cube3d_error
+{
+	ERROR_NOT_FOUND = -1,
+	MAIN_1,
+	CHECK_MAPNAME_1,
+	CUBE_FORMATTER_1,
+	CUBE_FORMATTER_2,
+	CUBE_FORMATTER_3,
+	PARSE_TEXTURE_1,
+	PARSE_RESOLUTION_1,
+	PARSE_ENVIRONMENT_1,
+	CUBE_MAP_FORMATTER_1,
+	CUBE_MAP_FORMATTER_2,
+	CUBE_MAP_FORMATTER_3,
+	CUBE_MAP_FORMATTER_4,
+	CUBE_MAP_REALLOC_1,
+	CUBE_MAP_REALLOC_2,
+	CUBE_MAP_PARSE_1,
+	CUBE_MAP_PARSE_2
+};
+
+# define debug write(1, "ICI\n", 5)
+# define PRINTS(x) printf("%s\n", x)
+# define PRINTC(x) printf("%c\n", x)
+# define PRINTD(x) printf("%d\n", x)
 
 // protection resolution de la map
 // player struct
@@ -33,7 +59,7 @@
 	// printf("title -> %s\n", data->title);
 	// printf("reso x -> %f\n", data->resolution_size->x);
 	// printf("reso y -> %f\n", data->resolution_size->y);
-	// printf("player stance -> %c\n", data->player_stance);
+	// printf("player stance -> %c\n", data->player_stance); ADD PLAYER PART
 	// printf("north -> %s\n", data->north_texture);
 	// printf("south -> %s\n", data->south_texture);
 	// printf("west -> %s\n", data->west_texture);
@@ -50,19 +76,4 @@
 	// 	printf("data -> %s", data->map[indextest]);	
 	// exit(FAILURE);
 
-// int g_langage = 0;
-
-// char *error_msg[][3] = {
-// 	{"francais", "anglais", "espagnol"}, // DEFINE ERROR MAIN_ERROR_1 0
-// 	{"francais", "anglais", "espagnol"}, // DEFINE ERROR MAIN_ERROR_2 1
-// 	{"francais", "anglais", "espagnol"},
-// 	{"francais", "anglais", "espagnol"},
-// 	{"francais", "anglais", "espagnol"},
-// 	{"francais", "anglais", "espagnol"}
-// };
-
-// void print_error(int index)
-// {
-// 	char *msg = erro_msg[index][g_langage];
-// }
 #endif

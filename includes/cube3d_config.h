@@ -6,19 +6,19 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 10:40:05 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/29 18:50:26 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/01/31 21:12:40 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_CONFIG
-# define CUBE3D_CONFIG
+#ifndef CUBE3D_CONFIG_H
+# define CUBE3D_CONFIG_H
 
 typedef struct	s_config
 {
 	char		*title;
 	t_vector	*resolution_size;
+	t_player	*player;
 
-	char		player_stance;
 	char		*north_texture;
 	char		*south_texture;
 	char		*west_texture;
@@ -37,11 +37,11 @@ t_config	create_config(void);
 void		destroy_config(t_config to_destroy);
 void		free_config(t_config *to_free);
 
-void		parse_resolution(t_vector **resolution_size, char *format);
+void		parse_resolution(t_vector *resolution_size, char *format);
 void		parse_texture(char **texture, char *format);
-void		parse_environment(t_color **environment, char *format);
+void		parse_environment(t_color *environment, char *format);
 
-void		map_formatter(t_config *data, char **line, int lineindex, int i);
-t_config	*cube_formatter(char *title, int fd);
+char		*cube_map_parse(char *line);
+t_config	*cube_formatter(char *title, char *map_name);
 
 #endif

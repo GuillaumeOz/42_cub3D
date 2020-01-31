@@ -27,14 +27,14 @@ t_config	create_config(void)
 {
 	t_config	config;
 
-	config.title = ft_strnew(0);
-	config.player_stance = 0;
-	config.resolution_size = malloc_vector(0, 0);
-	config.north_texture = ft_strnew(0);
-	config.south_texture = ft_strnew(0);
-	config.west_texture = ft_strnew(0);
-	config.east_texture = ft_strnew(0);
-	config.sprite_texture = ft_strnew(0);
+	config.title =  NULL;
+	config.player = malloc_player(0.0f, 0.0f, 0.0f, 0.0f);
+	config.resolution_size = malloc_vector(0.0f, 0.0f);
+	config.north_texture = NULL;
+	config.south_texture = NULL;
+	config.west_texture = NULL;
+	config.east_texture = NULL;
+	config.sprite_texture = NULL;
 	config.floor = malloc_color(0, 0, 0);
 	config.ceiling = malloc_color(0, 0 ,0);
 	config.map = NULL;
@@ -46,7 +46,7 @@ void	free_map(char **map)
 	int i;
 
 	i = -1;
-	while (map[++i] != NULL)
+	while (map[++i] != NULL) // keep this function ?
 		free(map[i]);
 	free(map);
 }
@@ -55,6 +55,7 @@ void	destroy_config(t_config to_destroy)
 {
 	free(to_destroy.title);
 	free_vector(to_destroy.resolution_size);
+	free_player(to_destroy.player);
 	free(to_destroy.north_texture);
 	free(to_destroy.south_texture);
 	free(to_destroy.west_texture);

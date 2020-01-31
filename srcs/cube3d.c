@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 10:54:50 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/29 18:46:37 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/01/30 18:30:32 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,11 @@ int main(int argc, char **argv)
 	t_config		*data;
 	t_application	*application;
 	t_color			*color;
-	int				fd;
 
 	if (argc != 2)
-		catch_error("Main error 1");
-	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
-		catch_error("Main error 2");
-	data = cube_formatter("Cube3D", fd);
+		catch_error(MAIN_1);
+	data = cube_formatter("Cube3D", argv[1]);
+
 	application = malloc_application(400, 400, data->title);
 	color = malloc_color(102, 51, 0);
 	render_application(application);
@@ -56,7 +53,6 @@ int main(int argc, char **argv)
 
 	// free_color(color); XX
 	// free_application(application); XX
-
 
  	//exit(); for leaving the windows
 	//EXIT_FAILURE;
