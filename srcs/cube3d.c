@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 10:54:50 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/30 18:30:32 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/02 16:48:04 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int main(int argc, char **argv)
 	color = malloc_color(102, 51, 0);
 	render_application(application);
 	run_application(application);
+
 //allocate map struct
 /*
 	malloc_map_data

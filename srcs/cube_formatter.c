@@ -6,12 +6,11 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 10:39:51 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/31 21:55:29 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/02 21:47:04 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
-#include <stdio.h>
 
 static void check_mapname(char *map_name)
 {
@@ -80,26 +79,25 @@ static void cube_map_formatter(t_config *data, char *line, int fd)
 	int ret;
 	int i;
 
-	i = -1;
+	i = 0;
 	data->map = (char**)malloc(sizeof(char*) * (3 + SENTINAL));
 	if (data->map == NULL)
 		catch_error(CUBE_MAP_FORMATTER_1);
-	data->map[++i] = cube_map_parse(line);
+	data->map[i] = cube_map_parse(data, line, i);
 	data->map[3] = NULL;
+	i++;
 	while ((ret = get_next_line(fd, &line)) != 0)
 	{
-		if (ret == -1)
+		if (ret == -1 || line == NULL)
  			catch_error(CUBE_MAP_FORMATTER_2);
-		if (line == NULL)
-			catch_error(CUBE_MAP_FORMATTER_3);
-		data->map[++i] = cube_map_parse(line);
-		//PRINTS(line);
+		data->map[i] = cube_map_parse(data, line, i);
 		if (data->map[i + SENTINAL] == NULL)
 			cube_map_realloc(data, (i + SENTINAL));
+		i++;
 	}
 	(ft_isonlycharset(line, " 1")) == SUCCESS ?
-		data->map[++i] = cube_map_parse(line) :
-		catch_error(CUBE_MAP_FORMATTER_4);
+		data->map[i] = cube_map_parse(data, line, i) :
+		catch_error(CUBE_MAP_FORMATTER_3);
 	free(line);
 }
 
@@ -109,6 +107,7 @@ t_config	*cube_formatter(char *title, char *map_name)
 	char		*line;
 	int			ret;
 	int			fd;
+	int			i; //suppr this part
 
 	data = malloc_config();
 	if (data == NULL)
@@ -118,10 +117,8 @@ t_config	*cube_formatter(char *title, char *map_name)
 	data->title = ft_strdup(title);
 	while ((ret = get_next_line(fd, &line)) != 0)
 	{
-		if (ret == -1)
+		if (ret == -1 || line == NULL)
  			catch_error(CUBE_FORMATTER_2);
-		if (line == NULL)
-			catch_error(CUBE_FORMATTER_3);
 		id_selector(data, line);
 		if ((ft_isonlycharset(line, " 1")) == SUCCESS)
 		{
@@ -130,24 +127,28 @@ t_config	*cube_formatter(char *title, char *map_name)
 		}
 		free(line);
 	}
-	//check_line_border();
+	//check_line_border(); /and if a player has been find
+	printf("title -> %s\n", data->title);
+	printf("reso x -> %d\n", (int)data->resolution_size->x);
+	printf("reso y -> %d\n", (int)data->resolution_size->y);
+	printf("player x -> %f\n", data->player->pos_player->x);
+	printf("player y -> %f\n", data->player->pos_player->y);
+	printf("player degree -> %f\n", data->player->dir_degree);
+	printf("player rad -> %f\n", data->player->dir_radius);
+	printf("north -> %s\n", data->north_texture);
+	printf("south -> %s\n", data->south_texture);
+	printf("west -> %s\n", data->west_texture);
+	printf("east -> %s\n", data->east_texture);
+	printf("sprite -> %s\n", data->sprite_texture);
+	printf("floor R -> %hhu\n", data->floor->r);
+	printf("floor G -> %hhu\n", data->floor->g);
+	printf("floor B -> %hhu\n", data->floor->b);
+	printf("ceiling R -> %hhu\n", data->ceiling->r);
+	printf("ceiling G -> %hhu\n", data->ceiling->g);
+	printf("ceiling B -> %hhu\n", data->ceiling->b);
+	i = -1;
+	while (data->map[++i] != NULL)
+		PRINTS(data->map[i]);
 	exit(FAILURE);
 	return (data);
-	// printf("title -> %s\n", data->title);
-	// printf("reso x -> %d\n", (int)data->resolution_size->x);
-	// printf("reso y -> %d\n", (int)data->resolution_size->y);
-	// printf("north -> %s\n", data->north_texture);
-	// printf("south -> %s\n", data->south_texture);
-	// printf("west -> %s\n", data->west_texture);
-	// printf("east -> %s\n", data->east_texture);
-	// printf("sprite -> %s\n", data->sprite_texture);
-	// printf("floor R -> %hhu\n", data->floor->r);
-	// printf("floor G -> %hhu\n", data->floor->g);
-	// printf("floor B -> %hhu\n", data->floor->b);
-	// printf("ceiling R -> %hhu\n", data->ceiling->r);
-	// printf("ceiling G -> %hhu\n", data->ceiling->g);
-	// printf("ceiling B -> %hhu\n", data->ceiling->b);
-	// exit(FAILURE);
-	// if ((check_line(&data, line, i)) == SUCCESS)
-	// 	free_buff(&line, i);
 }

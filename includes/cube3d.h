@@ -13,7 +13,7 @@
 #ifndef CUBE3D_H
 # define CUBE3D_H
 
-# include <stdio.h>
+# include <stdio.h> // del this at the end ?
 # include <stdlib.h>
 # include <math.h>
 # include "mlx.h"
@@ -33,18 +33,19 @@ enum	e_cube3d_error
 	CHECK_MAPNAME_1,
 	CUBE_FORMATTER_1,
 	CUBE_FORMATTER_2,
-	CUBE_FORMATTER_3,
 	PARSE_TEXTURE_1,
 	PARSE_RESOLUTION_1,
 	PARSE_ENVIRONMENT_1,
 	CUBE_MAP_FORMATTER_1,
 	CUBE_MAP_FORMATTER_2,
 	CUBE_MAP_FORMATTER_3,
-	CUBE_MAP_FORMATTER_4,
 	CUBE_MAP_REALLOC_1,
 	CUBE_MAP_REALLOC_2,
 	CUBE_MAP_PARSE_1,
-	CUBE_MAP_PARSE_2
+	CUBE_MAP_PARSE_2,
+	CUBE_MAP_PARSE_3,
+	CUBE_MAP_PARSE_4,
+	FILL_PLAYER_1
 };
 
 # define debug write(1, "ICI\n", 5)

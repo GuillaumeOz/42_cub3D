@@ -28,7 +28,7 @@ t_config	create_config(void)
 	t_config	config;
 
 	config.title =  NULL;
-	config.player = malloc_player(0.0f, 0.0f, 0.0f, 0.0f);
+	config.player = malloc_player(0.0f, 0.0f, 1.0f, 0.0f);
 	config.resolution_size = malloc_vector(0.0f, 0.0f);
 	config.north_texture = NULL;
 	config.south_texture = NULL;

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:06:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/31 21:43:35 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/02 19:24:24 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,19 @@ t_error	g_cube3d_catch_error[] =
 	{ CHECK_MAPNAME_1, "Error\n The file name is invalid" },
 	{ CUBE_FORMATTER_1, "Error\n Data can't be allocated" },
 	{ CUBE_FORMATTER_2, "Error\n Error with GNL return" },
-	{ CUBE_FORMATTER_3, "Error\n Line is NULL" },
 	{ PARSE_TEXTURE_1, "Error\n Texture path is incorrect" },
 	{ PARSE_RESOLUTION_1, "Error\n Resolution line is invalid" },
 	{ PARSE_ENVIRONMENT_1, "Error\n Environment line is invalid" },
 	{ CUBE_MAP_FORMATTER_1, "Error\n The map can't be malloc" },
 	{ CUBE_MAP_FORMATTER_2, "Error\n Error with GNL return" },
-	{ CUBE_MAP_FORMATTER_3, "Error\n Line is NULL" },
-	{ CUBE_MAP_FORMATTER_4, "Error\n The last line of the file is invalid" },
+	{ CUBE_MAP_FORMATTER_3, "Error\n The last line of the file is invalid" },
 	{ CUBE_MAP_REALLOC_1, "Error\n The realloc array of map failed" },
 	{ CUBE_MAP_REALLOC_2, "Error\n The realloc line of map failed" },
 	{ CUBE_MAP_PARSE_1, "Error\n The first char of the line is not '1'" },
-	{ CUBE_MAP_PARSE_2, "Error\n The last char of the line is not '1'" },
+	{ CUBE_MAP_PARSE_2, "Error\n Forbidden char detected" },
+	{ CUBE_MAP_PARSE_3, "Error\n The allocation of formatted line failed" },
+	{ CUBE_MAP_PARSE_4, "Error\n The last char of the line is not '1'" },
+	{ FILL_PLAYER_1, "Error\n There are to much player on the map" },
 
 	// { "Cube_formatter error 1", "Data can't be allocated" },
 	// { "Cube_formatter error 2", "Realloc error" },
