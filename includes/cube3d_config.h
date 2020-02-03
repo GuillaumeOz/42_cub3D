@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 10:40:05 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/02 18:05:16 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/03 11:31:24 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void		free_config(t_config *to_free);
 void		parse_resolution(t_vector *resolution_size, char *format);
 void		parse_texture(char **texture, char *format);
 void		parse_environment(t_color *environment, char *format);
+void		check_border_player(t_config *data);
 
 char		*cube_map_parse(t_config *data, char *line, int line_counter);
 t_config	*cube_formatter(char *title, char *map_name);

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 10:39:51 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/02 21:47:04 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/03 17:11:59 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ static void cube_map_formatter(t_config *data, char *line, int fd)
 	data->map[i] = cube_map_parse(data, line, i);
 	data->map[3] = NULL;
 	i++;
+	free(line);
 	while ((ret = get_next_line(fd, &line)) != 0)
 	{
 		if (ret == -1 || line == NULL)
@@ -107,7 +108,7 @@ t_config	*cube_formatter(char *title, char *map_name)
 	char		*line;
 	int			ret;
 	int			fd;
-	int			i; //suppr this part
+	int			i;
 
 	data = malloc_config();
 	if (data == NULL)
@@ -127,28 +128,7 @@ t_config	*cube_formatter(char *title, char *map_name)
 		}
 		free(line);
 	}
-	//check_line_border(); /and if a player has been find
-	printf("title -> %s\n", data->title);
-	printf("reso x -> %d\n", (int)data->resolution_size->x);
-	printf("reso y -> %d\n", (int)data->resolution_size->y);
-	printf("player x -> %f\n", data->player->pos_player->x);
-	printf("player y -> %f\n", data->player->pos_player->y);
-	printf("player degree -> %f\n", data->player->dir_degree);
-	printf("player rad -> %f\n", data->player->dir_radius);
-	printf("north -> %s\n", data->north_texture);
-	printf("south -> %s\n", data->south_texture);
-	printf("west -> %s\n", data->west_texture);
-	printf("east -> %s\n", data->east_texture);
-	printf("sprite -> %s\n", data->sprite_texture);
-	printf("floor R -> %hhu\n", data->floor->r);
-	printf("floor G -> %hhu\n", data->floor->g);
-	printf("floor B -> %hhu\n", data->floor->b);
-	printf("ceiling R -> %hhu\n", data->ceiling->r);
-	printf("ceiling G -> %hhu\n", data->ceiling->g);
-	printf("ceiling B -> %hhu\n", data->ceiling->b);
+	check_border_player(data);
 	i = -1;
-	while (data->map[++i] != NULL)
-		PRINTS(data->map[i]);
-	exit(FAILURE);
 	return (data);
 }

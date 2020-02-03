@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 18:12:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/02 21:22:10 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/03 15:59:47 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,34 @@ static void		fill_player(t_config *data, char player_stance, int pos_y, int pos_
 	data->player->dir_radius = ((data->player->dir_degree * M_PI) / 180.0f);
 }
 
+void			check_border_player(t_config *data)
+{
+	int		countn;
+	int		countn_one;
+	int		i;
+
+	i = -1;
+	if (data->player->dir_degree == 1.0f)
+		catch_error(CHECK_BORDER_PLAYER_1);
+	while(data->map[++i + 1] != NULL)
+	{
+		countn = ft_strlen(data->map[i]) - 1;
+		countn_one = ft_strlen(data->map[i + 1]) - 1;
+		if (countn < countn_one)
+			while (countn < countn_one)
+			{
+				if (data->map[i + 1][countn++] != '1')
+					catch_error(CHECK_BORDER_PLAYER_2);
+			}
+		if (countn > countn_one)
+			while (countn > countn_one)
+			{
+				if (data->map[i][countn_one++] != '1')
+					catch_error(CHECK_BORDER_PLAYER_2);
+			}
+	}
+}
+
 char			*cube_map_parse(t_config *data, char *line, int line_counter)
 {
 	char	*formatedline;
@@ -64,10 +92,12 @@ char			*cube_map_parse(t_config *data, char *line, int line_counter)
 		catch_error(CUBE_MAP_PARSE_3);
 	while (line[i])
 	{
-		if ((ft_ischar("NSEW", line[i])) == SUCCESS)
-			fill_player(data, line[i], line_counter, i);
 		if (line[i] != ' ')
+		{
 			formatedline[++j] = line[i];
+			if ((ft_ischar("NSEW", line[i])) == SUCCESS)
+				fill_player(data, line[i], line_counter, j);
+		}
 		i++;
 	}
 	if (line[i - 1] != '1')

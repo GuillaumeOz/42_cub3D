@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:06:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/02 19:24:24 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/03 11:52:37 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ t_error	g_cube3d_catch_error[] =
 	{ CUBE_MAP_PARSE_3, "Error\n The allocation of formatted line failed" },
 	{ CUBE_MAP_PARSE_4, "Error\n The last char of the line is not '1'" },
 	{ FILL_PLAYER_1, "Error\n There are to much player on the map" },
+	{ CHECK_BORDER_PLAYER_1, "Error\n There are no player on the map" },
+	{ CHECK_BORDER_PLAYER_2, "Error\n There are an error with map borders" },
 
 	// { "Cube_formatter error 1", "Data can't be allocated" },
 	// { "Cube_formatter error 2", "Realloc error" },
