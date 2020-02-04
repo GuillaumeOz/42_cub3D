@@ -1,4 +1,4 @@
-   R   1920 1080
+   R   1000 1000
 
 NO    ./path_to_the_north_texture
 
@@ -10,7 +10,7 @@ NO    ./path_to_the_north_texture
                S ./path_to_the_sprite_texture
 
 
-F   220,100,130
+F   255,255,255
 C  225,30,150
 
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1

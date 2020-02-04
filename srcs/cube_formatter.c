@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 10:39:51 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/03 17:11:59 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/04 20:13:32 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ t_config	*cube_formatter(char *title, char *map_name)
 	char		*line;
 	int			ret;
 	int			fd;
-	int			i;
 
 	data = malloc_config();
 	if (data == NULL)
@@ -129,6 +128,5 @@ t_config	*cube_formatter(char *title, char *map_name)
 		free(line);
 	}
 	check_border_player(data);
-	i = -1;
 	return (data);
 }

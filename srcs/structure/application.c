@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 12:07:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/31 14:58:29 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/04 13:02:30 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,9 @@ t_application	create_application(int x, int y, char *title)
 {
 	t_application result;
 
-	result.size_x = x;
-	result.size_y = y;
-	result.title = title;
-
 	result.mlx_ptr = mlx_init(); // protect the return value $ env -i <votre-executable>
-	result.win_ptr = mlx_new_window(result.mlx_ptr, result.size_x, result.size_y, result.title); // Same
-	result.img_ptr = mlx_new_image(result.mlx_ptr, result.size_x, result.size_y); //Same
+	result.win_ptr = mlx_new_window(result.mlx_ptr, x, y, title); // Same
+	result.img_ptr = mlx_new_image(result.mlx_ptr, x, y); //Same
 	result.pixels = mlx_get_data_addr(result.img_ptr, &(result.bits_per_pixels),
 				   &(result.size_line), &(result.endian));
 	return (result);

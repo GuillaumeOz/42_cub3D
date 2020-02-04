@@ -35,8 +35,8 @@ t_config	create_config(void)
 	config.west_texture = NULL;
 	config.east_texture = NULL;
 	config.sprite_texture = NULL;
-	config.floor = malloc_color(0, 0, 0);
-	config.ceiling = malloc_color(0, 0 ,0);
+	config.floor = malloc_color(0, 0, 0, 255);
+	config.ceiling = malloc_color(0, 0, 0, 255);
 	config.map = NULL;
 	return (config);
 }
