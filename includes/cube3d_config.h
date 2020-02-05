@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 10:40:05 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/03 11:31:24 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/05 17:03:26 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct	s_config
 	t_color		*floor;
 	t_color		*ceiling;
 
+	t_vector	*proportionality;
 	char		**map;
 }				t_config;
 

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 11:48:07 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/04 19:35:28 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/05 16:20:36 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,12 @@ void			destroy_application(t_application to_destroy);
 void			free_application(t_application *to_free);
 
 void 			clear_application(t_config *config, t_application *application);
-void 			put_pixel(t_config *config, t_application *application, int x, int y);
+void			draw_rectangle(t_config *config, t_application *application, t_vector square_pos);
+
+void			cube_print_map(t_config *config, t_application *application);
+
+int             event_gen(int keycode, t_application *application); //creat hook.c with global
+
 void			render_application(t_config *config, t_application *application);
 int				run_application(t_application *application);
 #endif

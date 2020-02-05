@@ -6,13 +6,13 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 18:12:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/03 17:20:24 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/05 17:38:42 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-static int		ft_strlen_without(char *line, char c)
+static	int		ft_strlen_without(char *line, char c)
 {
 	size_t	i;
 	size_t	count;
@@ -28,7 +28,26 @@ static int		ft_strlen_without(char *line, char c)
 	return (count);
 }
 
-static void		fill_player(t_config *data, char player_stance, int pos_y, int pos_x)
+static	void	fill_proportionality(t_config *data)
+{
+	int i;
+	int	tmp;
+	int	longer;
+
+	i = -1;
+	tmp = 0;
+	longer = 0;
+	while (data->map[++i] != NULL)
+	{
+		tmp = ft_strlen(data->map[i]);
+		if (tmp > longer)
+			longer = tmp;
+	}
+	data->proportionality->y = (data->resolution_size->y / i);
+	data->proportionality->x = (data->resolution_size->x / longer);
+}
+
+static	void	fill_player(t_config *data, char player_stance, int pos_y, int pos_x)
 {
 	if (data->player->dir_degree != 1.0f)
 		catch_error(FILL_PLAYER_1);
@@ -71,6 +90,7 @@ void			check_border_player(t_config *data)
 					catch_error(CHECK_BORDER_PLAYER_2);
 			}
 	}
+	fill_proportionality(data);
 }
 
 char			*cube_map_parse(t_config *data, char *line, int line_counter)

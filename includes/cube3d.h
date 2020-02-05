@@ -25,6 +25,7 @@
 # include "cube3d_player.h"
 # include "cube3d_config.h"
 # include "cube3d_application.h"
+# include "cube3d_lgl_define.h"
 
 enum	e_cube3d_error
 {
@@ -55,5 +56,6 @@ enum	e_cube3d_error
 # define PRINTC(x) printf("%c\n", x)
 # define PRINTD(x) printf("%d\n", x)
 # define PRINTP(x) printf("%p\n", x)
+# define PRINTF(x) printf("%f\n", x)
 
 #endif

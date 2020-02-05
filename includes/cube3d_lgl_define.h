@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lgl_define.h                                       :+:      :+:    :+:   */
+/*   cube3d_lgl_define.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 13:39:20 by ldutriez          #+#    #+#             */
-/*   Updated: 2020/02/04 10:23:30 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/05 14:16:36 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LGL_DEFINE_H
-# define LGL_DEFINE_H
+#ifndef CUBE3D_LGL_DEFINE_H
+# define CUBE3D_LGL_DEFINE_H
 
 /*
 ** # define NOEVENTMASK 0L

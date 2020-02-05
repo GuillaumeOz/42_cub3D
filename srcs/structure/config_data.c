@@ -37,6 +37,7 @@ t_config	create_config(void)
 	config.sprite_texture = NULL;
 	config.floor = malloc_color(0, 0, 0, 255);
 	config.ceiling = malloc_color(0, 0, 0, 255);
+	config.proportionality = malloc_vector(0.0f, 0.0f);
 	config.map = NULL;
 	return (config);
 }
@@ -46,7 +47,7 @@ void	free_map(char **map)
 	int i;
 
 	i = -1;
-	while (map[++i] != NULL) // keep this function ?
+	while (map[++i] != NULL)// check the leaks
 		free(map[i]);
 	free(map);
 }
@@ -63,6 +64,7 @@ void	destroy_config(t_config to_destroy)
 	free(to_destroy.sprite_texture);
 	free_color(to_destroy.floor);
 	free_color(to_destroy.ceiling);
+	free_vector(to_destroy.proportionality);
 	free_map(to_destroy.map);
 }
 
