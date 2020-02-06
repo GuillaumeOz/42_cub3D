@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 11:48:07 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/05 16:20:36 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/06 13:58:14 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void			destroy_application(t_application to_destroy);
 void			free_application(t_application *to_free);
 
 void 			clear_application(t_config *config, t_application *application);
-void			draw_rectangle(t_config *config, t_application *application, t_vector square_pos);
+void			draw_rectangle(t_config *config, t_application *application, t_vector square_pos, t_vector4 *rounded);
 
 void			cube_print_map(t_config *config, t_application *application);
 

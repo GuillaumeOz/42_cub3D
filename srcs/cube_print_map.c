@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 16:07:02 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/05 19:37:38 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/06 20:25:52 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,35 @@
 
 void	cube_print_map(t_config *config, t_application *application)
 {
-	t_vector	square_pos;
-	int			i;
-	int			j;
+	t_vector			square_pos;
+	t_vector4			rounded_map;
+	int					i;
+	int					j;
 
 	i = -1;
 	j = -1;
 	square_pos = create_vector(0.0, 0.0);
+	rounded_map = create_vector4(config->proportionality->x,
+		 config->proportionality->y, (int)config->proportionality->x, (int)config->proportionality->y);
 	while (config->map[++i] != NULL)
 	{
+		if (config->proportionality->y > (int)config->proportionality->y)
+			rounded_map.y += 1;
 		while (config->map[i][++j])
+		{
 			if (config->map[i][j] == '1')
 			{
-				draw_rectangle(config, application, square_pos);
-				square_pos.x += config->proportionality->x;
+				draw_rectangle(config, application, square_pos, &rounded_map);
+				square_pos.x += (int)config->proportionality->x;
 			}
 			else
-				square_pos.x += config->proportionality->x;
-		j = -1;
+				square_pos.x += (int)config->proportionality->x;
+			if (config->proportionality->x > (int)config->proportionality->x)
+				rounded_map.x += 1.0;
+		}
+		rounded_map.x = (int)config->proportionality->x;
 		square_pos.x = 0.0;
-		square_pos.y += config->proportionality->y;
+		j = -1;
+		square_pos.y += (int)config->proportionality->y;
 	}
 }

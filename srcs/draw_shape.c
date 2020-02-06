@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 13:55:11 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/05 19:59:49 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/06 20:25:45 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,34 +50,21 @@ void		clear_application(t_config *config, t_application *application)
 	}
 }
 
-void	draw_rectangle(t_config *config, t_application *application, t_vector square_pos)
+void	draw_rectangle(t_config *config, t_application *application, t_vector square_pos, t_vector4 *rounded)
 {
 	t_color		rectangle_color;
 	t_vector	pos;
-	t_vector	rounded;
-	int i;
-	int j;
+	int			i;
+	int			j;
 
 	i = -1;
 	j = -1;
 	rectangle_color = create_color(0, 0, 0, 0);
 	pos = create_vector(0.0, 0.0);
-	if (config->proportionality->y + 0.5f == ((int)config->proportionality->y + 1))
-		rounded.y = roundf(config->proportionality->y + 0.5f);
-	else
-		rounded.y = roundf(config->proportionality->y);
-	if (config->proportionality->x + 0.5f == ((int)config->proportionality->x + 1))
-		rounded.x = roundf(config->proportionality->x + 0.5f);
-	else
-		rounded.x = roundf(config->proportionality->x);
-	// config->proportionality->y = roundf(config->proportionality->y);
-	// config->proportionality->x = roundf(config->proportionality->x);
-	PRINTF(rounded.y);
-	PRINTF(rounded.x);
-	while (++i <= (rounded.y + 20))
+	while (++i <= rounded->y)
 	{
 		pos.y = i + square_pos.y;
-		while (++j <= (rounded.x + 20))
+		while (++j <= rounded->x)
 		{
 			pos.x = j + square_pos.x;
 			put_pixel(config, application, pos, rectangle_color);

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 09:36:58 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/31 17:59:27 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/06 13:52:34 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	parse_resolution(t_vector *resolution, char *format)
 {
-	int i;
+	int i;//Add a protection on negative resolution, and a max resolution.
 	int j;
 
 	i = 1;

@@ -22,6 +22,7 @@
 # include "cube3d_catch_error.h"
 # include "cube3d_color.h"
 # include "cube3d_vector.h"
+# include "cube3d_vector4.h"
 # include "cube3d_player.h"
 # include "cube3d_config.h"
 # include "cube3d_application.h"
