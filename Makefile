@@ -6,7 +6,7 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/28 13:23:39 by gozsertt          #+#    #+#              #
-#    Updated: 2020/01/31 22:58:42 by gozsertt         ###   ########.fr        #
+#    Updated: 2020/02/12 19:50:27 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,23 +14,24 @@ NAME        =   Cube3D
 
 CC          =   gcc
 
-MLX_DIR		= 	$(shell find lib/mlx -type d)
+MLX_DIR		= 	$(shell find lib/guillaume_graphical_lib -type d)
 SRC_DIR		= 	$(shell find srcs -type d)
 INC_DIR		= 	$(shell find includes -type d) \
-				$(shell find lib/mlx -type d) \
+				$(shell find lib/guillaume_graphical_lib -type d) \
+				$(shell find lib/guillaume_graphical_lib/lib -type d) \
 				$(shell find lib/libft/includes -type d)
-LIB_DIR		=	lib/libft lib/mlx
+LIB_DIR		=	lib/libft lib/guillaume_graphical_lib
 OBJ_DIR		=	obj
 
 vpath %.c $(foreach dir, $(SRC_DIR), $(dir):)
 
 # List of all of the library linked to the project (the name without the lib part and without the .a)
 FRAMEWORK = OpenGL AppKit
-LIB = ft mlx
+LIB = ft gg mlx
 
 SRC	=	$(foreach dir, $(SRC_DIR), $(foreach file, $(wildcard $(dir)/*.c), $(notdir $(file))))
 
-OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
+OBJ =	$(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
 
 # Compilation flags
 
@@ -65,6 +66,9 @@ show:
 	@echo "$(_BLUE)CFLAGS :\n$(_YELLOW)$(CFLAGS)$(_WHITE)"
 	@echo "$(_BLUE)IFLAGS :\n$(_YELLOW)$(IFLAGS)$(_WHITE)"
 	@echo "$(_BLUE)LFLAGS :\n$(_YELLOW)$(LFLAGS)$(_WHITE)"
+	@echo "$(_BLUE)LIB_DIR :\n$(_YELLOW)$(LIB_DIR)$(_WHITE)"
+	@echo "\n-----\n"
+	@echo "$(_BLUE)Compiling : \n$(_YELLOW)$(CC) $(CFLAGS) $(OBJ) $(LFLAGS) -o $(NAME)$(_WHITE)"
 
 install:
 	$(foreach dir, $(LIB_DIR), make -C $(dir);)

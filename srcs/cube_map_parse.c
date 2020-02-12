@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 18:12:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/05 17:38:42 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/12 17:25:25 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static	void	fill_player(t_config *data, char player_stance, int pos_y, int pos_x
 		data->player->dir_degree = 180.0f;
 	if (player_stance == 'S')
 		data->player->dir_degree = 270.0f;
-	data->player->dir_radius = ((data->player->dir_degree * M_PI) / 180.0f);
+	data->player->dir_radius = degree_to_radian(data->player->dir_degree);
 }
 
 void			check_border_player(t_config *data)

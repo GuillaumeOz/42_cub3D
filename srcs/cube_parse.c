@@ -6,13 +6,13 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 09:36:58 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/06 13:52:34 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/12 16:34:44 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void	parse_resolution(t_vector *resolution, char *format)
+void	parse_resolution(t_vector2 *resolution, char *format)
 {
 	int i;//Add a protection on negative resolution, and a max resolution.
 	int j;

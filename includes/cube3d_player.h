@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 11:42:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/30 12:27:03 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/12 15:55:03 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 typedef struct	s_player
 {
-	struct s_vector	*pos_player;
-	float			dir_degree;
-	float			dir_radius;
+	struct s_vector2	*pos_player;
+	float				dir_degree;
+	float				dir_radius;
 }				t_player;
 
 t_player	*malloc_player(float pos_x, float pos_y, float dir_d, float dir_r);

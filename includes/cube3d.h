@@ -13,20 +13,26 @@
 #ifndef CUBE3D_H
 # define CUBE3D_H
 
-# include <stdio.h> // del this at the end ?
+# include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
-# include "mlx.h"
 
 # include "libft.h"
-# include "cube3d_catch_error.h"
-# include "cube3d_color.h"
-# include "cube3d_vector.h"
-# include "cube3d_vector4.h"
+# include "ggl.h"
 # include "cube3d_player.h"
+# include "cube3d_catch_error.h"
 # include "cube3d_config.h"
-# include "cube3d_application.h"
-# include "cube3d_lgl_define.h"
+
+// void	draw_circle_debug(t_vector2 pos, int radius, t_color color);
+// void	draw_circle_in_image_debug(t_image *image, t_vector2 pos, int radius, t_color color);
+// int		test_render_app(void *param);
+// void	add_key_to_application(KEYPRESS, &handle_key, param);
+// void	render_funct_application(&test_render_app, param);
+
+// // My
+// void			cube_print_map(t_config *config, t_application *application); //redo this part
+// int             event_gen(int keycode, t_application *application); //creat hook.c with global
+// My
 
 enum	e_cube3d_error
 {

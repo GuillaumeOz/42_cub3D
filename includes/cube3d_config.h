@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 10:40:05 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/05 17:03:26 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/09 13:16:42 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 typedef struct	s_config
 {
 	char		*title;
-	t_vector	*resolution_size;
+	t_vector2	*resolution_size;
 	t_player	*player;
 
 	char		*north_texture;
@@ -29,7 +29,7 @@ typedef struct	s_config
 	t_color		*floor;
 	t_color		*ceiling;
 
-	t_vector	*proportionality;
+	t_vector2	*proportionality;
 	char		**map;
 }				t_config;
 
@@ -38,7 +38,7 @@ t_config	create_config(void);
 void		destroy_config(t_config to_destroy);
 void		free_config(t_config *to_free);
 
-void		parse_resolution(t_vector *resolution_size, char *format);
+void		parse_resolution(t_vector2 *resolution_size, char *format);
 void		parse_texture(char **texture, char *format);
 void		parse_environment(t_color *environment, char *format);
 void		check_border_player(t_config *data);
