@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_application.c                               :+:      :+:    :+:   */
+/*   cube3d_parsing.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/30 15:06:58 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/10 14:54:29 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/02/17 19:33:03 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/02/17 19:38:31 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#ifndef CUBE3D_PARSING_H
+# define CUBE3D_PARSING_H
 
-int             event_gen(int keycode)
-{
-	if (keycode == ESC_KEY)
-		exit(0);
-    	//mlx_destroy_window(application->mlx_ptr, application->win_ptr);
-	return (53);
-}
+parse_map(t_game_engine *engine, int fd);
+parse_game_engine(t_game_engine *engine, int fd, resolution);
+
+void cube3d_parsing(t_game_engine *engine, char *map_name, t_vector2 *resolution);
+#endif

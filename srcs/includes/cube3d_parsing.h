@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d_player.h                                    :+:      :+:    :+:   */
+/*   cube3d_parsing.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/30 11:42:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/12 15:55:03 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/02/17 19:33:03 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/02/17 19:38:31 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_PLAYER_H
-# define CUBE3D_PLAYER_H
+#ifndef CUBE3D_PARSING_H
+# define CUBE3D_PARSING_H
 
-typedef struct	s_player
-{
-	struct s_vector2	*pos_player;
-	float				dir_degree;
-	float				dir_radius;
-}				t_player;
+parse_map(t_game_engine *engine, int fd);
+parse_game_engine(t_game_engine *engine, int fd, resolution);
 
-t_player	*malloc_player(float pos_x, float pos_y, float dir_d, float dir_r);
-t_player	create_player(float pos_x, float pos_y, float dir_d, float dir_r);
-void		destroy_player(t_player to_destroy);
-void		free_player(t_player *to_free);
-
+void cube3d_parsing(t_game_engine *engine, char *map_name, t_vector2 *resolution);
 #endif
