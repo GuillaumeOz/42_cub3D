@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d_parsing.h                                   :+:      :+:    :+:   */
+/*   cube3d_catch_error.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/17 19:33:03 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/17 19:38:31 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/01/07 14:09:39 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/02/18 16:01:45 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_PARSING_H
-# define CUBE3D_PARSING_H
+#ifndef CUBE3D_CATCH_ERROR_H
+# define CUBE3D_CATCH_ERROR_H
 
-parse_map(t_game_engine *engine, int fd);
-parse_game_engine(t_game_engine *engine, int fd, resolution);
+typedef struct	s_error
+{
+	int		error_list;
+	char	*warning_msg;
+}				t_error;
 
-void cube3d_parsing(t_game_engine *engine, char *map_name, t_vector2 *resolution);
+void catch_error(int error_msg);
+
 #endif

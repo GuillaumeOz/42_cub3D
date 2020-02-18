@@ -6,11 +6,21 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:41:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/17 20:05:35 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/18 16:31:46 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
+
+static void	set_empty_wall_tile(t_game_engine *engine)
+{
+	engine->wall_tile = malloc_tile(wall, *(engine->ceiling), *(engine->floor));
+	set_tile_texture(engine->wall_tile, north, engine->texture[0]);
+	set_tile_texture(engine->wall_tile, east, engine->texture[1]);
+	set_tile_texture(engine->wall_tile, south, engine->texture[2]);
+	set_tile_texture(engine->wall_tile, west, engine->texture[3]);
+	engine->empty_tile = malloc_tile(empty, *(engine->ceiling), *(engine->floor));
+}
 
 static void check_mapname(char *map_name)
 {
@@ -33,5 +43,6 @@ void cube3d_parsing(t_game_engine *engine, char *map_name, t_vector2 *resolution
 	check_mapname(map_name);
 	fd = open(map_name, O_RDONLY);
 	parse_game_engine(engine, fd, resolution);
+	set_empty_wall_tile(engine);
 	parse_map(engine, fd);
 }

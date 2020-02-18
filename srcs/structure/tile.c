@@ -1,15 +1,27 @@
-#include "cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tile.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/18 16:34:27 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/02/18 19:28:58 by gozsertt         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cube3d.h"
 
 t_tile create_tile(t_tile_type p_type, t_color p_ceiling, t_color p_floor)
 {
 	t_tile result;
 
 	result.type = p_type;
-	result.ceiling = p_ceiling;
+	result.ceiling = p_ceiling;// change this later
 	result.floor = p_floor;
 	result.texture = malloc(sizeof(t_image *) * 4);
 	if (result.texture == NULL)
-		error_exit(1, "Can't malloc a t_image *");
+		catch_error(CREATE_TILE_1);
 	return (result);
 }
 
@@ -19,19 +31,25 @@ t_tile *malloc_tile(t_tile_type p_type, t_color p_ceiling, t_color p_floor)
 
 	result = (t_tile *)malloc(sizeof(t_tile));
 	if (result == NULL)
-		return (NULL);
+		catch_error(CREATE_TILE_2);
 	*result = create_tile(p_type, p_ceiling, p_floor);
 	return (result);
 }
 
 void 	destroy_tile(t_tile to_destroy)
 {
-	//do with the parsing
+	free_color(&to_destroy.ceiling);
+	free_color(&to_destroy.floor);
+	free_image(to_destroy.texture[0]);
+	free_image(to_destroy.texture[1]);
+	free_image(to_destroy.texture[2]);
+	free_image(to_destroy.texture[3]);
 }
 
 void 	free_tile(t_tile *to_free)
 {
-	//do with the parsing
+	destroy_tile(*to_free);
+	free(to_free);
 }
 
 void set_tile_texture(t_tile *tile, t_direction dir, t_image *p_image)

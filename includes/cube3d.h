@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:26:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/17 19:38:03 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/18 16:37:32 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,26 @@
 # include "libft.h"
 # include "ggl.h"
 # include "cube3d_catch_error.h"
-# include "cube3d_game_engine.h"
 # include "cube3d_tile.h"
+# include "cube3d_game_engine.h"
+# include "cube3d_parsing.h"
 
 enum	e_cube3d_error
 {
 	ERROR_NOT_FOUND = -1,
 	MAIN_1,
-	CHECK_MAPNAME_1,
+	CREATE_GAME_ENGINE_1,
+	CREATE_GAME_ENGINE_2,
+	CREATE_TILE_1,
+	CREATE_TILE_2,
+	SET_COLOR_TYPE_1,
+	SET_COLOR_TYPE_2,
+	SET_COLOR_TYPE_3,
+	PARSE_GAME_ENGINE_1,
+	PARSE_RESOLUTION_1,
+	PARSE_RESOLUTION_2,
+
+	CHECK_MAPNAME_1,//here
 	CUBE_FORMATTER_1,
 	CUBE_FORMATTER_2,
 	PARSE_TEXTURE_1,

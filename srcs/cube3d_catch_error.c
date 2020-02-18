@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   catch_error.c                                      :+:      :+:    :+:   */
+/*   cube3d_catch_error.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:06:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/17 15:44:59 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/18 17:32:36 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,14 @@ t_error	g_cube3d_catch_error[] =
 	{ MAIN_1, "Error\n Wrong number of arguments" },
 	{ CREATE_GAME_ENGINE_1, "Error\n Can't malloc a t_game_engine" },
 	{ CREATE_GAME_ENGINE_2, "Error\n Can't malloc a t_image" },
+	{ CREATE_TILE_1, "Error\n Can't malloc a t_image in tile" },
+	{ CREATE_TILE_2, "Error\n Can't malloc a t_tile" },
 	{ SET_COLOR_TYPE_1, "Error\n Color for ceiling or floor already done" },
 	{ SET_COLOR_TYPE_2, "Error\n Bad number of arguments for a color" },
 	{ SET_COLOR_TYPE_3, "Error\n Arguments invalid for a color" },
-
+	{ PARSE_GAME_ENGINE_1, "Error\n Arguments invalid for a color" },
+	{ PARSE_RESOLUTION_1, "Error\n Bad number of arguments for resolution" },
+	{ PARSE_RESOLUTION_2, "Error\n Arguments invalid for resolution" },
 
 	{ CHECK_MAPNAME_1, "Error\n The file name is invalid" },
 	{ CUBE_FORMATTER_1, "Error\n Data can't be allocated" },
