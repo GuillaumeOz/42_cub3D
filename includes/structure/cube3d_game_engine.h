@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:31:25 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/18 16:41:40 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/19 19:34:11 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct		s_game_engine
 	t_tile			*wall_tile;
 
 	t_list			*map_content;
-	t_map			*map_content;
+	t_map			*map;
 	t_actor			*player;
 }					t_game_engine;
 

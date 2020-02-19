@@ -6,7 +6,7 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/28 13:23:39 by gozsertt          #+#    #+#              #
-#    Updated: 2020/02/13 13:40:33 by gozsertt         ###   ########.fr        #
+#    Updated: 2020/02/19 19:43:05 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,7 +102,7 @@ fclean:	clean
 nh :
 	@echo && echo "$(_GREEN)" "Checking Norme -- Header Files:" && echo "$(_WHITE)";
 	@norminette $(shell find includes/ -name '*.h')
-
+# redo this part
 nc :
 	@echo && echo "$(_GREEN)" "Checking Norme -- Libft Files:" && echo "$(_WHITE)";
 	@norminette $(shell find lib/libft/ -name '*.c')

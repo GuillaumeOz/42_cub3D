@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:25:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/17 19:29:06 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/19 19:36:10 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ int main(int argc, char **argv)
 	start_application(600, 600, "Cube3D");
 	engine = create_game_engine();
 	cube3d_parsing(&engine, argv[1], &resolution);
-
+	return (0);
 }

@@ -1,6 +1,9 @@
-   R   1000 1000
+   R 1000 1000
 
-   NO    ./path_to_the_north_texture
+
+
+
+      NO    ./path_to_the_north_texture
 
   SO      ./path_to_the_south_texture
  WE ./path_to_the_west_texture
@@ -13,7 +16,12 @@
 F   255,255,255
 
 
+
+
+
 C  225,30,150
+
+
 
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:06:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/18 17:32:36 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/19 14:48:11 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ t_error	g_cube3d_catch_error[] =
 	{ PARSE_GAME_ENGINE_1, "Error\n Arguments invalid for a color" },
 	{ PARSE_RESOLUTION_1, "Error\n Bad number of arguments for resolution" },
 	{ PARSE_RESOLUTION_2, "Error\n Arguments invalid for resolution" },
+	{ MALLOC_MAP_1, "Error\n Can't malloc a t_map" },
+	{ MALLOC_TILE_TAB_1, "Error\n Can't malloc a t_tile **" },
+	{ MALLOC_TILE_TAB_2, "Error\n Can't malloc a t_tile *" },
 
 	{ CHECK_MAPNAME_1, "Error\n The file name is invalid" },
 	{ CUBE_FORMATTER_1, "Error\n Data can't be allocated" },
@@ -62,6 +65,6 @@ void catch_error(int error_msg)
 		}
 	}
 	if (g_cube3d_catch_error[i].error_list == ERROR_NOT_FOUND)
-		ft_printf("\n%s\n", g_cube3d_catch_error[i].warning_msg);
+		ft_printf("\n%s\n", g_cube3d_catch_error[i].warning_msg);//check ft_printf %v
 	exit(FAILURE);
 }

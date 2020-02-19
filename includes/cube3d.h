@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:26:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/18 16:37:32 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/19 18:16:43 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@
 # include "libft.h"
 # include "ggl.h"
 # include "cube3d_catch_error.h"
+# include "cube3d_actor.h"
 # include "cube3d_tile.h"
 # include "cube3d_game_engine.h"
 # include "cube3d_parsing.h"
+# include "cube3d_map.h"
 
 enum	e_cube3d_error
 {
@@ -38,6 +40,11 @@ enum	e_cube3d_error
 	PARSE_GAME_ENGINE_1,
 	PARSE_RESOLUTION_1,
 	PARSE_RESOLUTION_2,
+	MALLOC_MAP_1,
+	MALLOC_TILE_TAB_1,
+	MALLOC_TILE_TAB_2,
+
+
 
 	CHECK_MAPNAME_1,//here
 	CUBE_FORMATTER_1,
@@ -66,5 +73,6 @@ enum	e_cube3d_error
 # define PRINTP(x) printf("%p\n", x)
 # define PRINTF(x) printf("%f\n", x)
 # define PRINTF(x) ft_printf(%v\n, x)
+# define PRINTPOS printf("%s line %d\n", __func__, __LINE__)
 
 # endif
