@@ -6,25 +6,25 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 15:41:26 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/18 16:30:25 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/20 19:06:00 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-bool			set_texture_image(t_game_engine *engine, t_direction dir, char *path)
+bool	set_texture_image(t_game_engine *engine, t_direction dir, char *path)
 {
 	engine->texture[(int)(dir)] = load_image(path);
 	return (true);
 }
 
-bool			set_texture_image(t_game_engine *engine, t_direction dir, char *path)
+bool	set_sprite_image(t_game_engine *engine, char *path)
 {
-	engine->texture[(int)(dir)] = load_image(path);
+	engine->sprite = load_image(path);
 	return (true);
 }
 
-bool			set_color_type(t_game_engine *engine, int type, char *content)
+bool	set_color_type(t_game_engine *engine, int type, char *content)
 {
 	size_t	i;
 	char	**tab;
@@ -33,7 +33,7 @@ bool			set_color_type(t_game_engine *engine, int type, char *content)
 	if ((type == CEILING && engine->ceiling != NULL) ||
 		(type == FLOOR && engine->floor != NULL))
 		catch_error(SET_COLOR_TYPE_1);
-	tab = ft_strsplit(content, ',');
+	tab = ft_split(content, ',');
 	if (ft_tab_len(tab) != 3)
 		catch_error(SET_COLOR_TYPE_2);
 	i = 0;

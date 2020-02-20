@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:34:27 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/18 19:28:58 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/20 19:11:47 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,7 @@ t_tile *malloc_tile(t_tile_type p_type, t_color p_ceiling, t_color p_floor)
 
 void 	destroy_tile(t_tile to_destroy)
 {
-	free_color(&to_destroy.ceiling);
-	free_color(&to_destroy.floor);
-	free_image(to_destroy.texture[0]);
-	free_image(to_destroy.texture[1]);
-	free_image(to_destroy.texture[2]);
-	free_image(to_destroy.texture[3]);
+	(void)to_destroy;
 }
 
 void 	free_tile(t_tile *to_free)

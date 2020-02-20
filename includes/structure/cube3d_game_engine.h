@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:31:25 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/19 19:34:11 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/20 18:17:06 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 
 #define CEILING 0
 #define FLOOR 1
+
+typedef struct  s_map
+{
+    t_vector2   size;
+    t_tile      ***board;
+    //t_object  ***content;
+}               t_map;
 
 typedef struct		s_game_engine
 {

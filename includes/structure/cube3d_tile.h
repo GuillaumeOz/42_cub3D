@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:40:56 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/18 16:32:04 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/20 17:37:22 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct s_tile
 	t_image		**texture;
 }				t_tile;
 
-t_tile	create_tile(t_tile_type p_type, t_color p_ceiling, t_color p_floor);
 t_tile	*malloc_tile(t_tile_type p_type, t_color p_ceiling, t_color p_floor);
+t_tile	create_tile(t_tile_type p_type, t_color p_ceiling, t_color p_floor);
 void 	destroy_tile(t_tile to_destroy);
 void 	free_tile(t_tile *to_free);
 

@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.c                                           :+:      :+:    :+:   */
+/*   neutral.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/17 13:25:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/20 18:09:11 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/02/19 18:23:59 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/02/19 19:34:01 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-int main(int argc, char **argv)
+t_neutral	*malloc_neutral(t_vector2 p_pos)
 {
-	t_game_engine	engine;
-	t_vector2		resolution;
+	return (malloc_actor(p_pos, neutral, north));
+}
 
-	if (argc != 2)
-		catch_error(MAIN_1);
-	start_application(600, 600, "Cube3D");
-	engine = create_game_engine();
-	cube3d_parsing(&engine, argv[1], &resolution);
-	
-	return (0);
+t_neutral	create_neutral(t_vector2 p_pos)
+{
+	return (create_actor(p_pos, neutral, north));
+}
+
+void   destroy_neutral(t_neutral to_destroy)
+{
+    (void)to_destroy;
+}
+
+void   free_neutral(t_neutral *to_free)
+{
+    destroy_neutral(*to_free);
+    free(to_free);
 }

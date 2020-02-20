@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:38:57 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/18 19:27:33 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/20 19:06:31 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool parse_resolution(char *descriptor, char *content, t_vector2 *resolution)
 
 	if (ft_strcmp(descriptor, "R") == 0)
 	{
-		tab = ft_strsplit(content, ' ');
+		tab = ft_split(content, ' ');
 		if (ft_tab_len(tab) != 2)
 			catch_error(PARSE_RESOLUTION_1);
 		i = 0;

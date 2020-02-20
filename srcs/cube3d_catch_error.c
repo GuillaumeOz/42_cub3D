@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:06:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/19 14:48:11 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:33:49 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_error	g_cube3d_catch_error[] =
 	{ CREATE_GAME_ENGINE_2, "Error\n Can't malloc a t_image" },
 	{ CREATE_TILE_1, "Error\n Can't malloc a t_image in tile" },
 	{ CREATE_TILE_2, "Error\n Can't malloc a t_tile" },
+	{ CHECK_MAPNAME_1, "Error\n The file name is invalid" },
 	{ SET_COLOR_TYPE_1, "Error\n Color for ceiling or floor already done" },
 	{ SET_COLOR_TYPE_2, "Error\n Bad number of arguments for a color" },
 	{ SET_COLOR_TYPE_3, "Error\n Arguments invalid for a color" },
@@ -26,10 +27,13 @@ t_error	g_cube3d_catch_error[] =
 	{ PARSE_RESOLUTION_1, "Error\n Bad number of arguments for resolution" },
 	{ PARSE_RESOLUTION_2, "Error\n Arguments invalid for resolution" },
 	{ MALLOC_MAP_1, "Error\n Can't malloc a t_map" },
+	{ PARSE_MAP_1, "Error\n A line in the file is inccorect" },
+	{ PARSE_MAP_2, "The map part of the file is incorrect" },
 	{ MALLOC_TILE_TAB_1, "Error\n Can't malloc a t_tile **" },
 	{ MALLOC_TILE_TAB_2, "Error\n Can't malloc a t_tile *" },
+	{ CREATE_MAP_1, "Multiple player on the map" },
 
-	{ CHECK_MAPNAME_1, "Error\n The file name is invalid" },
+
 	{ CUBE_FORMATTER_1, "Error\n Data can't be allocated" },
 	{ CUBE_FORMATTER_2, "Error\n Error with GNL return" },
 	{ PARSE_TEXTURE_1, "Error\n Texture path is incorrect" },

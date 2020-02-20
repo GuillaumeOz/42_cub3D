@@ -6,7 +6,7 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/28 13:23:39 by gozsertt          #+#    #+#              #
-#    Updated: 2020/02/19 19:43:05 by gozsertt         ###   ########.fr        #
+#    Updated: 2020/02/20 17:09:17 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,10 +71,10 @@ show:
 	@echo "$(_BLUE)Compiling : \n$(_YELLOW)$(CC) $(CFLAGS) $(OBJ) $(LFLAGS) -o $(NAME)$(_WHITE)"
 
 install:
-	$(foreach dir, $(LIB_DIR), make -C $(dir);)
+	@$(foreach dir, $(LIB_DIR), make -C $(dir);)
 
 re-install:
-	$(foreach dir, $(LIB_DIR), make -C $(dir) re;)
+	@$(foreach dir, $(LIB_DIR), make -C $(dir) re;)
 
 $(NAME):	$(OBJ) Makefile
 	@echo "-----\nCreating Binary File $(_YELLOW)$@$(_WHITE) ... \c"

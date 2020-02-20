@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:38:12 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/18 16:41:38 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/20 18:23:20 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,18 @@ t_game_engine	create_game_engine()
 
 void 			destroy_game_engine(t_game_engine to_destroy)
 {
-	free_image(result.texture[0]);
-	free_image(result.texture[1]);
-	free_image(result.texture[2]);
-	free_image(result.texture[3]);
-	free_image(result.sprite);
-	free_color(result.ceiling);
-	free_color(result.floor);
-	free_tile(result.empty_tile);
-	free_tile(result.wall_tile);
-	free_list(result.map_content, free);
-	free_actor(result.player);
+	free_image(to_destroy.texture[0]);
+	free_image(to_destroy.texture[1]);
+	free_image(to_destroy.texture[2]);
+	free_image(to_destroy.texture[3]);
+	free_image(to_destroy.sprite);
+	free_color(to_destroy.ceiling);
+	free_color(to_destroy.floor);
+	free_tile(to_destroy.empty_tile);
+	free_tile(to_destroy.wall_tile);
+	free_list(to_destroy.map_content, free);
+	free_map(to_destroy.map);
+	free_actor(to_destroy.player);
 }
 
 void 			free_game_engine(t_game_engine *to_free)

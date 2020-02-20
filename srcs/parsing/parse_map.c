@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 13:57:39 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/18 14:53:11 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:27:09 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ void parse_map(t_game_engine *engine, int fd)
 			if (parse_map_line(engine, line, &map_size) == true)
 				found = true;
 			else
-				error_exit(1, ft_eprintf("Error on line %d in the file", i));
+				catch_error(PARSE_MAP_1);
 		}
 		else
-			error_exit(1, ft_eprintf("Error on line %d in the file", i));
+			catch_error(PARSE_MAP_2);
 		i++;
 	}
 	compute_map(engine, map_size);

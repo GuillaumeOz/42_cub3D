@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.c                                           :+:      :+:    :+:   */
+/*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/17 13:25:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/20 18:09:11 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/02/19 19:32:16 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/02/20 17:24:13 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-int main(int argc, char **argv)
+t_player	create_player(t_vector2 p_pos, t_direction p_dir)
 {
-	t_game_engine	engine;
-	t_vector2		resolution;
+	return (create_actor(p_pos, ally, p_dir));
+}
 
-	if (argc != 2)
-		catch_error(MAIN_1);
-	start_application(600, 600, "Cube3D");
-	engine = create_game_engine();
-	cube3d_parsing(&engine, argv[1], &resolution);
-	
-	return (0);
+t_player	*malloc_player(t_vector2 p_pos, t_direction p_dir)
+{
+	return (malloc_actor(p_pos, ally, p_dir));
+}
+
+void   destroy_player(t_player to_destroy)
+{
+    (void)to_destroy;
+}
+
+void   free_player(t_player *to_free)
+{
+    destroy_player(*to_free);
+    free(to_free);
 }
