@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:38:57 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/20 19:06:31 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/21 19:51:15 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,22 @@ bool is_engine_full(t_game_engine *engine)
 	return (true);
 }
 
+static char	*ft_strcut_test(char **s1, char delim)
+{
+	char	*result;
+	char	*tmp;
+	size_t	len;
+
+	len = 0;
+	tmp = *s1;
+	while (tmp[len] != '\0' && tmp[len] == delim)
+		len++;
+	PRINTS(*s1);
+	result = ft_strdup(tmp + len);
+	PRINTS(result);
+	return (result);
+}
+
 void parse_game_engine(t_game_engine *engine, int fd, t_vector2 *resolution)
 {
 	char	*descriptor;
@@ -81,7 +97,8 @@ void parse_game_engine(t_game_engine *engine, int fd, t_vector2 *resolution)
 	content = NULL;
 	while (is_engine_full(engine) == false && get_next_line(fd, &content) > 0)
 	{
-		descriptor = ft_strcut(&content, ' ');
+		debug;
+		descriptor = ft_strcut_test(&content, ' ');
 		i = 0;
 		while (content[i] == ' ')
 			i++;

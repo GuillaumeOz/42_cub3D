@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:06:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/20 15:33:49 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/21 13:28:32 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_error	g_cube3d_catch_error[] =
 	{ SET_COLOR_TYPE_1, "Error\n Color for ceiling or floor already done" },
 	{ SET_COLOR_TYPE_2, "Error\n Bad number of arguments for a color" },
 	{ SET_COLOR_TYPE_3, "Error\n Arguments invalid for a color" },
-	{ PARSE_GAME_ENGINE_1, "Error\n Arguments invalid for a color" },
+	{ PARSE_GAME_ENGINE_1, "Error\n Some arguments are invalid" },
 	{ PARSE_RESOLUTION_1, "Error\n Bad number of arguments for resolution" },
 	{ PARSE_RESOLUTION_2, "Error\n Arguments invalid for resolution" },
 	{ MALLOC_MAP_1, "Error\n Can't malloc a t_map" },

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:26:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/20 15:33:48 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:44:39 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # include "cube3d_game_engine.h"
 # include "cube3d_map.h"
 # include "cube3d_parsing.h"
+
+t_application *g_app;
 
 enum	e_cube3d_error
 {
