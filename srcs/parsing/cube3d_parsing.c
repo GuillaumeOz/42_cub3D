@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:41:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/21 17:41:41 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/24 22:23:37 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void cube3d_parsing(t_game_engine *engine, char *map_name, t_vector2 *resolution
 	check_mapname(map_name);
 	fd = open(map_name, O_RDONLY);
 	parse_game_engine(engine, fd, resolution);
+	//check the NULL element of struct
 	set_empty_wall_tile(engine);
 	parse_map(engine, fd);
 }
