@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:38:57 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/24 23:18:17 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/25 15:43:58 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ bool parse_resolution(char *descriptor, char *content, t_vector2 *resolution)
 				catch_error(PARSE_RESOLUTION_2);
 			i++;
 		}
-		*resolution = create_vector2(ft_atoi(tab[0]), ft_atoi(tab[1]));//add negativ resolution protection
+		if (ft_atoi(tab[0]) < 0 || ft_atoi(tab[1]) < 0 || 
+			ft_atoi(tab[0]) > 2560 || ft_atoi(tab[1]) > 1440)
+			catch_error(PARSE_RESOLUTION_3);
+		*resolution = create_vector2(ft_atoi(tab[0]), ft_atoi(tab[1]));
 		ft_tab_free(tab);
 		return (true);
 	}
@@ -40,10 +43,21 @@ bool parse_resolution(char *descriptor, char *content, t_vector2 *resolution)
 
 bool parse_environement_color(t_game_engine *engine, char *descriptor, char *content)
 {
+	int i;
+
+	i = 1;
 	if (ft_strcmp(descriptor, "C") == 0)
-		return (set_color_type(engine, CEILING, content));
+	{
+		while (content[i] && content[i] == ' ')
+			i++;
+		return (set_color_type(engine, CEILING, content + i));
+	}
 	else if (ft_strcmp(descriptor, "F") == 0)
-		return (set_color_type(engine, FLOOR, content));
+	{
+		while (content[i] && content[i] == ' ')
+			i++;
+		return (set_color_type(engine, FLOOR, content + i));
+	}
 	else
 		return (false);
 }
@@ -51,15 +65,15 @@ bool parse_environement_color(t_game_engine *engine, char *descriptor, char *con
 bool parse_environement_texture(t_game_engine *engine, char *descriptor, char *content)
 {
 	if (ft_strcmp(descriptor, "WE") == 0)
-		return (set_texture_image(engine, west, content));
+		return (set_texture_image(engine, west, content + 2));
 	else if (ft_strcmp(descriptor, "NO") == 0)
-		return (set_texture_image(engine, north, content));
+		return (set_texture_image(engine, north, content + 2));
 	else if (ft_strcmp(descriptor, "EA") == 0)
-		return (set_texture_image(engine, east, content));
+		return (set_texture_image(engine, east, content + 2));
 	else if (ft_strcmp(descriptor, "SO") == 0)
-		return (set_texture_image(engine, south, content));
+		return (set_texture_image(engine, south, content + 2));
 	else if (ft_strcmp(descriptor, "S") == 0)
-		return (set_sprite_image(engine, content));
+		return (set_sprite_image(engine, content + 1));
 	else
 		return (false);
 }
@@ -73,25 +87,6 @@ bool is_engine_full(t_game_engine *engine)
 	return (true);
 }
 
-static char	*ft_strcut_test(char **s1, char delim)
-{
-	char	*tmp;
-	char	*result;
-	size_t	len;
-	size_t	string_size;
-
-	tmp = *s1;
-	len = 0;
-	string_size = 0;
-	while (tmp[len] != '\0' && tmp[len] == delim)
-		len++;
-	while (tmp[len + string_size] != '\0' && tmp[len + string_size] != delim)
-		string_size++;
-	result = ft_strndup(tmp + len, string_size);
-	// free(*s1);
-	return (result);
-}
-
 void parse_game_engine(t_game_engine *engine, int fd, t_vector2 *resolution)
 {
 	char	*descriptor;
@@ -101,9 +96,8 @@ void parse_game_engine(t_game_engine *engine, int fd, t_vector2 *resolution)
 	content = NULL;
 	while (is_engine_full(engine) == false && get_next_line(fd, &content) > 0)
 	{
-		descriptor = ft_strcut_test(&content, ' ');
+		descriptor = ft_strcut(&content, ' ');
 		i = 0;
-		// ft_printf(" %v \n", (int)resolution->x, (int)resolution->y);
 		while (content[i] != '\0' && content[i] == ' ')
 			i++;
 		if (parse_environement_texture(engine, descriptor, &(content[i])) == true)
@@ -116,5 +110,7 @@ void parse_game_engine(t_game_engine *engine, int fd, t_vector2 *resolution)
 			;
 		else
 			catch_error(PARSE_GAME_ENGINE_1);
+		free(descriptor);
+		free(content);
 	}
 }

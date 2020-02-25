@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:26:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/24 23:06:05 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/25 13:40:08 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ enum	e_cube3d_error
 	PARSE_GAME_ENGINE_1,
 	PARSE_RESOLUTION_1,
 	PARSE_RESOLUTION_2,
+	PARSE_RESOLUTION_3,
 	MALLOC_MAP_1,
 	PARSE_MAP_1,
 	PARSE_MAP_2,
@@ -76,7 +77,6 @@ enum	e_cube3d_error
 # define PRINTD(x) printf("%d\n", x)
 # define PRINTP(x) printf("%p\n", x)
 # define PRINTF(x) printf("%f\n", x)
-# define PRINTV(x) ft_printf("%v\n", x)
 # define PRINTPOS printf("%s line %d\n", __func__, __LINE__)
 
 # endif

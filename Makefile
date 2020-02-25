@@ -6,13 +6,13 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/28 13:23:39 by gozsertt          #+#    #+#              #
-#    Updated: 2020/02/24 19:51:34 by gozsertt         ###   ########.fr        #
+#    Updated: 2020/02/25 14:22:29 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        =   Cube3D
 
-CC          =   gcc
+CC          =   gcc -glldb
 
 MLX_DIR		= 	$(shell find lib/guillaume_graphical_lib -type d)
 SRC_DIR		= 	$(shell find srcs -type d)

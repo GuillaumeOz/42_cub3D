@@ -1,18 +1,17 @@
    R 1000 1000
 
 
-      NO    /nfs/2018/g/gozsertt/Desktop/workingdirectory/cube3D_reboot/textures/png/MARBLE3.png
+      NO    /nfs/2018/g/gozsertt/Desktop/workingdirectory/cube3D_reboot/textures/xpm/BIGDOOR6.xpm
 
-  SO      /nfs/2018/g/gozsertt/Desktop/workingdirectory/cube3D_reboot/textures/png/MARBFAC3.png
- WE /nfs/2018/g/gozsertt/Desktop/workingdirectory/cube3D_reboot/textures/png/MARBFAC2.png
- EA  /nfs/2018/g/gozsertt/Desktop/workingdirectory/cube3D_reboot/textures/png/MARBFAC2.png
+  SO      /nfs/2018/g/gozsertt/Desktop/workingdirectory/cube3D_reboot/textures/xpm/MARBFAC3.xpm
+ WE /nfs/2018/g/gozsertt/Desktop/workingdirectory/cube3D_reboot/textures/xpm/MARBFAC2.xpm
+ EA  /nfs/2018/g/gozsertt/Desktop/workingdirectory/cube3D_reboot/textures/xpm/MARBFAC2.xpm
 
 
-               S /nfs/2018/g/gozsertt/Desktop/workingdirectory/cube3D_reboot/textures/png/BIGDOOR6.png
+               S /nfs/2018/g/gozsertt/Desktop/workingdirectory/cube3D_reboot/textures/xpm/BIGDOOR6.xpm
 
 
 F   255,255,255
-
 
 
 
@@ -21,8 +20,6 @@ C  225,30,150
 
 
 
-
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 1 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
 1 0 1 1 0 0 0 0 0 1 1 1 0 0 0 0 0 0 2 0 0 0 0 0 1 0 0 0 1
