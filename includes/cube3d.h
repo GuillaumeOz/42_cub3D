@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:26:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/25 13:40:08 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/26 12:29:55 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ enum	e_cube3d_error
 	PARSE_RESOLUTION_1,
 	PARSE_RESOLUTION_2,
 	PARSE_RESOLUTION_3,
+	PARSE_ENVIRONEMENT_COLOR_1,
+	PARSE_ENVIRONEMENT_COLOR_2,
 	MALLOC_MAP_1,
 	PARSE_MAP_1,
 	PARSE_MAP_2,

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:38:57 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/25 15:43:58 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/26 12:30:44 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,16 @@ bool parse_environement_color(t_game_engine *engine, char *descriptor, char *con
 	{
 		while (content[i] && content[i] == ' ')
 			i++;
+		if (content[i] == '\0')
+			catch_error(PARSE_ENVIRONEMENT_COLOR_1);
 		return (set_color_type(engine, CEILING, content + i));
 	}
 	else if (ft_strcmp(descriptor, "F") == 0)
 	{
 		while (content[i] && content[i] == ' ')
 			i++;
+		if (content[i] == '\0')
+			catch_error(PARSE_ENVIRONEMENT_COLOR_2);
 		return (set_color_type(engine, FLOOR, content + i));
 	}
 	else

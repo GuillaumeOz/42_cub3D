@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:06:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/25 13:26:12 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/26 12:30:22 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ t_error	g_cube3d_catch_error[] =
 	{ PARSE_RESOLUTION_1, "Error\n Bad number of arguments for resolution" },
 	{ PARSE_RESOLUTION_2, "Error\n Arguments invalid for resolution" },
 	{ PARSE_RESOLUTION_3, "Error\n The Resolution is incorrect" },
+	{ PARSE_ENVIRONEMENT_COLOR_1, "Error\n A descriptor line is incorrect" },
+	{ PARSE_ENVIRONEMENT_COLOR_2, "Error\n A descriptor line is incorrect" },
+
 	{ MALLOC_MAP_1, "Error\n Can't malloc a t_map" },
 	{ PARSE_MAP_1, "Error\n A line in the file is inccorect" },
 	{ PARSE_MAP_2, "The map part of the file is incorrect" },
