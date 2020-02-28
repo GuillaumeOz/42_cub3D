@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:26:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/26 12:29:55 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/28 17:44:18 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ enum	e_cube3d_error
 # define PRINTD(x) printf("%d\n", x)
 # define PRINTP(x) printf("%p\n", x)
 # define PRINTF(x) printf("%f\n", x)
+# define PRINTU(x) printf("%zu\n", i);
 # define PRINTPOS printf("%s line %d\n", __func__, __LINE__)
 
 # endif

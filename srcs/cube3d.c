@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:25:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/28 12:57:27 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/28 20:23:54 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ y = sin(alpha)
 
 int handle_key(int key, void *param)
 {
-	static float move_speed = 0.5;
+	static float move_speed = 0.8;
 	static float rotation_speed = 10;
 	t_player *player;
 
@@ -68,28 +68,6 @@ int handle_key(int key, void *param)
 		player->angle -= rotation_speed;
 	if (key == RIGHT_KEY)
 		player->angle += rotation_speed;
-	return (0);
-}
-
-int test_render_app(void *param) // -> void **param
-{
-	t_color *color;
-	t_color *color2;
-	t_vector2 *pos;
-	t_vector2 *pos2;
-	
-
-	color = ((void **)(param))[0];
-	color2 = ((void **)(param))[1];
-	pos = ((void **)(param))[2];
-	pos2 = ((void **)(param))[3];
-
-	clear_application(create_color(50, 50, 50, 255));
-	draw_rectangle(*pos, create_vector2(200, 200), *color);
-	draw_rectangle(*pos2, create_vector2(200, 200), *color2);
-
-	render_application();
-
 	return (0);
 }
 
@@ -204,10 +182,12 @@ void	draw_wall(t_vector2 impact, t_vector2 actual_pos, float actual_angle, int x
 {
 	float dist;
 	float height;
-
+	
+	actual_angle += 1;
 	dist = sqrt(calc_dist(actual_pos, impact));
+
 	//h = 40 | d = 3
-	height = ((0.40 * g_app->size.y * actual_angle) * 3) / dist;
+	height = ((0.40 * g_app->size.y) * 3) / dist;
 	draw_rectangle(create_vector2((g_app->size.x - x), (g_app->size.y - height) / 2), create_vector2(1, height), create_color(120, 120, 120, 255));
 }
 
@@ -235,15 +215,25 @@ y = sin(alpha)
 	t_vector2 impact;
 	float angle_begin;
 	float angle_delta;
+	float fish_eye;
 	float angle_actual;
+	// float tmp;
 	size_t i;
 
 	angle_begin = engine->player->angle + FOV / 2;
 	angle_delta = FOV / g_app->size.x;
-
+	fish_eye = (angle_begin + (angle_begin - FOV)) / 2;
+	// PRINTF(cos(degree_to_radian((angle_begin - FOV) / 2)));
+	// PRINTF(angle_begin);
+	// tmp = cos(fish_eye);
+	PRINTF(fish_eye);
 	i = 0;
-	while (i < g_app->size.x)
+	while (i <= g_app->size.x)
 	{
+		// if (engine->player->angle > 360)
+		// 	engine->player->angle = 0;
+		// else if (engine->player->angle < 0)
+		// 	engine->player->angle = 360;
 		angle_actual = angle_begin - angle_delta * i;
 		impact = cast_ray(engine->map, engine->player->pos, angle_actual);
 		draw_wall(impact, engine->player->pos, angle_actual, i);
@@ -264,8 +254,6 @@ int main(int argc, char **argv)
 	engine = create_game_engine();
 	cube3d_parsing(&engine, argv[1], &resolution);
 	resize_application((int)resolution.x, (int)resolution.y);
-
-	// ft_printf("Player at %v / %d\n", engine.player->pos, (int)(engine.player->angle)); fix %v printf
 
 	add_interaction_to_application(KEYPRESS, &handle_key, engine.player);
 	render_funct_application(&draw_map, &engine);
