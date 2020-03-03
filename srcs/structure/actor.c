@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:42:38 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/03/02 15:11:19 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/03/02 21:37:23 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 t_actor		create_actor(t_vector2 p_pos, t_team p_team, t_direction p_dir)
 {
 	t_actor result;
+	int		corrector;
 
+	corrector = 180;
 	result.pos = p_pos;
 	result.team = p_team;
-	result.angle = (90 * (int)(p_dir));
+	result.angle = ((90 * (int)(p_dir)) - corrector);
 	return (result);
 }
 
