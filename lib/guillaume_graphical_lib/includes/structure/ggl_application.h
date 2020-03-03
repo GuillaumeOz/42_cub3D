@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 11:48:07 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/25 19:53:34 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/03/02 21:15:59 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int				run_application();
 void			application_create_content();
 void			render_application();
 void			render_funct_application(t_render_funct funct, void *param);
-void			add_interaction_to_application(int event, t_key_funct funct,
+void			add_interaction_to_application(t_key_funct funct, int event, 
 				void *param);
 
 #endif
