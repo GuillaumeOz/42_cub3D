@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:25:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/03/03 16:30:41 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/03/04 14:13:07 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 	}
 	// printf("(%f,%f)\n", engine.player->pos.x, engine.player->pos.y);
 
-	add_interaction_to_application(&cube3d_key_manager, KEYPRESS, engine.player);
+	add_interaction_to_application(&cube3d_key_manager, KEYPRESS, &engine);
 	render_funct_application(&draw_map, &engine);
 
 	return (run_application());

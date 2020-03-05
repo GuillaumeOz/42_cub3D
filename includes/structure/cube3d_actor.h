@@ -6,12 +6,16 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:23:32 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/19 18:24:32 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/03/05 20:00:07 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE3D_ACTOR_H
 # define CUBE3D_ACTOR_H
+
+# define player_step 0.6f
+# define enemy_step 0.0f
+# define neutral_step 0.0f
 
 typedef enum    e_team
 {
@@ -25,14 +29,17 @@ typedef struct  s_actor
     t_vector2   pos;
     int         team;
     float       angle;
+    float       step;
+    t_vector2   forward;
+    t_vector2   right;
 }               t_actor;
 
 typedef t_actor t_player;
 typedef t_actor t_enemy;
 typedef t_actor t_neutral;
 
-t_actor     create_actor(t_vector2 p_pos, t_team p_team, t_direction p_dir);
-t_actor     *malloc_actor(t_vector2 p_pos, t_team p_team, t_direction p_dir);
+t_actor     create_actor(t_vector2 p_pos, t_team p_team, t_direction p_dir, float step);
+t_actor     *malloc_actor(t_vector2 p_pos, t_team p_team, t_direction p_dir, float step);
 
 t_enemy     create_enemy(t_vector2 p_pos);
 t_enemy     *malloc_enemy(t_vector2 p_pos);

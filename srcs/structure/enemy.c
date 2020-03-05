@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 18:23:33 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/19 19:31:36 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/03/05 20:04:11 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 t_enemy		create_enemy(t_vector2 p_pos)
 {
-	return (create_actor(p_pos, enemy, north));
+	return (create_actor(p_pos, enemy, north, enemy_step));
 }
 
 t_enemy		*malloc_enemy(t_vector2 p_pos)
 {
-	return (malloc_actor(p_pos, enemy, north));
+	return (malloc_actor(p_pos, enemy, north, enemy_step));
 }
 
 void   destroy_enemy(t_enemy to_destroy)
