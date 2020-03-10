@@ -6,13 +6,13 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:42:38 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/03/05 20:04:05 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/03/09 15:26:55 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-t_actor		create_actor(t_vector2 p_pos, t_team p_team, t_direction p_dir, float p_step)
+t_actor		create_actor(t_vector2 p_pos, t_team p_team, t_direction p_dir, float p_speed)
 {
 	t_actor result;
 	float	rad;
@@ -24,11 +24,9 @@ t_actor		create_actor(t_vector2 p_pos, t_team p_team, t_direction p_dir, float p
 	result.angle = ((90 * (int)(p_dir)) - corrector);
 	rad = degree_to_radian(result.angle);
 	result.forward = create_vector2(cos(rad), sin(rad));
-	rad = degree_to_radian(result.angle - 90);
+	rad = degree_to_radian(result.angle + 90);
 	result.right = create_vector2(cos(rad), sin(rad));
-	printf("forward ->(%f,%f)", result.forward.x, result.forward.y);
-	printf("forward ->(%f,%f)", result.right.x, result.right.y);
-	result.step = p_step;
+	result.speed = p_speed;
 	return (result);
 }
 

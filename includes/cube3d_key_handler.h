@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:10:40 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/03/05 15:03:49 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/03/09 16:37:33 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 typedef struct	s_cube3d_key_handler
 {
 	int		marker_control;
-	void	(*controler)(int32_t control, void *param)
+	void	(*controler)(int32_t control, void *param);
 }				t_cube3d_key_handler;
 
 enum	e_cube3d_control_handler
@@ -42,10 +42,9 @@ enum	e_cube3d_control_set
 	RIGHT_KEYPRESS = (1<<4),
 	SPEED_MARKER = (ONEFROMLEFT>>2),
 	BONUS_SPEEDUP_KEYPRESS = (1<<5),
-	BONUS_SPEEDDOWN_KEYPRESS = (1<<6)
 };
 
-void    cube3d_key_manager(int key, void *param);
+int		cube3d_key_manager(int key, void *param);
 
 //put this in another .c file
 void    player_control(int32_t control, void* param);

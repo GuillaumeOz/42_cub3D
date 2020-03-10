@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 12:07:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/28 13:58:19 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/03/09 16:37:31 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	close_application()
 	free_image(g_app->image);
 	mlx_destroy_window(g_app->mlx_ptr, g_app->win_ptr);
 	free(g_app);
-	ggl_putstr("The application has been closed");
+	ggl_putstr("The application has been closed\n");
 	exit(0);
 }
 

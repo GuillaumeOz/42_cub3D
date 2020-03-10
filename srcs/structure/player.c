@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 19:32:16 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/03/05 17:11:31 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/03/09 14:10:46 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 t_player	create_player(t_vector2 p_pos, t_direction p_dir)
 {
-	return (create_actor(p_pos, ally, p_dir, player_step));
+	return (create_actor(p_pos, ally, p_dir, player_speed));
 }
 
 t_player	*malloc_player(t_vector2 p_pos, t_direction p_dir)
 {
-	return (malloc_actor(p_pos, ally, p_dir, player_step));
+	return (malloc_actor(p_pos, ally, p_dir, player_speed));
 }
 
 void   destroy_player(t_player to_destroy)
