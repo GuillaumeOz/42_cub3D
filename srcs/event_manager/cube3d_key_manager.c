@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:18:34 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/03/09 16:22:06 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/03/10 15:03:08 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 t_cube3d_key_handler g_cube3d_key_handler [] =
 {
 	{ SPEEDBONUS, &speed_control},
-	{ PLAYERCONTRL, &player_control},
 	{ CAMERACONTRL, &camera_control},
+	{ PLAYERCONTRL, &player_control},
 	{ NOCONTRL, NULL}
 };
 
@@ -48,17 +48,17 @@ void    camera_control(int32_t control, void* param)
 	if (control & LEFT_KEYPRESS)// x' = x * cosThe - y * sinThe
 	{
 		player->angle -= 10;
-		player->forward.y = x * sin(degree_to_radian(10)) + y * cos(degree_to_radian(10));
-		player->forward.x = x * cos(degree_to_radian(10)) - y * sin(degree_to_radian(10));
+		player->forward.y = x * sin(degree_to_radian(-10)) + y * cos(degree_to_radian(-10));
+		player->forward.x = x * cos(degree_to_radian(-10)) - y * sin(degree_to_radian(-10));
 	}
 	if (control & RIGHT_KEYPRESS)// y' = x * sinThe + y * cosThe 
 	{
 		player->angle += 10;
-		player->forward.y = x * sin(degree_to_radian(-10)) + y * cos(degree_to_radian(-10));
-		player->forward.x = x * cos(degree_to_radian(-10)) - y * sin(degree_to_radian(-10));
+		player->forward.y = x * sin(degree_to_radian(10)) + y * cos(degree_to_radian(10));
+		player->forward.x = x * cos(degree_to_radian(10)) - y * sin(degree_to_radian(10));
 	}
-	player->right.y = -player->forward.x;
-	player->right.x = player->forward.y;
+	player->right.y = player->forward.x;
+	player->right.x = -player->forward.y;
 }
 
 void	player_hitbox(t_map *map, t_vector2 *pos, t_vector2 mov, float speed)
@@ -111,11 +111,9 @@ void    player_control(int32_t control, void *param)
 	if (control & D_KEYPRESS)
 		player_hitbox(map, &player->pos, player->right, player->speed);
 	if (control & S_KEYPRESS)
-		player_hitbox(map, &player->pos, create_vector2(-player->right.x,
-			-player->right.y), player->speed);
+		player_hitbox(map, &player->pos, create_vector2(-player->forward.x,
+			-player->forward.y), player->speed);
 	player->speed = 1.0f;
-	printf("player_control ->(%f,%f)\n", player->pos.x, player->pos.y);
-
 }
 
 static	void	key_loader(int key, int32_t *control)
@@ -146,8 +144,6 @@ int			cube3d_key_manager(int key, void *param)
 	control = NOEVENTMASK;
 	i = -1;
 	key_loader(key, &control);
-	if (control & PLAYERCONTRL)
-		PRINTS("PLAYERCONTRL");
 	while (g_cube3d_key_handler[++i].marker_control != NOCONTRL)
 		if (control & g_cube3d_key_handler[i].marker_control)
 			g_cube3d_key_handler[i].controler(control, param);

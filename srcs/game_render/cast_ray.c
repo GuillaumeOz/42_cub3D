@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 09:57:02 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/03/03 10:18:25 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/03/10 17:26:30 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,15 @@ void 		*calc_detection(t_map *map, t_vector2 pos)
 {
 	int x;
 	int y;
+	// x = pos.x > (int)(pos.x) + 0.5f ? (int)(pos.x) + 1 : (int)(pos.x) + 1;
+	// y = pos.y > (int)(pos.y) + 0.5f ? (int)(pos.y) + 1 : (int)(pos.y) + 1;
+	x = (int)pos.x + 1;
+	y = (int)pos.y + 1;
 
-	x = (int)(pos.x);
-	y = (int)(pos.y);
-
+	// printf("FLOAT VALUE\n");
+	// printf("(%f,%f)\n", pos.x, pos.y);
+	// printf("INT VALUE\n");
+	// printf("(%d,%d)\n", x, y);
 	if (map->board[x][y]->type == wall)
 		return (map->board[x][y]);
 	return (NULL);
@@ -67,7 +72,7 @@ float		calc_dist(t_vector2 p1, t_vector2 p2)
 	return (result);
 }
 
-t_vector2 cast_ray(t_map *map, t_vector2 actual, float angle)
+t_vector2	cast_ray(t_map *map, t_vector2 actual, float angle)
 {
 	t_vector2	cut_tab[2];
 	t_vector2	delta;
@@ -81,7 +86,6 @@ t_vector2 cast_ray(t_map *map, t_vector2 actual, float angle)
 	cut_tab[1] = add_vector2_to_vector2(actual, cut_aff_y(actual, delta, radian));
 	while (hit == NULL)
 	{
-		// actual = add_vector2_to_vector2(actual, delta);
 		if (calc_dist(actual, cut_tab[0]) < calc_dist(actual, cut_tab[1]))
 		{
 			hit = calc_detection(map, cut_tab[0]);

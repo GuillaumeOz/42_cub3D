@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 09:38:54 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/03/03 11:39:16 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/03/10 14:52:28 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	draw_wall(t_vector2 impact, t_vector2 actual_pos, float fish_eye, int x)
 {
 	float dist;
 	float height;
-	
+
 	dist = sqrt(calc_dist(actual_pos, impact));
 	//h = 40 | d = 3
 	height = ((0.40 * g_app->size.y) * 3) / (dist * fish_eye);
@@ -35,7 +35,6 @@ int draw_map(void *param)
     engine = (t_game_engine *)(param);
 
     clear_application(create_color(50, 50, 50, 255));
-
 	draw_rectangle(create_vector2(0, 0), create_vector2(g_app->size.x, g_app->size.y / 2), *(engine->ceiling));
 	draw_rectangle(create_vector2(0, g_app->size.y / 2), create_vector2(g_app->size.x, g_app->size.y / 2), *(engine->floor));
 
