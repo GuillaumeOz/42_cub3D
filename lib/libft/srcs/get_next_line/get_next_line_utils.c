@@ -91,7 +91,6 @@ int			gnl_vct_cutnfrom(t_gnl_vector *vct, size_t idx, size_t n)
 {
 	size_t	i;
 	size_t	j;
-	size_t	newlen;
 
 	if (vct == NULL || vct->str == NULL || idx >= vct->len)
 		return (SUCCESS);
@@ -99,7 +98,6 @@ int			gnl_vct_cutnfrom(t_gnl_vector *vct, size_t idx, size_t n)
 		n = vct->len - idx;
 	i = idx;
 	j = idx + n;
-	newlen = idx + 1;
 	while (j < vct->size)
 	{
 		vct->str[i] = vct->str[j];

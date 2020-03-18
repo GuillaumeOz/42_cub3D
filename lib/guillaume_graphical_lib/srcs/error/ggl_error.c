@@ -14,10 +14,8 @@
 
 void	ggl_error(char *error_msg)
 {
-    int     i;
     size_t  len;
 
-    i = -1;
     len = ggl_strlen(error_msg);
     write(1, error_msg, len);
 	exit(0);

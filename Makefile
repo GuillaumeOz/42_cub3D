@@ -12,7 +12,7 @@
 
 NAME        =   Cube3D
 
-CC          =   gcc -glldb
+CC          =   gcc
 
 MLX_DIR		= 	$(shell find lib/guillaume_graphical_lib -type d)
 SRC_DIR		= 	$(shell find srcs -type d)
@@ -45,14 +45,14 @@ LFLAGS		=	$(foreach dir, $(LIB_DIR), -L $(dir)) \
 
 # Colors
 
-_GREY=	$'\x1b[30m
-_RED=	$'\x1b[31m
-_GREEN=	$'\x1b[32m
-_YELLOW=$'\x1b[33m
-_BLUE=	$'\x1b[34m
-_PURPLE=$'\x1b[35m
-_CYAN=	$'\x1b[36m
-_WHITE=	$'\x1b[37m
+_GREY=	$'\e[30m
+_RED=	$'\e[31m
+_GREEN=	$'\e[32m
+_YELLOW=$'\e[33m
+_BLUE=	$'\e[34m
+_PURPLE=$'\e[35m
+_CYAN=	$'\e[36m
+_WHITE=	$'\e[37m
 
 # MAIN part --------------------------------------------------------
 

@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 
 	while (i < engine.map_content->size)
 	{
-		PRINTS(list_at(engine.map_content, i++));
+		PRINTS((char*)list_at(engine.map_content, i++));
 	}
 	// printf("(%f,%f)\n", engine.player->pos.x, engine.player->pos.y);
 

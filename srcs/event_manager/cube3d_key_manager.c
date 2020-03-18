@@ -36,13 +36,13 @@ void    camera_control(int32_t control, void* param)
 {
 	t_game_engine	*modifier;
 	t_player		*player;
+//	float			rad;
 	float			x;
 	float			y;
-	float			rad;
 
 	modifier = (t_game_engine*)param;
 	player = (t_player*)modifier->player;
-	rad = degree_to_radian(modifier->player->angle);
+//	rad = degree_to_radian(modifier->player->angle);
 	x = player->forward.x;
 	y = player->forward.y;
 	if (control & LEFT_KEYPRESS)// x' = x * cosThe - y * sinThe

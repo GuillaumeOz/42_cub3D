@@ -24,7 +24,7 @@ void	draw_circle_in_image(t_image *image, t_vector2 pos, int radius, t_color col
 	size_t		j;
 
 	i = 0;
-	pos = create_vector2((actual_pos.x - radius), (actual_pos.y - radius));
+	actual_pos = create_vector2((pos.x - radius), (pos.y - radius));
 	while (i < (pos.x + radius))
 	{
 		j = 0;

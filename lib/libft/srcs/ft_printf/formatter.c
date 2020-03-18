@@ -138,6 +138,6 @@ char		*formatter(const char **format, va_list *args, size_t *len)
 	}
 	(*format) += info.format_length + 1;
 	(*len) = (info.specifier == 'c' && arg.char_ == 0) ?
-		1 + info.width - (info.width > 0) : ft_strlen(fstr);
+		(size_t)(1 + info.width - (info.width > 0)) : ft_strlen(fstr);
 	return (fstr);
 }

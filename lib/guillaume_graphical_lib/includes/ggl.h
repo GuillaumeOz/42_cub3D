@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <math.h>
 
-# include "mlx.h"
+# include "../lib/mlx/mlx.h"
 # include "ggl_basic_functions.h"
 # include "ggl_vector2.h"
 # include "ggl_vector3.h"
