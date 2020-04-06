@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:38:12 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/20 18:23:20 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/05 22:03:03 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ t_game_engine	create_game_engine()
 	result.map_content = malloc_list(500);
 	result.map = NULL;
 	result.player = NULL;
+	result.save = false;
 	return (result);
 }
 

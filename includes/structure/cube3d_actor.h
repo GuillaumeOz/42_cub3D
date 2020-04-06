@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:23:32 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/03/09 16:47:21 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/06 10:49:38 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct  s_actor
     int         team;
     float       angle;
     float       speed;
+    float       size;
+    float       pitch;
     t_vector2   forward;
     t_vector2   right;
 }               t_actor;

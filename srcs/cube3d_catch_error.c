@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:06:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/03/03 16:41:34 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/06 19:22:05 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 t_error	g_cube3d_catch_error[] =
 {
 	{ MAIN_1, "Error\nWrong number of arguments" },
+	{ CHECK_SAVE_1, "Error\nSecond argument is wrong" },
+	{ DO_SAVE_1, "Error\nError while saving the image"},
 	{ CREATE_GAME_ENGINE_1, "Error\nCan't malloc a t_game_engine" },
 	{ CREATE_GAME_ENGINE_2, "Error\nCan't malloc a t_image" },
 	{ CREATE_TILE_1, "Error\nCan't malloc a t_image in tile" },
@@ -31,7 +33,8 @@ t_error	g_cube3d_catch_error[] =
 	{ PARSE_ENVIRONEMENT_COLOR_2, "Error\nA descriptor line is incorrect" },
 	{ MALLOC_MAP_1, "Error\n Can't malloc a t_map" },
 	{ PARSE_MAP_1, "Error\n A line in the file is inccorect" },
-	{ PARSE_MAP_2, "The map part of the file is incorrect" },
+	{ PARSE_MAP_2, "Error\nThe map part of the file is incorrect" },
+	{ FLOOD_FILL_1, "Error\nThe map is invalid"},
 	{ MALLOC_TILE_TAB_1, "Error\n Can't malloc a t_tile **" },
 	{ MALLOC_TILE_TAB_2, "Error\n Can't malloc a t_tile *" },
 	{ CREATE_MAP_1, "Multiple player on the map" },

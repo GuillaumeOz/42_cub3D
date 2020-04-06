@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 14:10:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/03/02 20:35:43 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/06 16:18:30 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ t_map   create_map(t_game_engine *engine, t_vector2 p_size, t_list *p_content)
 	{
 		line = list_at(p_content, i);
 		j = 0;
+		PRINTS(line)
 		while (j < result.size.x)
 		{
 			if (line[j] == '1')

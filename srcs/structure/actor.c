@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:42:38 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/03/10 09:32:59 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/06 10:50:37 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ t_actor		create_actor(t_vector2 p_pos, t_team p_team, t_direction p_dir, float p
 	rad = degree_to_radian(result.angle + 90);
 	result.right = create_vector2(cos(rad), sin(rad));
 	result.speed = p_speed;
+	result.size = 10;
+	result.pitch = 0;
 	return (result);
 }
 

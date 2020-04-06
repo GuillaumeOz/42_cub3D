@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:31:25 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/28 17:46:22 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/05 21:53:11 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ typedef struct		s_game_engine
 	t_list			*map_content;
 	t_map			*map;
 	t_actor			*player;
+	
+	bool			save;
 }					t_game_engine;
 
 t_game_engine	*malloc_game_engine();

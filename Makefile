@@ -6,7 +6,7 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/28 13:23:39 by gozsertt          #+#    #+#              #
-#    Updated: 2020/02/25 14:22:29 by gozsertt         ###   ########.fr        #
+#    Updated: 2020/04/06 13:22:36 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,10 @@ OBJ_DIR		=	obj
 vpath %.c $(foreach dir, $(SRC_DIR), $(dir):)
 
 # List of all of the library linked to the project (the name without the lib part and without the .a)
-FRAMEWORK = OpenGL AppKit
-LIB = ft gg mlx
+#FRAMEWORK = OpenGL AppKit
+LINUXFLAG = -lm -lX11 -lXext -lbsd
+# -lbsd flag prevent the strlcpy bug
+LIB = ft gg mlx 
 
 SRC	=	$(foreach dir, $(SRC_DIR), $(foreach file, $(wildcard $(dir)/*.c), $(notdir $(file))))
 
@@ -41,7 +43,8 @@ IFLAGS		=	$(foreach dir, $(INC_DIR), -I $(dir))
 
 LFLAGS		=	$(foreach dir, $(LIB_DIR), -L $(dir)) \
 				$(foreach lib, $(LIB), -l $(lib)) \
-				$(foreach framework, $(FRAMEWORK), -framework $(framework))
+				$(LINUXFLAG)
+#				$(foreach framework, $(FRAMEWORK), -framework $(framework))
 
 # Colors
 

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 13:39:20 by ldutriez          #+#    #+#             */
-/*   Updated: 2020/02/26 11:36:16 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/03 19:56:51 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,12 @@
 ** # define COLORMAPCHANGEMASK (1L<<23)
 ** # define OWNERGRABBUTTONMASK (1L<<24)
 */
+
+// Linux event mask part
+
+# define KEYPRESSMASK (1L<<0)
+
+// Linux event mask part
 
 # define KEYPRESS 2
 # define KEYRELEASE 3
@@ -86,10 +92,10 @@
 ** Letters keys
 */
 
-# define A_KEY 0
+# define A_KEY 97
 # define B_KEY 11
 # define C_KEY 8
-# define D_KEY 2
+# define D_KEY 100
 # define E_KEY 14
 # define F_KEY 3
 # define G_KEY 5
@@ -104,11 +110,11 @@
 # define P_KEY 35
 # define Q_KEY 12
 # define R_KEY 15
-# define S_KEY 1
+# define S_KEY 115
 # define T_KEY 17
 # define U_KEY 32
 # define V_KEY 9
-# define W_KEY 13
+# define W_KEY 119
 # define X_KEY 7
 # define Y_KEY 16
 # define Z_KEY 6
@@ -188,8 +194,8 @@
 
 # define UP_KEY 126
 # define DOWN_KEY 125
-# define RIGHT_KEY 124
-# define LEFT_KEY 123
+# define RIGHT_KEY 65363
+# define LEFT_KEY 65361
 
 /*
 ** Special keys
@@ -205,10 +211,10 @@
 ** CLR_KEY is the clear key
 */
 
-# define ESC_KEY 53
+# define ESC_KEY 65307
 # define TAB_KEY 48
 # define CL_KEY 272
-# define LSFT_KEY 257
+# define LSFT_KEY 65505
 # define LCTRL_KEY 256
 # define LOPT_KEY 261
 # define LCMD_KEY 259

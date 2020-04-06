@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:26:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/03/03 16:39:34 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/06 13:27:38 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,20 @@
 # include <stdlib.h>
 # include <math.h>
 # include <stdint.h>
+
+//Linux header
+
+# include	<string.h>
+# include   <unistd.h>
+# include   <fcntl.h>
+# include   <sys/mman.h>
+# include	<X11/Xlib.h>
+# include	<X11/Xutil.h>
+# include	<sys/ipc.h>
+# include	<sys/shm.h>
+# include	<X11/extensions/XShm.h>
+
+//Linux header
 
 # include "libft.h"
 # include "ggl.h"
@@ -29,18 +43,20 @@
 # include "cube3d_cast_ray.h"
 # include "cube3d_draw_map.h"
 # include "cube3d_key_handler.h"
+# include "cube3d_save.h"
 
 # define FOV 70.0f
 
 t_application *g_app;
 
 # define debug write(1, "ICI\n", 5)
-# define PRINTS(x) printf("%s\n", x)
-# define PRINTC(x) printf("%c\n", x)
-# define PRINTD(x) printf("%d\n", x)
-# define PRINTP(x) printf("%p\n", x)
-# define PRINTF(x) printf("%f\n", x)
-# define PRINTU(x) printf("%zu\n", i);
+# define PRINTS(x) printf("%s\n", x);
+# define PRINTC(x) printf("%c\n", x);
+# define PRINTD(x) printf("%d\n", x);
+# define PRINTP(x) printf("%p\n", x);
+# define PRINTF(x) printf("%f\n", x);
+# define PRINTU(x) printf("%zu\n", x);
+# define PRINTV(x,y) printf("(%f;%f)", x, y);
 # define PRINTPOS printf("%s line %d\n", __func__, __LINE__)
 
 # endif

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 19:33:03 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/21 15:20:17 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/05 22:51:01 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ void    parse_game_engine(t_game_engine *engine, int fd, t_vector2 *resolution);
 void    parse_map(t_game_engine *engine, int fd);
 void    parse_game_engine(t_game_engine *engine, int fd, t_vector2 *resolution);
 
-void    cube3d_parsing(t_game_engine *engine, char *map_name, t_vector2 *resolution);
+void    cube3d_parsing(t_game_engine *engine, int argc, char **argv, t_vector2 *resolution);
 #endif
