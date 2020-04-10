@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 12:07:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/03/09 16:37:31 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/09 14:36:34 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,18 @@ void	resize_application(int size_x, int size_y)
 
 void	clear_application(t_color color)
 {
-	size_t i;
-	size_t j;
+	t_vector2 pos;
 
-	i = 0;
-	while (i < (size_t)g_app->size.x)
+	pos = create_vector2(0, 0);
+	while (pos.x < (size_t)g_app->size.x)
 	{
-		j = 0;
-		while (j < (size_t)g_app->size.y)
+		pos.y = 0;
+		while (pos.y < (size_t)g_app->size.y)
 		{
-			put_pixel(g_app->image, i, j, color);
-			j++;
+			put_pixel(g_app->image, pos, color);
+			pos.y++;
 		}
-		i++;
+		pos.x++;
 	}
 }
 

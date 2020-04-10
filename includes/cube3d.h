@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:26:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/06 13:27:38 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/07 12:53:10 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_application *g_app;
 # define PRINTP(x) printf("%p\n", x);
 # define PRINTF(x) printf("%f\n", x);
 # define PRINTU(x) printf("%zu\n", x);
-# define PRINTV(x,y) printf("(%f;%f)", x, y);
+# define PRINTV(x,y) printf("(%f;%f)\n", x, y);
 # define PRINTPOS printf("%s line %d\n", __func__, __LINE__)
 
 # endif

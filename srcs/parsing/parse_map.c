@@ -6,13 +6,13 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 13:57:39 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/06 20:03:32 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/07 16:54:30 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-bool cross_check(t_list *map, size_t y, size_t x)
+bool cross_check(t_list *map, t_vector2 map_size, size_t y, size_t x)
 {
 	char	*line;
 	size_t	tmp_x;
@@ -25,7 +25,7 @@ bool cross_check(t_list *map, size_t y, size_t x)
 		if (x == 0 || line[x] == ' ')
 			return (true);
 	while (line[++x] != '1')
-		if (x == map->size || line[x] == ' ')
+		if (x == (map_size.x - 1) || line[x] == ' ')
 			return (true);
 	while (line[tmp_x] != '1')
 	{
@@ -36,14 +36,14 @@ bool cross_check(t_list *map, size_t y, size_t x)
 	line = (char*)list_at(map, ++y);
 	while (line[tmp_x] != '1')
 	{
-		if ( y == map->nb_line || line[tmp_x] == ' ')
+		if ( y == (map_size.y - 1) || line[tmp_x] == ' ')
 			return (true);
 		line = (char*)list_at(map, ++y);
 	}
 	return (false);
 }
 
-void flood_fill(t_list *map)
+void flood_fill(t_list *map, t_vector2 map_size)
 {
 	char	*line;
 	size_t	i;
@@ -51,18 +51,17 @@ void flood_fill(t_list *map)
 
 	i = 0;
 	j = 0;
-	while (i < map->size)
+	while (i < map_size.y)
 	{
 		line = (char*)list_at(map, i);
-		PRINTS(line)
-		PRINTC(line[j])
-		while (line[j] != '\0')
+		if (ft_isonlycharset(line, " 012NSEW") == FAILURE)
+			catch_error(FLOOD_FILL_1);
+		while (j < map_size.x)
 		{
 			if (line[j] == '0' || line[j] == 'W' || line[j] == 'E' ||
 				line[j] == 'S' || line[j] == 'N')
-				if (cross_check(map, j, i) == true)
-					catch_error(FLOOD_FILL_1);
-			// check forbidden list of char without charset
+				if (cross_check(map, map_size, i, j) == true)
+					catch_error(FLOOD_FILL_2);
 			j++;
 		}
 		j = 0;
@@ -93,7 +92,7 @@ void compute_map(t_game_engine *engine, t_vector2 map_size)
 	size_t	i;
 
 	i = 0;
-	new_map = malloc_list(500);
+	new_map = malloc_list(1);
 	while (i < engine->map_content->size)
 	{
 		line = (char*)list_at(engine->map_content, i);
@@ -107,7 +106,7 @@ void compute_map(t_game_engine *engine, t_vector2 map_size)
 	}
 	free_list(engine->map_content, &free);
 	engine->map_content = new_map;
-	flood_fill(engine->map_content);
+	flood_fill(engine->map_content, map_size);
 	engine->map = malloc_map(engine, map_size, engine->map_content);
 }
 

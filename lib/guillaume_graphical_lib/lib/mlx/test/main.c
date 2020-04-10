@@ -8,6 +8,8 @@
 #define	IM1_SY		42
 #define	IM3_SX		242
 #define	IM3_SY		242
+#define IM5_SX    128
+#define IM5_SY    128
 
 void	*mlx;
 void	*win1;
@@ -17,24 +19,31 @@ void    *im1;
 void	*im2;
 void	*im3;
 void	*im4;
+void  *im5;
 int	bpp1;
 int	bpp2;
 int	bpp3;
 int	bpp4;
+int bpp5;
 int	sl1;
 int	sl2;
 int	sl3;
 int	sl4;
+int sl5;
 int	endian1;
 int	endian2;
 int	endian3;
 int	endian4;
+int endian5;
 char	*data1;
 char	*data2;
 char	*data3;
 char	*data4;
+char  *data5;
 int	xpm1_x;
 int	xpm1_y;
+int xpm5_x;
+int xpm5_y;
 
 int	local_endian;
 
@@ -188,6 +197,27 @@ int	main()
   mlx_put_image_to_window(mlx,win1,im2,100,100);
   printf("OK\n");
   sleep(2);
+
+//XXXXXXXXXXX
+
+  printf(" => Test de la texture satanique ptn !!!!!");
+  if (!(im5 = mlx_xpm_file_to_image(mlx,"MARBFACE.xpm",&xpm5_x,&xpm5_y)))
+    {
+      printf(" !! KO !!\n");
+      exit(1);
+    }
+  data5 = mlx_get_data_addr(im5,&bpp5,&sl5,&endian5);
+  printf("OK (xpm %dx%d)(img bpp2: %d, sizeline2: %d endian: %d type: %d)\n",
+	 xpm1_x,xpm1_y,bpp2,sl2,endian2,((t_img *)im2)->type);
+  sleep(2);
+
+  printf(" => Put xpm ...");
+  mlx_put_image_to_window(mlx,win1,im5,0,0);
+  mlx_put_image_to_window(mlx,win1,im5,100,100);
+  printf("OK\n");
+  sleep(10);
+
+//XXXXXXXXXXX
 
   printf(" => 2nd window,");
   win2 = mlx_new_window(mlx,WIN1_SX,WIN1_SY,"Title2");

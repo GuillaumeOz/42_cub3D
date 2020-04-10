@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d_draw_map.h                                  :+:      :+:    :+:   */
+/*   ggl_vector2_list_creators.h                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/03 10:19:23 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/08 15:11:27 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/04/09 10:54:31 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/04/09 14:24:01 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_DRAW_MAP_H
-# define CUBE3D_DRAW_MAP_H
+#ifndef GGL_VECTOR2_LIST_CREATORS_H
+# define GGL_VECTOR2_LIST_CREATORS_H
 
-// void    draw_minimap(t_map *map);
-void	draw_wall(t_game_engine *engine, t_vector2 impact, int i);
-int     draw_map(void *param);
+typedef struct	s_vector2_list
+{
+	t_vector2	**data;
+	size_t		size;
+	size_t		max_size;
+	size_t		push_size;
+}				t_vector2_list;
+
+t_vector2		**t_vector2tab_new(size_t nb);
+t_vector2		*t_vector2array_new(size_t nb);
+t_vector2_list	create_t_vector2_list(size_t p_push_size);
+t_vector2_list	*malloc_t_vector2_list(size_t p_push_size);
 
 #endif

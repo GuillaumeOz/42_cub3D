@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:25:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/06 18:03:04 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/08 11:53:34 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int main(int argc, char **argv)
 	t_game_engine	engine;
 	t_vector2		resolution;
 
-	size_t i;
+//	size_t i;
 
-	i = 0;
+//	i = 0;
 
 	if (argc < 2 || argc >= 4)
 		catch_error(MAIN_1);
@@ -40,10 +40,10 @@ int main(int argc, char **argv)
 	resize_application((int)resolution.x, (int)resolution.y);
 	do_save(&engine);
 
-	while (i < engine.map_content->size)
-	{
-		PRINTS((char*)list_at(engine.map_content, i++));
-	}
+//	while (i < engine.map_content->size)
+//	{
+//		PRINTS((char*)list_at(engine.map_content, i++));
+//	}
 	// printf("(%f,%f)\n", engine.player->pos.x, engine.player->pos.y);
 
 	//	mlx_key_hook(g_app->win_ptr, key_win1, 0);

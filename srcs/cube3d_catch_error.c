@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:06:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/06 19:22:05 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/07 16:49:11 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ t_error	g_cube3d_catch_error[] =
 	{ MALLOC_MAP_1, "Error\n Can't malloc a t_map" },
 	{ PARSE_MAP_1, "Error\n A line in the file is inccorect" },
 	{ PARSE_MAP_2, "Error\nThe map part of the file is incorrect" },
-	{ FLOOD_FILL_1, "Error\nThe map is invalid"},
+	{ FLOOD_FILL_1, "Error\nForbidden char detected char on the map" },
+	{ FLOOD_FILL_2, "Error\nThe map is invalid" },
 	{ MALLOC_TILE_TAB_1, "Error\n Can't malloc a t_tile **" },
 	{ MALLOC_TILE_TAB_2, "Error\n Can't malloc a t_tile *" },
 	{ CREATE_MAP_1, "Multiple player on the map" },
