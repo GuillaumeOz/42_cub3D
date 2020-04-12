@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 13:51:34 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/09 15:48:29 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/12 22:28:19 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,19 @@ void draw_rectangle(t_vector2 pos, t_vector2 size, t_color color)
 
 void draw_rectangle_in_image(t_image *image, t_vector2 pos, t_vector2 size, t_color color)
 {
-	t_vector2	rect_pos;
+	size_t i;
+	size_t j;
 
-	rect_pos = create_vector2(0, 0);
-	while (rect_pos.x < (size_t)size.x)
+	i = 0;
+	while (i < (size_t)size.x)
 	{
-		rect_pos.y = 0;
-		while (rect_pos.y < (size_t)size.y)
+		j = 0;
+		while (j < (size_t)size.y)
 		{
-			put_pixel(image, create_vector2(rect_pos.x + pos.x,
-			rect_pos.y + pos.y), color);
-			rect_pos.y++;
+			put_pixel(image, create_vector2(i + (size_t)pos.x,
+			j + (size_t)pos.y), color);
+			j++;
 		}
-		rect_pos.x++;
+		i++;
 	}
 }

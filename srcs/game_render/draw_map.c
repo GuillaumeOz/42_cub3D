@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 09:38:54 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/10 11:04:12 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/12 22:37:23 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,20 @@
 // 	int			endian;
 // }				t_image;
 
-void	draw_texture(t_game_engine *engine)
-{
-	// while (i < (engine->map->size.x * engine->map->size.y))
-	// {
-	// 	put_pixel(g_app->image);(g_app->size.x - i) (g_app->size.y - height) / 2)
-	// 	draw_rectangle_in_image(g_app->image, pos, size, color);
-	// 	i + engine->map->size.y;
-}
+// void	draw_texture(t_game_engine *engine)
+// {
+// 	// while (i < (engine->map->size.x * engine->map->size.y))
+// 	// {
+// 	// 	put_pixel(g_app->image);(g_app->size.x - i) (g_app->size.y - height) / 2)
+// 	// 	draw_rectangle_in_image(g_app->image, pos, size, color);
+// 	// 	i + engine->map->size.y;
+// }
 
 void	draw_wall(t_game_engine *engine, t_vector2 impact, int i)
 {
 	t_vector2	rect_pos;
-	t_vector2	rect_hei;
-	t_color		rect_color;
+//	t_vector2	rect_hei;
+//	t_color		rect_color;
 	float		dist;
 	float		height;
 
@@ -47,10 +47,10 @@ void	draw_wall(t_game_engine *engine, t_vector2 impact, int i)
 	//h = 40 | d = 3
 	height = ((0.40 * g_app->size.y) * 3) / (dist * FISH_EYE);
 	rect_pos = create_vector2((g_app->size.x - i), (g_app->size.y - height) / 2);
-	rect_hei = create_vector2(1, height);
-	rect_color = create_color(120, 120, 120, 255);
-	draw_rectangle(rect_pos, rect_hei, rect_color);
-	draw_texture(engine);
+//	rect_hei = create_vector2(1, height);
+//	rect_color = create_color(120, 120, 120, 255);
+//	draw_rectangle(rect_pos, rect_hei, rect_color);
+	draw_texture(engine, rect_pos, i);
 }
 
 void	draw_env(t_game_engine *engine)
@@ -58,13 +58,13 @@ void	draw_env(t_game_engine *engine)
 	t_vector2	top_pos;
 	t_vector2	mid_pos;
 	t_vector2	rect_size;
-//	t_color		clear;
+	t_color		clear;
 
 	top_pos = create_vector2(0, 0);
 	mid_pos = create_vector2(0, g_app->size.y / 2);
 	rect_size = create_vector2(g_app->size.x, g_app->size.y / 2);
-//	clear = create_color(50, 50, 50, 255);
-//	clear_application(clear);
+	clear = create_color(50, 50, 50, 255);
+	clear_application(clear);
 	draw_rectangle(top_pos, rect_size, *(engine->ceiling));
 	draw_rectangle(mid_pos, rect_size, *(engine->floor));
 	//add floor and ceilling texture later
@@ -72,15 +72,15 @@ void	draw_env(t_game_engine *engine)
 
 int		draw_map(void *param)
 {
-    t_game_engine *engine;
-    t_vector2 impact;
-	float angle_actual;
-	size_t i;
+	t_game_engine *engine;
+	t_vector2     impact;
+	float         angle_actual;
+	size_t        i;
 
     engine = (t_game_engine *)(param);	
 	draw_env(engine);
 	i = 0;
-	PRINTV(engine->player->forward.x, engine->player->forward.y)
+	//PRINTV(engine->player->forward.x, engine->player->forward.y)
 	while (i <= g_app->size.x)
 	{
 		angle_actual = ANGLE_BEGIN - ANGLE_DELTA * i;

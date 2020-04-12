@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ggl_math.h                                         :+:      :+:    :+:   */
+/*   ggl_tex_tab.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/12 15:57:47 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/11 13:10:20 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/04/12 15:15:33 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/04/12 22:23:34 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GGL_MATH_H
-# define GGL_MATH_H
+#ifndef GGL_TEX_TAB_H
+# define GGL_TEX_TAB_H
 
-float           degree_to_radian(float p_degree);
-float           radian_to_degree(float p_radian);
-t_vector2_list	calc_line(t_vector2 start, t_vector2 end);
+int		**malloc_tex_tab(t_image *image);
+int		*create_tex_tab(t_image *image);
+void	destroy_tex_tab(int	**to_destroy);
+void	free_tax_tab(t_image *to_free);
+void	put_tex_pix(t_image *image, t_vector2 pos, int tex);
 
 #endif

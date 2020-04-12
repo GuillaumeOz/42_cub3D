@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 13:52:03 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/09 16:20:38 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/11 14:34:13 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void put_pixel(t_image *image, t_vector2 pos, t_color color)
 	t_color tmp;
 	int pixel_index;
 
-	if (pos.x < 0 || pos.y < 0 || pos.x >= image->size.x ||
+	if (pos.x < 0 || pos.x >= image->size.x || pos.y < 0 ||
 		pos.y >= image->size.y)
 		return;
 	pixel_index = (pos.y * image->size.x + pos.x) * 4;
@@ -54,7 +54,7 @@ void	draw_line(t_vector2 p_a_b[2], t_color color, float width)
 			tmps[0] = t_vector2_list_at(&line, j);
 			tmps[2] = create_vector2(tmps[0].x + tmps[1].x,
 														tmps[0].y + tmps[1].y);
-			put_pixel(tmps[2], color);
+			put_pixel(g_app->image, tmps[2], color);
 			j++;
 		}
 		i++;

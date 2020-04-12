@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 14:17:37 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/26 12:34:07 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/12 22:00:07 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_image	create_image(int size_x, int size_y)
 									&(result.bits_per_pixels),
 									&(result.size_line),
 									&(result.endian));
+	result.tex_tab = malloc_tex_tab(&result);
 	return (result);
 }
 
@@ -55,11 +56,13 @@ t_image	*load_image(char *path)
 									&(result->bits_per_pixels),
 									&(result->size_line),
 									&(result->endian));
+	result->tex_tab = malloc_tex_tab(result);
 	return (result);
 }
 
 void destroy_image(t_image to_destroy)
 {
+	free_tax_tab(&to_destroy);
 	mlx_destroy_image(g_app->mlx_ptr, to_destroy.img_ptr);
 }
 
