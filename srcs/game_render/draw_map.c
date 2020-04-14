@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 09:38:54 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/12 22:37:23 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/14 20:34:43 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,23 @@
 // 	// 	i + engine->map->size.y;
 // }
 
-void	draw_wall(t_game_engine *engine, t_vector2 impact, int i)
-{
-	t_vector2	rect_pos;
-//	t_vector2	rect_hei;
-//	t_color		rect_color;
-	float		dist;
-	float		height;
+// void	draw_wall(t_game_engine *engine, t_vector2 impact, int i)
+// {
+// 	t_vector2	rect_pos;
+// //	t_vector2	rect_hei;
+// //	t_color		rect_color;
+// 	float		dist;
+// 	float		height;
 
-	dist = sqrt(calc_dist(engine->player->pos, impact));
-	//h = 40 | d = 3
-	height = ((0.40 * g_app->size.y) * 3) / (dist * FISH_EYE);
-	rect_pos = create_vector2((g_app->size.x - i), (g_app->size.y - height) / 2);
-//	rect_hei = create_vector2(1, height);
-//	rect_color = create_color(120, 120, 120, 255);
-//	draw_rectangle(rect_pos, rect_hei, rect_color);
-	draw_texture(engine, rect_pos, i);
-}
+// 	dist = sqrt(calc_dist(engine->player->pos, impact));
+// 	//h = 40 | d = 3
+// 	height = ((0.40 * g_app->size.y) * 3) / (dist * FISH_EYE);
+// 	rect_pos = create_vector2((g_app->size.x - i), (g_app->size.y - height) / 2);
+// //	rect_hei = create_vector2(1, height);
+// //	rect_color = create_color(120, 120, 120, 255);
+// //	draw_rectangle(rect_pos, rect_hei, rect_color);
+// 	draw_texture(engine, rect_pos, i);
+// }
 
 void	draw_env(t_game_engine *engine)
 {
@@ -86,6 +86,7 @@ int		draw_map(void *param)
 		angle_actual = ANGLE_BEGIN - ANGLE_DELTA * i;
 		impact = cast_ray(engine->map, engine->player->pos, angle_actual);
 		draw_wall(engine, impact, i);
+		draw_wall(*(engine->player), engine->map);
 		i++;
 	}
 	render_application();

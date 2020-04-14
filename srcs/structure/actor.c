@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 17:42:38 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/06 10:50:37 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/14 19:14:49 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_actor		create_actor(t_vector2 p_pos, t_team p_team, t_direction p_dir, float p
 	result.speed = p_speed;
 	result.size = 10;
 	result.pitch = 0;
+	result.fov = 70;
 	return (result);
 }
 

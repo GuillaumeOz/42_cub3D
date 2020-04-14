@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:26:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/07 12:53:10 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/14 20:18:13 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,15 @@
 # include "cube3d_draw_map.h"
 # include "cube3d_key_handler.h"
 # include "cube3d_save.h"
+# include "cube3d_multi_thread.h"
+# include "cube3d_ray.h"
+# include "cube3d_sprites.h"
 
 # define FOV 70.0f
+# define PI 3.14159265
+# define PI2 6.28318530
+# define SIZE 6.0f
+# define NB_THREAD 4
 
 t_application *g_app;
 

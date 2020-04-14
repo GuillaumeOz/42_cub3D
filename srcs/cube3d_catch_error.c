@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:06:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/07 16:49:11 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/14 20:16:23 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ t_error	g_cube3d_catch_error[] =
 	{ FLOOD_FILL_2, "Error\nThe map is invalid" },
 	{ MALLOC_TILE_TAB_1, "Error\n Can't malloc a t_tile **" },
 	{ MALLOC_TILE_TAB_2, "Error\n Can't malloc a t_tile *" },
-	{ CREATE_MAP_1, "Multiple player on the map" },
+	{ CREATE_MAP_1, "Error\n Multiple player on the map" },
+	{ MALLOC_RAY_1, "Error\n A ray struct can't be malloc"},
+	{ MALLOC_SPRITES_1, "Error\n A sprite struct can't be malloc"},
 	{ ERROR_NOT_FOUND, "The Error has not be catched... Good luck"}
 };
 
