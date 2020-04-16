@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 21:05:23 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/12 21:53:44 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/16 15:34:25 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 # include "ggl_image.h"
 # include "ggl_mlx_define.h"
 # include "ggl_color.h"
-# include "ggl_tex_tab.h"
 # include "ggl_drawing.h"
 # include "ggl_math.h"
 # include "ggl_application.h"

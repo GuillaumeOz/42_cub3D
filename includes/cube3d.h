@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:26:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/14 20:18:13 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/15 17:41:52 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 # include "cube3d_multi_thread.h"
 # include "cube3d_ray.h"
 # include "cube3d_sprites.h"
+# include "cube3d_draw.h"
 
 # define FOV 70.0f
 # define PI 3.14159265

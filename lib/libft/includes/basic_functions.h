@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 11:30:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/07 16:42:51 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/15 18:58:08 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,5 +131,16 @@ char			*ft_strdup(const char *src);
 size_t			ft_strnlen(const char *s, size_t maxlen);
 
 char			*ft_padding(int size, char c);
+
+float			ft_f_abs(float p_value);
+float			ft_f_floor(float p_value);
+float			ft_f_roof(float p_value);
+float			ft_f_round(float p_value);
+int				ft_i_abs(int p_value);
+int				ft_i_roof(float p_value);
+char			*ft_itoa_base(long long int nbr, char *base);
+char			*ft_itoa_hexa(long long int nbr);
+char			*ft_itoa_octa(long long int nbr);
+char			*ft_itoa_unsigned_deci(unsigned int nbr);
 
 #endif

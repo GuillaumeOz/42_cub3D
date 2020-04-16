@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d_ray.h                                       :+:      :+:    :+:   */
+/*   ft_f_roof.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/14 19:21:55 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/15 17:44:49 by gozsertt         ###   ########.fr       */
+/*   Created: 2019/12/02 09:03:19 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/04/15 18:47:12 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_RAY_H
-# define CUBE3D_RAY_H
+#include "libft.h"
 
-typedef struct	s_ray
+float		ft_f_roof(float p_value)
 {
-	t_vector2	rounded;
-	t_vector2	pos;
-	t_vector2	ray;
-	float		angle;
-	float		angle0;
-	char		fuck_float;
-	int			column;
-}				t_ray;
+	float	rounded_value;
+	int		i_value;
 
-t_ray			create_ray();
-t_ray			*malloc_ray();
-void			destroy_ray(t_ray p_ray);
-void			free_ray(t_ray *p_ray);
-
-#endif
+	if (p_value == 0)
+		return (p_value);
+	i_value = p_value;
+	if (p_value < 0)
+	{
+		rounded_value = i_value;
+		return (rounded_value);
+	}
+	rounded_value = p_value - i_value;
+	if (rounded_value == 0)
+	{
+		rounded_value = p_value;
+		return (rounded_value);
+	}
+	else
+		rounded_value = i_value + 1;
+	return (rounded_value);
+}

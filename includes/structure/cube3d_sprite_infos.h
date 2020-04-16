@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d_ray.h                                       :+:      :+:    :+:   */
+/*   cube3d_sprite_infos.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/14 19:21:55 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/15 17:44:49 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/04/16 15:17:54 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/04/16 15:18:17 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_RAY_H
-# define CUBE3D_RAY_H
+#include "cube3d.h"
 
-typedef struct	s_ray
+#ifndef CUB3D_SPRITE_INFOS_H
+# define CUB3D_SPRITE_INFOS_H
+
+typedef struct	s_sprite_data
 {
-	t_vector2	rounded;
-	t_vector2	pos;
-	t_vector2	ray;
-	float		angle;
-	float		angle0;
-	char		fuck_float;
+	t_image     act;
+	t_sprites	sprite;
+	float		x;
+	float		y;
 	int			column;
-}				t_ray;
-
-t_ray			create_ray();
-t_ray			*malloc_ray();
-void			destroy_ray(t_ray p_ray);
-void			free_ray(t_ray *p_ray);
+	float		percent;
+	int			num;
+	int			i;
+	t_vector2	pos;
+	t_color		color;
+	t_color		dark;
+}				t_sprite_data;
 
 #endif

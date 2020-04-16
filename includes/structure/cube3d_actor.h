@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:23:32 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/14 20:23:45 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/16 20:08:07 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,24 @@
 
 typedef enum    e_team
 {
-    ally = 0,
-    enemy = 1,
-    neutral = 2,
+	ally = 0,
+	enemy = 1,
+	neutral = 2,
 }               t_team;
 
 typedef struct  s_actor
 {
-    t_vector2   pos;
-    int         team;
-    float       angle;
-    float       speed;
-    float       size;
-    float       pitch;
-    float       fov;
-    t_vector2   forward;
-    t_vector2   right;
+	t_vector2   pos;
+	int         team;
+	float       angle;
+	float       speed;
+	float       size;
+	float       pitch;
+	float       fov;
+	int			hp;
+	int32_t     control;
+	t_vector2   forward;
+	t_vector2   right;
 }               t_actor;
 
 typedef t_actor t_player;
@@ -49,6 +51,7 @@ t_enemy     *malloc_enemy(t_vector2 p_pos);
 
 t_player    create_player(t_vector2 p_pos, t_direction p_dir);
 t_player    *malloc_player(t_vector2 p_pos, t_direction p_dir);
+t_player	reset_player(int p_hp);
 
 t_neutral    create_neutral(t_vector2 p_pos);
 t_neutral    *malloc_neutral(t_vector2 p_pos);

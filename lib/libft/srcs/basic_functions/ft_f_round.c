@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d_ray.h                                       :+:      :+:    :+:   */
+/*   ft_f_round.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/14 19:21:55 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/15 17:44:49 by gozsertt         ###   ########.fr       */
+/*   Created: 2019/12/02 09:03:19 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/04/15 18:53:07 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_RAY_H
-# define CUBE3D_RAY_H
+#include "libft.h"
 
-typedef struct	s_ray
+float	ft_f_round(float p_value)
 {
-	t_vector2	rounded;
-	t_vector2	pos;
-	t_vector2	ray;
-	float		angle;
-	float		angle0;
-	char		fuck_float;
-	int			column;
-}				t_ray;
+	float	floor;
+	float	roof;
 
-t_ray			create_ray();
-t_ray			*malloc_ray();
-void			destroy_ray(t_ray p_ray);
-void			free_ray(t_ray *p_ray);
-
-#endif
+	floor = ft_f_floor(p_value);
+	roof = ft_f_roof(p_value);
+	if ((p_value - floor) < (roof - p_value))
+		return (floor);
+	else
+		return (roof);
+}
