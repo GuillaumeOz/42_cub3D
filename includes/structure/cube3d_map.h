@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 13:49:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/16 19:41:10 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/17 14:30:55 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,5 @@ t_map   *malloc_map(t_game_engine *engine, t_vector2 p_size, t_list *p_content);
 t_map   create_map(t_game_engine *engine, t_vector2 p_size, t_list *p_content);
 void    destroy_map(t_map to_destroy);
 void    free_map(t_map *to_free);
-void	load_map(int32_t control, void* param);
 
 #endif

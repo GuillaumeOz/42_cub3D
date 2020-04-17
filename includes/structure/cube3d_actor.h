@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:23:32 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/16 20:08:07 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/17 15:26:35 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ t_enemy     *malloc_enemy(t_vector2 p_pos);
 t_player    create_player(t_vector2 p_pos, t_direction p_dir);
 t_player    *malloc_player(t_vector2 p_pos, t_direction p_dir);
 t_player	reset_player(int p_hp);
+void		player_hitbox(t_map *map, t_vector2 *pos, t_vector2 mov, float speed);
 
 t_neutral    create_neutral(t_vector2 p_pos);
 t_neutral    *malloc_neutral(t_vector2 p_pos);

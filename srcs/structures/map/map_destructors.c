@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.c                                           :+:      :+:    :+:   */
+/*   map_destructors.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/19 19:32:16 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/16 19:50:34 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/04/17 15:13:12 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/04/17 15:13:38 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-t_player	create_player(t_vector2 p_pos, t_direction p_dir)
+void   destroy_map(t_map to_destroy)
 {
-	return (create_actor(p_pos, ally, p_dir, player_speed));
+	int	i;
+
+	i = -1;
+	while (++i < to_destroy.size.x)
+			free(to_destroy.board[i]);
+	free(to_destroy.board);
+	free_vector2(&to_destroy.size);
+
 }
 
-t_player	*malloc_player(t_vector2 p_pos, t_direction p_dir)
+void   free_map(t_map *to_free)
 {
-	return (malloc_actor(p_pos, ally, p_dir, player_speed));
+	destroy_map(*to_free);
+	free(to_free);
 }
-
-void   destroy_player(t_player to_destroy)
-{
-    (void)to_destroy;
-}
-
-void   free_player(t_player *to_free)
-{
-    destroy_player(*to_free);
-    free(to_free);
-}
-
-
-
-

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_behavior.c                                  :+:      :+:    :+:   */
+/*   actor.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/16 19:51:32 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/16 20:26:36 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/02/19 17:42:38 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/04/17 15:27:20 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,27 +35,24 @@ t_actor		create_actor(t_vector2 p_pos, t_team p_team, t_direction p_dir, float p
 	return (result);
 }
 
-t_player	reset_player(int p_hp)
+t_actor		*malloc_actor(t_vector2 p_pos, t_team p_team, t_direction p_dir, float p_step)
 {
-	t_player result;
+	t_actor *result;
 
-	result.pos = create_vector2(0, 0);
-	result.speed = 0.2;
-	result.movement = create_vector2(0, 0);
-	result.last_movement = create_vector2(0, 0);
-	result.pitch = 0;
-	result.radius = 0.2;
-	result.size = 10;
-	result.fov = 80;
-	result.hp = p_hp;
-	result.to_front = false;
-	result.to_left = false;
-	result.to_back = false;
-	result.to_right = false;
-	result.interact = false;
-	result.interact = false;
-	result.turn_right = false;
-	result.turn_left = false;
-	result.fire = false;
+	result = (t_actor *)malloc(sizeof(t_actor));
+	if (result == NULL)
+		return (NULL);
+	*result = create_actor(p_pos, p_team, p_dir, p_step);
 	return (result);
+}
+
+void		destroy_actor(t_actor to_destroy)
+{
+	(void)to_destroy;
+}
+
+void		free_actor(t_actor *to_free)
+{
+	destroy_actor(*to_free);
+	free(to_free);
 }

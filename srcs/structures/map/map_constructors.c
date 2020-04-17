@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map_constructors.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/19 14:10:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/11 17:59:35 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/04/17 15:12:59 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/04/17 15:14:03 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,22 +85,4 @@ t_map   create_map(t_game_engine *engine, t_vector2 p_size, t_list *p_content)
 		i++;
 	}
 	return (result);
-}
-
-void   destroy_map(t_map to_destroy)
-{
-	int	i;
-
-	i = -1;
-	while (++i < to_destroy.size.x)
-			free(to_destroy.board[i]);
-	free(to_destroy.board);
-	free_vector2(&to_destroy.size);
-
-}
-
-void   free_map(t_map *to_free)
-{
-	destroy_map(*to_free);
-	free(to_free);
 }
