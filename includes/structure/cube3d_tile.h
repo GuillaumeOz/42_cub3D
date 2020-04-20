@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:40:56 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/03/05 17:09:11 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/20 17:11:39 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef enum	e_direction
 typedef enum e_tile_type
 {
 	empty = 0,
-	wall = 1
+	wall = 1//add other tiles type later
 }				t_tile_type;
 
 typedef struct s_tile

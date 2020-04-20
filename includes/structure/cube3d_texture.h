@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   neutral.c                                          :+:      :+:    :+:   */
+/*   cube3d_texture.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/19 18:23:59 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/03/09 14:10:59 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/04/20 14:42:43 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/04/20 14:50:40 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#ifndef CUBE3D_TEXTURE_H
+# define CUBE3D_TEXTURE_H
 
-t_neutral	*malloc_neutral(t_vector2 p_pos)
+typedef struct		s_wall
 {
-	return (malloc_actor(p_pos, neutral, north, neutral_speed));
-}
+	int				width;
+	int				height;
+	int				bits_per_pixel;
+	int				size_line;
+	int				endian;
+	char			*tex;
+	char			*path;
+}					t_texture;
 
-t_neutral	create_neutral(t_vector2 p_pos)
-{
-	return (create_actor(p_pos, neutral, north, neutral_speed));
-}
+t_texture			create_texture(char *path);
+t_texture			*malloc_texture(char *path);
+void				destroy_texture(t_texture p_wall);
+void				free_texture(t_texture *p_wall);
 
-void   destroy_neutral(t_neutral to_destroy)
-{
-    (void)to_destroy;
-}
-
-void   free_neutral(t_neutral *to_free)
-{
-    destroy_neutral(*to_free);
-    free(to_free);
-}
+#endif

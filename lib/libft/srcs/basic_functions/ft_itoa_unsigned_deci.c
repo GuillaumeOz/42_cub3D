@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 09:03:19 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/15 18:57:43 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/20 17:15:29 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char			*ft_itoa_unsigned_deci(unsigned int nbr)
 
 	base = "0123456789";
 	base_len = ft_strlen(base);
-	nbr_len = ft_nbrlen(nbr, base_len);
+	nbr_len = ft_itoa_unsigned_nbrlen(nbr, base_len);
 	result = ft_strnew(nbr_len);
 	result[nbr_len] = '\0';
 	nbr_len--;

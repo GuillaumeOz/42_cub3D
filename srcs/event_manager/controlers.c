@@ -6,65 +6,38 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 14:29:58 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/17 20:21:18 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/20 16:48:47 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void	load_map_control(int32_t control, void *param)
+void		fire_control(int32_t control, void *param)
 {
-    t_game_engine   *engine;
-	char            *arg;
-	char            num[2];
-
-    engine = (t_game_engine*)param;
-    engine->player->hp = 100;
-	*(engine->player) = reset_player(engine->player->hp);
-	num[0] = map->level + 1;
-	num[1] = '\0';
-	write(1, "level :", 7);
-	write(1, num, 1);
-	write(1, "\n", 1);
-	num[0] = map->level;
-	arg = ft_strjoin("maps/start", num);
-	arg = ft_strjoin(arg, ".cub");
-	cub3d_get_param(map, arg);
-	map->resolution = g_app->size;
-	cub3d_parse_map(map, hero);
-	hero->size = (int)((map->resolution.y * 0.33) / (map->size.y));
-	if (hero->size > (int)((map->resolution.x * 0.27) / (map->size.x)))
-		hero->size = (int)((map->resolution.x * 0.27) / (map->size.x));
-	hero->radius *= hero->size;
-	hero->pos.x = (hero->pos.x * hero->size) - (hero->size / 2);
-	hero->pos.y = (hero->pos.y * hero->size) + (hero->size / 2);
-}
-
-void		fire_control(t_map *map, t_player *hero)
-{
+	t_game_engine	*en;
+	t_player		*hero;
 	int	range;
 
+	en = (t_game_engine*)param;
+	hero = (t_player*)en->player;
 	range = 1;
-	if (hero->fire == true)
+	while (range <= 3)
 	{
-		while (range <= 3)
+		if (en->map->board[(int)(hero->pos.y + (hero->movement.y * range)) /
+		(int)(hero->size)][(int)(hero->pos.x + (hero->movement.x * range)) /
+		(int)(hero->size)]->type == 'M')
 		{
-			if (map->map[(int)(hero->pos.y + (hero->movement.y * range)) /
-			(int)(hero->size)][(int)(hero->pos.x + (hero->movement.x * range)) /
-			(int)(hero->size)] == 'M')
-			{
-				map->map[(int)(hero->pos.y + (hero->movement.y * range)) /
-				(int)(hero->size)][(int)(hero->pos.x + (hero->movement.x *
-				range)) / (int)(hero->size)] = 'm';
-				break ;
-			}
-			else if (!(comp_char(map->comp, map->map[(int)(hero->pos.y +
-				(hero->movement.y * range)) / (int)(hero->size)]
-				[(int)(hero->pos.x + (hero->movement.x * range)) /
-				(int)(hero->size)])))
-				return ;
-			range++;
+			en->map->board[(int)(hero->pos.y + (hero->movement.y * range)) /
+			(int)(hero->size)][(int)(hero->pos.x + (hero->movement.x *
+			range)) / (int)(hero->size)]->type = 'm';
+			break ;
 		}
+		else if (!(ft_ischar(en->map->comp, en->map->board[(int)(hero->pos.y +
+		(hero->movement.y * range)) / (int)(hero->size)]
+		[(int)(hero->pos.x + (hero->movement.x * range)) /
+		(int)(hero->size)]->type == SUCCESS)))//check if there are any probs
+			return ;
+		range++;
 	}
 }
 
@@ -85,7 +58,7 @@ void    camera_control(int32_t control, void* param)
 		player->forward.y = x * sin(degree_to_radian(-10)) + y * cos(degree_to_radian(-10));
 		player->forward.x = x * cos(degree_to_radian(-10)) - y * sin(degree_to_radian(-10));
 	}
-	if (control & RIGHT_KEYPRESS)
+	else if (control & RIGHT_KEYPRESS)
 	{
 		player->angle += 10;
 		player->forward.y = x * sin(degree_to_radian(10)) + y * cos(degree_to_radian(10));
@@ -97,24 +70,28 @@ void    camera_control(int32_t control, void* param)
 
 void		interact_control(int32_t control, void* param)
 {
-	t_game_engine *engine;
+	t_game_engine	*engine;
+	t_player		*hero;
+	t_map			*map;
 
 	engine = (t_game_engine*)param;
-	if (hero->interact == true)
-		condition_interact(map, hero);
-	if (map->map[(int)(hero->pos.y) / (int)(hero->size)]
-		[(int)(hero->pos.x) / (int)(hero->size)] == 'M')
+	hero = (t_player*)engine->player;
+	map = (t_map*)engine->map;
+	condition_interact(engine, map, hero);
+	if (map->board[(int)(hero->pos.y) / (int)(hero->size)]
+		[(int)(hero->pos.x) / (int)(hero->size)]->type == 'M')
 	{
-		hero->hp -= map->monster.damage;
-		map->map[(int)(hero->pos.y) / (int)(hero->size)]
-		[(int)(hero->pos.x) / (int)(hero->size)] = 'm';
+		hero->hp -= engine->monster->damage;
+		map->board[(int)(hero->pos.y) / (int)(hero->size)]
+		[(int)(hero->pos.x) / (int)(hero->size)]->type = 'm';
 	}
-	if (map->map[(int)(hero->pos.y) / (int)(hero->size)]
-		[(int)(hero->pos.x) / (int)(hero->size)] == 'H' && hero->hp < 100)
+	if (map->board[(int)(hero->pos.y) / (int)(hero->size)]
+		[(int)(hero->pos.x) / (int)(hero->size)]->type == 'H' &&
+		hero->hp < 100)
 	{
-		hero->hp += map->medikit.heal;
-		map->map[(int)(hero->pos.y) / (int)(hero->size)]
-		[(int)(hero->pos.x) / (int)(hero->size)] = '0';
+		hero->hp += engine->medikit->heal;
+		map->board[(int)(hero->pos.y) / (int)(hero->size)]
+		[(int)(hero->pos.x) / (int)(hero->size)]->type = '0';
 	}
 }
 

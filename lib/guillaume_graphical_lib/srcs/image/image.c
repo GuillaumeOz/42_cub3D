@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 14:17:37 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/16 15:38:54 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/20 17:17:07 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ t_image	create_image(int size_x, int size_y)
 t_image	*load_image(char *path)
 {
 	t_image *result;
-	int x;
-	int y;
+	int		x;
+	int		y;
 
 	x = 0;
 	y = 0;
@@ -55,6 +55,7 @@ t_image	*load_image(char *path)
 									&(result->bits_per_pixels),
 									&(result->size_line),
 									&(result->endian));
+	result->path = path;
 	return (result);
 }
 

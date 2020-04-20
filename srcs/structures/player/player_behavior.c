@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/16 19:51:32 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/17 15:42:11 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/20 16:44:03 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static	bool	hit_player_wall(t_map *map, t_vector2 pos)
 	return (false);
 }
 
-void	player_hitbox(t_map *map, t_vector2 *pos, t_vector2 mov, float speed)
+void			player_hitbox(t_map *map, t_vector2 *pos, t_vector2 mov, float speed)
 {
 	float dot;
 	float y;

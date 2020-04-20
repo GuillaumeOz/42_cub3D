@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 13:11:21 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/12 20:06:26 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/20 17:16:54 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct	s_image
 	int			bits_per_pixels;
 	int			size_line;
 	int			endian;
+	char		*path;
 }				t_image;
 
 t_image			*malloc_image(int size_x, int size_y);

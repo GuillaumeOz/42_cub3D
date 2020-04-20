@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.c                                           :+:      :+:    :+:   */
+/*   texture_destructors.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/19 19:32:16 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/17 15:39:18 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/04/20 14:47:26 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/04/20 14:52:33 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-t_player	create_player(t_vector2 p_pos, t_direction p_dir)
+void	destroy_texture(t_texture p_wall)
 {
-	return (create_actor(p_pos, ally, p_dir, player_speed));
+	free(p_wall.path);
 }
 
-t_player	*malloc_player(t_vector2 p_pos, t_direction p_dir)
+void	free_texture(t_texture *p_wall)
 {
-	return (malloc_actor(p_pos, ally, p_dir, player_speed));
+	destroy_texture(*p_wall);
+	free(p_wall);
 }
-
-void   destroy_player(t_player to_destroy)
-{
-    (void)to_destroy;
-}
-
-void   free_player(t_player *to_free)
-{
-    destroy_player(*to_free);
-    free(to_free);
-}
-
-
-
-

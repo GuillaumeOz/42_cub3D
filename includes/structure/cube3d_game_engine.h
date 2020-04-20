@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:31:25 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/16 15:07:03 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/20 16:42:55 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,6 @@
 
 #define CEILING 0
 #define FLOOR 1
-
-typedef struct  s_map
-{
-    t_vector2   size;
-    t_tile      ***board;
-    //t_object  ***content; medikit;
-	//t_monster ***monster;
-}               t_map;
 
 typedef struct		s_game_engine
 {
@@ -37,8 +29,11 @@ typedef struct		s_game_engine
 
 	t_list			*map_content;
 	t_map			*map;
-	t_actor			*player;
-	
+
+	t_player		*player;
+	t_monster		*monster;
+	t_medikit		*medikit;
+
 	bool			save;
 }					t_game_engine;
 

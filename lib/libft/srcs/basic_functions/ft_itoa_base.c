@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 09:03:19 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/15 18:54:56 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/20 17:14:20 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char			*ft_itoa_base(long long int nbr, char *base)
 	unsigned long long int	abs_nbr;
 
 	base_len = ft_strlen(base);
-	nbr_len = ft_nbrlen(nbr, base_len);
+	nbr_len = ft_itoa_nbrlen(nbr, base_len);
 	result = ft_strnew(nbr_len);
 	if (nbr < 0)
 	{

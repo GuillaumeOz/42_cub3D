@@ -1,0 +1,53 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_behavior.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/04/18 14:06:17 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/04/20 13:00:52 by gozsertt         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cube3d.h"
+
+static char *set_level(t_map *map)
+{
+	char	num[2];
+	char	*arg;
+
+	num[0] = map->level + 1;
+	num[1] = '\0';
+	write(1, "level :", 7);
+	write(1, num, 1);
+	write(1, "\n", 1);
+	num[0] = map->level;
+	arg = ft_strjoin("maps/world", num);
+	arg = ft_strjoin(arg, ".cub");
+	return(arg);
+}
+
+void	load_map_control(int32_t control, void *param)
+{
+	t_game_engine   *engine;
+	t_map           *map;
+	t_player        *player;
+	char            *arg;
+
+	engine = (t_game_engine*)param;
+	map = (t_map*)engine->map;
+	player = (t_player*)engine->player;
+	player->hp = 100;
+	*(player) = reset_player(player->hp);
+	arg = set_level(map);
+	cub3d_get_param(map, arg);
+	map->size = g_app->size;
+	cub3d_parse_map(map, player);
+	player->size = (int)((map->size.y * 0.33) / (map->size.y));
+	if (player->size > (int)((map->size.x * 0.27) / (map->size.x)))
+		player->size = (int)((map->size.x * 0.27) / (map->size.x));
+	player->radius *= player->size;
+	player->pos.x = (player->pos.x * player->size) - (player->size / 2);
+	player->pos.y = (player->pos.y * player->size) + (player->size / 2);
+}

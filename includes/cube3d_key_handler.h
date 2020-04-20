@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:10:40 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/17 19:54:57 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/20 16:40:39 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ void    speed_control(int32_t control, void* param);
 void    player_control(int32_t control, void* param);
 void	interact_control(int32_t control, void* param);
 void    camera_control(int32_t control, void* param);
+void	fire_control(int32_t control, void *param);
 void	load_map_control(int32_t control, void* param);
 
-#endif
+void	condition_interact(t_game_engine *engine, t_map *map, t_player *hero);
+
+#endif<
