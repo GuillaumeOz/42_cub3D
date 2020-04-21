@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 15:12:59 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/17 15:14:03 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/21 10:59:37 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,13 @@ t_map   create_map(t_game_engine *engine, t_vector2 p_size, t_list *p_content)
 				if (engine->player != NULL)
 					catch_error(CREATE_MAP_1);
 				if (line[j] == 'W')
-					engine->player = malloc_player(create_vector2(j, i), west);
+					engine->player = malloc_player(create_vector2(j, i), west, player_speed);
 				if (line[j] == 'E')
-					engine->player = malloc_player(create_vector2(j, i), east);
+					engine->player = malloc_player(create_vector2(j, i), east, player_speed);
 				if (line[j] == 'S')
-					engine->player = malloc_player(create_vector2(j, i), south);
+					engine->player = malloc_player(create_vector2(j, i), south, player_speed);
 				if (line[j] == 'N')
-					engine->player = malloc_player(create_vector2(j, i), north);
+					engine->player = malloc_player(create_vector2(j, i), north, player_speed);
 			}
 			j++;
 		}

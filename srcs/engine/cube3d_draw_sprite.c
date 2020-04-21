@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/16 14:22:27 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/16 15:14:10 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/21 13:25:53 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void		loop_draw_sprite(t_sprite_data s_inf, t_draw inf_draw)
 																inf_draw.alpha);
 			s_inf.dark = create_color(0, 0, 0, 255);
 			s_inf.color = fuze_color(s_inf.dark, s_inf.color);
-			put_pixel(s_inf.pos, s_inf.color);
+			put_pixel(g_app->image, s_inf.pos, s_inf.color);
 		}
 		s_inf.num++;
 		s_inf.i = ((int)((s_inf.num / (inf_draw.end.y - inf_draw.start.y)) *

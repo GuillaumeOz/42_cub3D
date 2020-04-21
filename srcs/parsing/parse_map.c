@@ -6,13 +6,13 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 13:57:39 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/07 16:54:30 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/21 16:59:44 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-bool cross_check(t_list *map, t_vector2 map_size, size_t y, size_t x)
+static bool cross_check(t_list *map, t_vector2 map_size, size_t y, size_t x)
 {
 	char	*line;
 	size_t	tmp_x;
@@ -43,7 +43,7 @@ bool cross_check(t_list *map, t_vector2 map_size, size_t y, size_t x)
 	return (false);
 }
 
-void flood_fill(t_list *map, t_vector2 map_size)
+static void flood_fill(t_game_engine *engine, t_list *map, t_vector2 map_size)
 {
 	char	*line;
 	size_t	i;
@@ -54,7 +54,7 @@ void flood_fill(t_list *map, t_vector2 map_size)
 	while (i < map_size.y)
 	{
 		line = (char*)list_at(map, i);
-		if (ft_isonlycharset(line, " 012NSEW") == FAILURE)
+		if (ft_isonlycharset(line, engine->valid) == FAILURE)
 			catch_error(FLOOD_FILL_1);
 		while (j < map_size.x)
 		{
@@ -69,7 +69,7 @@ void flood_fill(t_list *map, t_vector2 map_size)
 	}
 }
 
-bool parse_map_line(t_game_engine *engine, char *line, t_vector2 *map_size)
+static bool parse_map_line(t_game_engine *engine, char *line, t_vector2 *map_size)
 {
 	char *content;
 
@@ -83,7 +83,7 @@ bool parse_map_line(t_game_engine *engine, char *line, t_vector2 *map_size)
 	return (true);
 }
 
-void compute_map(t_game_engine *engine, t_vector2 map_size)
+static void compute_map(t_game_engine *engine, t_vector2 map_size)
 {
 	t_list	*new_map;
 	char	*line;
@@ -106,7 +106,7 @@ void compute_map(t_game_engine *engine, t_vector2 map_size)
 	}
 	free_list(engine->map_content, &free);
 	engine->map_content = new_map;
-	flood_fill(engine->map_content, map_size);
+	flood_fill(engine, engine->map_content, map_size);
 	engine->map = malloc_map(engine, map_size, engine->map_content);
 }
 

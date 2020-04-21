@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:40:56 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/20 17:11:39 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/21 11:01:09 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,11 @@ typedef enum e_tile_type
 typedef struct s_tile
 {
 	t_tile_type type;
+	t_monster	monster;
+	t_medikit	medikit;
 	t_color		ceiling;
 	t_color		floor;
-	t_image		**texture;
+	t_texture	**texture;
 }				t_tile;
 
 t_tile	*malloc_tile(t_tile_type p_type, t_color p_ceiling, t_color p_floor);

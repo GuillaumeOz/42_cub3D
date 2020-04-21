@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:38:57 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/03/05 11:48:40 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/21 16:20:59 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ bool parse_resolution(char *descriptor, char *content, t_vector2 *resolution)
 			i++;
 		}
 		if (ft_atoi(tab[0]) < 0 || ft_atoi(tab[1]) < 0 || 
-			ft_atoi(tab[0]) > 2560 || ft_atoi(tab[1]) > 1440)
+			ft_atoi(tab[0]) > 2560 || ft_atoi(tab[1]) > 1440)//change this part
 			catch_error(PARSE_RESOLUTION_3);
 		*resolution = create_vector2(ft_atoi(tab[0]), ft_atoi(tab[1]));
 		ft_tab_free(tab);
@@ -77,7 +77,13 @@ bool parse_environement_texture(t_game_engine *engine, char *descriptor, char *c
 	else if (ft_strcmp(descriptor, "SO") == 0)
 		return (set_texture_image(engine, south, content + 2));
 	else if (ft_strcmp(descriptor, "S") == 0)
-		return (set_sprite_image(engine, content + 1));
+		return (set_sprite_image(engine, content + 1));//check sprite
+	else if (ft_strcmp(descriptor, "D") == 0)
+		return (set_door_image(engine, content + 1));
+	else if (ft_strcmp(descriptor, "H") == 0)
+		return (set_medikit_image(engine, content + 1));
+	else if (ft_strcmp(descriptor, "M") == 0)
+		return (set_monster_image(engine, content + 1));
 	else
 		return (false);
 }

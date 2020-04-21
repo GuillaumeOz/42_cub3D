@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:25:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/16 16:34:11 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/21 19:51:09 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 	t_game_engine	engine;
 	t_vector2		resolution;
 
-	if (argc < 2 || argc >= 4)
+	if (argc < 2 || argc >= 4)//do the resolution rezize
 		catch_error(MAIN_1);
 	start_application(600, 600, "Cube3D");
 	engine = create_game_engine();
@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 	do_save(&engine);
 	add_interaction_to_application(&cube3d_key_released_manager, KEYRELEASE, KEYRELEASE, &engine);
 	add_interaction_to_application(&cube3d_key_press_manager, KEYPRESS, KEYPRESSMASK, &engine);
-
+	application_add_exit_control(DESTROYNOTIFY, &quit);
 	render_funct_application(&draw_map, &engine);
 
 	return (run_application());

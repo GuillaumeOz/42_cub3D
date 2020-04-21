@@ -9,9 +9,10 @@ D ./textures/door.xpm
 S ./textures/pillar.xpm 1
 F 155,118,83
 
+H ./textures/medkit.xpm 30
+
       C      255,255,255
 
-H ./textures/medkit.xpm 30
 
 1111111111111111111111111111111111
 10000410000100000000000000300030011

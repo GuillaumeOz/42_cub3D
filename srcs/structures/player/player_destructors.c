@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture_destructors.c                              :+:      :+:    :+:   */
+/*   player_destructors.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/20 14:47:26 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/21 16:19:12 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/04/21 11:11:19 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/04/21 11:12:02 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void	destroy_texture(t_texture p_wall)
+void		destroy_player(t_player to_destroy)
 {
-	free(p_wall.path);
+	(void)to_destroy;
 }
 
-void	free_texture(t_texture *p_wall)
+void		free_player(t_player *to_free)
 {
-	destroy_texture(*p_wall);
-	free(p_wall);
+	destroy_player(*to_free);
+	free(to_free);
 }

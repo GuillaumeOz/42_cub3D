@@ -6,12 +6,16 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 19:33:03 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/05 22:51:01 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/21 19:03:59 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE3D_PARSING_H
 # define CUBE3D_PARSING_H
+
+bool	set_monster_image(t_game_engine *engine, char *path);
+bool	set_medikit_image(t_game_engine *engine, char *path);
+bool	set_door_image(t_game_engine *engine, char *path);
 
 bool    set_texture_image(t_game_engine *engine, t_direction dir, char *path);
 bool    set_sprite_image(t_game_engine *engine, char *path);

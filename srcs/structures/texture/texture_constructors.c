@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 14:48:15 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/20 14:48:26 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/21 16:19:27 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,16 @@ t_texture			create_texture(char *path)
 	void		*img_tmp;
 
 	result.tex = NULL;
+	result.path = NULL;
 	if (path != NULL)
 	{
-		if (NULL == (img_tmp = mlx_xpm_file_to_image(g_application->mlx_ptr,
-			path, &result.width, &result.height)))
-			error_cub3d_exit(6);
+		if ((img_tmp = mlx_xpm_file_to_image(g_app->mlx_ptr,
+			path, &result.width, &result.height)) == NULL)
+			catch_error(CREATE_TEXTURE_1);
 		result.tex = mlx_get_data_addr(img_tmp, &result.bits_per_pixel,
 										&result.size_line, &result.endian);
+		result.path = ft_strdup(path);
 	}
-	result.path = path;
 	return (result);
 }
 
@@ -36,7 +37,7 @@ t_texture			*malloc_texture(char *path)
 
 	result = (t_texture*)malloc(sizeof(t_texture));
 	if (result == NULL)
-		error_cub3d_exit(2);
+		catch_error(MALLOC_TEXTURE_1);
 	*result = create_texture(path);
 	return (result);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   actorr.c                                            :+:      :+:    :+:   */
+/*   player_constructors.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/19 17:42:38 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/20 17:02:00 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/04/21 11:10:26 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/04/21 11:14:33 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,11 @@ t_player	*malloc_player(t_vector2 p_pos, t_direction p_dir, float p_step)
 	return (result);
 }
 
-void		destroy_player(t_player to_destroy)
+void		set_player_status(t_player *hero, t_map *map)
 {
-	(void)to_destroy;
-}
-
-void		free_player(t_player *to_free)
-{
-	destroy_player(*to_free);
-	free(to_free);
+	(void)map;
+	hero->size = 10;
+	hero->radius *= hero->size;
+	hero->pos.x = (hero->pos.x * hero->size) - (hero->size / 2);
+	hero->pos.y = (hero->pos.y * hero->size) + (hero->size / 2);
 }

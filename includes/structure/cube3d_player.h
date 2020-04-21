@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:23:32 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/20 17:05:47 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/21 13:26:20 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,5 @@ void		destroy_player(t_player to_destroy);
 void		free_player(t_player *to_free);
 
 t_player	reset_player(int p_hp);
-void		player_hitbox(t_map *map, t_vector2 *pos, t_vector2 mov, float speed);
-
 
 #endif

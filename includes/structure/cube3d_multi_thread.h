@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 19:00:33 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/14 19:02:43 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/20 18:09:32 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 typedef struct			s_multithread_struct
 {
 	int					index;
-	t_actor 			*hero;
+	t_player 			*hero;
 	t_map				*map;
 	t_vector2			*lst;
 	int					num_pixel;
 	int					nb_to_draw;
 }						t_multithread_struct;
 
-t_multithread_struct	create_multithread_struct(t_actor *p_hero,
+t_multithread_struct	create_multithread_struct(t_player *p_hero,
 						t_map *p_map, t_vector2 *p_lst);
 
 void					set_multithread_struct_value(t_multithread_struct *obj,

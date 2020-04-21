@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 13:11:21 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/20 17:16:54 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/20 18:59:20 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ typedef struct	s_image
 	t_vector2	size;
 	void		*img_ptr;
 	char		*pixels;
-	int			**tex_tab;
 	int			bits_per_pixels;
 	int			size_line;
 	int			endian;
