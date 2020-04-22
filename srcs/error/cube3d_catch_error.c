@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:06:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/21 15:32:40 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/22 15:09:31 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ t_error	g_cube3d_catch_error[] =
 
 	{ PARSE_RESOLUTION_1, "Error\nBad number of arguments for resolution" },
 	{ PARSE_RESOLUTION_2, "Error\nArguments invalid for resolution" },
-	{ PARSE_RESOLUTION_3, "Error\nThe Resolution is incorrect" },
 	{ PARSE_ENVIRONEMENT_COLOR_1, "Error\nA descriptor line is incorrect" },
 	{ PARSE_ENVIRONEMENT_COLOR_2, "Error\nA descriptor line is incorrect" },
 	{ MALLOC_MAP_1, "Error\n Can't malloc a t_map" },
@@ -48,7 +47,7 @@ t_error	g_cube3d_catch_error[] =
 	{ FLOOD_FILL_2, "Error\nThe map is invalid" },
 	{ MALLOC_TILE_TAB_1, "Error\n Can't malloc a t_tile **" },
 	{ MALLOC_TILE_TAB_2, "Error\n Can't malloc a t_tile *" },
-	{ CREATE_MAP_1, "Error\n Multiple player on the map" },
+	{ CREATE_MAP_2, "Error\n Multiple player on the map" },
 	{ MALLOC_RAY_1, "Error\n Ray struct can't be malloc"},
 	{ MALLOC_SPRITES_1, "Error\n Sprite struct can't be malloc"},
 	{ MALLOC_TEXTURE_1, "Error\n Texture struct can't be malloc" },

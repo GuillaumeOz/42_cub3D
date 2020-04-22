@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 19:33:03 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/21 19:03:59 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/22 15:05:54 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ bool    set_sprite_image(t_game_engine *engine, char *path);
 bool    set_color_type(t_game_engine *engine, int type, char *content);
 
 bool    parse_resolution(char *descriptor, char *content, t_vector2 *resolution);
+void	resize_resolution(t_vector2 *resolution);
 bool    parse_environement_color(t_game_engine *engine, char *descriptor, char *content);
 bool    parse_environement_texture(t_game_engine *engine, char *descriptor, char *content);
 bool    is_engine_full(t_game_engine *engine);

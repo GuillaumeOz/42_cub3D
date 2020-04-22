@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:09:39 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/21 15:32:10 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/22 15:09:38 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,10 @@ enum	e_cube3d_error
 	SET_DOOR_IMAGE_1,
 	SET_MEDIKIT_IMAGE_1,
 	SET_MONSTER_IMAGE_1,
-	
-	
+
+
 	PARSE_RESOLUTION_1,
 	PARSE_RESOLUTION_2,
-	PARSE_RESOLUTION_3,
 	PARSE_ENVIRONEMENT_COLOR_1,
 	PARSE_ENVIRONEMENT_COLOR_2,
 	MALLOC_MAP_1,
@@ -56,7 +55,7 @@ enum	e_cube3d_error
 	FLOOD_FILL_2,
 	MALLOC_TILE_TAB_1,
 	MALLOC_TILE_TAB_2,
-	CREATE_MAP_1,
+	CREATE_MAP_2,
 	MALLOC_RAY_1,
 	MALLOC_SPRITES_1,
 	MALLOC_TEXTURE_1,

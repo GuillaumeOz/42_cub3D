@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:38:57 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/21 16:20:59 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/22 16:03:54 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,34 @@ bool parse_resolution(char *descriptor, char *content, t_vector2 *resolution)
 				catch_error(PARSE_RESOLUTION_2);
 			i++;
 		}
-		if (ft_atoi(tab[0]) < 0 || ft_atoi(tab[1]) < 0 || 
-			ft_atoi(tab[0]) > 2560 || ft_atoi(tab[1]) > 1440)//change this part
-			catch_error(PARSE_RESOLUTION_3);
 		*resolution = create_vector2(ft_atoi(tab[0]), ft_atoi(tab[1]));
+		resize_resolution(resolution);
 		ft_tab_free(tab);
 		return (true);
 	}
 	else
 		return (false);
+}
+
+t_vector2		get_resolution(char *line)
+{
+	t_vector2	resolution;
+	int			len;
+	int			x_value;
+	int			y_value;
+
+	x_value = ft_atoi(line + 1);
+	len = 1;
+	while (line[2 + len] == ' ')
+		len++;
+	len += ft_int_len(x_value);
+	y_value = ft_atoi(line + len + 1);
+	y_value = (y_value > 1440) ? 1440 : y_value;
+	y_value = (y_value < 1) ? 1 : y_value;
+	x_value = (x_value > 2560) ? 2560 : x_value;
+	x_value = (x_value < 1) ? 1 : x_value;
+	resolution = create_vector2(x_value, y_value);
+	return (resolution);
 }
 
 bool parse_environement_color(t_game_engine *engine, char *descriptor, char *content)
@@ -90,9 +109,11 @@ bool parse_environement_texture(t_game_engine *engine, char *descriptor, char *c
 
 bool is_engine_full(t_game_engine *engine)
 {
-	if (engine->texture[0] == NULL || engine->texture[1] == NULL ||
+	if (engine->resolution.x == 0 || engine->resolution.y == 0 || 
+		engine->texture[0] == NULL || engine->texture[1] == NULL ||
 		engine->texture[2] == NULL || engine->texture[3] == NULL ||
-		engine->ceiling == NULL || engine->floor == NULL)
+		engine->ceiling == NULL || engine->floor == NULL ||
+		engine->sprite == NULL)
 		return (false);
 	return (true);
 }

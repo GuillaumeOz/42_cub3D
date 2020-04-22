@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:38:12 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/21 17:24:19 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/22 16:03:16 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_game_engine	create_game_engine(void)
 	result.texture = (t_texture **)malloc(sizeof(t_texture*) * 4);
 	if (result.texture == NULL)
 		catch_error(CREATE_GAME_ENGINE_2);
-	result.sprite = malloc_texture(NULL);
+	result.sprite = NULL;
 	result.door = create_texture(NULL);
 	result.ceiling = NULL;
 	result.floor = NULL;
@@ -50,18 +50,27 @@ t_game_engine	create_game_engine(void)
 
 void 			destroy_game_engine(t_game_engine to_destroy)
 {
-	free_image(to_destroy.texture[0]);
-	free_image(to_destroy.texture[1]);
-	free_image(to_destroy.texture[2]);
-	free_image(to_destroy.texture[3]);
-	free_image(to_destroy.sprite);
+	free_texture(to_destroy.texture[0]);
+	free_texture(to_destroy.texture[1]);
+	free_texture(to_destroy.texture[2]);
+	free_texture(to_destroy.texture[3]);
+	free_texture(to_destroy.sprite);
+	destroy_texture(to_destroy.door);
+	destroy_texture(to_destroy.level_tex);
 	free_color(to_destroy.ceiling);
 	free_color(to_destroy.floor);
 	free_tile(to_destroy.empty_tile);
 	free_tile(to_destroy.wall_tile);
+	free_tile(to_destroy.sprite_tile);
+	free_tile(to_destroy.door_tile);
+	free_tile(to_destroy.level_tile);
+	free_tile(to_destroy.medikit_tile);
+	free_tile(to_destroy.monster_tile);
 	free_list(to_destroy.map_content, free);
 	free_map(to_destroy.map);
-	free_actor(to_destroy.player);
+	free_player(to_destroy.player);
+	destroy_monster(to_destroy.monster);
+	destroy_medikit(to_destroy.medikit);
 	free(to_destroy.comp);
 	free(to_destroy.valid);
 }

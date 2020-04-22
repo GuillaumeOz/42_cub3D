@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:41:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/21 19:05:28 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/22 16:03:19 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void		check_save(t_game_engine *engine, char *save_arg)
 {
-	if (ft_strcmp(save_arg, "-save") == 0)
+	if (ft_strcmp(save_arg, "--save") == 0)
 		engine->save = true;
 	else
 		catch_error(CHECK_SAVE_1);
@@ -22,12 +22,17 @@ static void		check_save(t_game_engine *engine, char *save_arg)
 
 static void	set_empty_wall_tile(t_game_engine *engine)
 {
-	engine->wall_tile = malloc_tile(wall, *(engine->ceiling), *(engine->floor));
+	engine->wall_tile = malloc_tile(*engine, wall);
 	set_tile_texture(engine->wall_tile, north, engine->texture[0]);
 	set_tile_texture(engine->wall_tile, east, engine->texture[1]);
 	set_tile_texture(engine->wall_tile, south, engine->texture[2]);
 	set_tile_texture(engine->wall_tile, west, engine->texture[3]);
-	engine->empty_tile = malloc_tile(empty, *(engine->ceiling), *(engine->floor));
+	engine->empty_tile = malloc_tile(*engine, empty);
+	engine->sprite_tile = malloc_tile(*engine, sprite);
+	engine->door_tile = malloc_tile(*engine, door);
+	engine->level_tile = malloc_tile(*engine, level);
+	engine->medikit_tile = malloc_tile(*engine, medikit);
+	engine->monster_tile = malloc_tile(*engine, monster);
 }
 
 void		check_multimap(t_game_engine *engine, char *name)
@@ -82,10 +87,7 @@ void cube3d_parsing(t_game_engine *engine, int argc, char **argv,
 	check_multimap(engine, argv[1]);
 	fd = open(argv[1], O_RDONLY);
 	parse_game_engine(engine, fd, resolution);
-	engine->resolution = *(resolution);//Protect the resolution max size -> resize
-	PRINTV(engine->resolution.x, engine->resolution.y)
-	exit(0);
-	//check the NULL element of struct
+	engine->resolution = *(resolution);
 	set_empty_wall_tile(engine);
 	parse_map(engine, fd);
 	close(fd);

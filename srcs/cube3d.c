@@ -6,11 +6,17 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:25:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/21 19:51:09 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/22 16:55:34 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
+
+static int		quit(void)
+{
+	exit(0);
+	return (0);
+}
 
 static void		do_save(t_game_engine *engine)
 {
@@ -28,7 +34,7 @@ int main(int argc, char **argv)
 	t_game_engine	engine;
 	t_vector2		resolution;
 
-	if (argc < 2 || argc >= 4)//do the resolution rezize
+	if (argc < 2 || argc >= 4)
 		catch_error(MAIN_1);
 	start_application(600, 600, "Cube3D");
 	engine = create_game_engine();
@@ -37,8 +43,8 @@ int main(int argc, char **argv)
 	do_save(&engine);
 	add_interaction_to_application(&cube3d_key_released_manager, KEYRELEASE, KEYRELEASE, &engine);
 	add_interaction_to_application(&cube3d_key_press_manager, KEYPRESS, KEYPRESSMASK, &engine);
-	application_add_exit_control(DESTROYNOTIFY, &quit);
-	render_funct_application(&draw_map, &engine);
+	add_interaction_exit_control(&quit, DESTROYNOTIFY);//check if we need a maskevent
+	application_update(&update, &engine); // redo all of this part
 
 	return (run_application());
 }

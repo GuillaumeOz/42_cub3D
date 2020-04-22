@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:31:25 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/21 19:04:14 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/22 16:21:11 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ typedef struct  s_map
 {
     t_vector2   size;
     t_tile      ***board;
-	//t_object  ***content; medikit; del this part
-	//t_monster ***monster; del this part ?
 	char		*comp;
 	char		*valid;
 	char		level;
@@ -34,12 +32,18 @@ typedef struct		s_game_engine
 	t_texture		**texture;
 	t_texture		*sprite;
 	t_texture		door;
+	t_texture		level_tex;
 
 	t_color			*ceiling;
 	t_color			*floor;
 
 	t_tile			*empty_tile;
 	t_tile			*wall_tile;
+	t_tile			*sprite_tile;
+	t_tile			*door_tile;
+	t_tile			*level_tile;
+	t_tile			*medikit_tile;
+	t_tile			*monster_tile;
 
 	t_list			*map_content;
 	t_map			*map;

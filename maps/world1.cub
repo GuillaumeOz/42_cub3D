@@ -5,7 +5,7 @@ WE ./textures/purplestone.xpm
 EA ./textures/purplestone.xpm
 
 D ./textures/purplestone.xpm
-S ./textures/pillar.xpm 1
+S ./textures/pillar.xpm
 M ./textures/alien.xpm ./textures/blood.xpm 15
 H ./textures/medkit.xpm 30
 

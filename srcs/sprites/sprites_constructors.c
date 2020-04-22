@@ -6,13 +6,13 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 20:21:28 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/14 20:22:40 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/22 11:53:43 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-t_sprites		create_sprites(t_ray p_ray, t_vector2 p_pos, char p_type)
+t_sprites	create_sprites(t_ray p_ray, t_vector2 p_pos, t_tile_type p_type)
 {
 	t_sprites result;
 
@@ -22,7 +22,7 @@ t_sprites		create_sprites(t_ray p_ray, t_vector2 p_pos, char p_type)
 	return (result);
 }
 
-t_sprites		*malloc_sprites(t_ray p_ray, t_vector2 p_pos, char p_type)
+t_sprites	*malloc_sprites(t_ray p_ray, t_vector2 p_pos, t_tile_type p_type)
 {
 	t_sprites *result;
 

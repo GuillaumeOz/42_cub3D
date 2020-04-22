@@ -6,11 +6,19 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 15:41:26 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/21 15:32:48 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/22 16:03:28 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
+
+void	resize_resolution(t_vector2 *reso)
+{
+	reso->y = (reso->y > 1440) ? 1440 : reso->y;
+	reso->y = (reso->y < 1) ? 1 : reso->y;
+	reso->x = (reso->x > 2560) ? 2560 : reso->x;
+	reso->x = (reso->x < 1) ? 1 : reso->x;
+}
 
 bool	set_texture_image(t_game_engine *engine, t_direction dir, char *path)
 {
