@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 14:29:58 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/20 16:48:47 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/23 18:43:07 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,24 @@ void		fire_control(int32_t control, void *param)
 
 	en = (t_game_engine*)param;
 	hero = (t_player*)en->player;
-	range = 1;
-	while (range <= 3)
+	(void)control;
+	range = 0;
+	while (++range <= 3)
 	{
 		if (en->map->board[(int)(hero->pos.y + (hero->movement.y * range)) /
 		(int)(hero->size)][(int)(hero->pos.x + (hero->movement.x * range)) /
-		(int)(hero->size)]->type == 'M')
+		(int)(hero->size)]->type == monster)
 		{
 			en->map->board[(int)(hero->pos.y + (hero->movement.y * range)) /
 			(int)(hero->size)][(int)(hero->pos.x + (hero->movement.x *
-			range)) / (int)(hero->size)]->type = 'm';
+			range)) / (int)(hero->size)]->type = dead_monster;
 			break ;
 		}
 		else if (!(ft_ischar(en->map->comp, en->map->board[(int)(hero->pos.y +
 		(hero->movement.y * range)) / (int)(hero->size)]
 		[(int)(hero->pos.x + (hero->movement.x * range)) /
-		(int)(hero->size)]->type == SUCCESS)))//check if there are any probs
+		(int)(hero->size)]->type == SUCCESS)))//check if there are any probs with ischar
 			return ;
-		range++;
 	}
 }
 
@@ -77,21 +77,22 @@ void		interact_control(int32_t control, void* param)
 	engine = (t_game_engine*)param;
 	hero = (t_player*)engine->player;
 	map = (t_map*)engine->map;
+	(void)control;
 	condition_interact(engine, map, hero);
 	if (map->board[(int)(hero->pos.y) / (int)(hero->size)]
-		[(int)(hero->pos.x) / (int)(hero->size)]->type == 'M')
+		[(int)(hero->pos.x) / (int)(hero->size)]->type == monster)
 	{
-		hero->hp -= engine->monster->damage;
+		hero->hp -= engine->monster.damage;
 		map->board[(int)(hero->pos.y) / (int)(hero->size)]
-		[(int)(hero->pos.x) / (int)(hero->size)]->type = 'm';
+		[(int)(hero->pos.x) / (int)(hero->size)]->type = dead_monster;
 	}
 	if (map->board[(int)(hero->pos.y) / (int)(hero->size)]
-		[(int)(hero->pos.x) / (int)(hero->size)]->type == 'H' &&
+		[(int)(hero->pos.x) / (int)(hero->size)]->type == medikit &&
 		hero->hp < 100)
 	{
-		hero->hp += engine->medikit->heal;
+		hero->hp += engine->medikit.heal;
 		map->board[(int)(hero->pos.y) / (int)(hero->size)]
-		[(int)(hero->pos.x) / (int)(hero->size)]->type = '0';
+		[(int)(hero->pos.x) / (int)(hero->size)]->type = empty;
 	}
 }
 

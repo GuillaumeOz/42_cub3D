@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:25:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/22 16:55:34 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/23 14:12:07 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void		do_save(t_game_engine *engine)
 
 int main(int argc, char **argv)
 {
+	void			*param[3];
 	t_game_engine	engine;
 	t_vector2		resolution;
 
@@ -41,10 +42,13 @@ int main(int argc, char **argv)
 	cube3d_parsing(&engine, argc, argv, &resolution);
 	resize_application((int)resolution.x, (int)resolution.y);
 	do_save(&engine);
+	param[0] = engine.map;
+	param[1] = engine.player;
+	param[2] = &engine;
 	add_interaction_to_application(&cube3d_key_released_manager, KEYRELEASE, KEYRELEASE, &engine);
 	add_interaction_to_application(&cube3d_key_press_manager, KEYPRESS, KEYPRESSMASK, &engine);
 	add_interaction_exit_control(&quit, DESTROYNOTIFY);//check if we need a maskevent
-	application_update(&update, &engine); // redo all of this part
+	application_update(&update, &param); // redo all of this part
 
 	return (run_application());
 }

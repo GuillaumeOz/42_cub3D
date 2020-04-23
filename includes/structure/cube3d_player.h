@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:23:32 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/21 13:26:20 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/23 18:24:11 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 # define CUBE3D_PLAYER_H
 
 # define player_speed 1.0f
+
+typedef enum	e_direction
+{
+	east = 0,
+	north = 1,
+	west = 2,
+	south = 3
+}				t_direction;
 
 typedef struct  s_player
 {

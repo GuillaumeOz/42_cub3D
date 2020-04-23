@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:26:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/22 16:06:06 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/23 18:59:17 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <math.h>
 # include <stdint.h>
+# include <pthread.h>
 
 //Linux header
 
@@ -38,25 +39,26 @@
 # include "cube3d_texture.h"
 # include "cube3d_medikit.h"
 # include "cube3d_monster.h"
-# include "cube3d_tile.h"
 # include "cube3d_player.h"
 # include "cube3d_game_engine.h"
+# include "cube3d_tile.h"
 # include "cube3d_map.h"
 # include "cube3d_parsing.h"
 # include "cube3d_cast_ray.h"
-# include "cube3d_draw_map.h"
 # include "cube3d_key_handler.h"
 # include "cube3d_save.h"
+# include "cube3d_update.h"
 # include "cube3d_multi_thread.h"
 # include "cube3d_ray.h"
 # include "cube3d_sprites.h"
 # include "cube3d_draw.h"
+# include "cube3d_calcul_h_infos.h"
+# include "cube3d_block_infos.h"
 
 # define FOV 70.0f
 # define PI 3.14159265
 # define PI2 6.28318530
 # define SIZE 6.0f
-# define NB_THREAD 4
 
 t_application *g_app;
 

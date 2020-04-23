@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 11:48:07 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/22 16:30:40 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/23 15:39:19 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef			int (*t_exit_funct)(void);
 void			start_application(int size_x, int size_y, char *title);
 void			close_application(void);
 
+void			set_pixel(t_vector2 pos, t_color color);
+void			clear_screen(void);
 void			clear_application(t_color color);
 void			application_create_content(void);
 void			resize_application(int size_x, int size_y);

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/15 17:17:15 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/20 19:03:31 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/23 19:08:21 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,21 @@ t_vector2	calc_inter(t_vector2 point1, t_vector2 direction1,
 									t_vector2 point2, t_vector2 direction2);								
 int			type_condition(t_ray info, t_map map, t_sprites **lst_sprite,
 																t_player hero);
-void		draw_column_block(t_draw inf_draw, int type);
+void		draw_column_block(t_draw inf_draw, t_tile_type type);
 void		draw_column_sprite(t_draw inf_draw);
 
 void		draw_column_sprite(t_draw inf_draw);
 void		draw_many_sprite(t_map map, t_sprites **lst_sprite,
 			t_player hero, t_ray info);
+
+void		draw_wall_multi_thread(t_player hero, t_map *map);
+
+void		draw_wall(t_player hero, t_map *map);
+void		put_square(t_map *map, t_vector2 info[3]);
+void		draw_2d_map(t_map *map, t_player *hero);
+void		draw_hud(t_map map);
+void		draw_gun(t_map map, t_player *hero);
+void		draw_health_bar(t_map map, t_player hero);
+void		draw_game_over(t_map map);
 
 #endif

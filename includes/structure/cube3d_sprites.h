@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 19:55:20 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/20 19:18:50 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/23 14:05:41 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,22 @@ typedef struct		s_sprites
 {
 	t_ray				ray;
 	t_vector2			pos;
-	char				type;
+	t_tile_type			type;
 	struct s_sprites	*next;
 }					t_sprites;
+
+// typedef enum e_tile_type
+// {
+// 	empty = 0, 0
+// 	wall = 1, 1
+// 	sprite = 2, 2
+// 	door = 3, 3
+// 	level = 4, 4
+// 	medikit = 5, H
+// 	monster = 6, M
+// 	dead_monster = 7 M dead tex
+
+// }				t_tile_type;
 
 typedef struct	s_sprite_data
 {

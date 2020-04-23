@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 13:11:21 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/20 18:59:20 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/23 16:39:43 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,10 @@ t_image			create_image(int size_x, int size_y);
 void			destroy_image(t_image to_destroy);
 void			free_image(t_image *to_free);
 t_image			*load_image(char *path);
+
+t_image			*malloc_image_from_file(char *path);
+t_image			create_image_from_file(char *path);
+void			destroy_image_from_file(t_image image);
+void			free_image_from_file(t_image *image);
 
 #endif

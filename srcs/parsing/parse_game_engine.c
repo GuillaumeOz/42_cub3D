@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:38:57 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/22 16:03:54 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/23 19:12:59 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_vector2		get_resolution(char *line)
 	len = 1;
 	while (line[2 + len] == ' ')
 		len++;
-	len += ft_int_len(x_value);
+	len += ft_intlen(x_value);
 	y_value = ft_atoi(line + len + 1);
 	y_value = (y_value > 1440) ? 1440 : y_value;
 	y_value = (y_value < 1) ? 1 : y_value;

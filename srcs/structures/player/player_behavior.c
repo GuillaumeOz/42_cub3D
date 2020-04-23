@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/16 19:51:32 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/20 16:44:03 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/23 19:14:49 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ t_player	reset_player(int p_hp)
 
 	corrector = 180;
 	result.pos = create_vector2(0, 0);
-	result.team = ally;
 	result.angle = ((90 * (int)(north)) - corrector);
 	rad = degree_to_radian(result.angle);
 	result.forward = create_vector2(cos(rad), sin(rad));

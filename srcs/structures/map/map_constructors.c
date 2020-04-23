@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 15:12:59 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/22 14:15:21 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/23 19:16:22 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ t_tile ***malloc_tile_tab(t_vector2 size)
 
 static void	create_map_3(t_game_engine *engine, t_map *result, char *line, t_vector2 pos)
 {
+	
 	if (line[(int)pos.x] == 'M')
 		result->board[(int)pos.x][(int)pos.y] = engine->monster_tile;
 }
@@ -74,7 +75,7 @@ static void	create_map_2(t_game_engine *engine, t_map *result, char *line, t_vec
 	else if (line[(int)pos.x] == 'H')
 		result->board[(int)pos.x][(int)pos.y] = engine->medikit_tile;
 	else
-		create_map_2(engine, &result, line, pos);
+		create_map_3(engine, result, line, pos);
 }	
 
 t_map   create_map(t_game_engine *engine, t_vector2 p_size, t_list *p_content)

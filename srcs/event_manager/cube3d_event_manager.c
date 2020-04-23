@@ -1,26 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d_key_manager.c                               :+:      :+:    :+:   */
+/*   cube3d_event_manager.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:18:34 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/20 16:31:29 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/23 18:45:32 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
-
-t_cube3d_key_handler g_cube3d_key_handler [] =
-{
-	{ SPEEDBONUS, &speed_control},
-	{ PLAYERCONTRL, &player_control},
-	{ INTERACTCONTRL, &interact_control},
-	{ CAMERACONTRL, &camera_control},
-	{ FIRECONTRL, &fire_control},
-	{ NOCONTRL, NULL}
-};
 
 static	void	key_loader(int key, t_player *player, int32_t *control,
 	 void *param)
@@ -70,17 +60,12 @@ int			cube3d_key_press_manager(int key, void *param)
 	t_game_engine	*engine;
 	t_player		*player;
 	int32_t			*control;
-	int				i;
 
-	engine = (t_game_engine*)engine;
+	engine = (t_game_engine*)param;
 	player = (t_player*)engine->player;
-	control = (int32_t)engine->player->control;
+	control = (int32_t*)&engine->player->control;
 	control = NOEVENTMASK;
-	i = -1;
 	key_loader(key, player, control, param);
-	while (g_cube3d_key_handler[++i].marker_control != NOCONTRL)
-		if (*control & g_cube3d_key_handler[i].marker_control)
-			g_cube3d_key_handler[i].controler(control, param);
 	return(control != NOEVENTMASK ? true : false);
 }
 
@@ -89,10 +74,10 @@ int cube3d_key_release_manager(int key, void *param)
 	t_game_engine	*engine;
 	int32_t			*control;
 
-	engine = (t_game_engine*)engine;
-	control = (int32_t)engine->player->control;
+	engine = (t_game_engine*)param;
+	control = (int32_t*)&engine->player->control;
 	if (*control & PLAYER_MARKER)
-		player_marker_remover(key, &control);
+		player_marker_remover(key, control);
 	else if (key == LEFT_KEY)
 		*control = (*control ^ LEFT_KEYPRESS) ^ CAMERA_MARKER;
 	else if (key == RIGHT_KEY || key == E_KEY)

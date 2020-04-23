@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:34:27 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/22 12:43:00 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/23 19:14:32 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_tile create_tile(t_game_engine p_engine, t_tile_type p_type)
 	return (result);
 }
 
-t_tile *malloc_tile(t_game_engine *p_engine, t_tile_type p_type)
+t_tile *malloc_tile(t_game_engine p_engine, t_tile_type p_type)
 {
 	t_tile *result;
 

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 14:06:17 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/20 13:00:52 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/23 19:18:15 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	load_map_control(int32_t control, void *param)
 	player->hp = 100;
 	*(player) = reset_player(player->hp);
 	arg = set_level(map);
-	cub3d_get_param(map, arg);
+	cube3d_get_param(map, arg);
 	map->size = g_app->size;
-	cub3d_parse_map(map, player);
+	cube3d_parse_map(map, player);
 	player->size = (int)((map->size.y * 0.33) / (map->size.y));
 	if (player->size > (int)((map->size.x * 0.27) / (map->size.x)))
 		player->size = (int)((map->size.x * 0.27) / (map->size.x));

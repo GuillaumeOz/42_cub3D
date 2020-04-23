@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:10:40 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/20 18:08:28 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/23 18:26:04 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 typedef struct	s_cube3d_key_handler
 {
-	int		marker_control;
-	void	(*controler)(int32_t control, void *param);
+	int32_t		marker_control;
+	void		(*controler)(int32_t control, void *param);
 }				t_cube3d_key_handler;
 
 enum	e_cube3d_control_handler

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:31:25 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/22 16:21:11 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/23 18:19:11 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,32 @@
 
 #define CEILING 0
 #define FLOOR 1
+
+typedef enum e_tile_type
+{
+	empty = 0,
+	wall = 1,
+	sprite = 2,
+	door = 3,
+	level = 4,
+	medikit = 5,
+	monster = 6,
+	dead_monster = 7,
+
+}				t_tile_type;
+
+typedef struct s_tile
+{
+	t_tile_type type;
+	t_texture	sprite;
+	t_texture	door;
+	t_texture	level_tex;
+	t_medikit	medikit;
+	t_monster	monster;
+	t_color		ceiling;
+	t_color		floor;
+	t_texture	**texture;
+}				t_tile;
 
 typedef struct  s_map
 {

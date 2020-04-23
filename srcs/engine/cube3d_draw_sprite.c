@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/16 14:22:27 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/21 13:25:53 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/23 18:15:08 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,14 @@ void			draw_column_sprite(t_draw inf_draw)
 
 	s_inf.act = create_texture(NULL);
 	s_inf.sprite = *(t_sprites*)inf_draw.info;
-	if (s_inf.sprite.type == '2')
-		s_inf.act = inf_draw.map.sprite;
-	else if (s_inf.sprite.type == 'M')
-		s_inf.act = inf_draw.map.monster.life;
-	else if (s_inf.sprite.type == 'm')
-		s_inf.act = inf_draw.map.monster.dead;
-	else if (s_inf.sprite.type == 'H')
-		s_inf.act = inf_draw.map.medikit.tex;
+	if (s_inf.sprite.type == sprite)
+		s_inf.act = inf_draw.map.board[0][0]->sprite;// Fix t_draw struct
+	else if (s_inf.sprite.type == monster)
+		s_inf.act = inf_draw.map.board[0][0]->monster.life;
+	else if (s_inf.sprite.type == dead_monster)
+		s_inf.act = inf_draw.map.board[0][0]->monster.dead;
+	else if (s_inf.sprite.type == medikit)
+		s_inf.act = inf_draw.map.board[0][0]->medikit.tex;
 	s_inf.percent = vector2_distance(s_inf.sprite.ray.pos, s_inf.sprite.pos)
 														/ inf_draw.hero.size;
 	s_inf.column = check_side(inf_draw, s_inf.sprite, s_inf.act, s_inf.percent);
