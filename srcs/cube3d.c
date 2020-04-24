@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:25:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/23 14:12:07 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/24 19:39:23 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ int main(int argc, char **argv)
 	param[0] = engine.map;
 	param[1] = engine.player;
 	param[2] = &engine;
-	add_interaction_to_application(&cube3d_key_released_manager, KEYRELEASE, KEYRELEASE, &engine);
-	add_interaction_to_application(&cube3d_key_press_manager, KEYPRESS, KEYPRESSMASK, &engine);
+	add_interaction_to_application(&cube3d_key_release_manager, KEYRELEASE, KeyReleaseMask, &engine);
+	add_interaction_to_application(&cube3d_key_press_manager, KEYPRESS, KeyPressMask, &engine);
 	add_interaction_exit_control(&quit, DESTROYNOTIFY);//check if we need a maskevent
-	application_update(&update, &param); // redo all of this part
+	application_update(&update, &param);
 
 	return (run_application());
 }

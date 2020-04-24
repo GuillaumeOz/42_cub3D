@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 12:52:21 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/23 19:09:45 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/24 16:28:58 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void		loop_draw_column(t_block_data b_inf, t_draw inf_draw)
 	b_inf.i = b_inf.column;
 	while (b_inf.num + inf_draw.start.y < inf_draw.end.y &&
 		(inf_draw.end.y - b_inf.num >= 0 &&
-		inf_draw.start.y + b_inf.num <= inf_draw.map.size.y))
+		inf_draw.start.y + b_inf.num <= inf_draw.map.resolution.y))
 	{
 		b_inf.pos = create_vector2(inf_draw.start.x, inf_draw.start.y +
 																	b_inf.num);

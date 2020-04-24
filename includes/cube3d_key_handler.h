@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:10:40 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/23 18:26:04 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/24 13:48:56 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ enum	e_cube3d_control_set
 	INTERACT_KEYPRESS = (1<<6)
 };
 
-int		cube3d_key_released_manager(int key, void *param);
+int		cube3d_key_release_manager(int key, void *param);
 int		cube3d_key_press_manager(int key, void *param);
 
 void    speed_control(int32_t control, void* param);

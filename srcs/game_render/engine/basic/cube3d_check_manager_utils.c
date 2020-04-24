@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_check_manager_utils.c                        :+:      :+:    :+:   */
+/*   cube3d_check_manager_utils.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 12:52:36 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/23 12:52:38 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/24 16:27:50 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,12 @@ void			check_ray(t_ray info, t_player hero,
 	pixel_b = (map.resolution.y / 2.0f) + (result / 2.0f);
 	nbr[0] = 0;
 	while (nbr[0] < pixel_h)
-		put_pixel(create_vector2(info.column, nbr[0]++), map.celling_color);
+		put_pixel(g_app->image,
+			create_vector2(info.column, nbr[0]++), map.board[0][0]->ceiling);
 	nbr[0] = pixel_b;
 	while (nbr[0] < map.resolution.y)
-		put_pixel(create_vector2(info.column, nbr[0]++), map.floor_color);
+		put_pixel(g_app->image,
+			create_vector2(info.column, nbr[0]++), map.board[0][0]->floor);
 	set_draw_point(&act, pixel_h, pixel_b, info.column);
 	nbr[1] = type_condition(info, map, lst_sprite, hero);
 	draw_column_block(act, nbr[1]);

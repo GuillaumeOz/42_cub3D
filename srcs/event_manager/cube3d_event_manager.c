@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:18:34 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/23 18:45:32 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/24 18:01:29 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,12 @@ int			cube3d_key_press_manager(int key, void *param)
 {
 	t_game_engine	*engine;
 	t_player		*player;
-	int32_t			*control;
 
 	engine = (t_game_engine*)param;
 	player = (t_player*)engine->player;
-	control = (int32_t*)&engine->player->control;
-	control = NOEVENTMASK;
-	key_loader(key, player, control, param);
-	return(control != NOEVENTMASK ? true : false);
+	player->control = NOEVENTMASK;
+	key_loader(key, player, &(player->control), param);
+	return(player->control != NOEVENTMASK ? true : false);
 }
 
 int cube3d_key_release_manager(int key, void *param)

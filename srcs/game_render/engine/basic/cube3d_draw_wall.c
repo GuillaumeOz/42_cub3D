@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_draw_wall.c                                  :+:      :+:    :+:   */
+/*   cube3d_draw_wall.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 12:52:06 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/23 15:58:36 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/24 16:23:59 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void			*multhread_calcul_height(void *ptr)
 	i = object->nb_to_draw - 1;
 	while (i >= 0)
 	{
-		act_pixel = ((float)object->hero->fov / object->map->size.x) *
+		act_pixel = ((float)object->hero->fov / object->map->resolution.x) *
 														(object->num_pixel + i);
 		info.angle = degree_to_radian((float)object->hero->fov / 2 - act_pixel);
 		info.ray = create_vector2(object->hero->forward.x * cos(info.angle) -
@@ -50,10 +50,10 @@ static t_vector2	*calcul_height(t_player hero, t_map *map)
 	int						i;
 
 	i = 0;
-	lst = (t_vector2*)malloc(sizeof(t_vector2) * map->size.x);//check if we must change x and y
+	lst = malloc(sizeof(t_vector2) * map->resolution.x);//check if we must change x and y
 	if (lst == NULL)
 		return (NULL);
-	nb_to_draw = map->size.x / ((float)1);
+	nb_to_draw = map->resolution.x / ((float)1);
 	object[i] = create_multithread_struct(&hero, map, lst);
 	set_multithread_struct_value(&(object[i]), (int)(i * nb_to_draw),
 		nb_to_draw);

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 12:51:59 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/23 18:45:54 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/24 16:33:55 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void				*multhread_calcul_height(void *ptr)
 	i = object->nb_to_draw - 1;
 	while (i >= 0)
 	{
-		act_pixel = ((float)object->hero->fov / object->map->size.x) *
+		act_pixel = ((float)object->hero->fov / object->map->resolution.x) *
 			(object->num_pixel + i);
 		info.angle = degree_to_radian((float)object->hero->fov /
 			2.0f - act_pixel);
@@ -45,10 +45,10 @@ static t_vector2		*calcul_height(t_player hero, t_map *map)
 {
 	t_calcul_h_data			c_inf;
 
-	c_inf.lst = malloc(sizeof(t_vector2) * map->size.x);
+	c_inf.lst = malloc(sizeof(t_vector2) * map->resolution.x);
 	if (c_inf.lst == NULL)
 		return (NULL);
-	c_inf.nb_to_draw = map->size.x / ((float)NB_THREAD);
+	c_inf.nb_to_draw = map->resolution.x / ((float)NB_THREAD);
 	c_inf.i = 0;
 	while (c_inf.i < NB_THREAD)
 	{

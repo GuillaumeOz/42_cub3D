@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 15:12:59 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/23 19:16:22 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/24 16:55:55 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ t_map   create_map(t_game_engine *engine, t_vector2 p_size, t_list *p_content)
 	result.comp = engine->comp;
 	result.valid = engine->valid;
 	result.level = engine->level;
+	result.resolution = engine->resolution;
 	result.board = malloc_tile_tab(p_size);
 	i = -1;
 	while (++i < result.size.y)

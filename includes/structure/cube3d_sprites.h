@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 19:55:20 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/23 14:05:41 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/24 12:37:33 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ typedef struct	s_sprite_data
 	t_color		dark;
 }				t_sprite_data;
 
-t_sprites	create_sprites(t_ray ray, t_vector2 pos, char p_type);
-t_sprites	*malloc_sprites(t_ray ray, t_vector2 pos, char p_type);
+t_sprites	create_sprites(t_ray ray, t_vector2 pos, t_tile_type p_type);
+t_sprites	*malloc_sprites(t_ray ray, t_vector2 pos, t_tile_type p_type);
 void		destroy_sprites(t_sprites sprites);
 void		free_sprites(t_sprites *sprites);
 void		clear_sprites(t_sprites **sprites);

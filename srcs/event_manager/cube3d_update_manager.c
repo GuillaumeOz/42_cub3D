@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 14:22:58 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/23 18:28:29 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/24 19:42:24 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,11 @@ void		update_player(void *param)
 
 int			update(void *param)
 {
-	t_player	*hero;
-	t_map		*map;
+	t_game_engine	*engine;
+	t_player		*hero;
+	t_map			*map;
 
+	engine = (t_game_engine*)(((void**)param)[2]);
 	hero = (t_player*)(((void**)param)[1]);
 	hero->forward = create_vector2((((int)(hero->size) - 1) * cos(hero->pitch) +
 	hero->pos.x), ((-(int)(hero->size) + 1) * sin(hero->pitch) + hero->pos.y));
@@ -60,19 +62,16 @@ int			update(void *param)
 	hero->forward = create_vector2((((int)(hero->size) - 1) * cos(hero->pitch) +
 	hero->pos.x), ((-(int)(hero->size) + 1) * sin(hero->pitch) + hero->pos.y));
 	clear_screen();
-
-	// if (map->bonus == true)//for the multi_thread bonus
-	// 	draw_wall_multi_thread(*hero, map);
-	// else if (map->bonus == false)
-	// 	draw_wall(*hero, map);
-
-    draw_wall(*hero, map);//any probs with x/y axes ?
+	if (engine->bonus == true)//for the multi_thread bonus
+		draw_wall_multi_thread(*hero, map);
+	else if (engine->bonus == false)
+		draw_wall(*hero, map);//any probs with x/y axes ?
 	draw_gun(*map, hero);//check width and height issues
 	draw_hud(*map);
 	draw_health_bar(*map, *hero);
 	draw_2d_map(map, hero);
 	if (hero->hp <= 0)
 		draw_game_over(*map);
-    render_application();
+	render_application();
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:09:39 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/22 15:09:38 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/24 14:30:35 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,11 @@ enum	e_cube3d_error
 	SET_COLOR_TYPE_2,
 	SET_COLOR_TYPE_3,
 	PARSE_GAME_ENGINE_1,
-	
 	SET_TEXTURE_IMAGE_1,
-	
 	SET_SPRITE_IMAGE_1,
-	
 	SET_DOOR_IMAGE_1,
 	SET_MEDIKIT_IMAGE_1,
 	SET_MONSTER_IMAGE_1,
-
-
 	PARSE_RESOLUTION_1,
 	PARSE_RESOLUTION_2,
 	PARSE_ENVIRONEMENT_COLOR_1,

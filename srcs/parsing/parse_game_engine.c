@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:38:57 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/23 19:12:59 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/24 14:17:03 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,9 @@ bool parse_environement_texture(t_game_engine *engine, char *descriptor, char *c
 		return (false);
 }
 
-bool is_engine_full(t_game_engine *engine)
+bool is_engine_full(t_game_engine *engine, t_vector2 *resolution)
 {
-	if (engine->resolution.x == 0 || engine->resolution.y == 0 || 
+	if (resolution->x == 0 || resolution->y == 0 || 
 		engine->texture[0] == NULL || engine->texture[1] == NULL ||
 		engine->texture[2] == NULL || engine->texture[3] == NULL ||
 		engine->ceiling == NULL || engine->floor == NULL ||
@@ -125,7 +125,7 @@ void parse_game_engine(t_game_engine *engine, int fd, t_vector2 *resolution)
 	size_t	i;
 
 	content = NULL;
-	while (is_engine_full(engine) == false && get_next_line(fd, &content) > 0)
+	while (is_engine_full(engine, resolution) == false && get_next_line(fd, &content) > 0)
 	{
 		descriptor = ft_strcut(&content, ' ');
 		i = 0;

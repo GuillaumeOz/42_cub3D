@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 19:33:03 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/22 15:05:54 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/24 14:17:00 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ bool    parse_resolution(char *descriptor, char *content, t_vector2 *resolution)
 void	resize_resolution(t_vector2 *resolution);
 bool    parse_environement_color(t_game_engine *engine, char *descriptor, char *content);
 bool    parse_environement_texture(t_game_engine *engine, char *descriptor, char *content);
-bool    is_engine_full(t_game_engine *engine);
+bool    is_engine_full(t_game_engine *engine, t_vector2 *resolution);
 void    parse_game_engine(t_game_engine *engine, int fd, t_vector2 *resolution);
 
 void    parse_map(t_game_engine *engine, int fd);

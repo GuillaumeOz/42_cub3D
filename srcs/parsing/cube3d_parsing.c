@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:41:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/23 18:01:10 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/24 17:40:05 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	set_empty_wall_tile(t_game_engine *engine)
 	engine->empty_tile = malloc_tile(*engine, empty);
 	engine->sprite_tile = malloc_tile(*engine, sprite);
 	engine->door_tile = malloc_tile(*engine, door);
+	engine->closed_door_tile = malloc_tile(*engine, closed_door);
 	engine->level_tile = malloc_tile(*engine, level);
 	engine->medikit_tile = malloc_tile(*engine, medikit);
 	engine->monster_tile = malloc_tile(*engine, monster);

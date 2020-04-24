@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:31:25 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/23 18:19:11 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/24 17:35:50 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ typedef enum e_tile_type
 	wall = 1,
 	sprite = 2,
 	door = 3,
-	level = 4,
-	medikit = 5,
-	monster = 6,
-	dead_monster = 7,
+	closed_door = 4,
+	level = 5,
+	medikit = 6,
+	monster = 7,
+	dead_monster = 8,
 
 }				t_tile_type;
 
@@ -44,6 +45,7 @@ typedef struct s_tile
 
 typedef struct  s_map
 {
+	t_vector2	resolution;
     t_vector2   size;
     t_tile      ***board;
 	char		*comp;
@@ -67,6 +69,7 @@ typedef struct		s_game_engine
 	t_tile			*wall_tile;
 	t_tile			*sprite_tile;
 	t_tile			*door_tile;
+	t_tile			*closed_door_tile;
 	t_tile			*level_tile;
 	t_tile			*medikit_tile;
 	t_tile			*monster_tile;
@@ -81,6 +84,7 @@ typedef struct		s_game_engine
 	char			*comp;
 	char			*valid;
 	char			level;
+	bool			bonus;
 	bool			save;
 }					t_game_engine;
 

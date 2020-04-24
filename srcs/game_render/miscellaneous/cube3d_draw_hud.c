@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 12:51:14 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/23 17:32:08 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/24 16:48:34 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	select_pixel(t_image *img, int info[4], t_map map)
 					img->pixels[info[3] + 1],
 					img->pixels[info[3]], 200));
 	}
-	info[3] = (int)((info[1] / map.size.y) * img->size.y) *
+	info[3] = (int)((info[1] / map.resolution.y) * img->size.y) *
 					img->size.x * (img->bits_per_pixels / 8) + info[2];
 	info[1]++;
 }
@@ -37,12 +37,12 @@ void		draw_hud(t_map map)
 		img = malloc_image_from_file("textures/hud.xpm");
 	info[0] = 0;
 	info[1] = 0;
-	while (info[0] < map.size.x)
+	while (info[0] < map.resolution.x)
 	{
-		info[2] = (int)((info[0] / map.size.x) * img->size.x) *
+		info[2] = (int)((info[0] / map.resolution.x) * img->size.x) *
 													(img->bits_per_pixels / 8);
 		info[3] = info[2];
-		while (info[1] < map.size.y)
+		while (info[1] < map.resolution.y)
 		{
 			select_pixel(img, info, map);
 		}

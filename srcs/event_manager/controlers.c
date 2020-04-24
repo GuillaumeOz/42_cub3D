@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 14:29:58 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/23 18:43:07 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/24 18:03:23 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void    camera_control(int32_t control, void* param)
 
 	modifier = (t_game_engine*)param;
 	player = (t_player*)modifier->player;
+	PRINTV(player->forward.x, player->forward.y)
+	exit(0);
 	x = player->forward.x;
 	y = player->forward.y;
 	if (control & LEFT_KEYPRESS)

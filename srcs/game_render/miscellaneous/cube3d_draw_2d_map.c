@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 12:51:51 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/23 19:12:42 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/24 17:47:33 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static void	draw_crop_rectangle(t_vector2 info[3],
 	float range;
 
 	i = 0;
-	range = (map->size.x * 0.08);
-	if (range > map->size.y * 0.08)
-		range = map->size.y * 0.08;
+	range = (map->resolution.x * 0.08);
+	if (range > map->resolution.y * 0.08)
+		range = map->resolution.y * 0.08;
 	while (i < info[1].x)
 	{
 		j = 0;
@@ -43,7 +43,7 @@ void		put_square(t_map *map, t_vector2 info[3])
 	t_vector2	pos;
 	t_vector2	draw_info[3];
 
-	pos = create_vector2(map->size.x * 0.155, map->size.y * 0.83);
+	pos = create_vector2(map->resolution.x * 0.155, map->resolution.y * 0.83);
 	draw_info[0] = info[1];
 	draw_info[1] = info[2];
 	draw_info[2] = pos;
@@ -52,11 +52,11 @@ void		put_square(t_map *map, t_vector2 info[3])
 	else if (map->board[(int)info[0].x][(int)(info[0].y)]->type == sprite)
 		draw_crop_rectangle(draw_info, map, create_color(50, 220, 220, 255));
 	else if (map->board[(int)info[0].x][(int)(info[0].y)]->type == empty ||
-				map->board[(int)info[0].x][(int)(info[0].y)]->type == 
-					dead_monster)
+		map->board[(int)info[0].x][(int)(info[0].y)]->type == dead_monster)
 		draw_crop_rectangle(draw_info, map,
 											create_color(255, 255, 255, 255));
-	else if (map->board[(int)info[0].x][(int)(info[0].y)]->type == door) // || map->board[(int)info[0].x][(int)info[0].x] == 'D')
+	else if (map->board[(int)info[0].x][(int)(info[0].y)]->type == door ||
+		map->board[(int)info[0].x][(int)info[0].y]->type == closed_door)
 		draw_crop_rectangle(draw_info, map,
 											create_color(255, 155, 100, 255));
 	else if (map->board[(int)info[0].x][(int)(info[0].y)]->type == monster)
@@ -86,22 +86,22 @@ void		draw_2d_map(t_map *map, t_player *hero)
 	int				offset_x;
 	int				offset_y;
 
-	offset_x = map->size.x * 0.155 - hero->pos.x;
-	offset_y = map->size.y * 0.83 - hero->pos.y;
+	offset_x = map->resolution.x * 0.155 - hero->pos.x;
+	offset_y = map->resolution.y * 0.83 - hero->pos.y;
 	info[0] = create_vector2(0, 0);
 	info[1] = create_vector2(offset_x, offset_y);
 	info[2] = create_vector2(hero->size - 1, hero->size - 1);
-	while (map->board[(int)info[0].x])
+	while ((int)info[0].y < map->size.y)
 	{
 		info[0].x = 0;
 		info[1].x = offset_x;
-		while (map->board[(int)info[0].x][(int)info[0].x])
+		while ((int)info[0].x < map->size.x)
 		{
 			put_square(map, info);
-			info[1].x = info[1].x + 1 + info[2].x;
+			info[1].y = info[1].y + 1 + info[2].y;
 			info[0].x++;
 		}
-		info[1].y = info[1].y + 1 + info[2].y;
+		info[1].x = info[1].x + 1 + info[2].x;
 		info[0].y++;
 	}
 	draw_player_n_forward(hero, offset_x, offset_y);

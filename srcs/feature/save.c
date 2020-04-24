@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/05 22:21:01 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/06 13:38:34 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/24 13:11:47 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,15 +81,15 @@ int			save_bmp(t_game_engine *engine, t_map *map, t_player *hero)
 	int			filesize;
 	int			file;
 
-	PRINTV(map->size.x, map->size.y);
+	(void)engine;
 	hero->forward = create_vector2((((int)(hero->size) - 1) *
 												cos(hero->pitch) + hero->pos.x),
 				((-(int)(hero->size) + 1) * sin(hero->pitch) + hero->pos.y));
-	draw_map(engine);
-//	draw_gun(*map, hero);
-//	draw_hud(*map);
-//	draw_2d_map(map, hero);
-//	draw_health_bar(*map, *hero);
+	draw_wall(*hero, map);
+	draw_gun(*map, hero);
+	draw_hud(*map);
+	draw_2d_map(map, hero);
+	draw_health_bar(*map, *hero);
 	filesize = 54 + (3 * (int)g_app->size.x *
 						(int)g_app->size.y);
 	file = open("save.bmp", O_WRONLY | O_CREAT | O_TRUNC | O_APPEND, 0644);

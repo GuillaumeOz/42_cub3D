@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_draw_sprite.c                                :+:      :+:    :+:   */
+/*   cube3d_draw_sprite.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 12:52:14 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/23 12:52:16 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/24 16:30:58 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void		loop_draw_sprite(t_sprite_data s_inf, t_draw inf_draw)
 																inf_draw.alpha);
 			s_inf.dark = create_color(0, 0, 0, 255);
 			s_inf.color = fuze_color(s_inf.dark, s_inf.color);
-			put_pixel(s_inf.pos, s_inf.color);
+			put_pixel(g_app->image, s_inf.pos, s_inf.color);
 		}
 		s_inf.num++;
 		s_inf.i = ((int)((s_inf.num / (inf_draw.end.y - inf_draw.start.y)) *
@@ -90,14 +90,14 @@ void			draw_column_sprite(t_draw inf_draw)
 
 	s_inf.act = create_texture(NULL);
 	s_inf.sprite = *(t_sprites*)inf_draw.info;
-	if (s_inf.sprite.type == '2')
-		s_inf.act = inf_draw.map.sprite;
-	else if (s_inf.sprite.type == 'M')
-		s_inf.act = inf_draw.map.monster.life;
-	else if (s_inf.sprite.type == 'm')
-		s_inf.act = inf_draw.map.monster.dead;
-	else if (s_inf.sprite.type == 'H')
-		s_inf.act = inf_draw.map.medikit.tex;
+	if (s_inf.sprite.type == sprite)
+		s_inf.act = inf_draw.map.board[0][0]->sprite;
+	else if (s_inf.sprite.type == monster)
+		s_inf.act = inf_draw.map.board[0][0]->monster.life;
+	else if (s_inf.sprite.type == dead_monster)
+		s_inf.act = inf_draw.map.board[0][0]->monster.dead;
+	else if (s_inf.sprite.type == medikit)
+		s_inf.act = inf_draw.map.board[0][0]->medikit.tex;
 	s_inf.percent = vector2_distance(s_inf.sprite.ray.pos, s_inf.sprite.pos)
 														/ inf_draw.hero.size;
 	s_inf.column = check_side(inf_draw, s_inf.sprite, s_inf.act, s_inf.percent);

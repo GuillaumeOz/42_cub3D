@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:38:12 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/23 18:02:44 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/24 17:46:07 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ t_game_engine	create_game_engine(void)
 	result.medikit = create_medikit(NULL, 0);
 	result.comp = ft_strdup("0DMmH2");
 	result.valid = ft_strdup(" 012SNEW");
+	result.bonus = false;
 	result.save = false;
 	return (result);
 }
@@ -63,6 +64,7 @@ void 			destroy_game_engine(t_game_engine to_destroy)
 	free_tile(to_destroy.wall_tile);
 	free_tile(to_destroy.sprite_tile);
 	free_tile(to_destroy.door_tile);
+	free_tile(to_destroy.closed_door_tile);
 	free_tile(to_destroy.level_tile);
 	free_tile(to_destroy.medikit_tile);
 	free_tile(to_destroy.monster_tile);
