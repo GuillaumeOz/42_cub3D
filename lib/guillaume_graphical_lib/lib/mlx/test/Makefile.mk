@@ -15,7 +15,7 @@ OBJ = $(SRC:.c=.o)
 all	:$(NAME)
 
 $(NAME)	:$(OBJ)
-	$(CC) -o $(NAME) $(OBJ) -L.. -lmlx -L$(INCLIB) -lXext -lX11 -lm
+	$(CC) -o $(NAME) $(OBJ) -L.. -lmlx -L$(INCLIB) -lXext -lX11 -lm -lbsd
 
 clean	:
 	rm -f $(NAME) $(OBJ) *~ core *.core

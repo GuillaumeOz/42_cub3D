@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:26:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/24 12:37:46 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/25 15:03:08 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@
 
 t_application *g_app;
 
-# define debug write(1, "ICI\n", 5)
+# define debug write(1, "ICI\n", 5);
 # define PRINTS(x) printf("%s\n", x);
 # define PRINTC(x) printf("%c\n", x);
 # define PRINTD(x) printf("%d\n", x);

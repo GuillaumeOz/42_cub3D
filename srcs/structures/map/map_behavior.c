@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 14:06:17 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/24 16:54:43 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/25 17:48:37 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void	load_map_control(int32_t control, void *param)
 	t_vector2		resolution;
 	char            *arg;
 
-	engine = (t_game_engine*)param;
-	map = (t_map*)engine->map;
-	player = (t_player*)engine->player;
+	engine = (t_game_engine*)(((void**)param)[2]);
+	player = (t_player*)(((void**)param)[1]);
+	map = (t_map*)(((void**)param)[0]);
 	(void)control;
 	player->hp = 100;
 	*(player) = reset_player(player->hp);

@@ -6,44 +6,56 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/16 19:51:32 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/23 19:14:49 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/25 22:06:59 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-static	bool	hit_player_wall(t_map *map, t_vector2 pos)
+static	bool	hit_player_wall(t_tile_type type)//change this with the type
 {
-	int x;
-	int y;
-
-	x = (int)(pos.x);
-	y = (int)(pos.y);
-	if (map->board[x][y]->type == wall)
+	// empty = 0,
+	// wall = 1, ?
+	// sprite = 2,
+	// door = 3, ?
+	// closed_door = 4, ?
+	// level = 5, ?
+	// medikit = 6,
+	// monster = 7,
+	// dead_monster = 8,
+	// ("0DMmH2")
+	if ( type == empty || type == door || type == monster ||
+	type == dead_monster ||  type == medikit || type == sprite )
 		return (true);
 	return (false);
 }
 
-void			player_hitbox(t_map *map, t_vector2 *pos, t_vector2 mov, float speed)
+void	player_hitbox(t_player *h, t_vector2 mvt, t_map map, int sign)//check sign value
 {
-	float dot;
-	float y;
-	float x;
+	float	post_pos;
+	float	last_pos;
 
-	dot = 0.1f;
-	x = mov.x * speed;
-	while (hit_player_wall(map, create_vector2(pos->x + x - dot, pos->y + dot)) == true ||
-		hit_player_wall(map, create_vector2(pos->x + x + dot, pos->y + dot)) == true ||
-		hit_player_wall(map, create_vector2(pos->x + x - dot, pos->y - dot)) == true ||
-		hit_player_wall(map, create_vector2(pos->x + x + dot, pos->y - dot)) == true)
-			x += x < 0 ? 0.1f: -0.1f;
-	y = mov.y * speed;
-	while (hit_player_wall(map, create_vector2(pos->x - dot, pos->y + y + dot)) == true ||
-		hit_player_wall(map, create_vector2(pos->x + dot, pos->y + y + dot)) == true ||
-		hit_player_wall(map, create_vector2(pos->x - dot, pos->y + y - dot)) == true ||
-		hit_player_wall(map, create_vector2(pos->x + dot, pos->y + y - dot)) == true)
-			y += y < 0 ? 0.1f: -0.1f;
-	*pos = add_vector2_to_vector2(*pos, create_vector2(x, y));
+	post_pos = h->pos.x + (mvt.x * h->speed * sign);//add mov speed bonus L_SHFT
+	last_pos = h->pos.x;
+	if ((hit_player_wall(map.board[(int)((h->pos.y + h->radius) /
+		(h->size))][(int)((post_pos + h->radius) / (h->size))]->type)) &&
+		(hit_player_wall(map.board[(int)((h->pos.y - h->radius) /
+		(h->size))][(int)((post_pos + h->radius) / (h->size))]->type)) &&
+		(hit_player_wall(map.board[(int)((h->pos.y + h->radius) /
+		(h->size))][(int)((post_pos - h->radius) / (h->size))]->type)) &&
+		(hit_player_wall(map.board[(int)((h->pos.y - h->radius) /
+		(h->size))][(int)((post_pos - h->radius) / (h->size))]->type)))
+		h->pos.x += mvt.x * h->speed * sign;
+	post_pos = h->pos.y + (mvt.y * h->speed * sign);
+	if ((hit_player_wall(map.board[(int)((post_pos + h->radius) /
+		(h->size))][(int)((last_pos + h->radius) / (h->size))]->type)) &&
+		(hit_player_wall(map.board[(int)((post_pos - h->radius) /
+		(h->size))][(int)((last_pos + h->radius) / (h->size))]->type)) &&
+		(hit_player_wall(map.board[(int)((post_pos + h->radius) /
+		(h->size))][(int)((last_pos - h->radius) / (h->size))]->type)) &&
+		(hit_player_wall(map.board[(int)((post_pos - h->radius) /
+		(h->size))][(int)((last_pos - h->radius) / (h->size))]->type)))
+		h->pos.y += mvt.y * h->speed * sign;
 }
 
 t_player	reset_player(int p_hp)

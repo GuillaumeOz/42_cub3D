@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 12:52:21 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/24 16:28:58 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/25 13:49:33 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void		loop_draw_column(t_block_data b_inf, t_draw inf_draw)
 		b_inf.pos = create_vector2(inf_draw.start.x, inf_draw.start.y +
 																	b_inf.num);
 		b_inf.color = create_color(b_inf.act.tex[b_inf.i + 2],
-			b_inf.act.tex[b_inf.i + 1], b_inf.act.tex[b_inf.i], inf_draw.alpha);
+			b_inf.act.tex[b_inf.i + 1], b_inf.act.tex[b_inf.i], inf_draw.alpha);//seg fault with the column here
 		put_pixel(g_app->image, b_inf.pos, b_inf.color);
 		b_inf.num++;
 		b_inf.i = ((int)((b_inf.num / (inf_draw.end.y - inf_draw.start.y)) *

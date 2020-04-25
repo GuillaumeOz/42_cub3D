@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 14:29:58 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/24 18:03:23 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/25 22:06:19 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,27 @@
 
 void		fire_control(int32_t control, void *param)
 {
-	t_game_engine	*en;
 	t_player		*hero;
-	int	range;
+	t_map			*map;
+	int				range;
 
-	en = (t_game_engine*)param;
-	hero = (t_player*)en->player;
 	(void)control;
+	hero = (t_player*)(((void**)param)[1]);
+	map = (t_map*)(((void**)param)[0]);
 	range = 0;
+	debug
 	while (++range <= 3)
 	{
-		if (en->map->board[(int)(hero->pos.y + (hero->movement.y * range)) /
+		if (map->board[(int)(hero->pos.y + (hero->movement.y * range)) /
 		(int)(hero->size)][(int)(hero->pos.x + (hero->movement.x * range)) /
 		(int)(hero->size)]->type == monster)
 		{
-			en->map->board[(int)(hero->pos.y + (hero->movement.y * range)) /
+			map->board[(int)(hero->pos.y + (hero->movement.y * range)) /
 			(int)(hero->size)][(int)(hero->pos.x + (hero->movement.x *
 			range)) / (int)(hero->size)]->type = dead_monster;
 			break ;
 		}
-		else if (!(ft_ischar(en->map->comp, en->map->board[(int)(hero->pos.y +
+		else if (!(ft_ischar(map->comp, map->board[(int)(hero->pos.y +
 		(hero->movement.y * range)) / (int)(hero->size)]
 		[(int)(hero->pos.x + (hero->movement.x * range)) /
 		(int)(hero->size)]->type == SUCCESS)))//check if there are any probs with ischar
@@ -43,31 +44,13 @@ void		fire_control(int32_t control, void *param)
 
 void    camera_control(int32_t control, void* param)
 {
-	t_game_engine	*modifier;
-	t_player		*player;
-	float			x;
-	float			y;
+	t_player	*hero;
 
-	modifier = (t_game_engine*)param;
-	player = (t_player*)modifier->player;
-	PRINTV(player->forward.x, player->forward.y)
-	exit(0);
-	x = player->forward.x;
-	y = player->forward.y;
+	hero = (t_player*)(((void**)param)[1]);
 	if (control & LEFT_KEYPRESS)
-	{
-		player->angle -= 10;
-		player->forward.y = x * sin(degree_to_radian(-10)) + y * cos(degree_to_radian(-10));
-		player->forward.x = x * cos(degree_to_radian(-10)) - y * sin(degree_to_radian(-10));
-	}
-	else if (control & RIGHT_KEYPRESS)
-	{
-		player->angle += 10;
-		player->forward.y = x * sin(degree_to_radian(10)) + y * cos(degree_to_radian(10));
-		player->forward.x = x * cos(degree_to_radian(10)) - y * sin(degree_to_radian(10));
-	}
-	player->right.y = player->forward.x;
-	player->right.x = -player->forward.y;
+		hero->pitch += hero->rotation_speed;
+	if (control & RIGHT_KEYPRESS)
+		hero->pitch -= hero->rotation_speed;
 }
 
 void		interact_control(int32_t control, void* param)
@@ -76,10 +59,10 @@ void		interact_control(int32_t control, void* param)
 	t_player		*hero;
 	t_map			*map;
 
-	engine = (t_game_engine*)param;
-	hero = (t_player*)engine->player;
-	map = (t_map*)engine->map;
 	(void)control;
+	engine = (t_game_engine*)(((void**)param)[2]); // CHANGE X AND y ?
+	hero = (t_player*)(((void**)param)[1]);
+	map = (t_map*)(((void**)param)[0]);
 	condition_interact(engine, map, hero);
 	if (map->board[(int)(hero->pos.y) / (int)(hero->size)]
 		[(int)(hero->pos.x) / (int)(hero->size)]->type == monster)
@@ -100,33 +83,27 @@ void		interact_control(int32_t control, void* param)
 
 void    player_control(int32_t control, void *param)
 {
-	t_game_engine	*modifier;
-	t_player		*player;
+	t_player		*hero;
 	t_map			*map;
 
-	modifier = (t_game_engine*)param;
-	player = (t_player*)modifier->player;
-	map = (t_map*)modifier->map;
+	hero = (t_player*)(((void**)param)[1]);
+	map = (t_map*)(((void**)param)[0]);
 	if (control & W_KEYPRESS)
-		player_hitbox(map, &player->pos, player->forward, player->speed);
+		player_hitbox(hero, hero->movement, *map, hero->speed);
 	if (control & A_KEYPRESS)
-		player_hitbox(map, &player->pos, create_vector2(-player->right.x,
-			-player->right.y), player->speed);
+		player_hitbox(hero, hero->last_movement, *map, -hero->speed);
 	if (control & D_KEYPRESS)
-		player_hitbox(map, &player->pos, player->right, player->speed);
+		player_hitbox(hero, hero->movement, *map, -hero->speed);
 	if (control & S_KEYPRESS)
-		player_hitbox(map, &player->pos, create_vector2(-player->forward.x,
-			-player->forward.y), player->speed);
-	player->speed = 1.0f;
+		player_hitbox(hero, hero->last_movement, *map, hero->speed);
+	hero->speed = 1.0f;//speed bonus L_SHFT
 }
 
 void    speed_control(int32_t control, void* param)
 {
-	t_game_engine	*modifier;
-	t_player		*player;
+	t_player		*hero;
 
-	modifier = (t_game_engine*)param;
-	player = (t_player*)modifier->player;
+	hero = (t_player*)(((void**)param)[1]);
 	if (control & BONUS_SPEEDUP_KEYPRESS)
-		player->speed = 1.2f;
+		hero->speed = 1.2f;//change param function
 }

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 13:57:39 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/24 16:15:48 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/25 16:02:09 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ static void flood_fill(t_game_engine *engine, t_list *map, t_vector2 map_size)
 		while (j < map_size.x)
 		{
 			if (line[j] == '0' || line[j] == 'W' || line[j] == 'E' ||
-				line[j] == 'S' || line[j] == 'N')
+				line[j] == 'S' || line[j] == 'N' || line[j] == 'H' ||
+				line[j] == 'M' || line[j] == '3' || line[j] == '4' )
 				if (cross_check(map, map_size, i, j) == true)
 					catch_error(FLOOD_FILL_2);
 			j++;

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 12:51:51 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/24 17:47:33 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/25 19:24:55 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,23 @@ void		put_square(t_map *map, t_vector2 info[3])
 	draw_info[0] = info[1];
 	draw_info[1] = info[2];
 	draw_info[2] = pos;
-	if (map->board[(int)info[0].x][(int)(info[0].y)]->type == wall)
+	if (map->board[(int)info[0].y][(int)(info[0].x)]->type == wall)
 		draw_crop_rectangle(draw_info, map, create_color(0, 0, 155, 255));
-	else if (map->board[(int)info[0].x][(int)(info[0].y)]->type == sprite)
+	else if (map->board[(int)info[0].y][(int)(info[0].x)]->type == sprite)
 		draw_crop_rectangle(draw_info, map, create_color(50, 220, 220, 255));
-	else if (map->board[(int)info[0].x][(int)(info[0].y)]->type == empty ||
-		map->board[(int)info[0].x][(int)(info[0].y)]->type == dead_monster)
+	else if (map->board[(int)info[0].y][(int)(info[0].x)]->type == empty ||
+		map->board[(int)info[0].y][(int)(info[0].x)]->type == dead_monster)
 		draw_crop_rectangle(draw_info, map,
 											create_color(255, 255, 255, 255));
-	else if (map->board[(int)info[0].x][(int)(info[0].y)]->type == door ||
-		map->board[(int)info[0].x][(int)info[0].y]->type == closed_door)
+	else if (map->board[(int)info[0].y][(int)(info[0].x)]->type == door ||
+		map->board[(int)info[0].y][(int)info[0].x]->type == closed_door)
 		draw_crop_rectangle(draw_info, map,
 											create_color(255, 155, 100, 255));
-	else if (map->board[(int)info[0].x][(int)(info[0].y)]->type == monster)
+	else if (map->board[(int)info[0].y][(int)(info[0].x)]->type == monster)
 		draw_crop_rectangle(draw_info, map, create_color(150, 75, 150, 255));
-	else if (map->board[(int)info[0].x][(int)(info[0].y)]->type == medikit)
+	else if (map->board[(int)info[0].y][(int)(info[0].x)]->type == medikit)
 		draw_crop_rectangle(draw_info, map, create_color(0, 255, 0, 255));
-	else if (map->board[(int)info[0].x][(int)(info[0].y)]->type == level)
+	else if (map->board[(int)info[0].y][(int)(info[0].x)]->type == level)
 		draw_crop_rectangle(draw_info, map, create_color(255, 153, 0, 255));
 }
 

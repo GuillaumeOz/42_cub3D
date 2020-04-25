@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 13:39:20 by ldutriez          #+#    #+#             */
-/*   Updated: 2020/04/03 19:56:51 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/25 17:02:16 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 // Linux event mask part
 
 # define KEYPRESSMASK (1L<<0)
+# define KEYRELEASEMASK (1L<<1)
 
 // Linux event mask part
 
@@ -96,8 +97,8 @@
 # define B_KEY 11
 # define C_KEY 8
 # define D_KEY 100
-# define E_KEY 14
-# define F_KEY 3
+# define E_KEY 101
+# define F_KEY 102
 # define G_KEY 5
 # define H_KEY 4
 # define I_KEY 34
@@ -108,7 +109,7 @@
 # define N_KEY 45
 # define O_KEY 31
 # define P_KEY 35
-# define Q_KEY 12
+# define Q_KEY 113
 # define R_KEY 15
 # define S_KEY 115
 # define T_KEY 17
@@ -219,8 +220,8 @@
 # define LOPT_KEY 261
 # define LCMD_KEY 259
 # define LDEL_KEY 51
-# define RTN_KEY 36
-# define RSFT_KEY 258
+# define RTN_KEY 65293
+# define RSFT_KEY 65506
 # define RCTRL_KEY 269
 # define ROPT_KEY 262
 # define RCMD_KEY 260

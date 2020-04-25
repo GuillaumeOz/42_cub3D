@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:25:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/24 19:39:23 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/25 19:43:45 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,25 @@ static void		do_save(t_game_engine *engine)
 int main(int argc, char **argv)
 {
 	void			*param[3];
-	t_game_engine	engine;
+	t_game_engine	*engine;
 	t_vector2		resolution;
 
 	if (argc < 2 || argc >= 4)
 		catch_error(MAIN_1);
 	start_application(600, 600, "Cube3D");
-	engine = create_game_engine();
-	cube3d_parsing(&engine, argc, argv, &resolution);
+	engine = malloc_game_engine();
+	cube3d_parsing(engine, argc, argv, &resolution);
 	resize_application((int)resolution.x, (int)resolution.y);
-	do_save(&engine);
-	param[0] = engine.map;
-	param[1] = engine.player;
-	param[2] = &engine;
-	add_interaction_to_application(&cube3d_key_release_manager, KEYRELEASE, KeyReleaseMask, &engine);
-	add_interaction_to_application(&cube3d_key_press_manager, KEYPRESS, KeyPressMask, &engine);
+	do_save(engine);
+	param[0] = engine->map;
+	param[1] = engine->player;
+	param[2] = engine;
+	//engine->player->control = (engine->player->control | LEFT_KEYPRESS) | CAMERA_MARKER;
+	add_interaction_to_application(&cube3d_key_release_manager, KEYRELEASE, KEYRELEASEMASK, param);
+
+	add_interaction_to_application(&cube3d_key_press_manager, KEYPRESS, KEYPRESSMASK, param);
 	add_interaction_exit_control(&quit, DESTROYNOTIFY);//check if we need a maskevent
-	application_update(&update, &param);
+	application_update(&update, param);
 
 	return (run_application());
 }

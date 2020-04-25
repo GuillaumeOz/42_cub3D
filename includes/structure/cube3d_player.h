@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:23:32 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/24 19:23:59 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/25 21:48:53 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct  s_player
 	float       pitch;
 	float		radius;
 	float       fov;
+	float		move_speed;
+	float		rotation_speed;
 	int			hp;
 	int32_t     control;
 	t_vector2	movement;

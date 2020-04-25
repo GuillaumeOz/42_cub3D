@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:09:39 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/24 14:30:35 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/25 14:15:06 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ enum	e_cube3d_error
 	MALLOC_MAP_1,
 	PARSE_MAP_1,
 	PARSE_MAP_2,
+	MALLOC_PLAYER_1,
 	FLOOD_FILL_1,
 	FLOOD_FILL_2,
 	MALLOC_TILE_TAB_1,
