@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 12:51:51 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/25 19:24:55 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/27 13:11:00 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static void	draw_crop_rectangle(t_vector2 info[3],
 	float range;
 
 	i = 0;
-	range = (map->resolution.x * 0.08);
-	if (range > map->resolution.y * 0.08)
-		range = map->resolution.y * 0.08;
+	range = (map->resolution.x * 0.07);
+	if (range > map->resolution.y * 0.07)
+		range = map->resolution.y * 0.07;
 	while (i < info[1].x)
 	{
 		j = 0;
@@ -98,10 +98,10 @@ void		draw_2d_map(t_map *map, t_player *hero)
 		while ((int)info[0].x < map->size.x)
 		{
 			put_square(map, info);
-			info[1].y = info[1].y + 1 + info[2].y;
+			info[1].x = info[1].x + 1 + info[2].x;
 			info[0].x++;
 		}
-		info[1].x = info[1].x + 1 + info[2].x;
+		info[1].y = info[1].y + 1 + info[2].y;
 		info[0].y++;
 	}
 	draw_player_n_forward(hero, offset_x, offset_y);

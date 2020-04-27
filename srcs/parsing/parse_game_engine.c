@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:38:57 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/25 14:09:29 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/27 18:00:16 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ bool parse_environement_texture(t_game_engine *engine, char *descriptor, char *c
 	else if (ft_strcmp(descriptor, "SO") == 0)
 		return (set_texture_image(engine, south, content + 2));
 	else if (ft_strcmp(descriptor, "S") == 0)
-		return (set_sprite_image(engine, content + 1));//check sprite
+		return (set_sprite_image(engine, content + 1));
 	else if (ft_strcmp(descriptor, "D") == 0)
 		return (set_door_image(engine, content + 1));
 	else if (ft_strcmp(descriptor, "H") == 0)
@@ -113,7 +113,7 @@ bool is_engine_full(t_game_engine *engine, t_vector2 *resolution)
 		engine->texture[0] == NULL || engine->texture[1] == NULL ||
 		engine->texture[2] == NULL || engine->texture[3] == NULL ||
 		engine->ceiling == NULL || engine->floor == NULL ||
-		engine->sprite == NULL)
+		engine->sprite == NULL)//improve for the bonus
 		return (false);
 	return (true);
 }

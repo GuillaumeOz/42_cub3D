@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 15:12:59 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/25 19:23:35 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/27 18:01:52 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,13 @@ static void	create_map_2(t_game_engine *engine, t_map *result, char *line, t_vec
 		if (engine->player != NULL)
 			catch_error(CREATE_MAP_2);
 		if (line[(int)pos.x] == 'W')
-			engine->player = malloc_player(create_vector2(pos.x, pos.y), west, player_speed);
+			engine->player = malloc_player(create_vector2(pos.x, pos.y), west_pitch, player_speed);
 		if (line[(int)pos.x] == 'E')
-			engine->player = malloc_player(create_vector2(pos.x, pos.y), east, player_speed);
+			engine->player = malloc_player(create_vector2(pos.x, pos.y), east_pitch, player_speed);
 		if (line[(int)pos.x] == 'S')
-			engine->player = malloc_player(create_vector2(pos.x, pos.y), south, player_speed);
+			engine->player = malloc_player(create_vector2(pos.x, pos.y), south_pitch, player_speed);
 		if (line[(int)pos.x] == 'N')
-			engine->player = malloc_player(create_vector2(pos.x, pos.y), north, player_speed);
+			engine->player = malloc_player(create_vector2(pos.x, pos.y), north_pitch, player_speed);
 	}
 	else if (line[(int)pos.x] == '3')
 		result->board[(int)pos.y][(int)pos.x] = engine->door_tile;

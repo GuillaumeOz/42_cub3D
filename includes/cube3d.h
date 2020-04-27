@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:26:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/25 15:03:08 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/27 17:36:50 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@
 
 //Linux header
 
+# define FOV 70.0f
+# define PI 3.14159265
+# define PI2 6.28318530
+# define SIZE 6.0f
+
 # include "libft.h"
 # include "ggl.h"
 # include "cube3d_catch_error.h"
@@ -54,11 +59,6 @@
 # include "cube3d_draw.h"
 # include "cube3d_calcul_h_infos.h"
 # include "cube3d_block_infos.h"
-
-# define FOV 70.0f
-# define PI 3.14159265
-# define PI2 6.28318530
-# define SIZE 6.0f
 
 t_application *g_app;
 

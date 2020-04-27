@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:18:34 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/25 19:08:47 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/27 19:20:18 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,14 @@ t_cube3d_key_handler g_cube3d_key_handler [] =
 	{ NOCONTRL, NULL}
 };
 
-// RSFT_KEY
-
 static	void	key_loader(int key, t_player *player, int32_t *control,
 	 void *param)
 {
 	if (key == ESC_KEY)
 		close_application();
-	else if (key == LSFT_KEY)
+	if (key == LSFT_KEY)
 		*control = (*control | BONUS_SPEEDUP_KEYPRESS) | SPEED_MARKER;
-	else if (key == W_KEY)
+	if (key == W_KEY)
 		*control = (*control | W_KEYPRESS) | PLAYER_MARKER;
 	else if (key == A_KEY)
 		*control = (*control | A_KEYPRESS) | PLAYER_MARKER;
@@ -43,7 +41,7 @@ static	void	key_loader(int key, t_player *player, int32_t *control,
 		*control = (*control | LEFT_KEYPRESS) | CAMERA_MARKER;
 	else if (key == RIGHT_KEY)
 		*control = (*control | RIGHT_KEYPRESS) | CAMERA_MARKER;
-	else if ((key == Q_KEY || key == E_KEY) && player->hp > 0)
+	else if ((key == Q_KEY || key == E_KEY) && player->hp > 0)//Some bugs to fix
 		player->hp += key == Q_KEY ? -10 : 10;
 	else if ((key == RSFT_KEY) && player->hp > 0)
 		*control = (*control | FIRE_KEYPRESS) | FIRE_MAKER;
@@ -57,35 +55,37 @@ static void player_marker_remover(int key, int32_t *control)
 {
 	if (key == W_KEY)
 		*control = (*control ^ W_KEYPRESS);
-	else if (key == A_KEY)
+	if (key == A_KEY)
 		*control = (*control ^ A_KEYPRESS);
-	else if (key == S_KEY)
+	if (key == S_KEY)
 		*control = (*control ^ S_KEYPRESS);
-	else if (key == D_KEY)
+	if (key == D_KEY)
 		*control = (*control ^ D_KEYPRESS);
-	else
-		*control = (*control ^ PLAYER_MARKER);
+	*control = (*control ^ PLAYER_MARKER);
 }
 
-int cube3d_key_release_manager(int key, void *param)
+int cube3d_key_release_manager(int key, void *param)//check the releaser, some key are lock
 {
 	t_player		*player;
 	int32_t			*control;
 
 	player = (t_player*)(((void**)param)[1]);
 	control = (int32_t*)((int32_t*)&(player->control));
+	if (key == LSFT_KEY)
+	{
+		*control = (*control ^ BONUS_SPEEDUP_KEYPRESS) ^ SPEED_MARKER;
+		player->bonus_speed = 1.0f;
+	}
 	if (*control & PLAYER_MARKER)
 		player_marker_remover(key, control);
-	else if (key == LEFT_KEY)
+	if (key == LEFT_KEY)
 		*control = (*control ^ LEFT_KEYPRESS) ^ CAMERA_MARKER;
-	else if (key == RIGHT_KEY || key == E_KEY)
+	if (key == RIGHT_KEY)
 		*control = (*control ^ RIGHT_KEYPRESS) ^ CAMERA_MARKER;
-	else if (key == RSFT_KEY)
+	if (key == RSFT_KEY)
 		*control = (*control ^ FIRE_KEYPRESS) ^ FIRE_MAKER;
-	else if (key == F_KEY)
+	if (key == F_KEY)
 		*control = (*control ^ INTERACT_KEYPRESS) ^ INTERACT_MAKER;
-	else if (key == LSFT_KEY)
-		*control = (*control ^ BONUS_SPEEDUP_KEYPRESS) ^ SPEED_MARKER;
 	return(control == NOEVENTMASK ? true : false);
 }
 

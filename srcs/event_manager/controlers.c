@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 14:29:58 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/25 22:06:19 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/27 19:13:14 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void		fire_control(int32_t control, void *param)
 	hero = (t_player*)(((void**)param)[1]);
 	map = (t_map*)(((void**)param)[0]);
 	range = 0;
-	debug
 	while (++range <= 3)
 	{
 		if (map->board[(int)(hero->pos.y + (hero->movement.y * range)) /
@@ -60,7 +59,7 @@ void		interact_control(int32_t control, void* param)
 	t_map			*map;
 
 	(void)control;
-	engine = (t_game_engine*)(((void**)param)[2]); // CHANGE X AND y ?
+	engine = (t_game_engine*)(((void**)param)[2]);
 	hero = (t_player*)(((void**)param)[1]);
 	map = (t_map*)(((void**)param)[0]);
 	condition_interact(engine, map, hero);
@@ -89,14 +88,13 @@ void    player_control(int32_t control, void *param)
 	hero = (t_player*)(((void**)param)[1]);
 	map = (t_map*)(((void**)param)[0]);
 	if (control & W_KEYPRESS)
-		player_hitbox(hero, hero->movement, *map, hero->speed);
+		player_hitbox(hero, hero->movement, *map, 1);
 	if (control & A_KEYPRESS)
-		player_hitbox(hero, hero->last_movement, *map, -hero->speed);
+		player_hitbox(hero, hero->last_movement, *map, -1);
 	if (control & D_KEYPRESS)
-		player_hitbox(hero, hero->movement, *map, -hero->speed);
+		player_hitbox(hero, hero->last_movement, *map, 1);
 	if (control & S_KEYPRESS)
-		player_hitbox(hero, hero->last_movement, *map, hero->speed);
-	hero->speed = 1.0f;//speed bonus L_SHFT
+		player_hitbox(hero, hero->movement, *map, -1);
 }
 
 void    speed_control(int32_t control, void* param)
@@ -105,5 +103,5 @@ void    speed_control(int32_t control, void* param)
 
 	hero = (t_player*)(((void**)param)[1]);
 	if (control & BONUS_SPEEDUP_KEYPRESS)
-		hero->speed = 1.2f;//change param function
+		hero->bonus_speed = 2.5f;
 }

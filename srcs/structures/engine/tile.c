@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:34:27 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/24 17:35:55 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/27 16:57:06 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_tile create_tile(t_game_engine p_engine, t_tile_type p_type)
 	result.type = p_type;
 	result.ceiling = *(p_engine.ceiling);
 	result.floor = *(p_engine.floor);
+	result.sprite = *(p_engine.sprite);
 	result.door = p_engine.door;
 	result.level_tex = p_engine.level_tex;
 	result.medikit = p_engine.medikit;

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 13:52:03 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/11 14:34:13 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/27 12:44:55 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void put_pixel(t_image *image, t_vector2 pos, t_color color)
 	if (pos.x < 0 || pos.x >= image->size.x || pos.y < 0 ||
 		pos.y >= image->size.y)
 		return;
-	pixel_index = (pos.y * image->size.x + pos.x) * 4;
+	pixel_index = convert_2di_1di(pos, g_app->size) * 4;
 	actual = create_color(
 		image->pixels[pixel_index + RED_COMP],
 		image->pixels[pixel_index + GREEN_COMP],

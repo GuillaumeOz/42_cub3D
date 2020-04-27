@@ -6,40 +6,32 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 11:10:26 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/25 20:46:59 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/27 19:18:12 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-t_player	create_player(t_vector2 p_pos, t_direction p_dir, float p_speed)
+t_player	create_player(t_vector2 p_pos, float p_dir, float p_speed)
 {
-	t_player result;
-	float	rad;
-	int		corrector;
+	t_player	result;
 
-	corrector = 180;
-	result.pos = p_pos;
-	result.angle = ((90 * (int)(p_dir)) - corrector);
-	result.movement = create_vector2(0, 0);
-	result.last_movement = create_vector2(0, 0);
-	rad = degree_to_radian(result.angle);
-	result.forward = create_vector2(cos(rad), sin(rad));
-	rad = degree_to_radian(result.angle + 90);
-	result.right = create_vector2(cos(rad), sin(rad));
-	result.speed = p_speed;
+	result.pos = create_vector2(p_pos.x * 2, p_pos.y * 2);//add proportional
 	result.move_speed = 0.2;
 	result.rotation_speed = 0.15;
-	result.size = 10;
-	result.pitch = 0;
+	result.bonus_speed = p_speed;
+	result.movement = create_vector2(0, 0);
+	result.last_movement = create_vector2(0, 0);
+	result.pitch = p_dir;
 	result.radius = 0.2;
-	result.fov = 70;
-	result.control = 0;
+	result.size = 10;
+	result.fov = 80;
 	result.hp = 100;
+	result.control = NOEVENTMASK;
 	return (result);
 }
 
-t_player	*malloc_player(t_vector2 p_pos, t_direction p_dir, float p_step)
+t_player	*malloc_player(t_vector2 p_pos, float p_dir, float p_step)
 {
 	t_player *result;
 
