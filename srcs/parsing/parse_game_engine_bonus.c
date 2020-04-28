@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 13:31:03 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/23 18:02:53 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/28 17:51:04 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,21 @@ bool	set_door_image(t_game_engine *engine, char *path)
 		catch_error(SET_DOOR_IMAGE_1);
 	engine->door = create_texture(ft_strdup(path + i));
 	engine->valid = ft_strprepend(engine->valid, "3", 1 , 0);
+	return (true);
+}
+
+bool	set_level_image(t_game_engine *engine, char *path)
+{
+	int i;
+
+	i = 0;
+	if (engine->level_tex.path != NULL)
+		destroy_texture(engine->level_tex);
+	while (path[i] && path[i] == ' ')
+		i++;
+	if (path[i] == '\0')
+		catch_error(SET_LEVEL_IMAGE_1);
+	engine->level_tex = create_texture(ft_strdup(path + i));
+	engine->valid = ft_strprepend(engine->valid, "4", 1 , 0);
 	return (true);
 }

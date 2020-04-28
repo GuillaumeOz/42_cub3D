@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:31:25 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/27 16:46:41 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/28 17:52:58 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_tile
 	t_tile_type type;
 	t_texture	sprite;
 	t_texture	door;
-	t_texture	level_tex; //add L to .cub
+	t_texture	level_tex;
 	t_medikit	medikit;
 	t_monster	monster;
 	t_color		ceiling;

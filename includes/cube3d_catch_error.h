@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:09:39 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/25 14:15:06 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/28 17:19:26 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ enum	e_cube3d_error
 	SET_TEXTURE_IMAGE_1,
 	SET_SPRITE_IMAGE_1,
 	SET_DOOR_IMAGE_1,
+	SET_LEVEL_IMAGE_1,
 	SET_MEDIKIT_IMAGE_1,
 	SET_MONSTER_IMAGE_1,
 	PARSE_RESOLUTION_1,
@@ -55,7 +56,7 @@ enum	e_cube3d_error
 	MALLOC_RAY_1,
 	MALLOC_SPRITES_1,
 	MALLOC_TEXTURE_1,
-	CREATE_TEXTURE_1
+	CREATE_TEXTURE_1,
 };
 
 void catch_error(int error_msg);

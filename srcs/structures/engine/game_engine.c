@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:38:12 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/27 19:07:50 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/28 18:14:49 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_game_engine	create_game_engine(void)
 		catch_error(CREATE_GAME_ENGINE_2);
 	result.sprite = NULL;
 	result.door = create_texture(NULL);
+	result.level_tex = create_texture(NULL);
 	result.ceiling = NULL;
 	result.floor = NULL;
 	result.empty_tile = NULL;

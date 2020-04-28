@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:38:57 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/27 18:00:16 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/28 17:31:21 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ bool parse_environement_texture(t_game_engine *engine, char *descriptor, char *c
 		return (set_medikit_image(engine, content + 1));
 	else if (ft_strcmp(descriptor, "M") == 0)
 		return (set_monster_image(engine, content + 1));
+	else if (ft_strcmp(descriptor, "L") == 0)
+		return (set_level_image(engine, content + 1));
 	else
 		return (false);
 }

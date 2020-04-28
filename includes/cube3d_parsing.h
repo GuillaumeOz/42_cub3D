@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 19:33:03 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/27 17:56:40 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/28 17:21:49 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 bool	set_monster_image(t_game_engine *engine, char *path);
 bool	set_medikit_image(t_game_engine *engine, char *path);
 bool	set_door_image(t_game_engine *engine, char *path);
+bool    set_level_image(t_game_engine *engine, char *path);
 
 bool    set_texture_image(t_game_engine *engine, t_direction dir, char *path);
 bool    set_sprite_image(t_game_engine *engine, char *path);

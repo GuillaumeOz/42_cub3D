@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:10:40 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/25 21:51:48 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/28 15:52:30 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void    camera_control(int32_t control, void* param);
 void	fire_control(int32_t control, void *param);
 void	load_map_control(int32_t control, void* param);
 
+bool	comp_type_check(char *str, t_tile *tile);
 void	condition_interact(t_game_engine *engine, t_map *map, t_player *hero);
 void	player_hitbox(t_player *hero, t_vector2 mvt, t_map map, int sign);
 

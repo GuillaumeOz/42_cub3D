@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 16:19:23 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/24 17:32:11 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/28 16:53:53 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,25 @@ void	condition_interact(t_game_engine *engine, t_map *map, t_player *hero)
         load_map_control(hero->control, (void*)engine);
 	}
 	hero->control = (hero->control ^ INTERACT_KEYPRESS) ^ INTERACT_MAKER;
+}
+
+bool	comp_type_check(char *str, t_tile *tile)
+{
+	int i;
+
+	i = -1;
+	while(str[++i])
+		if (str[i] == '0' && tile->type == empty)
+			return (true);
+		else if (str[i] == 'D' && tile->type == door)
+			return (true);
+		else if (str[i] == 'M' && tile->type == monster)
+			return (true);
+		else if (str[i] == 'm' && tile->type == dead_monster)
+			return (true);
+		else if (str[i] == 'H' && tile->type == medikit)
+			return (true);
+		else if (str[i] == '2' && tile->type == sprite)
+			return (true);
+	return (false);
 }

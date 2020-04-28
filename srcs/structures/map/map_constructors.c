@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 15:12:59 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/27 18:01:52 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/28 17:52:09 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,8 @@ t_tile ***malloc_tile_tab(t_vector2 size)
 
 static void	create_map_3(t_game_engine *engine, t_map *result, char *line, t_vector2 pos)
 {
-	
 	if (line[(int)pos.x] == 'M')
 		result->board[(int)pos.y][(int)pos.x] = engine->monster_tile;
-	
 }
 
 static void	create_map_2(t_game_engine *engine, t_map *result, char *line, t_vector2 pos)
@@ -57,7 +55,7 @@ static void	create_map_2(t_game_engine *engine, t_map *result, char *line, t_vec
 	else if (line[(int)pos.x] == 'W' || line[(int)pos.x] == 'E' ||
 		line[(int)pos.x] == 'S' || line[(int)pos.x] == 'N')
 	{
-		result->board[(int)pos.y][(int)pos.x] = engine->empty_tile;//create_vector2(jX, iY)  BOARD[Y][X]
+		result->board[(int)pos.y][(int)pos.x] = engine->empty_tile;
 		if (engine->player != NULL)
 			catch_error(CREATE_MAP_2);
 		if (line[(int)pos.x] == 'W')
@@ -77,7 +75,7 @@ static void	create_map_2(t_game_engine *engine, t_map *result, char *line, t_vec
 		result->board[(int)pos.y][(int)pos.x] = engine->medikit_tile;
 	else
 		create_map_3(engine, result, line, pos);
-}	
+}
 
 t_map   create_map(t_game_engine *engine, t_vector2 p_size, t_list *p_content)
 {

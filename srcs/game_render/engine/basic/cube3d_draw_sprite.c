@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 12:52:14 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/27 17:58:09 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/28 18:18:06 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ void			draw_column_sprite(t_draw inf_draw)
 	s_inf.sprite = *(t_sprites*)inf_draw.info;
 	if (s_inf.sprite.type == sprite)
 		s_inf.act = inf_draw.map.board[0][0]->sprite;
+	else if (s_inf.sprite.type == level)
+		s_inf.act = inf_draw.map.board[0][0]->level_tex;
 	else if (s_inf.sprite.type == monster)
 		s_inf.act = inf_draw.map.board[0][0]->monster.life;
 	else if (s_inf.sprite.type == dead_monster)

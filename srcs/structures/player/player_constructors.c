@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 11:10:26 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/27 19:18:12 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/28 17:04:33 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_player	create_player(t_vector2 p_pos, float p_dir, float p_speed)
 {
 	t_player	result;
 
-	result.pos = create_vector2(p_pos.x * 2, p_pos.y * 2);//add proportional
+	result.pos = create_vector2(p_pos.x, p_pos.y);
 	result.move_speed = 0.2;
 	result.rotation_speed = 0.15;
 	result.bonus_speed = p_speed;
@@ -47,6 +47,6 @@ void		set_player_status(t_player *hero, t_map *map)
 	(void)map;
 	hero->size = 10;
 	hero->radius *= hero->size;
-	hero->pos.x = (hero->pos.x * hero->size) - (hero->size / 2);
+	hero->pos.x = (hero->pos.x * hero->size) - (hero->size / 2) + 10;
 	hero->pos.y = (hero->pos.y * hero->size) + (hero->size / 2);
 }

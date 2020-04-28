@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:06:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/25 14:16:19 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/28 17:20:33 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_error	g_cube3d_catch_error[] =
 	{ SET_TEXTURE_IMAGE_1, "Error\nThe Texture argument line is invalid"},
 	{ SET_SPRITE_IMAGE_1, "Error\nThe Sprite argument line is invalid"},
 	{ SET_DOOR_IMAGE_1, "Error\nThe Door argument line is invalid"},
+	{ SET_LEVEL_IMAGE_1, "Error\nThe Level argument line is invalid"},
 	{ SET_MEDIKIT_IMAGE_1, "Error\nThe Medikit argument line is invalid"},
 	{ SET_MONSTER_IMAGE_1, "error\nThe Monster argument line is invalid"},
 	{ PARSE_RESOLUTION_1, "Error\nBad number of arguments for resolution" },

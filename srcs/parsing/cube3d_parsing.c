@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:41:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/24 17:40:05 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/28 17:15:05 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void		check_multimap(t_game_engine *engine, char *name)
 	}
 	if (!(name[j] <= '9' && name[j] >= '0'))
 		return ;
-	engine->valid = ft_strprepend(engine->valid, "4", 1 , 0);
 	engine->level = name[j];
 }
 
@@ -91,5 +90,6 @@ void cube3d_parsing(t_game_engine *engine, int argc, char **argv,
 	engine->resolution = *(resolution);
 	set_empty_wall_tile(engine);
 	parse_map(engine, fd);
+	set_player_status(engine->player, engine->map);
 	close(fd);
 }

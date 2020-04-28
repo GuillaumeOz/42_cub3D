@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 14:29:58 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/27 19:13:14 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/28 16:56:31 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void		fire_control(int32_t control, void *param)
 			range)) / (int)(hero->size)]->type = dead_monster;
 			break ;
 		}
-		else if (!(ft_ischar(map->comp, map->board[(int)(hero->pos.y +
+		else if ((comp_type_check(map->comp, map->board[(int)(hero->pos.y +
 		(hero->movement.y * range)) / (int)(hero->size)]
 		[(int)(hero->pos.x + (hero->movement.x * range)) /
-		(int)(hero->size)]->type == SUCCESS)))//check if there are any probs with ischar
+		(int)(hero->size)]) == false))
 			return ;
 	}
 }
@@ -44,12 +44,13 @@ void		fire_control(int32_t control, void *param)
 void    camera_control(int32_t control, void* param)
 {
 	t_player	*hero;
-
+	
 	hero = (t_player*)(((void**)param)[1]);
 	if (control & LEFT_KEYPRESS)
 		hero->pitch += hero->rotation_speed;
 	if (control & RIGHT_KEYPRESS)
 		hero->pitch -= hero->rotation_speed;
+	control = (control ^ CAMERA_MARKER);
 }
 
 void		interact_control(int32_t control, void* param)
@@ -78,6 +79,7 @@ void		interact_control(int32_t control, void* param)
 		map->board[(int)(hero->pos.y) / (int)(hero->size)]
 		[(int)(hero->pos.x) / (int)(hero->size)]->type = empty;
 	}
+	hero->control = (hero->control ^ INTERACT_KEYPRESS) ^ INTERACT_MAKER;
 }
 
 void    player_control(int32_t control, void *param)

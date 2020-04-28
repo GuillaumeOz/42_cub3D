@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/16 19:51:32 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/27 19:12:05 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/28 16:30:04 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static	bool	hit_player_wall(t_tile_type type)//change this with the type
 	// monster = 7,
 	// dead_monster = 8,
 	// ("0DMmH2")
-	if ( type == empty || type == door || type == monster ||
-	type == dead_monster ||  type == medikit || type == sprite )//check the hitbox elements
+	if ( type == empty || type == dead_monster ||  type == medikit ||
+	type == closed_door)//check the hitbox elements
 		return (true);
 	return (false);
 }

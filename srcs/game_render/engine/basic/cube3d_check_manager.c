@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 12:52:28 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/25 19:36:27 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/28 18:53:52 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ static int			condition5(t_ray info, t_map map, t_sprites **lst_sprite,
 		position = create_vector2((x + 0.5) * hero.size, (y + 0.5) * hero.size);
 		info.pos = calc_inter(hero.pos, info.ray, position, hero.right);
 		if (vector2_distance(info.pos, position) > hero.size / 2)
-			return (0);
+			return (empty);
 		new = malloc_sprites(info, position, sprite);
 		new->next = *lst_sprite;
 		*lst_sprite = new;
-		return (0);
+		return (empty);
 	}
 	else if (map.board[y][x]->type == door)
-		return (3);
+		return (door);
 	else if (map.board[y][x]->type == level)
-		return (4);
-	return (0);
+		return (level);
+	return (empty);
 }
 
 static int			condition4(t_ray info, t_map map, t_sprites **lst_sprite,
@@ -53,15 +53,15 @@ static int			condition4(t_ray info, t_map map, t_sprites **lst_sprite,
 		position = create_vector2((x + 0.5) * hero.size, (y + 0.5) * hero.size);
 		info.pos = calc_inter(hero.pos, info.ray, position, hero.right);
 		if (vector2_distance(info.pos, position) > hero.size / 2)
-			return (0);
+			return (empty);
 		new = malloc_sprites(info, position, monster);
 		new->next = *lst_sprite;
 		*lst_sprite = new;
-		return (0);
+		return (empty);
 	}
 	else
 		return (condition5(info, map, lst_sprite, hero));
-	return (0);
+	return (empty);
 }
 
 static int			condition3(t_ray info, t_map map, t_sprites **lst_sprite,
@@ -78,15 +78,15 @@ static int			condition3(t_ray info, t_map map, t_sprites **lst_sprite,
 		position = create_vector2((x + 0.5) * hero.size, (y + 0.5) * hero.size);
 		info.pos = calc_inter(hero.pos, info.ray, position, hero.right);
 		if (vector2_distance(info.pos, position) > hero.size / 2)
-			return (0);
+			return (empty);
 		new = malloc_sprites(info, position, medikit);
 		new->next = *lst_sprite;
 		*lst_sprite = new;
-		return (0);
+		return (empty);
 	}
 	else
 		return (condition4(info, map, lst_sprite, hero));
-	return (0);
+	return (empty);
 }
 
 static int			condition2(t_ray info, t_map map, t_sprites **lst_sprite,
@@ -103,15 +103,15 @@ static int			condition2(t_ray info, t_map map, t_sprites **lst_sprite,
 		position = create_vector2((x + 0.5) * hero.size, (y + 0.5) * hero.size);
 		info.pos = calc_inter(hero.pos, info.ray, position, hero.right);
 		if (vector2_distance(info.pos, position) > hero.size / 2)
-			return (0);
+			return (empty);
 		new = malloc_sprites(info, position, dead_monster);
 		new->next = *lst_sprite;
 		*lst_sprite = new;
-		return (0);
+		return (empty);
 	}
 	else
 		return (condition3(info, map, lst_sprite, hero));
-	return (0);
+	return (empty);
 }
 
 int					type_condition(t_ray info, t_map map,
@@ -122,8 +122,8 @@ int					type_condition(t_ray info, t_map map,
 
 	type_initializer(&x, &y, info, hero);
 	if (map.board[y][x]->type == wall)
-		return (1);
+		return (wall);
 	else
 		return (condition2(info, map, lst_sprite, hero));
-	return (0);
+	return (empty);
 }

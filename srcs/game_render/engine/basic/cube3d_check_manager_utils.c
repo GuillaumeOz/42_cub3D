@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 12:52:36 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/27 16:50:24 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/28 18:52:56 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void			check_ray(t_ray info, t_player hero,
 	float		pixel_h;
 	float		result;
 	int			nbr[2];
-
+	
 	act = create_draw(map, hero, &info, 0);
 	result = vector2_distance(hero.pos, info.pos);
 	result *= cos(info.angle * 0.95);
