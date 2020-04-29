@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:38:12 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/28 18:14:49 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/29 16:13:43 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ t_game_engine	create_game_engine(void)
 
 void 			destroy_game_engine(t_game_engine to_destroy)
 {
+	destroy_vector2(to_destroy.resolution);
 	free_texture(to_destroy.texture[0]);
 	free_texture(to_destroy.texture[1]);
 	free_texture(to_destroy.texture[2]);

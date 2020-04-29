@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:41:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/28 17:15:05 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/29 17:00:58 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,13 @@ static void check_mapname(char *map_name)
 	int i;
 
 	i = 0;
-	while (map_name[i] && map_name[i] != '.')
+	while (map_name[i])
 		i++;
-	if (map_name[i] == '\0')
+	if (i < 5)
 		catch_error(CHECK_MAPNAME_1);
-	if (map_name[i] == '.')
-		if ((ft_strcmp(map_name + i, ".cub")) != 0)
-			catch_error(CHECK_MAPNAME_1);
+	i -= 4;
+	if ((ft_strcmp(map_name + i, ".cub")) != 0)
+		catch_error(CHECK_MAPNAME_1);
 }
 
 void cube3d_parsing(t_game_engine *engine, int argc, char **argv,
@@ -86,6 +86,8 @@ void cube3d_parsing(t_game_engine *engine, int argc, char **argv,
 	check_mapname(argv[1]);
 	check_multimap(engine, argv[1]);
 	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+		catch_error(CUBE3D_PARSING_1);
 	parse_game_engine(engine, fd, resolution);
 	engine->resolution = *(resolution);
 	set_empty_wall_tile(engine);

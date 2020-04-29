@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 14:29:58 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/28 16:56:31 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/29 19:41:54 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ void		interact_control(int32_t control, void* param)
 	t_map			*map;
 
 	(void)control;
+	condition_interact(param, engine, map, hero);//redo this part
 	engine = (t_game_engine*)(((void**)param)[2]);
 	hero = (t_player*)(((void**)param)[1]);
 	map = (t_map*)(((void**)param)[0]);
-	condition_interact(engine, map, hero);
 	if (map->board[(int)(hero->pos.y) / (int)(hero->size)]
 		[(int)(hero->pos.x) / (int)(hero->size)]->type == monster)
 	{

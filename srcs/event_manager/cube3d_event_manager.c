@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:18:34 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/28 19:36:06 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/29 19:36:44 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,11 @@ static	void	player_marker_loader(int key, int32_t *control)
 
 int			cube3d_key_press_manager(int key, void *param)
 {
+	t_game_engine   *engine;
 	t_player		*player;
 	int32_t			*control;
 
+	engine = (t_game_engine*)(((void**)param)[2]);
 	player = (t_player*)(((void**)param)[1]);
 	control = (int32_t*)((int32_t*)&(player->control));
 	if (key == ESC_KEY)
@@ -93,7 +95,7 @@ int			cube3d_key_press_manager(int key, void *param)
 	else if ((key == RSFT_KEY) && player->hp > 0)
 		*control = (*control | FIRE_KEYPRESS) | FIRE_MAKER;
 	else if (key == RTN_KEY && player->hp <= 0)
-		load_map_control(*control, param);
+		load_map_control(&engine, &player, &(engine->map));
 	else if (key == F_KEY && !(*control & INTERACT_MAKER))
 		*control = (*control | INTERACT_KEYPRESS) | INTERACT_MAKER;
 	return(player->control != NOEVENTMASK ? true : false);
@@ -124,6 +126,82 @@ void		update_player(void *param)
 	}
 }
 
+// static void test_put_pixel(t_image *image, t_vector2 pos, t_color color)
+// {
+// 	t_color actual;
+// 	t_color tmp;
+// 	int pixel_index;
+
+// 	if (pos.x < 0 || pos.x >= image->size.x || pos.y < 0 ||
+// 		pos.y >= image->size.y)
+// 		return;
+// 	pixel_index = convert_2di_1di(pos, g_app->size) * 4;
+// 	actual = create_color(
+// 		image->pixels[pixel_index + RED_COMP],
+// 		image->pixels[pixel_index + GREEN_COMP],
+// 		image->pixels[pixel_index + BLUE_COMP],
+// 		255
+// 	);
+// 	tmp = fuze_color(actual, color);
+// 	image->pixels[pixel_index + RED_COMP] = tmp.r;
+// 	image->pixels[pixel_index + GREEN_COMP] = tmp.g;
+// 	image->pixels[pixel_index + BLUE_COMP] = tmp.b;
+// }
+
+static void			test_set_pixel(t_vector2 pos, t_color color)
+{
+	int pixel_index;
+
+	if (pos.x < 0 || pos.x >= g_app->size.x || pos.y < 0 ||
+												pos.y >= g_app->size.y)
+		return ;
+	
+	pixel_index = ((int)(pos.x) + ((int)(pos.y) * (int)(g_app->size.x))) * 4;
+	g_app->image->pixels[pixel_index + RED_COMP] = color.r;
+	g_app->image->pixels[pixel_index + GREEN_COMP] = color.g;
+	g_app->image->pixels[pixel_index + BLUE_COMP] = color.b;
+	g_app->image->pixels[pixel_index + ALPHA_COMP] = color.a;
+}
+
+static void	test_clear()
+{
+	t_vector2	pos;
+	t_color		color;
+
+	pos = create_vector2(0, 0);
+	color = create_color(0, 0, 0, 255);
+	// mlx_clear_window(g_app->mlx_ptr, g_app->win_ptr);
+	while (pos.x < (size_t)g_app->size.x)
+	{
+		pos.y = 0;
+		while (pos.y < (size_t)g_app->size.y)
+		{
+			test_set_pixel(pos, color);
+			pos.y++;
+		}
+		pos.x++;
+	}
+}
+
+// static void	test_clear1()
+// {
+// 	size_t i;
+// 	size_t j;
+
+// 	mlx_clear_window(g_app->mlx_ptr, g_app->win_ptr);
+// 	i = 0;
+// 	while (i < g_app->size.x)
+// 	{
+// 		j = 0;
+// 		while (j < g_app->size.y)
+// 		{
+// 			test_put_pixel(g_app->image, create_vector2(i, j), create_color(0, 0, 0, 255));
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }
+
 int			update(void *param)
 {
 	t_game_engine	*engine;
@@ -132,13 +210,22 @@ int			update(void *param)
 
 	engine = (t_game_engine*)(((void**)param)[2]);
 	hero = (t_player*)(((void**)param)[1]);
+	map = (t_map*)(((void**)param)[0]);
 	hero->forward = create_vector2((((int)(hero->size) - 1) * cos(hero->pitch) +
 	hero->pos.x), ((-(int)(hero->size) + 1) * sin(hero->pitch) + hero->pos.y));
-	map = (t_map*)(((void**)param)[0]);
+
+	// clear_screen();
+	// mlx_clear_window(g_app->mlx_ptr, g_app->win_ptr);
+	// clear_application(create_color(0, 0, 0, 0));
+	// clear_application(create_color(0, 0, 0, 255));
+	// mlx_clear_window(g_app->mlx_ptr, g_app->win_ptr);
+	//clear_screen();// fix this funct "Black band bug"
+	test_clear();
 	update_player(param);
 	hero->forward = create_vector2((((int)(hero->size) - 1) * cos(hero->pitch) +
 	hero->pos.x), ((-(int)(hero->size) + 1) * sin(hero->pitch) + hero->pos.y));
-	// clear_screen(); fix this funct "Black band bug"
+
+
 	if (engine->bonus == true)//Do a multithread option in .cub
 		draw_wall_multi_thread(*hero, map);
 	else if (engine->bonus == false)

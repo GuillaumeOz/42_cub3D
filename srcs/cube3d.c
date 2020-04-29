@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:25:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/28 18:02:47 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/29 16:40:05 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,6 @@ int main(int argc, char **argv)
 	param[0] = engine->map;
 	param[1] = engine->player;
 	param[2] = engine;
-	// PRINTS("COMP")//0DMmH2
-	// PRINTS(engine->comp)
-	// PRINTS("VALID")//HM34 012SNEW
-	// PRINTS(engine->valid)
-	// PRINTS(engine->map->board[0][0]->level_tex.path)
-	// PRINTD(engine->map->board[0][0]->level_tex.width)
-	
 	add_interaction_to_application(&cube3d_key_release_manager, KEYRELEASE, KEYRELEASEMASK, param);
 	add_interaction_to_application(&cube3d_key_press_manager, KEYPRESS, KEYPRESSMASK, param);
 	add_interaction_exit_control(&quit, DESTROYNOTIFY);//check if we need a maskevent

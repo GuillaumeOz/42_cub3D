@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:06:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/28 17:20:33 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/29 16:45:19 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ t_error	g_cube3d_catch_error[] =
 	{ MAIN_1, "Error\nWrong number of arguments" },
 	{ CHECK_SAVE_1, "Error\nSecond argument is wrong" },
 	{ DO_SAVE_1, "Error\nError while saving the image"},
+	{ CUBE3D_PARSING_1, "Error\nThe File Descriptor is incorrect"},
 	{ CREATE_GAME_ENGINE_1, "Error\nCan't malloc a t_game_engine" },
 	{ CREATE_GAME_ENGINE_2, "Error\nCan't malloc a t_texture" },
 	{ CREATE_TILE_1, "Error\nCan't malloc a t_texture in tile" },
@@ -49,7 +50,8 @@ t_error	g_cube3d_catch_error[] =
 	{ MALLOC_SPRITES_1, "Error\nSprite struct can't be malloc" },
 	{ MALLOC_TEXTURE_1, "Error\nTexture struct can't be malloc" },
 	{ CREATE_TEXTURE_1, "Error\nMlx XPM to image failed in create texture" },
-	{ ERROR_NOT_FOUND, "The Error has not be catched... Good luck" }
+	{ LOAD_MAP_CONTROL_1, "Error\nThe multimap malloc failed" },
+	{ ERROR_NOT_FOUND, "Error\nThe Error has not be catched... Good luck" }
 };
 
 void catch_error(int error_msg)

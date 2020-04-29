@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:09:39 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/28 17:19:26 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/29 16:45:24 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ enum	e_cube3d_error
 	MAIN_1,
 	CHECK_SAVE_1,
 	DO_SAVE_1,
+	CUBE3D_PARSING_1,
 	CREATE_GAME_ENGINE_1,
 	CREATE_GAME_ENGINE_2,
 	CREATE_TILE_1,
@@ -57,6 +58,7 @@ enum	e_cube3d_error
 	MALLOC_SPRITES_1,
 	MALLOC_TEXTURE_1,
 	CREATE_TEXTURE_1,
+	LOAD_MAP_CONTROL_1,
 };
 
 void catch_error(int error_msg);
