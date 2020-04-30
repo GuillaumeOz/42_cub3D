@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:18:34 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/29 19:36:44 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/30 20:17:00 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,9 @@ static	void	player_marker_loader(int key, int32_t *control)
 
 int			cube3d_key_press_manager(int key, void *param)
 {
-	t_game_engine   *engine;
 	t_player		*player;
 	int32_t			*control;
 
-	engine = (t_game_engine*)(((void**)param)[2]);
 	player = (t_player*)(((void**)param)[1]);
 	control = (int32_t*)((int32_t*)&(player->control));
 	if (key == ESC_KEY)
@@ -95,7 +93,7 @@ int			cube3d_key_press_manager(int key, void *param)
 	else if ((key == RSFT_KEY) && player->hp > 0)
 		*control = (*control | FIRE_KEYPRESS) | FIRE_MAKER;
 	else if (key == RTN_KEY && player->hp <= 0)
-		load_map_control(&engine, &player, &(engine->map));
+		*control = (*control | WORLD_RESTART_MARKER);
 	else if (key == F_KEY && !(*control & INTERACT_MAKER))
 		*control = (*control | INTERACT_KEYPRESS) | INTERACT_MAKER;
 	return(player->control != NOEVENTMASK ? true : false);
@@ -204,15 +202,10 @@ static void	test_clear()
 
 int			update(void *param)
 {
+	static void		**nparam = NULL;
 	t_game_engine	*engine;
 	t_player		*hero;
 	t_map			*map;
-
-	engine = (t_game_engine*)(((void**)param)[2]);
-	hero = (t_player*)(((void**)param)[1]);
-	map = (t_map*)(((void**)param)[0]);
-	hero->forward = create_vector2((((int)(hero->size) - 1) * cos(hero->pitch) +
-	hero->pos.x), ((-(int)(hero->size) + 1) * sin(hero->pitch) + hero->pos.y));
 
 	// clear_screen();
 	// mlx_clear_window(g_app->mlx_ptr, g_app->win_ptr);
@@ -220,12 +213,27 @@ int			update(void *param)
 	// clear_application(create_color(0, 0, 0, 255));
 	// mlx_clear_window(g_app->mlx_ptr, g_app->win_ptr);
 	//clear_screen();// fix this funct "Black band bug"
+
+	if (nparam == NULL)
+		nparam = param;
+	if (nparam != param)
+		param = nparam;
+	if (((((t_player*)(((void**)param)[1]))->control & WORLD_CHANGE_MARKER) ||
+	(((t_player*)(((void**)param)[1]))->control & WORLD_RESTART_MARKER)))
+		param = load_map_control(param);
+	nparam = param;
+	engine = (t_game_engine*)(((void**)param)[2]);
+	hero = (t_player*)(((void**)param)[1]);
+	map = (t_map*)(((void**)param)[0]);
+
+	hero->forward = create_vector2((((int)(hero->size) - 1) * cos(hero->pitch) +
+	hero->pos.x), ((-(int)(hero->size) + 1) * sin(hero->pitch) + hero->pos.y));
+	
 	test_clear();
+
 	update_player(param);
 	hero->forward = create_vector2((((int)(hero->size) - 1) * cos(hero->pitch) +
 	hero->pos.x), ((-(int)(hero->size) + 1) * sin(hero->pitch) + hero->pos.y));
-
-
 	if (engine->bonus == true)//Do a multithread option in .cub
 		draw_wall_multi_thread(*hero, map);
 	else if (engine->bonus == false)

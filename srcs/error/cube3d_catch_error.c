@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:06:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/29 16:45:19 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/30 16:58:48 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ t_error	g_cube3d_catch_error[] =
 	{ MAIN_1, "Error\nWrong number of arguments" },
 	{ CHECK_SAVE_1, "Error\nSecond argument is wrong" },
 	{ DO_SAVE_1, "Error\nError while saving the image"},
+	{ MALLOC_PARAM_TAB_1, "Error\nCan't malloc a void** parameter tab"},
 	{ CUBE3D_PARSING_1, "Error\nThe File Descriptor is incorrect"},
 	{ CREATE_GAME_ENGINE_1, "Error\nCan't malloc a t_game_engine" },
 	{ CREATE_GAME_ENGINE_2, "Error\nCan't malloc a t_texture" },

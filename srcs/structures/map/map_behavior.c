@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 14:06:17 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/29 19:33:59 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/30 20:17:02 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,43 +28,49 @@ static char *set_level(t_map *map)
 	return(arg);
 }
 
-void	load_map_control(void *param, t_game_engine **engine, t_player **player, t_map **map)
+static void	set_new_world(t_game_engine *engine)
 {
-	void			*param[3];
-	t_game_engine	*tmp;
+	t_player	*player;
+	t_map		*map;
+
+	player = engine->player;
+	map = engine->map;
+	// map->resolution = g_app->size;
+	player->hp = 100;
+	*(player) = reset_player(player->hp);
+	player->size = (int)((map->resolution.y * 0.33) / (map->size.y));
+	if (player->size > (int)((map->resolution.x * 0.27) / (map->size.x)))
+		player->size = (int)((map->resolution.x * 0.27) / (map->size.x));
+	player->radius *= player->size;
+	player->pos.x = (player->pos.x * player->size) - (player->size / 2);
+	player->pos.y = (player->pos.y * player->size) + (player->size / 2);
+}
+
+void	*load_map_control(void *param)
+{
+	void			**new_param;//free this parame
+	t_game_engine	*engine;
+	t_game_engine	*new_engine;
 	t_vector2		resolution;
 	char            **arg;
 
+	engine = (t_game_engine*)(((void**)param)[2]);
 	arg = (char**)malloc(sizeof(char*) * 2);
+	new_param = NULL;
 	if (arg == NULL)
 		catch_error(LOAD_MAP_CONTROL_1);
-	arg[1] = set_level(*map);
-	tmp = malloc_game_engine();
-	cube3d_parsing(tmp, 2, arg, &resolution);
-	// cube3d_get_param(map, arg);
-	// map->size = g_app->size;
-	// cube3d_parse_map(map, player);
-
-	tmp->player->hp = 100;
-	*(tmp->player) = reset_player(tmp->player->hp);
-	tmp->player->size = (int)((tmp->map->resolution.y * 0.33) /
-		(tmp->map->size.y));
-	if (tmp->player->size > (int)((tmp->map->resolution.x * 0.27) /
-		(tmp->map->size.x)))
-		tmp->player->size = (int)((tmp->map->resolution.x * 0.27) /
-			(tmp->map->size.x));
-	tmp->player->radius *= tmp->player->size;
-	tmp->player->pos.x = (tmp->player->pos.x * tmp->player->size) -
-		(tmp->player->size / 2);
-	tmp->player->pos.y = (tmp->player->pos.y * tmp->player->size) +
-		(tmp->player->size / 2);
-	free_game_engine(*engine);
+	arg[1] = set_level(engine->map);
+	new_engine = malloc_game_engine();
+	cube3d_parsing(new_engine, 2, arg, &resolution);
+	resize_application((int)resolution.x, (int)resolution.y);
+	set_new_world(new_engine);
+	new_param = malloc_param_tab(new_param);
+	new_param[0] = new_engine->map;
+	new_param[1] = new_engine->player;
+	new_param[2] = new_engine;
+	set_player_status(new_engine->player, new_engine->map);
+	free(param);
+	free_game_engine(engine);
 	free(arg);
-	*engine = tmp;
-	*player = tmp->player;
-	*map = tmp->map;
-	param[0] = *engine;
-	param[1] = *player;
-	param[2] = *map;
-	return(param);
+	return (new_param);
 }

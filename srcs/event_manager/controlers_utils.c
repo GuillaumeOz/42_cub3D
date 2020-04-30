@@ -6,13 +6,13 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 16:19:23 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/29 19:36:49 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/30 13:44:41 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void	condition_interact(void *param, t_game_engine *engine, t_map *map, t_player *hero)
+void	condition_interact(t_map *map, t_player *hero)
 {
 	if (map->board[(int)(hero->pos.y + hero->movement.y) / (int)(hero->size)]
 		[(int)(hero->pos.x + hero->movement.x) / (int)(hero->size)]->type == door)
@@ -36,10 +36,9 @@ void	condition_interact(void *param, t_game_engine *engine, t_map *map, t_player
 		[(int)(hero->pos.x + hero->movement.x) / (int)(hero->size)]->type == level)
 	{
 		map->level++;
-		param = load_map_control(param, &engine, &hero, &map);
+		hero->control = (hero->control | WORLD_CHANGE_MARKER);
 	}
-	return(param)
-	// hero->control = (hero->control ^ INTERACT_KEYPRESS) ^ INTERACT_MAKER;
+	hero->control = (hero->control ^ INTERACT_KEYPRESS) ^ INTERACT_MAKER;
 }
 
 bool	comp_type_check(char *str, t_tile *tile)
