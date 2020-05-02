@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 15:12:59 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/29 16:58:31 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/02 14:30:07 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	create_map_2(t_game_engine *engine, t_map *result, char *line, t_vec
 	else if (line[(int)pos.x] == '3')
 		result->board[(int)pos.y][(int)pos.x] = engine->door_tile;
 	else if (line[(int)pos.x] == '4')
-		result->board[(int)pos.y][(int)pos.x] = engine->level_tile;
+		result->board[(int)pos.y][(int)pos.x] = engine->secret_tile;
 	else if (line[(int)pos.x] == 'H')
 		result->board[(int)pos.y][(int)pos.x] = engine->medikit_tile;
 	else
@@ -87,7 +87,6 @@ t_map   create_map(t_game_engine *engine, t_vector2 p_size, t_list *p_content)
 	result.size = p_size;
 	result.comp = engine->comp;
 	result.valid = engine->valid;
-	result.level = engine->level;
 	result.resolution = engine->resolution;
 	result.board = malloc_tile_tab(p_size);
 	i = -1;

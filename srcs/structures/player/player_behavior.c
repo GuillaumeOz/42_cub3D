@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/16 19:51:32 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/28 16:30:04 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/02 16:26:22 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,8 @@
 
 static	bool	hit_player_wall(t_tile_type type)//change this with the type
 {
-	// empty = 0,
-	// wall = 1, ?
-	// sprite = 2,
-	// door = 3, ?
-	// closed_door = 4, ?
-	// level = 5, ?
-	// medikit = 6,
-	// monster = 7,
-	// dead_monster = 8,
-	// ("0DMmH2")
-	if ( type == empty || type == dead_monster ||  type == medikit ||
-	type == closed_door)//check the hitbox elements
+	if ( type == empty || type == monster || type == dead_monster ||
+		type == medikit || type == closed_door)
 		return (true);
 	return (false);
 }
@@ -63,7 +53,6 @@ t_player	reset_player(int p_hp)
 	t_player result;
 
 	result.bonus_speed = player_speed;
-
 	result.pos = create_vector2(0, 0);
 	result.move_speed = 0.2;
 	result.rotation_speed = 0.15;

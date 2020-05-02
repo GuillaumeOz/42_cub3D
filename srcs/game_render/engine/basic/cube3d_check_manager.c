@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 12:52:28 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/30 19:30:06 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/02 14:43:49 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static int			condition5(t_ray info, t_map map, t_sprites **lst_sprite,
 	}
 	else if (map.board[y][x]->type == door)
 		return (door);
-	else if (map.board[y][x]->type == level)
-		return (level);
+	else if (map.board[y][x]->type == secret)
+		return (secret);
 	return (empty);
 }
 

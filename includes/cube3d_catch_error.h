@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:09:39 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/30 16:59:10 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/01 14:43:22 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ enum	e_cube3d_error
 	DO_SAVE_1,
 	MALLOC_PARAM_TAB_1,
 	CUBE3D_PARSING_1,
+	MALLOC_GAME_ENGINE_1,
 	CREATE_GAME_ENGINE_1,
-	CREATE_GAME_ENGINE_2,
 	CREATE_TILE_1,
 	CREATE_TILE_2,
 	CHECK_MAPNAME_1,

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:18:34 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/30 20:17:00 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/02 21:42:57 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,10 @@ int cube3d_key_release_manager(int key, void *param)
 		*control = (*control ^ RIGHT_KEYPRESS) ^ CAMERA_MARKER;
 	else if (key == RSFT_KEY)
 		*control = (*control ^ FIRE_KEYPRESS) ^ FIRE_MAKER;
-	else if (key == F_KEY)
-		*control = (*control ^ INTERACT_KEYPRESS) ^ INTERACT_MAKER;
+	else if (key == R_KEY)
+		*control = (*control ^ RESPAWN_KEYPRESS) ^ INTERACT_MAKER;
+	// else if (key == F_KEY)
+	// 	*control = (*control ^ INTERACT_KEYPRESS) ^ INTERACT_MAKER;
 	return(control == NOEVENTMASK ? true : false);
 }
 
@@ -92,8 +94,8 @@ int			cube3d_key_press_manager(int key, void *param)
 		player->hp += key == Q_KEY ? -10 : 10;
 	else if ((key == RSFT_KEY) && player->hp > 0)
 		*control = (*control | FIRE_KEYPRESS) | FIRE_MAKER;
-	else if (key == RTN_KEY && player->hp <= 0)
-		*control = (*control | WORLD_RESTART_MARKER);
+	else if (key == B_KEY && player->hp >= 0)//RNT dont work
+		*control = (*control | RESPAWN_KEYPRESS) | INTERACT_MAKER;
 	else if (key == F_KEY && !(*control & INTERACT_MAKER))
 		*control = (*control | INTERACT_KEYPRESS) | INTERACT_MAKER;
 	return(player->control != NOEVENTMASK ? true : false);
@@ -202,8 +204,7 @@ static void	test_clear()
 
 int			update(void *param)
 {
-	static void		**nparam = NULL;
-	t_game_engine	*engine;
+	t_game_engine	*engine;//change WORLD_CHANGE_MARKER
 	t_player		*hero;
 	t_map			*map;
 
@@ -213,22 +214,12 @@ int			update(void *param)
 	// clear_application(create_color(0, 0, 0, 255));
 	// mlx_clear_window(g_app->mlx_ptr, g_app->win_ptr);
 	//clear_screen();// fix this funct "Black band bug"
-
-	if (nparam == NULL)
-		nparam = param;
-	if (nparam != param)
-		param = nparam;
-	if (((((t_player*)(((void**)param)[1]))->control & WORLD_CHANGE_MARKER) ||
-	(((t_player*)(((void**)param)[1]))->control & WORLD_RESTART_MARKER)))
-		param = load_map_control(param);
-	nparam = param;
 	engine = (t_game_engine*)(((void**)param)[2]);
 	hero = (t_player*)(((void**)param)[1]);
 	map = (t_map*)(((void**)param)[0]);
-
 	hero->forward = create_vector2((((int)(hero->size) - 1) * cos(hero->pitch) +
 	hero->pos.x), ((-(int)(hero->size) + 1) * sin(hero->pitch) + hero->pos.y));
-	
+
 	test_clear();
 
 	update_player(param);

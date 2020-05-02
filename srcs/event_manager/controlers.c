@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 14:29:58 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/30 17:42:07 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/02 21:38:47 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,28 @@
 
 void		fire_control(int32_t control, void *param)
 {
+	t_game_engine	*eng;
 	t_player		*hero;
-	t_map			*map;
 	int				range;
 
 	(void)control;
+	eng = (t_game_engine*)(((void**)param)[2]);
 	hero = (t_player*)(((void**)param)[1]);
-	map = (t_map*)(((void**)param)[0]);
 	range = 0;
 	while (++range <= 3)
 	{
-		if (map->board[(int)(hero->pos.y + (hero->movement.y * range)) /
+		if (eng->map->board[(int)(hero->pos.y + (hero->movement.y * range)) /
 		(int)(hero->size)][(int)(hero->pos.x + (hero->movement.x * range)) /
 		(int)(hero->size)]->type == monster)
 		{
-			map->board[(int)(hero->pos.y + (hero->movement.y * range)) /
+			eng->map->board[(int)(hero->pos.y + (hero->movement.y * range)) /
 			(int)(hero->size)][(int)(hero->pos.x + (hero->movement.x *
-			range)) / (int)(hero->size)]->type = dead_monster;
+			range)) / (int)(hero->size)] = eng->dead_tile;
 			break ;
 		}
-		else if ((comp_type_check(map->comp, map->board[(int)(hero->pos.y +
-		(hero->movement.y * range)) / (int)(hero->size)]
-		[(int)(hero->pos.x + (hero->movement.x * range)) /
+		else if ((comp_type_check(eng->map->comp, 
+		eng->map->board[(int)(hero->pos.y + (hero->movement.y * range)) /
+		(int)(hero->size)][(int)(hero->pos.x + (hero->movement.x * range)) /
 		(int)(hero->size)]) == false))
 			return ;
 	}
@@ -63,13 +63,13 @@ void		interact_control(int32_t control, void* param)
 	engine = (t_game_engine*)(((void**)param)[2]);
 	hero = (t_player*)(((void**)param)[1]);
 	map = (t_map*)(((void**)param)[0]);
-	condition_interact(map, hero);
+	condition_interact(engine, map, hero);
 	if (map->board[(int)(hero->pos.y) / (int)(hero->size)]
 		[(int)(hero->pos.x) / (int)(hero->size)]->type == monster)
 	{
 		hero->hp -= engine->monster.damage;
 		map->board[(int)(hero->pos.y) / (int)(hero->size)]
-		[(int)(hero->pos.x) / (int)(hero->size)]->type = dead_monster;
+		[(int)(hero->pos.x) / (int)(hero->size)] = engine->dead_tile;
 	}
 	if (map->board[(int)(hero->pos.y) / (int)(hero->size)]
 		[(int)(hero->pos.x) / (int)(hero->size)]->type == medikit &&
@@ -77,7 +77,7 @@ void		interact_control(int32_t control, void* param)
 	{
 		hero->hp += engine->medikit.heal;
 		map->board[(int)(hero->pos.y) / (int)(hero->size)]
-		[(int)(hero->pos.x) / (int)(hero->size)]->type = empty;
+		[(int)(hero->pos.x) / (int)(hero->size)] = engine->empty_tile;
 	}
 	hero->control = (hero->control ^ INTERACT_KEYPRESS) ^ INTERACT_MAKER;
 }

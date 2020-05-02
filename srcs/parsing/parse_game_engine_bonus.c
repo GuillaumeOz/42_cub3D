@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 13:31:03 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/28 17:51:04 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/02 14:08:11 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,13 @@ bool	set_level_image(t_game_engine *engine, char *path)
 	int i;
 
 	i = 0;
-	if (engine->level_tex.path != NULL)
-		destroy_texture(engine->level_tex);
+	if (engine->secret.path != NULL)
+		destroy_texture(engine->secret);
 	while (path[i] && path[i] == ' ')
 		i++;
 	if (path[i] == '\0')
 		catch_error(SET_LEVEL_IMAGE_1);
-	engine->level_tex = create_texture(ft_strdup(path + i));
+	engine->secret = create_texture(ft_strdup(path + i));
 	engine->valid = ft_strprepend(engine->valid, "4", 1 , 0);
 	return (true);
 }

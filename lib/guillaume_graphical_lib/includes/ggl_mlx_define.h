@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 13:39:20 by ldutriez          #+#    #+#             */
-/*   Updated: 2020/04/30 14:03:55 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/02 20:19:17 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,12 @@
 */
 
 # define A_KEY 97
-# define B_KEY 11
-# define C_KEY 8
+# define B_KEY 98
+# define C_KEY 99
 # define D_KEY 100
 # define E_KEY 101
 # define F_KEY 102
-# define G_KEY 5
+# define G_KEY 103
 # define H_KEY 4
 # define I_KEY 34
 # define J_KEY 38
@@ -110,15 +110,15 @@
 # define O_KEY 31
 # define P_KEY 35
 # define Q_KEY 113
-# define R_KEY 15
+# define R_KEY 114
 # define S_KEY 115
 # define T_KEY 17
 # define U_KEY 32
 # define V_KEY 9
 # define W_KEY 119
-# define X_KEY 7
+# define X_KEY 120
 # define Y_KEY 16
-# define Z_KEY 6
+# define Z_KEY 122
 
 /*
 ** Numbers (not numeric keypad ones)
@@ -216,7 +216,7 @@
 # define TAB_KEY 48
 # define CL_KEY 272
 # define LSFT_KEY 65505
-# define LCTRL_KEY 256
+# define LCTRL_KEY 65507
 # define LOPT_KEY 261
 # define LCMD_KEY 259
 # define LDEL_KEY 51

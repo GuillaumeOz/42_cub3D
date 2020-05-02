@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:38:57 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/28 17:31:21 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/01 18:29:16 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ bool is_engine_full(t_game_engine *engine, t_vector2 *resolution)
 		engine->texture[0] == NULL || engine->texture[1] == NULL ||
 		engine->texture[2] == NULL || engine->texture[3] == NULL ||
 		engine->ceiling == NULL || engine->floor == NULL ||
-		engine->sprite == NULL)//improve for the bonus
+		engine->sprite == NULL)
 		return (false);
 	return (true);
 }

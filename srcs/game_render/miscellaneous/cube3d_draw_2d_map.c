@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 12:51:51 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/27 13:11:00 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/02 16:25:46 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,15 @@ void		put_square(t_map *map, t_vector2 info[3])
 		draw_crop_rectangle(draw_info, map, create_color(50, 220, 220, 255));
 	else if (map->board[(int)info[0].y][(int)(info[0].x)]->type == empty ||
 		map->board[(int)info[0].y][(int)(info[0].x)]->type == dead_monster)
-		draw_crop_rectangle(draw_info, map,
-											create_color(255, 255, 255, 255));
+		draw_crop_rectangle(draw_info, map, create_color(255, 255, 255, 255));
 	else if (map->board[(int)info[0].y][(int)(info[0].x)]->type == door ||
 		map->board[(int)info[0].y][(int)info[0].x]->type == closed_door)
-		draw_crop_rectangle(draw_info, map,
-											create_color(255, 155, 100, 255));
+		draw_crop_rectangle(draw_info, map, create_color(255, 155, 100, 255));
 	else if (map->board[(int)info[0].y][(int)(info[0].x)]->type == monster)
 		draw_crop_rectangle(draw_info, map, create_color(150, 75, 150, 255));
 	else if (map->board[(int)info[0].y][(int)(info[0].x)]->type == medikit)
 		draw_crop_rectangle(draw_info, map, create_color(0, 255, 0, 255));
-	else if (map->board[(int)info[0].y][(int)(info[0].x)]->type == level)
+	else if (map->board[(int)info[0].y][(int)(info[0].x)]->type == secret)
 		draw_crop_rectangle(draw_info, map, create_color(255, 153, 0, 255));
 }
 

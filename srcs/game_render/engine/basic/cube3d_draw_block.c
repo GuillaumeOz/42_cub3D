@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 12:52:21 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/28 18:26:40 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/02 15:42:22 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void			draw_column_block(t_draw inf_draw, t_tile_type type)
 		its_a_wall(&b_inf, inf_draw);
 	else if (type == door)
 		b_inf.act = inf_draw.map.board[0][0]->door;
-	else if (type == level)
-		b_inf.act = inf_draw.map.board[0][0]->level_tex;
+	else if (type == secret)
+		b_inf.act = inf_draw.map.board[0][0]->secret;
 	loop_draw_column(b_inf, inf_draw);
 }

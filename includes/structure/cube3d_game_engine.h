@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:31:25 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/30 20:17:03 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/02 17:06:09 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,23 @@ typedef enum e_tile_type
 	sprite = 2,
 	door = 3,
 	closed_door = 4,
-	level = 5,
+	secret = 5,
 	medikit = 6,
 	monster = 7,
 	dead_monster = 8,
-
 }				t_tile_type;
 
 typedef struct s_tile
 {
 	t_tile_type type;
+	t_texture	**texture;
 	t_texture	sprite;
 	t_texture	door;
-	t_texture	level_tex;
+	t_texture	secret;
 	t_medikit	medikit;
 	t_monster	monster;
 	t_color		ceiling;
 	t_color		floor;
-	t_texture	**texture;
 }				t_tile;
 
 typedef struct  s_map
@@ -50,7 +49,6 @@ typedef struct  s_map
     t_tile      ***board;
 	char		*comp;
 	char		*valid;
-	char		level;
 }               t_map;
 
 typedef struct		s_game_engine
@@ -60,7 +58,7 @@ typedef struct		s_game_engine
 	t_texture		**texture;
 	t_texture		*sprite;
 	t_texture		door;
-	t_texture		level_tex;
+	t_texture		secret;
 
 	t_color			*ceiling;
 	t_color			*floor;
@@ -70,7 +68,8 @@ typedef struct		s_game_engine
 	t_tile			*sprite_tile;
 	t_tile			*door_tile;
 	t_tile			*closed_door_tile;
-	t_tile			*level_tile;
+	t_tile			*secret_tile;
+	t_tile			*dead_tile;
 	t_tile			*medikit_tile;
 	t_tile			*monster_tile;
 
@@ -83,7 +82,6 @@ typedef struct		s_game_engine
 
 	char			*comp;
 	char			*valid;
-	char			level;
 	bool			bonus;
 	bool			save;
 }					t_game_engine;

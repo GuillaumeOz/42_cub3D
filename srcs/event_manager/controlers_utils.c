@@ -6,22 +6,54 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 16:19:23 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/30 13:44:41 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/02 21:39:13 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void	condition_interact(t_map *map, t_player *hero)
+void	respawn_monster(t_game_engine *eng, t_map *map, t_player *hero)
 {
+	int		i;
+	int		j;
+
+	i = -1;
+	debug
+	while (++i < map->size.y)
+	{
+		while (++j < map->size.x)
+			if (map->board[i][j]->type == dead_monster)
+				map->board[i][j] = eng->monster_tile;
+		j = -1;
+	}
+	hero->control = (hero->control ^ RESPAWN_KEYPRESS);
+}
+
+static void condition_interact2(t_game_engine *eng, t_map *map, t_player *hero)
+{
+	if (map->board[(int)(hero->pos.y + hero->movement.y) / (int)(hero->size)]
+		[(int)(hero->pos.x + hero->movement.x) / (int)(hero->size)]->type == secret)
+	{
+		map->board[(int)(hero->pos.y + hero->movement.y) / (int)(hero->size)]
+		[(int)(hero->pos.x + hero->movement.x) / (int)(hero->size)] = eng->empty_tile;
+	}
+	hero->control = (hero->control ^ INTERACT_KEYPRESS) ^ INTERACT_MAKER;
+}
+
+void	condition_interact(t_game_engine *eng, t_map *map, t_player *hero)
+{
+	if (hero->control & RESPAWN_KEYPRESS)
+	{
+		respawn_monster(eng, map, hero);
+		return ;
+	}
 	if (map->board[(int)(hero->pos.y + hero->movement.y) / (int)(hero->size)]
 		[(int)(hero->pos.x + hero->movement.x) / (int)(hero->size)]->type == door)
 	{
 		map->board[(int)(hero->pos.y + hero->movement.y) / (int)(hero->size)]
-		[(int)(hero->pos.x + hero->movement.x) / (int)(hero->size)]->type = closed_door;
+		[(int)(hero->pos.x + hero->movement.x) / (int)(hero->size)] = eng->closed_door_tile;
 	}
-	else if (map->board
-		[(int)(hero->pos.y + hero->movement.y) / (int)(hero->size)]
+	else if (map->board[(int)(hero->pos.y + hero->movement.y) / (int)(hero->size)]
 		[(int)(hero->pos.x + hero->movement.x) / (int)(hero->size)]->type == closed_door
 		&& ((int)((hero->pos.y) / (hero->size)) != (int)((hero->pos.y +
 		hero->movement.y) / (hero->size)) || (int)((hero->pos.x) /
@@ -29,15 +61,9 @@ void	condition_interact(t_map *map, t_player *hero)
 		(hero->size))))
 	{
 		map->board[(int)(hero->pos.y + hero->movement.y) / (int)(hero->size)]
-		[(int)(hero->pos.x + hero->movement.x) / (int)(hero->size)]->type = door;
+		[(int)(hero->pos.x + hero->movement.x) / (int)(hero->size)] = eng->door_tile;
 	}
-	else if (map->board
-		[(int)(hero->pos.y + hero->movement.y) / (int)(hero->size)]
-		[(int)(hero->pos.x + hero->movement.x) / (int)(hero->size)]->type == level)
-	{
-		map->level++;
-		hero->control = (hero->control | WORLD_CHANGE_MARKER);
-	}
+	condition_interact2(eng, map, hero);
 	hero->control = (hero->control ^ INTERACT_KEYPRESS) ^ INTERACT_MAKER;
 }
 
