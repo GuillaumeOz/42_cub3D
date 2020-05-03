@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:18:34 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/02 21:42:57 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/03 19:30:56 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,40 +148,40 @@ void		update_player(void *param)
 // 	image->pixels[pixel_index + BLUE_COMP] = tmp.b;
 // }
 
-static void			test_set_pixel(t_vector2 pos, t_color color)
-{
-	int pixel_index;
+// static void			test_set_pixel(t_vector2 pos, t_color color)
+// {
+// 	int pixel_index;
 
-	if (pos.x < 0 || pos.x >= g_app->size.x || pos.y < 0 ||
-												pos.y >= g_app->size.y)
-		return ;
+// 	if (pos.x < 0 || pos.x >= g_app->size.x || pos.y < 0 ||
+// 												pos.y >= g_app->size.y)
+// 		return ;
 	
-	pixel_index = ((int)(pos.x) + ((int)(pos.y) * (int)(g_app->size.x))) * 4;
-	g_app->image->pixels[pixel_index + RED_COMP] = color.r;
-	g_app->image->pixels[pixel_index + GREEN_COMP] = color.g;
-	g_app->image->pixels[pixel_index + BLUE_COMP] = color.b;
-	g_app->image->pixels[pixel_index + ALPHA_COMP] = color.a;
-}
+// 	pixel_index = ((int)(pos.x) + ((int)(pos.y) * (int)(g_app->size.x))) * 4;
+// 	g_app->image->pixels[pixel_index + RED_COMP] = color.r;
+// 	g_app->image->pixels[pixel_index + GREEN_COMP] = color.g;
+// 	g_app->image->pixels[pixel_index + BLUE_COMP] = color.b;
+// 	g_app->image->pixels[pixel_index + ALPHA_COMP] = color.a;
+// }
 
-static void	test_clear()
-{
-	t_vector2	pos;
-	t_color		color;
+// static void	test_clear()
+// {
+// 	t_vector2	pos;
+// 	t_color		color;
 
-	pos = create_vector2(0, 0);
-	color = create_color(0, 0, 0, 255);
-	// mlx_clear_window(g_app->mlx_ptr, g_app->win_ptr);
-	while (pos.x < (size_t)g_app->size.x)
-	{
-		pos.y = 0;
-		while (pos.y < (size_t)g_app->size.y)
-		{
-			test_set_pixel(pos, color);
-			pos.y++;
-		}
-		pos.x++;
-	}
-}
+// 	pos = create_vector2(0, 0);
+// 	color = create_color(0, 0, 0, 255);
+// 	// mlx_clear_window(g_app->mlx_ptr, g_app->win_ptr);
+// 	while (pos.x < (size_t)g_app->size.x)
+// 	{
+// 		pos.y = 0;
+// 		while (pos.y < (size_t)g_app->size.y)
+// 		{
+// 			test_set_pixel(pos, color);
+// 			pos.y++;
+// 		}
+// 		pos.x++;
+// 	}
+// }
 
 // static void	test_clear1()
 // {
