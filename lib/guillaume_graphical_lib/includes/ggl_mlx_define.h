@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 13:39:20 by ldutriez          #+#    #+#             */
-/*   Updated: 2020/05/02 20:19:17 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/05 15:52:27 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,11 @@
 ** # define OWNERGRABBUTTONMASK (1L<<24)
 */
 
-// Linux event mask part
-
-# define KEYPRESSMASK (1L<<0)
-# define KEYRELEASEMASK (1L<<1)
-
-// Linux event mask part
+enum	e_linux_event_mask
+{
+	KEYPRESSMASK = (1L << 0),
+	KEYRELEASEMASK = (1L << 1)
+};
 
 # define KEYPRESS 2
 # define KEYRELEASE 3
@@ -179,7 +178,7 @@
 # define F8_KEY 100
 # define F9_KEY 101
 # define F10_KEY 109
-# define F11_KEY
+# define F11_KEY 110
 # define F12_KEY 111
 # define F13_KEY 105
 # define F14_KEY 107
@@ -225,7 +224,7 @@
 # define RCTRL_KEY 269
 # define ROPT_KEY 262
 # define RCMD_KEY 260
-# define EJ_KEY
+# define EJ_KEY 65307
 # define FN_KEY 279
 # define RDEL_KEY 117
 # define HOME_KEY 115

@@ -6,11 +6,11 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:34:27 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/02 14:39:14 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/05 18:26:46 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 t_tile create_tile(t_game_engine p_engine, t_tile_type p_type)
 {

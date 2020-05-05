@@ -6,28 +6,27 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 13:52:03 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/29 16:37:46 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/05 14:28:51 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ggl.h"
 
-void put_pixel(t_image *image, t_vector2 pos, t_color color)
+void	put_pixel(t_image *image, t_vector2 pos, t_color color)
 {
-	t_color actual;
-	t_color tmp;
-	int pixel_index;
+	t_color	actual;
+	t_color	tmp;
+	int		pixel_index;
 
 	if (pos.x < 0 || pos.x >= image->size.x || pos.y < 0 ||
 		pos.y >= image->size.y)
-		return;
+		return ;
 	pixel_index = convert_2di_1di(pos, g_app->size) * 4;
 	actual = create_color(
 		image->pixels[pixel_index + RED_COMP],
 		image->pixels[pixel_index + GREEN_COMP],
 		image->pixels[pixel_index + BLUE_COMP],
-		255
-	);
+		255);
 	tmp = fuze_color(actual, color);
 	image->pixels[pixel_index + RED_COMP] = tmp.r;
 	image->pixels[pixel_index + GREEN_COMP] = tmp.g;

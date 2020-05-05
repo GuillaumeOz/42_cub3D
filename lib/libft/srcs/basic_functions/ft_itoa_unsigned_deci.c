@@ -6,13 +6,14 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 09:03:19 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/20 17:15:29 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/05 12:39:52 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_itoa_unsigned_nbrlen(unsigned long long int nbr, size_t base_len)
+static size_t	ft_itoa_unsigned_nbrlen(unsigned long long int nbr,
+	size_t base_len)
 {
 	size_t					nbr_len;
 

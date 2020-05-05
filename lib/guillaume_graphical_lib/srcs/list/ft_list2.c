@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 19:51:02 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/20 13:52:28 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/05 14:32:34 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void		list_push_back(t_list *list, void *to_add)
 	list->size++;
 }
 
-void	*list_at(t_list *list, size_t index)
+void		*list_at(t_list *list, size_t index)
 {
 	t_vector2 coord;
 
@@ -68,7 +68,7 @@ void	*list_at(t_list *list, size_t index)
 	return (list->content[(size_t)(coord.y)][(size_t)(coord.x)]);
 }
 
-void	**list_get(t_list *list, size_t index)
+void		**list_get(t_list *list, size_t index)
 {
 	t_vector2 coord;
 

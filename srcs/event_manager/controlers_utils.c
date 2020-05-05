@@ -6,11 +6,32 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 16:19:23 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/02 21:39:13 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/05 19:54:40 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
+
+bool	comp_type_check(char *str, t_tile *tile)
+{
+	int i;
+
+	i = -1;
+	while(str[++i])
+		if (str[i] == '0' && tile->type == empty)
+			return (true);
+		else if (str[i] == 'D' && tile->type == door)
+			return (true);
+		else if (str[i] == 'M' && tile->type == monster)
+			return (true);
+		else if (str[i] == 'm' && tile->type == dead_monster)
+			return (true);
+		else if (str[i] == 'H' && tile->type == medikit)
+			return (true);
+		else if (str[i] == '2' && tile->type == sprite)
+			return (true);
+	return (false);
+}
 
 void	respawn_monster(t_game_engine *eng, t_map *map, t_player *hero)
 {
@@ -67,23 +88,27 @@ void	condition_interact(t_game_engine *eng, t_map *map, t_player *hero)
 	hero->control = (hero->control ^ INTERACT_KEYPRESS) ^ INTERACT_MAKER;
 }
 
-bool	comp_type_check(char *str, t_tile *tile)
+void			update_player(void *param)
 {
-	int i;
+	t_game_engine	*engine;
+	t_player		*hero;
+	int32_t			*control;
+	int 			i;
 
-	i = -1;
-	while(str[++i])
-		if (str[i] == '0' && tile->type == empty)
-			return (true);
-		else if (str[i] == 'D' && tile->type == door)
-			return (true);
-		else if (str[i] == 'M' && tile->type == monster)
-			return (true);
-		else if (str[i] == 'm' && tile->type == dead_monster)
-			return (true);
-		else if (str[i] == 'H' && tile->type == medikit)
-			return (true);
-		else if (str[i] == '2' && tile->type == sprite)
-			return (true);
-	return (false);
+	engine = (t_game_engine*)(((void**)param)[2]);
+	hero = (t_player*)(((void**)param)[1]);
+	control = (int32_t*)&engine->player->control;
+    i = -1;
+	if (hero->hp > 0)
+	{
+		hero->movement = create_vector2(hero->forward.x - hero->pos.x,
+				hero->forward.y - hero->pos.y);
+		hero->last_movement = create_vector2(hero->movement.x * cos(PI / 2) -
+			hero->movement.y * sin(PI / 2), hero->movement.x * sin(PI / 2) +
+			hero->movement.y * cos(PI / 2));
+        while (g_cube3d_key_handler[++i].marker_control != NOCONTRL)
+		    if (*control & g_cube3d_key_handler[i].marker_control)
+		    	g_cube3d_key_handler[i].controler(*control, param);
+		hero->hp = (hero->hp > 100) ? 100 : hero->hp;
+	}
 }

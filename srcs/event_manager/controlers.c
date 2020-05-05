@@ -6,13 +6,13 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 14:29:58 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/02 21:38:47 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/05 19:49:30 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
-void		fire_control(int32_t control, void *param)
+void	fire_control(int32_t control, void *param)
 {
 	t_game_engine	*eng;
 	t_player		*hero;
@@ -33,7 +33,7 @@ void		fire_control(int32_t control, void *param)
 			range)) / (int)(hero->size)] = eng->dead_tile;
 			break ;
 		}
-		else if ((comp_type_check(eng->map->comp, 
+		else if ((comp_type_check(eng->map->comp,
 		eng->map->board[(int)(hero->pos.y + (hero->movement.y * range)) /
 		(int)(hero->size)][(int)(hero->pos.x + (hero->movement.x * range)) /
 		(int)(hero->size)]) == false))
@@ -41,10 +41,10 @@ void		fire_control(int32_t control, void *param)
 	}
 }
 
-void    camera_control(int32_t control, void* param)
+void	camera_control(int32_t control, void *param)
 {
 	t_player	*hero;
-	
+
 	hero = (t_player*)(((void**)param)[1]);
 	if (control & LEFT_KEYPRESS)
 		hero->pitch += hero->rotation_speed;
@@ -53,7 +53,7 @@ void    camera_control(int32_t control, void* param)
 	control = (control ^ CAMERA_MARKER);
 }
 
-void		interact_control(int32_t control, void* param)
+void	interact_control(int32_t control, void *param)
 {
 	t_game_engine	*engine;
 	t_player		*hero;
@@ -82,7 +82,7 @@ void		interact_control(int32_t control, void* param)
 	hero->control = (hero->control ^ INTERACT_KEYPRESS) ^ INTERACT_MAKER;
 }
 
-void    player_control(int32_t control, void *param)
+void	player_control(int32_t control, void *param)
 {
 	t_player		*hero;
 	t_map			*map;
@@ -99,7 +99,7 @@ void    player_control(int32_t control, void *param)
 		player_hitbox(hero, hero->movement, *map, -1);
 }
 
-void    speed_control(int32_t control, void* param)
+void	speed_control(int32_t control, void *param)
 {
 	t_player		*hero;
 

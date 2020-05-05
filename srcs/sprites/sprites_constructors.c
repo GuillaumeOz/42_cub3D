@@ -6,11 +6,11 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 20:21:28 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/27 13:48:44 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/05 18:25:06 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 t_sprites	create_sprites(t_ray p_ray, t_vector2 p_pos, t_tile_type p_type)
 {

@@ -6,11 +6,11 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 14:21:39 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/20 14:52:59 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/05 18:27:15 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 t_monster	create_monster(char *p_life, char *p_dead, int p_dmg)
 {

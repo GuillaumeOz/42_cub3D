@@ -6,13 +6,13 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 13:51:12 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/10 12:39:34 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/05 14:29:44 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ggl.h"
 
-t_vector2_list		calc_circle(t_vector2 center, float radius)
+t_vector2_list	calc_circle(t_vector2 center, float radius)
 {
 	t_vector2_list	result;
 	float			i;
@@ -35,12 +35,13 @@ t_vector2_list		calc_circle(t_vector2 center, float radius)
 	return (result);
 }
 
-void draw_circle(t_vector2 pos, int radius, t_color color)
+void			draw_circle(t_vector2 pos, int radius, t_color color)
 {
 	draw_circle_in_image(g_app->image, pos, radius, color);
 }
 
-void	draw_circle_in_image(t_image *image, t_vector2 center, int radius, t_color color)
+void			draw_circle_in_image(t_image *image, t_vector2 center,
+	int radius, t_color color)
 {
 	t_vector2_list	circle;
 	size_t			i;

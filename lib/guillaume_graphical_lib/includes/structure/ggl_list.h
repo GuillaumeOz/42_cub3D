@@ -6,14 +6,12 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 13:46:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/07 11:20:11 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/05 15:38:56 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GGL_LIST_H
 # define GGL_LIST_H
-
-typedef void (*destroy_funct)(void *to_destroy);
 
 typedef struct	s_list
 {
@@ -24,10 +22,12 @@ typedef struct	s_list
 	size_t		push_size;
 }				t_list;
 
+typedef void	(*t_destroy_funct)(void *to_destroy);
+
 t_list			create_list(size_t p_push_size);
 t_list			*malloc_list(size_t p_push_size);
-void			destroy_list(t_list to_destroy, destroy_funct funct);
-void			free_list(t_list *to_free, destroy_funct funct);
+void			destroy_list(t_list to_destroy, t_destroy_funct funct);
+void			free_list(t_list *to_free, t_destroy_funct funct);
 
 t_vector2		list_calc_index_coord(t_list *list, size_t index);
 void			list_push_back(t_list *list, void *to_add);

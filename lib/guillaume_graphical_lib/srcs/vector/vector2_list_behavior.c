@@ -6,13 +6,13 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 12:08:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/09 12:11:46 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/05 14:23:06 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ggl.h"
 
-void    t_vector2tab_cpy(t_vector2 **old, t_vector2 **new)
+void		t_vector2tab_cpy(t_vector2 **old, t_vector2 **new)
 {
 	size_t i;
 
@@ -24,7 +24,7 @@ void    t_vector2tab_cpy(t_vector2 **old, t_vector2 **new)
 	}
 }
 
-size_t  t_vector2_list_calc_line(t_vector2_list *list, size_t index)
+size_t		t_vector2_list_calc_line(t_vector2_list *list, size_t index)
 {
 	size_t result;
 
@@ -32,7 +32,7 @@ size_t  t_vector2_list_calc_line(t_vector2_list *list, size_t index)
 	return (result);
 }
 
-size_t  t_vector2_list_calc_elem(t_vector2_list *list, size_t index)
+size_t		t_vector2_list_calc_elem(t_vector2_list *list, size_t index)
 {
 	size_t result;
 	size_t nb_line;
@@ -42,7 +42,7 @@ size_t  t_vector2_list_calc_elem(t_vector2_list *list, size_t index)
 	return (result);
 }
 
-void    t_vector2_list_push_back(t_vector2_list *list, t_vector2 to_add)
+void		t_vector2_list_push_back(t_vector2_list *list, t_vector2 to_add)
 {
 	size_t		nb_line;
 	size_t		nb_elem;
@@ -64,7 +64,7 @@ void    t_vector2_list_push_back(t_vector2_list *list, t_vector2 to_add)
 	list->size++;
 }
 
-t_vector2   t_vector2_list_at(t_vector2_list *list, size_t index)
+t_vector2	t_vector2_list_at(t_vector2_list *list, size_t index)
 {
 	size_t nb_line;
 	size_t nb_elem;

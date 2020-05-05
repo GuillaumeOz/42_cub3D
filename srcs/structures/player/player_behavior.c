@@ -6,13 +6,13 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/16 19:51:32 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/02 16:26:22 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/05 18:41:01 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
-static	bool	hit_player_wall(t_tile_type type)//change this with the type
+static	bool	hit_player_wall(t_tile_type type)
 {
 	if ( type == empty || type == monster || type == dead_monster ||
 		type == medikit || type == closed_door)

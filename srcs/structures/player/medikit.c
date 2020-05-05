@@ -6,11 +6,11 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 14:21:16 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/20 14:25:50 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/05 18:27:11 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 t_medikit	create_medikit(char *p_tex, int p_heal)
 {

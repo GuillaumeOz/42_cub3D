@@ -6,11 +6,11 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 13:25:27 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/02 16:32:11 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/05 18:26:53 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 t_game_engine	*malloc_game_engine(void)
 {

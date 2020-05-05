@@ -6,11 +6,11 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/05 22:21:01 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/24 13:11:47 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/05 16:57:44 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static void	set_int_in_char(unsigned char *start, int value)
 {
@@ -45,12 +45,10 @@ static int	write_bmp_header(int fd, int filesize)
 
 static int	get_color(int x, int y)
 {
-//	int	rgb;
 	int	color;
 
 	color = *(int*)(g_app->image->pixels + (4 * (int)g_app->size.x *
 				((int)g_app->size.y - 1 - y)) + (4 * x));
-//	rgb = (color & 0xFF0000) | (color & 0x00FF00) | (color & 0x0000FF);
 	return (color);
 }
 

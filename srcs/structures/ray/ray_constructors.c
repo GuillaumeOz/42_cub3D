@@ -6,11 +6,11 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 19:18:19 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/14 19:30:13 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/05 18:41:32 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 t_ray	create_ray(void)
 {

@@ -6,11 +6,11 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 11:10:26 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/30 20:07:13 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/05 18:27:24 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 t_player	create_player(t_vector2 p_pos, float p_dir, float p_speed)
 {

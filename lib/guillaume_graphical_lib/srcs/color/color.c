@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 12:38:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/26 12:32:14 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/05 14:21:48 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void		free_color(t_color *to_free)
 	free(to_free);
 }
 
-t_color fuze_color(t_color actual, t_color to_add)
+t_color		fuze_color(t_color actual, t_color to_add)
 {
 	t_color result;
 	float	new_alpha;
@@ -57,7 +57,6 @@ t_color fuze_color(t_color actual, t_color to_add)
 		actual.r * inv_alpha + to_add.r * new_alpha,
 		actual.g * inv_alpha + to_add.g * new_alpha,
 		actual.b * inv_alpha + to_add.b * new_alpha,
-		255
-	);
+		255);
 	return (result);
 }

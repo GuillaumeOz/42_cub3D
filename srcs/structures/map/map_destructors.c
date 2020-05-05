@@ -6,11 +6,11 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 15:13:12 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/29 11:24:32 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/05 18:27:05 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 void   destroy_map(t_map to_destroy)
 {
