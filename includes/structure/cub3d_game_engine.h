@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:31:25 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/05 16:34:11 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/06 13:21:27 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef struct		s_game_engine
 
 	char			*comp;
 	char			*valid;
-	bool			bonus;
+	bool			thread;
 	bool			save;
 }					t_game_engine;
 

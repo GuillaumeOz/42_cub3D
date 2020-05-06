@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 13:25:27 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/05 18:26:53 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/06 13:21:53 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_game_engine	create_game_engine(void)
 	result.medikit = create_medikit(NULL, 0);
 	result.comp = ft_strdup("0DMmH2");
 	result.valid = ft_strdup(" 012SNEW");
-	result.bonus = true;
+	result.thread = false;
 	result.save = false;
 	return (result);
 }

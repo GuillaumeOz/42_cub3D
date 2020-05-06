@@ -6,12 +6,12 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/09 13:12:46 by gozsertt          #+#    #+#              #
-#    Updated: 2020/02/24 19:36:57 by gozsertt         ###   ########.fr        #
+#    Updated: 2020/05/06 16:21:49 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= libgg.a
-MLXNAME		= libmlx.a
+MLXNAME		= libmlx_Linux.a
 
 CC =		gcc
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.c                                           :+:      :+:    :+:   */
+/*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:25:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/05 18:42:07 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/06 14:10:16 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,9 @@ int main(int argc, char **argv)
 	param[0] = engine->map;
 	param[1] = engine->player;
 	param[2] = engine;
-
 	add_interaction_to_application(&cube3d_key_release_manager, KEYRELEASE, KEYRELEASEMASK, param);
 	add_interaction_to_application(&cube3d_key_press_manager, KEYPRESS, KEYPRESSMASK, param);
-	add_interaction_exit_control(&quit, DESTROYNOTIFY);//check if we need a maskevent
+	add_interaction_exit_control(&quit, DESTROYNOTIFY);
 	application_update(&update, param);
 	return (run_application());
 }

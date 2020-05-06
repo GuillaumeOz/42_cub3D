@@ -6,16 +6,11 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 17:23:10 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/05 14:25:03 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/06 16:51:38 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ggl.h"
-
-void	application_create_content(void)
-{
-	g_app->image = malloc_image(g_app->size.x, g_app->size.y);
-}
 
 void	add_interaction_exit_control(t_exit_funct funct, int event)
 {

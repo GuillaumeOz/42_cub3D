@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 13:31:03 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/05 18:24:52 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/06 14:06:12 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,12 @@ bool	set_level_image(t_game_engine *engine, char *path)
 		catch_error(SET_LEVEL_IMAGE_1);
 	engine->secret = create_texture(ft_strdup(path + i));
 	engine->valid = ft_strprepend(engine->valid, "4", 1 , 0);
+	return (true);
+}
+
+bool	set_thread_option(t_game_engine *engine)
+{
+	if (engine->thread == false)
+		engine->thread = true;
 	return (true);
 }

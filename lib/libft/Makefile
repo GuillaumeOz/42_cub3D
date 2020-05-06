@@ -6,7 +6,7 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/06 15:28:16 by gozsertt          #+#    #+#              #
-#    Updated: 2020/05/06 13:06:27 by gozsertt         ###   ########.fr        #
+#    Updated: 2020/05/06 13:14:32 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ vpath %.c $(foreach dir, $(SRC_DIR), $(dir):)
 
 SRC		= $(foreach dir, $(SRC_DIR), $(foreach file, $(wildcard $(dir)/*.c), $(notdir $(file))))
 
-OBJ2	= $(OBJ1:%.m=%.o)
 OBJ		= $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
 
 #Compilation flag
@@ -58,12 +57,6 @@ show:
 				@echo "$(_BLUE)LFLAGS :\n$(_YELLOW)$(LFLAGS)$(_WHITE)"
 
 $(OBJ_DIR)/%.o : %.c
-				@echo "Compiling $(_YELLOW)$@$(_WHITE) ... \c"
-				@mkdir -p $(OBJ_DIR)
-				@$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $<
-				@echo "$(_GREEN)DONE$(_WHITE)"
-
-$(OBJ_DIR)/%.o : %.m
 				@echo "Compiling $(_YELLOW)$@$(_WHITE) ... \c"
 				@mkdir -p $(OBJ_DIR)
 				@$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $<

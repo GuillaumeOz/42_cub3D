@@ -6,11 +6,28 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 15:41:26 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/05 18:24:44 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/06 17:11:51 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	get_resolution(t_vector2 *res)
+{
+	int			test_size_x;
+	int			test_size_y;
+
+	test_size_x = 0;
+	test_size_y = 0;
+	mlx_get_screen_size(g_app->mlx_ptr, &test_size_x, &test_size_y);
+	PRINTD(test_size_x)
+	PRINTD(test_size_y)
+	exit(0);
+	res->y = (res->y > test_size_y) ? test_size_y : res->y;
+	res->y = (res->y < 1) ? 1 : res->y;
+	res->x = (res->x > test_size_x) ? test_size_x : res->x;
+	res->x = (res->x < 1) ? 1 : res->x;
+}
 
 void	resize_resolution(t_vector2 *reso)
 {

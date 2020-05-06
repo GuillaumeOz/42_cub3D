@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:38:57 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/05 18:24:56 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/06 16:45:46 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,33 +31,12 @@ bool parse_resolution(char *descriptor, char *content, t_vector2 *resolution)
 			i++;
 		}
 		*resolution = create_vector2(ft_atoi(tab[0]), ft_atoi(tab[1]));
-		resize_resolution(resolution);
+		get_resolution(resolution);
 		ft_tab_free(tab);
 		return (true);
 	}
 	else
 		return (false);
-}
-
-t_vector2		get_resolution(char *line)
-{
-	t_vector2	resolution;
-	int			len;
-	int			x_value;
-	int			y_value;
-
-	x_value = ft_atoi(line + 1);
-	len = 1;
-	while (line[2 + len] == ' ')
-		len++;
-	len += ft_intlen(x_value);
-	y_value = ft_atoi(line + len + 1);
-	y_value = (y_value > 1440) ? 1440 : y_value;
-	y_value = (y_value < 1) ? 1 : y_value;
-	x_value = (x_value > 2560) ? 2560 : x_value;
-	x_value = (x_value < 1) ? 1 : x_value;
-	resolution = create_vector2(x_value, y_value);
-	return (resolution);
 }
 
 bool parse_environement_color(t_game_engine *engine, char *descriptor, char *content)
@@ -105,6 +84,8 @@ bool parse_environement_texture(t_game_engine *engine, char *descriptor, char *c
 		return (set_monster_image(engine, content + 1));
 	else if (ft_strcmp(descriptor, "L") == 0)
 		return (set_level_image(engine, content + 1));
+	else if (ft_strcmp(descriptor, "T") == 0)
+		return (set_thread_option(engine));
 	else
 		return (false);
 }

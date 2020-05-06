@@ -1,15 +1,18 @@
-R 800 600
+R 1000000000 1000000000
 
         NO ./textures/wall_1.xpm
 SO  ./textures/wall_2.xpm
  WE      ./textures/wall_3.xpm
 EA ./textures/wall_4.xpm
 
+
 D     ./textures/door.xpm
 M ./textures/alien.xpm ./textures/blood.xpm 15
 L    ./textures/wall_4.xpm
 S ./textures/pillar.xpm
 F              155,118,83
+
+T
 
 H ./textures/medkit.xpm 30
 
@@ -22,8 +25,8 @@ H ./textures/medkit.xpm 30
 11111
  
    111                111111111
-   101                1000001111111111111111111
-   111                10111000000003000M00M0MH1
+   101      11        1000001111111111111111111
+   111      11        10111000000003000M00M0MH1
                       1040111111113110M0000MMM1
 1111111111111111111111111311111  1011000M00M001
 1M000M00000000M0000000000M00001  100M0M0000M001

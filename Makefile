@@ -6,7 +6,7 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/28 13:23:39 by gozsertt          #+#    #+#              #
-#    Updated: 2020/05/06 12:14:30 by gozsertt         ###   ########.fr        #
+#    Updated: 2020/05/06 16:25:22 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ INC_DIR		= 	$(shell find includes -type d) \
 				$(shell find lib/guillaume_graphical_lib -type d) \
 				$(shell find lib/guillaume_graphical_lib/lib -type d) \
 				$(shell find lib/libft/includes -type d)
-LIB_DIR		=	lib/libft lib/guillaume_graphical_lib
+LIB_DIR		=	lib/libft lib/guillaume_graphical_lib \
+				lib/guillaume_graphical_lib/lib/mlx
 OBJ_DIR		=	obj
 
 vpath %.c $(foreach dir, $(SRC_DIR), $(dir):)
@@ -29,7 +30,7 @@ vpath %.c $(foreach dir, $(SRC_DIR), $(dir):)
 #FRAMEWORK = OpenGL AppKit
 LINUXFLAG = -lm -lX11 -lXext -lbsd
 # -lbsd flag prevent the strlcpy bug
-LIB = ft gg mlx 
+LIB = ft gg mlx_Linux
 
 SRC	=	$(foreach dir, $(SRC_DIR), $(foreach file, $(wildcard $(dir)/*.c), $(notdir $(file))))
 
