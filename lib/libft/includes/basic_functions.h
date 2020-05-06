@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 11:30:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/05 12:51:46 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/06 13:03:19 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char	*ft_strprepend(const char *s1, const char *s2,
 				int free_s1, int free_s2);
 
 char	*ft_strtrim(char const *s1, char const *set);
-char	*ft_split(char const *s, char c);
+char	**t_split(char const *s, char c);
 
 char	*ft_strcut_free(char **s1, char delim, int to_free);
 char	*ft_strcut(char **s1, char delim);

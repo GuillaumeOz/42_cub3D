@@ -6,7 +6,7 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/28 13:23:39 by gozsertt          #+#    #+#              #
-#    Updated: 2020/05/05 18:42:59 by gozsertt         ###   ########.fr        #
+#    Updated: 2020/05/06 12:14:30 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,4 +102,4 @@ fclean:	clean
 	@rm -f $(NAME)
 	@echo "$(_GREEN)DONE$(_WHITE)\n-----"
 
-.PHONY: all clean flcean re show exec nh nc na
+.PHONY: all show install re-install re clean flcean

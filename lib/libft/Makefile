@@ -6,13 +6,13 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/06 15:28:16 by gozsertt          #+#    #+#              #
-#    Updated: 2020/02/24 13:08:51 by gozsertt         ###   ########.fr        #
+#    Updated: 2020/05/06 13:06:27 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= libft.a
+NAME	=	libft.a
 
-CC =		gcc
+CC 		=	gcc
 
 SRC_DIR = 	$(shell find srcs -type d)
 INC_DIR = 	$(shell find includes -type d)
@@ -21,12 +21,12 @@ OBJ_DIR = 	obj
 
 vpath %.c $(foreach dir, $(SRC_DIR), $(dir):)
 
-# # List de toute les library a linker au projet (le nom - le lib et - le .a)
+# List de toute les library a linker au projet (le nom - le lib et - le .a)
 
-SRC = $(foreach dir, $(SRC_DIR), $(foreach file, $(wildcard $(dir)/*.c), $(notdir $(file))))
+SRC		= $(foreach dir, $(SRC_DIR), $(foreach file, $(wildcard $(dir)/*.c), $(notdir $(file))))
 
-OBJ2 = $(OBJ1:%.m=%.o)
-OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
+OBJ2	= $(OBJ1:%.m=%.o)
+OBJ		= $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
 
 #Compilation flag
 CFLAGS = -Wall -Wextra -Werror
@@ -74,9 +74,6 @@ $(NAME): 		$(OBJ) Makefile
 				@ar -rc $(NAME) $(OBJ)
 				@ranlib $(NAME)
 				@echo "$(_GREEN)DONE$(_WHITE)\n-----"
-
-norme:
-				norminette $(SRC_DIR)
 
 re:				fclean all
 

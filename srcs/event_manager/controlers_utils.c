@@ -6,11 +6,21 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 16:19:23 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/05 19:54:40 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/06 12:24:38 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+t_cube3d_key_handler g_cube3d_key_handler[] =
+{
+	{ SPEEDBONUS, &speed_control},
+	{ PLAYERCONTRL, &player_control},
+	{ INTERACTCONTRL, &interact_control},
+	{ CAMERACONTRL, &camera_control},
+	{ FIRECONTRL, &fire_control},
+	{ NOCONTRL, NULL}
+};
 
 bool	comp_type_check(char *str, t_tile *tile)
 {
@@ -18,7 +28,7 @@ bool	comp_type_check(char *str, t_tile *tile)
 
 	i = -1;
 	while(str[++i])
-		if (str[i] == '0' && tile->type == empty)
+		if (str[i] == '0' && tile->type == empty)//test with secret door
 			return (true);
 		else if (str[i] == 'D' && tile->type == door)
 			return (true);
@@ -39,7 +49,6 @@ void	respawn_monster(t_game_engine *eng, t_map *map, t_player *hero)
 	int		j;
 
 	i = -1;
-	debug
 	while (++i < map->size.y)
 	{
 		while (++j < map->size.x)

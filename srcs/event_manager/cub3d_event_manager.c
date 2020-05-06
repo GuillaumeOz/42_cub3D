@@ -6,21 +6,11 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:18:34 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/05 19:50:45 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/06 12:27:33 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-t_cube3d_key_handler g_cube3d_key_handler[] =
-{
-	{ SPEEDBONUS, &speed_control},
-	{ PLAYERCONTRL, &player_control},
-	{ INTERACTCONTRL, &interact_control},
-	{ CAMERACONTRL, &camera_control},
-	{ FIRECONTRL, &fire_control},
-	{ NOCONTRL, NULL}
-};
 
 static	void	player_marker_remover(int key, int32_t *control)
 {
@@ -110,7 +100,7 @@ int				update(void *param)
 	map = (t_map*)(((void**)param)[0]);
 	hero->forward = create_vector2((((int)(hero->size) - 1) * cos(hero->pitch) +
 	hero->pos.x), ((-(int)(hero->size) + 1) * sin(hero->pitch) + hero->pos.y));
-	test_clear();
+	clear();
 	update_player(param);
 	hero->forward = create_vector2((((int)(hero->size) - 1) * cos(hero->pitch) +
 	hero->pos.x), ((-(int)(hero->size) + 1) * sin(hero->pitch) + hero->pos.y));

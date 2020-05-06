@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 13:51:40 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/24 22:14:10 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/06 12:20:13 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ t_list	*malloc_list(size_t p_push_size)
 	return (result);
 }
 
-void	destroy_list(t_list to_destroy, destroy_funct funct)
+void	destroy_list(t_list to_destroy, t_destroy_funct funct)
 {
 	clear_list(&to_destroy, funct);
 }
 
-void	clear_list(t_list *to_clear, destroy_funct funct)
+void	clear_list(t_list *to_clear, t_destroy_funct funct)
 {
 	size_t i;
 	size_t j;
@@ -59,7 +59,7 @@ void	clear_list(t_list *to_clear, destroy_funct funct)
 	to_clear->size = 0;
 }
 
-void	free_list(t_list *to_free, destroy_funct funct)
+void	free_list(t_list *to_free, t_destroy_funct funct)
 {
 	destroy_list(*to_free, funct);
 	free(to_free);
