@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:34:27 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/05 18:26:46 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/06 19:00:08 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_tile *malloc_tile(t_game_engine p_engine, t_tile_type p_type)
 {
 	t_tile *result;
 
-	result = (t_tile *)malloc(sizeof(t_tile));
+	result = (t_tile*)malloc(sizeof(t_tile));
 	if (result == NULL)
 		catch_error(CREATE_TILE_2);
 	*result = create_tile(p_engine, p_type);

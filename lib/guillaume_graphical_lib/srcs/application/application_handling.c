@@ -6,15 +6,16 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 17:23:10 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/06 16:51:38 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/06 18:45:46 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ggl.h"
 
-void	add_interaction_exit_control(t_exit_funct funct, int event)
+void	add_interaction_exit_control(t_exit_funct funct, int event,
+	void *param)
 {
-	mlx_hook(g_app->win_ptr, event, 0L, funct, (void*)0);
+	mlx_hook(g_app->win_ptr, event, 0L, funct, param);
 }
 
 void	add_interaction_to_application(t_key_funct funct, int event,

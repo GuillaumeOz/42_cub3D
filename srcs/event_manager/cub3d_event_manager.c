@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:18:34 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/06 14:09:31 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/06 18:36:06 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int				cube3d_key_press_manager(int key, void *param)
 	player = (t_player*)(((void**)param)[1]);
 	control = (int32_t*)((int32_t*)&(player->control));
 	if (key == ESC_KEY)
-		close_application();
+		quit(param);
 	if (key == LSFT_KEY)
 		*control = (*control | BONUS_SPEEDUP_KEYPRESS) | SPEED_MARKER;
 	else if (key == W_KEY || key == A_KEY || key == S_KEY || key == D_KEY)

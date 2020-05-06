@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:38:57 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/06 16:45:46 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/06 18:12:40 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,14 @@ bool parse_resolution(char *descriptor, char *content, t_vector2 *resolution)
 				catch_error(PARSE_RESOLUTION_2);
 			i++;
 		}
-		*resolution = create_vector2(ft_atoi(tab[0]), ft_atoi(tab[1]));
+		*resolution = create_vector2((ft_strlen(tab[0]) >= 10 ?
+			2147483646 : ft_atoi(tab[0])), (ft_strlen(tab[1]) >= 10 ?
+			2147483646 : ft_atoi(tab[1])));
 		get_resolution(resolution);
 		ft_tab_free(tab);
 		return (true);
 	}
-	else
-		return (false);
+	return (false);
 }
 
 bool parse_environement_color(t_game_engine *engine, char *descriptor, char *content)

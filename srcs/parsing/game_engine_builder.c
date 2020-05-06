@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 15:41:26 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/06 17:11:51 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/06 18:15:19 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,10 @@ void	get_resolution(t_vector2 *res)
 	test_size_x = 0;
 	test_size_y = 0;
 	mlx_get_screen_size(g_app->mlx_ptr, &test_size_x, &test_size_y);
-	PRINTD(test_size_x)
-	PRINTD(test_size_y)
-	exit(0);
 	res->y = (res->y > test_size_y) ? test_size_y : res->y;
 	res->y = (res->y < 1) ? 1 : res->y;
 	res->x = (res->x > test_size_x) ? test_size_x : res->x;
 	res->x = (res->x < 1) ? 1 : res->x;
-}
-
-void	resize_resolution(t_vector2 *reso)
-{
-	reso->y = (reso->y > 1440) ? 1440 : reso->y;
-	reso->y = (reso->y < 1) ? 1 : reso->y;
-	reso->x = (reso->x > 2560) ? 2560 : reso->x;
-	reso->x = (reso->x < 1) ? 1 : reso->x;
 }
 
 bool	set_texture_image(t_game_engine *engine, t_direction dir, char *path)

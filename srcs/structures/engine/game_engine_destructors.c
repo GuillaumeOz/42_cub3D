@@ -6,11 +6,16 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 13:26:00 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/05 18:26:36 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/06 19:06:02 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+// static void		destroy_game_engine_tile(t_game_engine to_destroy)
+// {
+	
+// }
 
 void 			destroy_game_engine(t_game_engine to_destroy)
 {
@@ -19,6 +24,7 @@ void 			destroy_game_engine(t_game_engine to_destroy)
 	free_texture(to_destroy.texture[1]);
 	free_texture(to_destroy.texture[2]);
 	free_texture(to_destroy.texture[3]);
+	free(to_destroy.texture);
 	free_texture(to_destroy.sprite);
 	destroy_texture(to_destroy.door);
 	destroy_texture(to_destroy.secret);
@@ -30,6 +36,7 @@ void 			destroy_game_engine(t_game_engine to_destroy)
 	free_tile(to_destroy.door_tile);
 	free_tile(to_destroy.closed_door_tile);
 	free_tile(to_destroy.secret_tile);
+	free_tile(to_destroy.dead_tile);
 	free_tile(to_destroy.medikit_tile);
 	free_tile(to_destroy.monster_tile);
 	free_list(to_destroy.map_content, free);

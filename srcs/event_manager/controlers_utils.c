@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 16:19:23 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/06 12:24:38 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/06 18:25:29 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ bool	comp_type_check(char *str, t_tile *tile)
 
 	i = -1;
 	while(str[++i])
-		if (str[i] == '0' && tile->type == empty)//test with secret door
+		if (str[i] == '0' && tile->type == empty)
 			return (true);
 		else if (str[i] == 'D' && tile->type == door)
 			return (true);
