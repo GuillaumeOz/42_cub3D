@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 13:57:39 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/06 13:50:29 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/07 19:45:05 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,12 @@ static void compute_map(t_game_engine *engine, t_vector2 map_size)
 	size_t	i;
 
 	i = 0;
-	new_map = malloc_list(1);
+	new_map = malloc_list(500);
 	while (i < engine->map_content->size)
 	{
 		line = (char*)list_at(engine->map_content, i);
 		size = ft_strlen(line);
-		tmp = (char*)ft_memalloc(map_size.x);
+		tmp = (char*)ft_memalloc(map_size.x + 1);
 		ft_strcpy(tmp, line);
 		while (size < map_size.x)
 			tmp[size++] = ' ';

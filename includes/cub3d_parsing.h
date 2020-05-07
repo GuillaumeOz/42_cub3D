@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 19:33:03 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/06 16:39:01 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/07 15:44:09 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ void    parse_game_engine(t_game_engine *engine, int fd, t_vector2 *resolution);
 
 bool    is_engine_full(t_game_engine *engine, t_vector2 *resolution);
 void	**malloc_param_tab(void **param);
-void    cube3d_parsing(t_game_engine *engine, int argc, char **argv, t_vector2 *resolution);
+void    cub3d_parsing(t_game_engine *engine, int argc, char **argv, t_vector2 *resolution);
 
 #endif

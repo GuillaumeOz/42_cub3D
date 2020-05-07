@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:34:27 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/06 19:00:08 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/07 12:06:05 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_tile create_tile(t_game_engine p_engine, t_tile_type p_type)
 	result.secret = p_engine.secret;
 	result.medikit = p_engine.medikit;
 	result.monster = p_engine.monster;
-	result.texture = (t_texture**)malloc(sizeof(t_texture*) * 4);// free this
+	result.texture = (t_texture**)malloc(sizeof(t_texture*) * 4);
 	if (result.texture == NULL)
 		catch_error(CREATE_TILE_1);
 	return (result);
@@ -38,7 +38,7 @@ t_tile *malloc_tile(t_game_engine p_engine, t_tile_type p_type)
 	if (result == NULL)
 		catch_error(CREATE_TILE_2);
 	*result = create_tile(p_engine, p_type);
-	set_tile_texture(result, north, p_engine.texture[north]);//check the desctructor
+	set_tile_texture(result, north, p_engine.texture[north]);
 	set_tile_texture(result, east, p_engine.texture[east]);
 	set_tile_texture(result, south, p_engine.texture[south]);
 	set_tile_texture(result, west, p_engine.texture[west]);
@@ -47,7 +47,7 @@ t_tile *malloc_tile(t_game_engine p_engine, t_tile_type p_type)
 
 void 	destroy_tile(t_tile to_destroy)
 {
-	(void)to_destroy;
+	free(to_destroy.texture);
 }
 
 void 	free_tile(t_tile *to_free)

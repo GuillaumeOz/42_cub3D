@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 11:30:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/06 13:10:24 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/07 14:30:22 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,5 +143,7 @@ char	*ft_itoa_base(long long int nbr, char *base);
 char	*ft_itoa_hexa(long long int nbr);
 char	*ft_itoa_octa(long long int nbr);
 char	*ft_itoa_unsigned_deci(unsigned int nbr);
+
+void	ft_get_leaks(char *prog_name, char *msg);
 
 #endif

@@ -6,13 +6,13 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/28 13:23:39 by gozsertt          #+#    #+#              #
-#    Updated: 2020/05/06 16:25:22 by gozsertt         ###   ########.fr        #
+#    Updated: 2020/05/07 19:48:48 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        =   Cub3D
 
-CC          =   gcc
+CC          =   clang-9
 
 MLX_DIR		= 	$(shell find lib/guillaume_graphical_lib -type d)
 SRC_DIR		= 	$(shell find srcs -type d)
@@ -27,8 +27,8 @@ OBJ_DIR		=	obj
 vpath %.c $(foreach dir, $(SRC_DIR), $(dir):)
 
 # List of all of the library linked to the project (the name without the lib part and without the .a)
-#FRAMEWORK = OpenGL AppKit
-LINUXFLAG = -lm -lX11 -lXext -lbsd
+# FRAMEWORK = OpenGL AppKit
+LINUXFLAG = -lm -lX11 -lXext -lpthread
 # -lbsd flag prevent the strlcpy bug
 LIB = ft gg mlx_Linux
 

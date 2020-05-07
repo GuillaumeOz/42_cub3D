@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:41:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/05 18:24:47 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/07 17:26:42 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void check_mapname(char *map_name)
 		catch_error(CHECK_MAPNAME_1);
 }
 
-void cube3d_parsing(t_game_engine *engine, int argc, char **argv,
+void cub3d_parsing(t_game_engine *engine, int argc, char **argv,
 	t_vector2 *resolution)
 {
 	int fd;

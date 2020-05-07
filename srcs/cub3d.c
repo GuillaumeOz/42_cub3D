@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:25:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/06 18:46:38 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/07 15:44:13 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int				main(int argc, char **argv)
 	XInitThreads();
 	start_application(600, 600, "Cub3D (c)");
 	engine = malloc_game_engine();
-	cube3d_parsing(engine, argc, argv, &resolution);
+	cub3d_parsing(engine, argc, argv, &resolution);
 	resize_application((int)resolution.x, (int)resolution.y);
 	param[0] = engine->map;
 	param[1] = engine->player;
