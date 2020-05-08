@@ -6,21 +6,19 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 13:57:39 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/07 19:45:05 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/08 16:28:43 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static bool cross_check(t_list *map, t_vector2 map_size, size_t y, size_t x)
+static bool	cross_check(t_list *map, t_vector2 map_size, size_t y, size_t x)
 {
 	char	*line;
 	size_t	tmp_x;
 
 	line = (char*)list_at(map, y);
 	tmp_x = x;
-	if (x == 0 || y == 0)
-		return (true);
 	while (line[--x] != '1')
 		if (x == 0 || line[x] == ' ')
 			return (true);
@@ -36,14 +34,14 @@ static bool cross_check(t_list *map, t_vector2 map_size, size_t y, size_t x)
 	line = (char*)list_at(map, ++y);
 	while (line[tmp_x] != '1')
 	{
-		if ( y == (map_size.y - 1) || line[tmp_x] == ' ')
+		if (y == (map_size.y - 1) || line[tmp_x] == ' ')
 			return (true);
 		line = (char*)list_at(map, ++y);
 	}
 	return (false);
 }
 
-static void flood_fill(t_game_engine *engine, t_list *map, t_vector2 map_size)
+static void	flood_fill(t_game_engine *engine, t_list *map, t_vector2 map_size)
 {
 	char	*line;
 	size_t	i;
@@ -60,8 +58,9 @@ static void flood_fill(t_game_engine *engine, t_list *map, t_vector2 map_size)
 		{
 			if (line[j] == '0' || line[j] == 'W' || line[j] == 'E' ||
 				line[j] == 'S' || line[j] == 'N' || line[j] == 'H' ||
-				line[j] == 'M' || line[j] == '3' || line[j] == '4' )
-				if (cross_check(map, map_size, i, j) == true)
+				line[j] == 'M' || line[j] == '3' || line[j] == '4')
+				if (i == 0 || j == 0 ||
+				cross_check(map, map_size, i, j) == true)
 					catch_error(FLOOD_FILL_2);
 			j++;
 		}
@@ -70,7 +69,8 @@ static void flood_fill(t_game_engine *engine, t_list *map, t_vector2 map_size)
 	}
 }
 
-static bool parse_map_line(t_game_engine *engine, char *line, t_vector2 *map_size)
+static bool	parse_map_line(t_game_engine *engine, char *line,
+	t_vector2 *map_size)
 {
 	char *content;
 
@@ -84,7 +84,7 @@ static bool parse_map_line(t_game_engine *engine, char *line, t_vector2 *map_siz
 	return (true);
 }
 
-static void compute_map(t_game_engine *engine, t_vector2 map_size)
+static void	compute_map(t_game_engine *engine, t_vector2 map_size)
 {
 	t_list	*new_map;
 	char	*line;
@@ -111,7 +111,7 @@ static void compute_map(t_game_engine *engine, t_vector2 map_size)
 	engine->map = malloc_map(engine, map_size, engine->map_content);
 }
 
-void parse_map(t_game_engine *engine, int fd)
+void		parse_map(t_game_engine *engine, int fd)
 {
 	t_vector2	map_size;
 	bool		found;

@@ -6,13 +6,13 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:41:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/07 17:26:42 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/08 13:15:39 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void		check_save(t_game_engine *engine, char *save_arg)
+static void	check_save(t_game_engine *engine, char *save_arg)
 {
 	if (ft_strcmp(save_arg, "--save") == 0)
 		engine->save = true;
@@ -33,7 +33,7 @@ static void	set_empty_wall_tile(t_game_engine *engine)
 	engine->monster_tile = malloc_tile(*engine, monster);
 }
 
-static void check_mapname(char *map_name)
+static void	check_mapname(char *map_name)
 {
 	int i;
 
@@ -47,7 +47,7 @@ static void check_mapname(char *map_name)
 		catch_error(CHECK_MAPNAME_1);
 }
 
-void cub3d_parsing(t_game_engine *engine, int argc, char **argv,
+void		cub3d_parsing(t_game_engine *engine, int argc, char **argv,
 	t_vector2 *resolution)
 {
 	int fd;

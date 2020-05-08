@@ -6,13 +6,13 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 12:51:27 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/05 17:04:45 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/08 18:06:54 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	g_cub3d_life[][6] = {
+int	g_life[][6] = {
 	{0, 0, 0, 0, 0, 0},
 	{0, 0, 1, 0, 0, 0},
 	{0, 0, 1, 0, 0, 1},
@@ -31,24 +31,25 @@ static void	put_image(int var[4], t_map map, t_image **img, int *num)
 	while (var[0] < map.resolution.x * 0.05)
 	{
 		var[2] = (int)((var[0] / (map.resolution.x * 0.05)) *
-		img[g_cub3d_life[num[2]][num[1]]]->size.x) *
-		(img[g_cub3d_life[num[2]][num[1]]]->bits_per_pixels / 8);
+		img[g_life[num[2]][num[1]]]->size.x) *
+		(img[g_life[num[2]][num[1]]]->bits_per_pixels / 8);
 		var[3] = var[2];
 		while (var[1] < map.resolution.y * 0.09)
 		{
-			if (img[g_cub3d_life[num[2]][num[1]]]->pixels[var[3] + 2] != 0 ||
-				img[g_cub3d_life[num[2]][num[1]]]->pixels[var[3] + 1] != 0 ||
-				img[g_cub3d_life[num[2]][num[1]]]->pixels[var[3]] != 0)
-				put_pixel(g_app->image, create_vector2(var[0] + map.resolution.x * 0.05 *
-				num[1], var[1] + map.resolution.y * 0.095),
-				create_color(img[g_cub3d_life[num[2]][num[1]]]->pixels[var[3] + 2],
-				img[g_cub3d_life[num[2]][num[1]]]->pixels[var[3] + 1],
-				img[g_cub3d_life[num[2]][num[1]]]->pixels[var[3]], 255));
+			if (img[g_life[num[2]][num[1]]]->pixels[var[3] + 2] != 0 ||
+				img[g_life[num[2]][num[1]]]->pixels[var[3] + 1] != 0 ||
+				img[g_life[num[2]][num[1]]]->pixels[var[3]] != 0)
+				put_pixel(g_app->image, create_vector2(var[0] + 0.05 *
+				map.resolution.x * num[1], var[1] + map.resolution.y *
+				0.095), create_color(
+				img[g_life[num[2]][num[1]]]->pixels[var[3] + 2],
+				img[g_life[num[2]][num[1]]]->pixels[var[3] + 1],
+				img[g_life[num[2]][num[1]]]->pixels[var[3]], 255));
 			var[1]++;
 			var[3] = (int)((var[1] / (map.resolution.y * 0.09)) *
-			img[g_cub3d_life[num[2]][num[1]]]->size.y) *
-			img[g_cub3d_life[num[2]][num[1]]]->size.x *
-			(img[g_cub3d_life[num[2]][num[1]]]->bits_per_pixels / 8) + var[2];
+			img[g_life[num[2]][num[1]]]->size.y) *
+			img[g_life[num[2]][num[1]]]->size.x *
+			(img[g_life[num[2]][num[1]]]->bits_per_pixels / 8) + var[2];
 		}
 		var[0]++;
 		var[1] = 0;
@@ -79,26 +80,25 @@ static void	draw_other_image(int var[4], t_map map, t_image **img, int *num)
 
 static void	put_last_image(int var[4], t_map map, t_image **img, int *num)
 {
-	var[2] = (int)((var[0] / (map.resolution.x * 0.05)) * img[g_cub3d_life[num[2]]
-	[num[0]]]->size.x) * (img[g_cub3d_life[num[2]][num[0]]]->bits_per_pixels / 8);
+	var[2] = (int)((var[0] / (map.resolution.x * 0.05)) * img[g_life[num[2]]
+	[num[0]]]->size.x) * (img[g_life[num[2]][num[0]]]->bits_per_pixels / 8);
 	var[3] = var[2];
-	while (var[1] < map.resolution.y * 0.09)
+	while (var[1]++ < map.resolution.y * 0.09)
 	{
-		if (img[g_cub3d_life[num[2]][num[0]]]->pixels[var[3] + 2] != 0 ||
-			img[g_cub3d_life[num[2]][num[0]]]->pixels[var[3] + 1] != 0 ||
-			img[g_cub3d_life[num[2]][num[0]]]->pixels[var[3]] != 0)
+		if (img[g_life[num[2]][num[0]]]->pixels[var[3] + 2] != 0 ||
+			img[g_life[num[2]][num[0]]]->pixels[var[3] + 1] != 0 ||
+			img[g_life[num[2]][num[0]]]->pixels[var[3]] != 0)
 		{
-			put_pixel(g_app->image, create_vector2(var[0] + map.resolution.x * 0.05 *
-				num[0], var[1] + map.resolution.y * 0.095),
-			create_color(img[g_cub3d_life[num[2]][num[0]]]->pixels[var[3] + 2],
-			img[g_cub3d_life[num[2]][num[0]]]->pixels[var[3] + 1],
-			img[g_cub3d_life[num[2]][num[0]]]->pixels[var[3]], 255));
+			put_pixel(g_app->image, create_vector2(var[0] + map.resolution.x *
+			0.05 * num[0], var[1] + map.resolution.y * 0.095),
+			create_color(img[g_life[num[2]][num[0]]]->pixels[var[3] + 2],
+			img[g_life[num[2]][num[0]]]->pixels[var[3] + 1],
+			img[g_life[num[2]][num[0]]]->pixels[var[3]], 255));
 		}
-		var[1]++;
 		var[3] = (int)((var[1] / (map.resolution.y * 0.09)) *
-		img[g_cub3d_life[num[2]][num[0]]]->size.y) *
-		img[g_cub3d_life[num[2]][num[0]]]->size.x *
-		(img[g_cub3d_life[num[2]][num[0]]]->bits_per_pixels / 8) + var[2];
+		img[g_life[num[2]][num[0]]]->size.y) *
+		img[g_life[num[2]][num[0]]]->size.x *
+		(img[g_life[num[2]][num[0]]]->bits_per_pixels / 8) + var[2];
 	}
 	var[0]++;
 	var[1] = 0;

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 12:52:06 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/05 16:59:43 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/08 10:35:19 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static t_vector2	*calcul_height(t_player hero, t_map *map)
 	int						i;
 
 	i = 0;
-	lst = malloc(sizeof(t_vector2) * map->resolution.x);//check if we must change x and y
+	lst = malloc(sizeof(t_vector2) * map->resolution.x);
 	if (lst == NULL)
 		return (NULL);
 	nb_to_draw = map->resolution.x / ((float)1);

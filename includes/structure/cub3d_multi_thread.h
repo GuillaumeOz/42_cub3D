@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 19:00:33 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/05 16:34:01 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/08 16:49:42 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 typedef struct			s_multithread_struct
 {
 	int					index;
-	t_player 			*hero;
+	t_player			*hero;
 	t_map				*map;
 	t_vector2			*lst;
 	int					num_pixel;

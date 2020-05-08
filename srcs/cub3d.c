@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:25:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/07 15:44:13 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/08 11:08:43 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ int				main(int argc, char **argv)
 	param[1] = engine->player;
 	param[2] = engine;
 	do_save(param);
-	add_interaction_to_application(&cube3d_key_release_manager, KEYRELEASE, KEYRELEASEMASK, param);
-	add_interaction_to_application(&cube3d_key_press_manager, KEYPRESS, KEYPRESSMASK, param);
+	add_interaction_to_application(&cube3d_key_release_manager,
+	KEYRELEASE, KEYRELEASEMASK, param);
+	add_interaction_to_application(&cube3d_key_press_manager,
+	KEYPRESS, KEYPRESSMASK, param);
 	add_interaction_exit_control(&quit, DESTROYNOTIFY, param);
 	application_update(&update, param);
 	return (run_application());

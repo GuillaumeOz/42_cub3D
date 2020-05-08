@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 13:31:03 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/07 13:04:48 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/08 13:02:27 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ bool	set_monster_image(t_game_engine *engine, char *path)
 		k++;
 	path[i + j + k] = '\0';
 	engine->monster = create_monster(path + i, path + i + j,
-		ft_atoi(path + i + j + k + 1));//Protect all atoi with isdigit ?
-	engine->valid = ft_strprepend(engine->valid, "M", 1 , 0);
+		ft_atoi(path + i + j + k + 1));
+	engine->valid = ft_strprepend(engine->valid, "M", 1, 0);
 	return (true);
 }
 
 bool	set_medikit_image(t_game_engine *engine, char *path)
 {
-	int 	i;
-	int		j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -59,10 +59,8 @@ bool	set_medikit_image(t_game_engine *engine, char *path)
 	if (path[i + j] == '\0')
 		catch_error(SET_MEDIKIT_IMAGE_1);
 	path[j + i] = '\0';
-	// if (ft_isdigit(ft_atoi(path + j + i + 1)))
-	// 	catch_error();
 	engine->medikit = create_medikit(path + i, ft_atoi(path + j + i + 1));
-	engine->valid = ft_strprepend(engine->valid, "H", 1 , 0);
+	engine->valid = ft_strprepend(engine->valid, "H", 1, 0);
 	return (true);
 }
 
@@ -78,7 +76,7 @@ bool	set_door_image(t_game_engine *engine, char *path)
 	if (path[i] == '\0')
 		catch_error(SET_DOOR_IMAGE_1);
 	engine->door = create_texture(path + i);
-	engine->valid = ft_strprepend(engine->valid, "3", 1 , 0);
+	engine->valid = ft_strprepend(engine->valid, "3", 1, 0);
 	return (true);
 }
 
@@ -94,7 +92,7 @@ bool	set_level_image(t_game_engine *engine, char *path)
 	if (path[i] == '\0')
 		catch_error(SET_LEVEL_IMAGE_1);
 	engine->secret = create_texture(path + i);
-	engine->valid = ft_strprepend(engine->valid, "4", 1 , 0);
+	engine->valid = ft_strprepend(engine->valid, "4", 1, 0);
 	return (true);
 }
 

@@ -6,13 +6,13 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 16:34:27 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/07 12:06:05 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/08 16:32:13 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_tile create_tile(t_game_engine p_engine, t_tile_type p_type)
+t_tile	create_tile(t_game_engine p_engine, t_tile_type p_type)
 {
 	t_tile result;
 
@@ -30,7 +30,7 @@ t_tile create_tile(t_game_engine p_engine, t_tile_type p_type)
 	return (result);
 }
 
-t_tile *malloc_tile(t_game_engine p_engine, t_tile_type p_type)
+t_tile	*malloc_tile(t_game_engine p_engine, t_tile_type p_type)
 {
 	t_tile *result;
 
@@ -45,12 +45,12 @@ t_tile *malloc_tile(t_game_engine p_engine, t_tile_type p_type)
 	return (result);
 }
 
-void 	destroy_tile(t_tile to_destroy)
+void	destroy_tile(t_tile to_destroy)
 {
 	free(to_destroy.texture);
 }
 
-void 	free_tile(t_tile *to_free)
+void	free_tile(t_tile *to_free)
 {
 	destroy_tile(*to_free);
 	free(to_free);

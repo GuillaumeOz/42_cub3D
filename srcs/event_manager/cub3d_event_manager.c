@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:18:34 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/06 18:36:06 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/08 10:33:44 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,11 @@ int				cube3d_key_press_manager(int key, void *param)
 		player->hp += key == Q_KEY ? -10 : 10;
 	else if ((key == RSFT_KEY) && player->hp > 0)
 		*control = (*control | FIRE_KEYPRESS) | FIRE_MAKER;
-	else if (key == B_KEY && player->hp >= 0)//RNT dont work
+	else if (key == B_KEY && player->hp >= 0)
 		*control = (*control | RESPAWN_KEYPRESS) | INTERACT_MAKER;
 	else if (key == F_KEY && !(*control & INTERACT_MAKER))
 		*control = (*control | INTERACT_KEYPRESS) | INTERACT_MAKER;
-	return(player->control != NOEVENTMASK ? true : false);
+	return (player->control != NOEVENTMASK ? true : false);
 }
 
 int				update(void *param)

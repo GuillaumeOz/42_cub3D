@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 12:51:35 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/05 17:02:35 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/08 12:55:19 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void		draw_gun(t_map map, t_player *hero)
 	num[0] = 0;
 	num[1] = 0;
 	if (hero->control & FIRE_MAKER && time <= 0)
-		time = 1;	
+		time = 1;
 	put_image(num, map, img, time);
 	if (hero->control & FIRE_MAKER)
 		time -= 0.5;

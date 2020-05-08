@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 15:41:26 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/07 16:59:31 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/08 12:55:47 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ bool	set_color_type(t_game_engine *engine, int type, char *content)
 			catch_error(SET_COLOR_TYPE_3);
 		i++;
 	}
-	color = malloc_color(ft_atoi(tab[0]), ft_atoi(tab[1]), ft_atoi(tab[2]), 255);
+	color = malloc_color(ft_atoi(tab[0]), ft_atoi(tab[1]),
+	ft_atoi(tab[2]), 255);
 	ft_tab_free(tab);
 	if (type == CEILING)
 		engine->ceiling = color;

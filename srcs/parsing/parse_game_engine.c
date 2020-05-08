@@ -6,20 +6,19 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:38:57 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/06 18:12:40 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/08 13:13:36 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-bool parse_resolution(char *descriptor, char *content, t_vector2 *resolution)
+bool	parse_resolution(char *descriptor, char *content, t_vector2 *resolution)
 {
-	char **tab;
-	size_t i;
+	char	**tab;
+	size_t	i;
 
 	if (ft_strcmp(descriptor, "R") == 0)
 	{
-		content++;
 		tab = ft_split(content, ' ');
 		if (ft_tab_len(tab) != 2)
 			catch_error(PARSE_RESOLUTION_1);
@@ -40,7 +39,8 @@ bool parse_resolution(char *descriptor, char *content, t_vector2 *resolution)
 	return (false);
 }
 
-bool parse_environement_color(t_game_engine *engine, char *descriptor, char *content)
+bool	parse_environement_color(t_game_engine *engine,
+	char *descriptor, char *content)
 {
 	int i;
 
@@ -65,7 +65,8 @@ bool parse_environement_color(t_game_engine *engine, char *descriptor, char *con
 		return (false);
 }
 
-bool parse_environement_texture(t_game_engine *engine, char *descriptor, char *content)
+bool	parse_environement_texture(t_game_engine *engine,
+	char *descriptor, char *content)
 {
 	if (ft_strcmp(descriptor, "WE") == 0)
 		return (set_texture_image(engine, west, content + 2));
@@ -91,9 +92,9 @@ bool parse_environement_texture(t_game_engine *engine, char *descriptor, char *c
 		return (false);
 }
 
-bool is_engine_full(t_game_engine *engine, t_vector2 *resolution)
+bool	is_engine_full(t_game_engine *engine, t_vector2 *resolution)
 {
-	if (resolution->x == 0 || resolution->y == 0 || 
+	if (resolution->x == 0 || resolution->y == 0 ||
 		engine->texture[0] == NULL || engine->texture[1] == NULL ||
 		engine->texture[2] == NULL || engine->texture[3] == NULL ||
 		engine->ceiling == NULL || engine->floor == NULL ||
@@ -102,30 +103,31 @@ bool is_engine_full(t_game_engine *engine, t_vector2 *resolution)
 	return (true);
 }
 
-void parse_game_engine(t_game_engine *engine, int fd, t_vector2 *resolution)
+void	parse_game_engine(t_game_engine *engine, int fd, t_vector2 *res)
 {
-	char	*descriptor;
+	char	*id;
 	char	*content;
 	size_t	i;
 
 	content = NULL;
-	while (is_engine_full(engine, resolution) == false && get_next_line(fd, &content) > 0)
+	while (is_engine_full(engine, res) == false &&
+		get_next_line(fd, &content) > 0)
 	{
-		descriptor = ft_strcut(&content, ' ');
+		id = ft_strcut(&content, ' ');
 		i = 0;
 		while (content[i] != '\0' && content[i] == ' ')
 			i++;
-		if (parse_environement_texture(engine, descriptor, &(content[i])) == true)
+		if (parse_environement_texture(engine, id, &(content[i])) == true)
 			;
-		else if (parse_environement_color(engine, descriptor, &(content[i])) == true)
+		else if (parse_environement_color(engine, id, &(content[i])) == true)
 			;
-		else if (parse_resolution(descriptor, &(content[i]), resolution) == true)
+		else if (parse_resolution(id, &(content[i]), res) == true)
 			;
-		else if (ft_strlen(descriptor) == 0)
+		else if (ft_strlen(id) == 0)
 			;
 		else
 			catch_error(PARSE_GAME_ENGINE_1);
-		free(descriptor);
+		free(id);
 		free(content);
 	}
 }

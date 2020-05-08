@@ -6,15 +6,16 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 15:12:59 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/06 14:06:25 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/08 17:23:40 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_map   *malloc_map(t_game_engine *engine, t_vector2 p_size, t_list *p_content)
+t_map		*malloc_map(t_game_engine *engine, t_vector2 p_size,
+	t_list *p_content)
 {
-    t_map   *result;
+	t_map	*result;
 
 	result = (t_map*)malloc(sizeof(t_map));
 	if (result == NULL)
@@ -23,7 +24,7 @@ t_map   *malloc_map(t_game_engine *engine, t_vector2 p_size, t_list *p_content)
 	return (result);
 }
 
-t_tile ***malloc_tile_tab(t_vector2 size)
+t_tile		***malloc_tile_tab(t_vector2 size)
 {
 	t_tile ***result;
 	size_t i;
@@ -42,13 +43,21 @@ t_tile ***malloc_tile_tab(t_vector2 size)
 	return (result);
 }
 
-static void	create_map_3(t_game_engine *engine, t_map *result, char *line, t_vector2 pos)
+static void	create_map_3(t_game_engine *engine, t_map *result,
+	char *line, t_vector2 pos)
 {
-	if (line[(int)pos.x] == 'M')
+	if (line[(int)pos.x] == '3')
+		result->board[(int)pos.y][(int)pos.x] = engine->door_tile;
+	else if (line[(int)pos.x] == '4')
+		result->board[(int)pos.y][(int)pos.x] = engine->secret_tile;
+	else if (line[(int)pos.x] == 'H')
+		result->board[(int)pos.y][(int)pos.x] = engine->medikit_tile;
+	else if (line[(int)pos.x] == 'M')
 		result->board[(int)pos.y][(int)pos.x] = engine->monster_tile;
 }
 
-static void	create_map_2(t_game_engine *engine, t_map *result, char *line, t_vector2 pos)
+static void	create_map_2(t_game_engine *engine, t_map *result,
+	char *line, t_vector2 pos)
 {
 	if (line[(int)pos.x] == '2')
 		result->board[(int)pos.y][(int)pos.x] = engine->sprite_tile;
@@ -59,25 +68,24 @@ static void	create_map_2(t_game_engine *engine, t_map *result, char *line, t_vec
 		if (engine->player != NULL)
 			catch_error(CREATE_MAP_2);
 		if (line[(int)pos.x] == 'W')
-			engine->player = malloc_player(create_vector2(pos.x, pos.y), west_pitch, player_speed);
+			engine->player = malloc_player(create_vector2(pos.x, pos.y),
+				PI, PLAYER_SPEED);
 		if (line[(int)pos.x] == 'E')
-			engine->player = malloc_player(create_vector2(pos.x, pos.y), east_pitch, player_speed);
+			engine->player = malloc_player(create_vector2(pos.x, pos.y),
+				0, PLAYER_SPEED);
 		if (line[(int)pos.x] == 'S')
-			engine->player = malloc_player(create_vector2(pos.x, pos.y), south_pitch, player_speed);
+			engine->player = malloc_player(create_vector2(pos.x, pos.y),
+				(-PI / 2), PLAYER_SPEED);
 		if (line[(int)pos.x] == 'N')
-			engine->player = malloc_player(create_vector2(pos.x, pos.y), north_pitch, player_speed);
+			engine->player = malloc_player(create_vector2(pos.x, pos.y),
+				(PI / 2), PLAYER_SPEED);
 	}
-	else if (line[(int)pos.x] == '3')
-		result->board[(int)pos.y][(int)pos.x] = engine->door_tile;
-	else if (line[(int)pos.x] == '4')
-		result->board[(int)pos.y][(int)pos.x] = engine->secret_tile;
-	else if (line[(int)pos.x] == 'H')
-		result->board[(int)pos.y][(int)pos.x] = engine->medikit_tile;
 	else
 		create_map_3(engine, result, line, pos);
 }
 
-t_map   create_map(t_game_engine *engine, t_vector2 p_size, t_list *p_content)
+t_map		create_map(t_game_engine *engine, t_vector2 p_size,
+	t_list *p_content)
 {
 	t_map	result;
 	char	*line;

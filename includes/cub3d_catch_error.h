@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:09:39 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/05 16:33:37 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/08 17:12:48 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 typedef struct	s_error
 {
-	int		error_list;
-	char	*warning_msg;
+	int			error_list;
+	char		*warning_msg;
 }				t_error;
 
 enum	e_cube3d_error
@@ -62,6 +62,6 @@ enum	e_cube3d_error
 	LOAD_MAP_CONTROL_1,
 };
 
-void catch_error(int error_msg);
+void			catch_error(int error_msg);
 
 #endif

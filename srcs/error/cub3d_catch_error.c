@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:06:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/05 16:37:38 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/08 10:34:12 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_error	g_cube3d_catch_error[] =
 	{ ERROR_NOT_FOUND, "Error\nThe Error has not be catched... Good luck" }
 };
 
-void catch_error(int error_msg)
+void	catch_error(int error_msg)
 {
 	int i;
 
@@ -65,10 +65,10 @@ void catch_error(int error_msg)
 		if (error_msg == g_cube3d_catch_error[i].error_list)
 		{
 			ft_printf("%s\n", g_cube3d_catch_error[i].warning_msg);
-			exit(FAILURE);
+			exit(SUCCESS);
 		}
 	}
 	if (g_cube3d_catch_error[i].error_list == ERROR_NOT_FOUND)
-		ft_printf("\n%s\n", g_cube3d_catch_error[i].warning_msg);//check ft_printf %v
-	exit(FAILURE);
+		ft_printf("\n%s\n", g_cube3d_catch_error[i].warning_msg);
+	exit(SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:26:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/07 14:27:34 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/08 18:02:07 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@
 ** Linux header
 */
 
-# include	<string.h>
-# include   <unistd.h>
-# include   <fcntl.h>
-# include   <sys/mman.h>
-# include	<X11/Xlib.h>
-# include	<X11/Xutil.h>
-# include	<sys/ipc.h>
-# include	<sys/shm.h>
-# include	<X11/extensions/XShm.h>
+# include <string.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <sys/mman.h>
+# include <X11/Xlib.h>
+# include <X11/Xutil.h>
+# include <sys/ipc.h>
+# include <sys/shm.h>
+# include <X11/extensions/XShm.h>
 
 # define FOV 70.0f
 # define PI 3.14159265
@@ -70,6 +70,6 @@ t_application *g_app;
 # define PRINTF(x) printf("%f\n", x);
 # define PRINTU(x) printf("%zu\n", x);
 # define PRINTV(x,y) printf("(%f;%f)\n", x, y);
-# define PRINTPOS printf("%s line %d\n", __func__, __LINE__)//Remove this part at this end
+# define PRINTPOS printf("%s line %d\n", __func__, __LINE__)//Remove at this end
 
 # endif
