@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:41:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/08 13:15:39 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/09 16:00:06 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,13 @@ void		cub3d_parsing(t_game_engine *engine, int argc, char **argv,
 	check_mapname(argv[1]);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		catch_error(CUBE3D_PARSING_1);
+		catch_error(CUB3D_PARSING_1);
 	parse_game_engine(engine, fd, resolution);
 	engine->resolution = *(resolution);
 	set_empty_wall_tile(engine);
 	parse_map(engine, fd);
+	if (engine->player == NULL)
+		catch_error(CUB3D_PARSING_2);
 	set_player_status(engine->player, engine->map);
 	close(fd);
 }

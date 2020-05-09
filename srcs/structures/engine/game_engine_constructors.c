@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 13:25:27 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/08 16:31:30 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/09 20:34:42 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,23 @@ static void		engine_tile_set(t_game_engine *result)
 	result->monster_tile = NULL;
 }
 
+static void		engine_texture_set(t_game_engine *result)
+{
+	result->texture = (t_texture**)malloc(sizeof(t_texture*) * 4);
+	if (result->texture == NULL)
+		catch_error(ENGINE_TEXTURE_SET_1);
+	result->texture[west] = NULL;
+	result->texture[north] = NULL;
+	result->texture[east] = NULL;
+	result->texture[south] = NULL;
+}
+
 t_game_engine	create_game_engine(void)
 {
 	t_game_engine result;
 
 	result.resolution = create_vector2(0, 0);
-	result.texture = (t_texture**)malloc(sizeof(t_texture*) * 4);
-	if (result.texture == NULL)
-		catch_error(CREATE_GAME_ENGINE_1);
+	engine_texture_set(&result);
 	result.sprite = NULL;
 	result.door = create_texture(NULL);
 	result.secret = create_texture(NULL);

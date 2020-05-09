@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 13:39:20 by ldutriez          #+#    #+#             */
-/*   Updated: 2020/05/05 15:52:27 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/09 14:44:07 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@
 enum	e_linux_event_mask
 {
 	KEYPRESSMASK = (1L << 0),
-	KEYRELEASEMASK = (1L << 1)
+	KEYRELEASEMASK = (1L << 1),
+	DESTROYNOTIFYMASK = (1L << 17)
 };
 
 # define KEYPRESS 2

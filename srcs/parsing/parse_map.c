@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 13:57:39 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/08 16:28:43 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/09 23:32:04 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ static bool	parse_map_line(t_game_engine *engine, char *line,
 		map_size->x = ft_strlen(content);
 	list_push_back(engine->map_content, content);
 	map_size->y++;
+	if (ft_isonlycharset(line, engine->valid) == FAILURE)
+		return (false);
 	return (true);
 }
 
@@ -122,6 +124,7 @@ void		parse_map(t_game_engine *engine, int fd)
 	map_size = create_vector2(0, 0);
 	while (get_next_line(fd, &line) > 0)
 	{
+		PRINTS(line)
 		if (ft_strlen(line) == 0 && found == false)
 			;
 		else if (ft_strlen(line) != 0)
@@ -135,7 +138,7 @@ void		parse_map(t_game_engine *engine, int fd)
 			catch_error(PARSE_MAP_2);
 		free(line);
 	}
-	parse_map_line(engine, line, &map_size);
-	free(line);
+	parse_map_line(engine, line, &map_size) == true ? free(line) :
+	catch_error(PARSE_MAP_1);
 	compute_map(engine, map_size);
 }

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:25:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/08 11:08:43 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/09 14:44:30 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static void		do_save(void *param)
 	{
 		if (save_bmp(engine, engine->map, engine->player) == FAILURE)
 			catch_error(DO_SAVE_1);
-		ft_putstr("A photo was taken");
-		quit(param);
+		ft_putstr("A photo was taken\n");
+		exit(EXIT_SUCCESS);
 	}
 }
 
@@ -57,7 +57,8 @@ int				main(int argc, char **argv)
 	KEYRELEASE, KEYRELEASEMASK, param);
 	add_interaction_to_application(&cube3d_key_press_manager,
 	KEYPRESS, KEYPRESSMASK, param);
-	add_interaction_exit_control(&quit, DESTROYNOTIFY, param);
+	add_interaction_exit_control(&quit,
+	DESTROYNOTIFY, DESTROYNOTIFYMASK, param);
 	application_update(&update, param);
 	return (run_application());
 }

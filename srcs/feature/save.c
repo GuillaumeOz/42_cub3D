@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/05 22:21:01 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/05 16:57:44 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/09 14:42:21 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static int	write_bmp_data(int fd)
 		}
 		i++;
 	}
-	return (SUCCESS);
+	return (EXIT_SUCCESS);
 }
 
 int			save_bmp(t_game_engine *engine, t_map *map, t_player *hero)
@@ -98,5 +98,5 @@ int			save_bmp(t_game_engine *engine, t_map *map, t_player *hero)
 	if (!write_bmp_data(file))
 		return (FAILURE);
 	close(file);
-	return (SUCCESS);
+	return (EXIT_SUCCESS);
 }

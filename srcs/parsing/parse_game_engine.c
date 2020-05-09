@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:38:57 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/08 13:13:36 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/09 20:35:51 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 bool	parse_resolution(char *descriptor, char *content, t_vector2 *resolution)
 {
 	char	**tab;
-	size_t	i;
+	int		i;
 
 	if (ft_strcmp(descriptor, "R") == 0)
 	{
+		if ((int)resolution->x != 0 && (int)resolution->y != 0)
+			catch_error(PARSE_RESOLUTION_1);
+		content++;
 		tab = ft_split(content, ' ');
 		if (ft_tab_len(tab) != 2)
-			catch_error(PARSE_RESOLUTION_1);
-		i = 0;
-		while (tab[i] != NULL)
-		{
+			catch_error(PARSE_RESOLUTION_2);
+		i = -1;
+		while (tab[++i] != NULL)
 			if (ft_strisdigit(tab[i]) == false)
-				catch_error(PARSE_RESOLUTION_2);
-			i++;
-		}
+				catch_error(PARSE_RESOLUTION_3);
 		*resolution = create_vector2((ft_strlen(tab[0]) >= 10 ?
 			2147483646 : ft_atoi(tab[0])), (ft_strlen(tab[1]) >= 10 ?
 			2147483646 : ft_atoi(tab[1])));
@@ -85,7 +85,7 @@ bool	parse_environement_texture(t_game_engine *engine,
 	else if (ft_strcmp(descriptor, "M") == 0)
 		return (set_monster_image(engine, content + 1));
 	else if (ft_strcmp(descriptor, "L") == 0)
-		return (set_level_image(engine, content + 1));
+		return (set_secret_image(engine, content + 1));
 	else if (ft_strcmp(descriptor, "T") == 0)
 		return (set_thread_option(engine));
 	else

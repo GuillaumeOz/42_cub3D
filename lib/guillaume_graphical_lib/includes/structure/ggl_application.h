@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 11:48:07 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/07 19:53:17 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/09 14:46:38 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int				run_application(void);
 void			add_interaction_to_application(t_key_funct funct, int event,
 					int maskevent, void *param);
 void			add_interaction_exit_control(t_exit_funct funct, int event,
-					void *param);
+					int maskevent, void *param);
 void			application_update(t_render_funct funct, void *param);
 void			render_application(void);
 
