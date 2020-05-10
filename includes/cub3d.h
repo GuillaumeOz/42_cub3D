@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:26:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/08 18:02:07 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/10 15:28:15 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 # include <math.h>
 # include <stdint.h>
 # include <pthread.h>
+# include <string.h>
+# include <unistd.h>
+# include <fcntl.h>
 
 /*
 ** Linux header
 */
 
-# include <string.h>
-# include <unistd.h>
-# include <fcntl.h>
 # include <sys/mman.h>
 # include <X11/Xlib.h>
 # include <X11/Xutil.h>
@@ -62,14 +62,4 @@
 
 t_application *g_app;
 
-# define debug write(1, "ICI\n", 5);
-# define PRINTS(x) printf("%s\n", x);
-# define PRINTC(x) printf("%c\n", x);
-# define PRINTD(x) printf("%d\n", x);
-# define PRINTP(x) printf("%p\n", x);
-# define PRINTF(x) printf("%f\n", x);
-# define PRINTU(x) printf("%zu\n", x);
-# define PRINTV(x,y) printf("(%f;%f)\n", x, y);
-# define PRINTPOS printf("%s line %d\n", __func__, __LINE__)//Remove at this end
-
-# endif
+#endif

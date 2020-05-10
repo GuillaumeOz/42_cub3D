@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 13:31:03 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/10 14:59:00 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/10 15:23:58 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ bool	set_monster_image(t_game_engine *engine, char *path)
 	while (path[(int)i.x + (int)i.y] && path[(int)i.x + (int)i.y] == ' ')
 		i.y += 1;
 	path[(int)i.x + (int)i.y - 1] = '\0';
-	while (path[(int)i.x + (int)i.y + (int)i.z] && 
+	while (path[(int)i.x + (int)i.y + (int)i.z] &&
 	path[(int)i.x + (int)i.y + (int)i.z] != ' ')
 		i.z += 1;
 	if (path[(int)i.x + (int)i.y + (int)i.z] == '\0')

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/23 12:51:27 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/08 18:06:54 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/10 16:39:44 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,8 @@ static void	put_image(int var[4], t_map map, t_image **img, int *num)
 				img[g_life[num[2]][num[1]]]->pixels[var[3] + 1] != 0 ||
 				img[g_life[num[2]][num[1]]]->pixels[var[3]] != 0)
 				put_pixel(g_app->image, create_vector2(var[0] + 0.05 *
-				map.resolution.x * num[1], var[1] + map.resolution.y *
-				0.095), create_color(
-				img[g_life[num[2]][num[1]]]->pixels[var[3] + 2],
+				map.resolution.x * num[1], var[1] + map.resolution.y * 0.095),
+				create_color(img[g_life[num[2]][num[1]]]->pixels[var[3] + 2],
 				img[g_life[num[2]][num[1]]]->pixels[var[3] + 1],
 				img[g_life[num[2]][num[1]]]->pixels[var[3]], 255));
 			var[1]++;
@@ -88,13 +87,11 @@ static void	put_last_image(int var[4], t_map map, t_image **img, int *num)
 		if (img[g_life[num[2]][num[0]]]->pixels[var[3] + 2] != 0 ||
 			img[g_life[num[2]][num[0]]]->pixels[var[3] + 1] != 0 ||
 			img[g_life[num[2]][num[0]]]->pixels[var[3]] != 0)
-		{
 			put_pixel(g_app->image, create_vector2(var[0] + map.resolution.x *
 			0.05 * num[0], var[1] + map.resolution.y * 0.095),
 			create_color(img[g_life[num[2]][num[0]]]->pixels[var[3] + 2],
 			img[g_life[num[2]][num[0]]]->pixels[var[3] + 1],
 			img[g_life[num[2]][num[0]]]->pixels[var[3]], 255));
-		}
 		var[3] = (int)((var[1] / (map.resolution.y * 0.09)) *
 		img[g_life[num[2]][num[0]]]->size.y) *
 		img[g_life[num[2]][num[0]]]->size.x *

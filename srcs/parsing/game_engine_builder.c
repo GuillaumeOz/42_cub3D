@@ -6,13 +6,13 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 15:41:26 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/09 20:36:09 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/10 15:28:35 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	get_resolution(t_vector2 *res)
+void		get_resolution(t_vector2 *res)
 {
 	int			test_size_x;
 	int			test_size_y;
@@ -26,7 +26,8 @@ void	get_resolution(t_vector2 *res)
 	res->x = (res->x < 1) ? 1 : res->x;
 }
 
-bool	set_texture_image(t_game_engine *engine, t_direction dir, char *path)
+bool		set_texture_image(t_game_engine *engine,
+	t_direction dir, char *path)
 {
 	int i;
 
@@ -44,7 +45,7 @@ bool	set_texture_image(t_game_engine *engine, t_direction dir, char *path)
 	return (true);
 }
 
-bool	set_sprite_image(t_game_engine *engine, char *path)
+bool		set_sprite_image(t_game_engine *engine, char *path)
 {
 	int i;
 
@@ -80,7 +81,7 @@ static void	color_checker(char *r_str, char *g_str, char *b_str)
 		catch_error(COLOR_CHECKER_1);
 }
 
-bool	set_color_type(t_game_engine *engine, int type, char *content)
+bool		set_color_type(t_game_engine *engine, int type, char *content)
 {
 	char	**tab;
 	t_color *color;
