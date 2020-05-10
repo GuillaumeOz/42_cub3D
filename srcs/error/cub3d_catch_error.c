@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:06:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/09 22:10:05 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/10 14:27:34 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ t_error	g_cube3d_catch_error[] =
 	{ PARSE_RESOLUTION_1, "Error\nResolution are already set" },
 	{ PARSE_RESOLUTION_2, "Error\nBad number of arguments for resolution" },
 	{ PARSE_RESOLUTION_3, "Error\nArguments invalid for resolution" },
-	{ PARSE_ENVIRONEMENT_COLOR_1, "Error\nCeiling descriptor line is incorrect" },
-	{ PARSE_ENVIRONEMENT_COLOR_2, "Error\nFloor descriptor line is incorrect" },
+	{ PARSE_ENVIRONEMENT_COLOR_1, "Error\nCeiling line is incorrect" },
+	{ PARSE_ENVIRONEMENT_COLOR_2, "Error\nFloor line is incorrect" },
 	{ COLOR_CHECKER_1, "Error\nThe environement color is incorrect" },
 	{ MALLOC_MAP_1, "Error\nCan't malloc a t_map" },
 	{ PARSE_MAP_1, "Error\nA line in the map part is incorrect" },

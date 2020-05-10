@@ -6,40 +6,11 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 13:57:39 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/09 23:32:04 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/10 15:06:34 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static bool	cross_check(t_list *map, t_vector2 map_size, size_t y, size_t x)
-{
-	char	*line;
-	size_t	tmp_x;
-
-	line = (char*)list_at(map, y);
-	tmp_x = x;
-	while (line[--x] != '1')
-		if (x == 0 || line[x] == ' ')
-			return (true);
-	while (line[++x] != '1')
-		if (x == (map_size.x - 1) || line[x] == ' ')
-			return (true);
-	while (line[tmp_x] != '1')
-	{
-		if (y == 0 || line[tmp_x] == ' ')
-			return (true);
-		line = (char*)list_at(map, --y);
-	}
-	line = (char*)list_at(map, ++y);
-	while (line[tmp_x] != '1')
-	{
-		if (y == (map_size.y - 1) || line[tmp_x] == ' ')
-			return (true);
-		line = (char*)list_at(map, ++y);
-	}
-	return (false);
-}
 
 static void	flood_fill(t_game_engine *engine, t_list *map, t_vector2 map_size)
 {
@@ -60,7 +31,8 @@ static void	flood_fill(t_game_engine *engine, t_list *map, t_vector2 map_size)
 				line[j] == 'S' || line[j] == 'N' || line[j] == 'H' ||
 				line[j] == 'M' || line[j] == '3' || line[j] == '4')
 				if (i == 0 || j == 0 ||
-				cross_check(map, map_size, i, j) == true)
+				cross_check(map, map_size, i, j) == true ||
+				diagonal_check(map, i, j) == true)
 					catch_error(FLOOD_FILL_2);
 			j++;
 		}
@@ -72,7 +44,7 @@ static void	flood_fill(t_game_engine *engine, t_list *map, t_vector2 map_size)
 static bool	parse_map_line(t_game_engine *engine, char *line,
 	t_vector2 *map_size)
 {
-	char *content;
+	char	*content;
 
 	content = ft_strdup(line);
 	if (map_size->x == 0)
@@ -124,7 +96,6 @@ void		parse_map(t_game_engine *engine, int fd)
 	map_size = create_vector2(0, 0);
 	while (get_next_line(fd, &line) > 0)
 	{
-		PRINTS(line)
 		if (ft_strlen(line) == 0 && found == false)
 			;
 		else if (ft_strlen(line) != 0)

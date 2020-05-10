@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 19:33:03 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/09 17:37:53 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/10 13:47:20 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	parse_game_engine(t_game_engine *engine,
 void	get_resolution(t_vector2 *resolution);
 bool	parse_resolution(char *descriptor,
 			char *content, t_vector2 *resolution);
+bool	diagonal_check(t_list *map, size_t y, size_t x);
+bool	cross_check(t_list *map, t_vector2 map_size, size_t y, size_t x);
 void	parse_map(t_game_engine *engine, int fd);
 void	parse_game_engine(t_game_engine *engine, int fd, t_vector2 *resolution);
 
