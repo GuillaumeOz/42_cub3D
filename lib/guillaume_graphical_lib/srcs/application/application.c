@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 12:07:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/09 14:39:45 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/11 12:28:30 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	clear_application(t_color color)
 	t_vector2 pos;
 
 	pos = create_vector2(0, 0);
+	mlx_do_sync(g_app->mlx_ptr);
 	while (pos.x < (size_t)g_app->size.x)
 	{
 		pos.y = 0;
