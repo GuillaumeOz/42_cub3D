@@ -29,7 +29,32 @@ LINUXFLAG	=	-lm -lX11 -lXext
 
 LIB			=	ft mlx_Linux
 
-SRC			= 	$(foreach dir, $(SRC_DIR), $(foreach file, $(wildcard $(dir)/*.c), $(notdir $(file))))
+SRC			= 	cub3d.c   cub3d_application.c  cub3d_application_handler.c cub3d_application_pixels.c   cub3d_error.c   cub3d_save_bmp.c			\
+				cub3d_put_diamond_block_bonus.c cub3d_find_diamond_block_bonus.c cub3d_secret_door_render_bonus.c									\
+				cub3d_draw_minimap_square_bonus.c cub3d_put_minimap_pixel_bonus.c  cub3d_draw_minimap_player.c										\
+				cub3d_set_minimap_circle_informations_bonus.c cub3d_minimap_secret_door_color_selector_bonus.c										\
+				cub3d_set_minimap_background_bonus.c  cub3d_minimap_render_bonus.c cub3d_sprite_casting.c cub3d_sprite_calculation.c				\
+				cub3d_sprite_drawing.c cub3d_set_dist_order.c  cub3d_set_sprite_pos_compared_to_player.c											\
+				cub3d_set_sprite_screen_x.c  cub3d_set_inv_camera_matrice_transformation.c cub3d_sprite_display_limit.c								\
+				cub3d_apply_sprite_axis_transformation.c cub3d_set_sprite_axis_transformation_bonus.c  cub3d_stripe_drawing.c						\
+				cub3d_time_casting.c   cub3d_floor_texture_render_bonus.c cub3d_ceiling_texture_render_bonus.c										\
+				cub3d_floor_ceiling_texture_render_bonus.c cub3d_floor_color_render.c  cub3d_floor_ceiling_casting.c								\
+				cub3d_ceiling_color_render.c cub3d_set_tex_coord_from_wall_x.c  cub3d_set_delta_dist.c  cub3d_set_euclidean_wall_dist.c				\
+				cub3d_set_tex_step.c  cub3d_set_update_tex_pos.c  cub3d_set_side_dist.c  cub3d_set_wall_x.c											\
+				cub3d_set_ray_dir.c  cub3d_set_draw_start_end.c  cub3d_set_camera_x.c  cub3d_set_tex_y_limit.c										\
+				cub3d_set_tex_pos.c  cub3d_set_line_height.c  cub3d_wall_casting.c  cub3d_wall_drawing.c											\
+				cub3d_set_wall_color.c  cub3d_set_dda_calc.c  cub3d_set_map_pos.c     cub3d_texture.c												\
+				cub3d_floor_calc.c   cub3d_image.c   cub3d_sprite_list.c  cub3d_sprite_calc.c  cub3d_sprite.c										\
+				cub3d_sprite_list_getter.c  cub3d_sprite_list_setter.c   cub3d_time_getter.c  cub3d_time.c											\
+				cub3d_time_setter.c   cub3d_color.c  cub3d_color_manipulation.c   cub3d_bmp_bitmap.c												\
+				cub3d_wall_calc.c   cub3d_player.c   cub3d_engine.c   cub3d_engine_setter.c															\
+				cub3d_camera_mouse_move_bonus.c  cub3d_camera_keyboard_move.c  cub3d_sprite_transformation_bonus.c									\
+				cub3d_key_press.c  cub3d_player_move.c  cub3d_event_manager.c  cub3d_hitbox.c  cub3d_camera_move.c									\
+				cub3d_key_release.c   cub3d_routine.c   cub3d_parse_texture.c  cub3d_double_id_checker_bonus.c										\
+				cub3d_id_checker.c  cub3d_load_secret_door_bonus.c  cub3d_parse_bonus.c  cub3d_id_checker_bonus.c									\
+				cub3d_analyse_map.c  cub3d_parse_ceiling_floor_texture_bonus.c  cub3d_parse_map.c  cub3d_parse_color.c								\
+				cub3d_check_arguments.c  cub3d_parse_secret_door_bonus.c  cub3d_load_player.c  cub3d_parse_sprite_basic_bonus.c						\
+				cub3d_parsing.c  cub3d_parse_engine.c  cub3d_parse_resolution_bonus.c  cub3d_load_map_informations.c  cub3d_load_sprite_basic.c		\
 
 OBJ			=	$(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
 

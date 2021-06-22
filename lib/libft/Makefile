@@ -20,7 +20,7 @@ OBJ_DIR = 	obj
 
 vpath %.c $(foreach dir, $(SRC_DIR), $(dir):)
 
-# List de toute les library a linker au projet (le nom - le lib et - le .a)
+# library
 
 SRC		= ft_f_floor.c ft_isdigit.c ft_strnew.c ft_strdup.c ft_strchr.c \
 	ft_memdel.c ft_strcmp.c ft_strcut.c ft_strmap.c ft_itoa.c ft_ischar.c \
@@ -44,6 +44,7 @@ SRC		= ft_f_floor.c ft_isdigit.c ft_strnew.c ft_strdup.c ft_strchr.c \
 OBJ		= $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
 
 # Compilation flag
+
 CFLAGS = -Wall -Wextra -Werror
 
 IFLAGS = $(foreach dir, $(INC_DIR), -I$(dir))

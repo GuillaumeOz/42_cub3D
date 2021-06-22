@@ -19,8 +19,8 @@ bool	hitbox(double x, double y, t_list *map_list)
 	map = list_at(map_list, y);
 	if (BONUS == false)
 	{
-		if (x < 0.0f || y < 0.0f || y > ((double)map_list->size - 1)
-			|| x > ((double)ft_strlen(list_at(map_list, y)) - 1))
+		if (x < 0.0f || y < 0.0f || y > ((double)map_list->size)
+			|| x > ((double)ft_strlen(list_at(map_list, y))))
 			return (true);
 	}
 	else if (map[(int)x] == '1' || map[(int)x] == '2'
