@@ -6,13 +6,13 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 09:03:19 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/15 18:47:12 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/17 20:01:32 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-float		ft_f_roof(float p_value)
+float	ft_f_roof(float p_value)
 {
 	float	rounded_value;
 	int		i_value;

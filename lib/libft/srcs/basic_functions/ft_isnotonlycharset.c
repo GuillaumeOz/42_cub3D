@@ -6,22 +6,22 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 16:26:30 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/31 15:04:33 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/17 19:47:44 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isnotonlycharset(const char *format, const char *charset)
+bool	ft_isnotonlycharset(const char *format, const char *charset)
 {
-	int i;
-	int ascii[256];
-	int set_zero;
+	int	i;
+	int	ascii[256];
+	int	set_zero;
 
 	i = -1;
 	set_zero = 0;
 	if (ft_strlen(format) < ft_strlen(charset))
-		return (FAILURE);
+		return (false);
 	while (set_zero < 256)
 		ascii[set_zero++] = 0;
 	while (charset[++i])
@@ -31,8 +31,8 @@ int	ft_isnotonlycharset(const char *format, const char *charset)
 	while (format[i])
 	{
 		if (ascii[(int)format[i]] != 0)
-			return (FAILURE);
+			return (false);
 		i++;
 	}
-	return (SUCCESS);
+	return (true);
 }

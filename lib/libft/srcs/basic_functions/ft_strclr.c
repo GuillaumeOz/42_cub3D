@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 16:01:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/04/17 16:07:34 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/17 20:01:50 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_strclr(char *s)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (s)

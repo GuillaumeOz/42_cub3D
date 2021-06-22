@@ -6,36 +6,20 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 11:30:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/10 20:18:42 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/18 12:18:30 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BASIC_FUNCTIONS_H
 # define BASIC_FUNCTIONS_H
 
-# define BINARY_BASE "01"
-# define OCTAL_BASE "01234567"
-# define DECIMAL_BASE "0123456789"
-# define HEX_LOWER_BASE "0123456789abcdef"
-# define HEX_UPPER_BASE "0123456789ABCDEF"
-
-# define STDIN  0
-# define STDOUT 1
-# define STDERR 2
-
-# define SENTINAL 1
-# define CHARACTER 1
-# define NONE -1
-
-# define FAILURE -1
-# define SUCCESS 1
-
-# define BUFFER_SIZE 20
+# define GNL_BUFFER_SIZE 20
 
 void	ft_error(char *error_msg);
+void	ft_warning(char *warning_msg);
 size_t	ft_strlen(const char *s);
 size_t	ft_strlen_without(const char *str, char c);
-int		ft_strcmp(const char *s1, const char *s2);
+bool	ft_strcmp(char *s1, char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -72,17 +56,17 @@ void	ft_striter(char *s, void (*f)(char *));
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 char	*ft_strmap(char const *s, char (*f)(char));
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-int		ft_strequ(char const *s1, char const *s2);
+bool	ft_strequ(char const *s1, char const *s2);
 int		ft_strnequ(char const *s1, char const *s2, size_t n);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strjoinfre(const char *s1, const char *s2,
-				int free_s1, int free_s2);
+			int free_s1, int free_s2);
 char	*ft_strappend(const char *s1, const char *s2,
-				int free_s1, int free_s2);
+			int free_s1, int free_s2);
 char	*ft_strprepend(const char *s1, const char *s2,
-				int free_s1, int free_s2);
+			int free_s1, int free_s2);
 
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
@@ -91,9 +75,8 @@ char	*ft_strcut_free(char **s1, char delim, int to_free);
 char	*ft_strcut(char **s1, char delim);
 
 int		ft_valid_base(char *base_str);
-size_t	ft_uintmaxlen_base(uintmax_t n, unsigned int base);
 char	*ft_itoa(int n);
-char	*ft_utoa_base(uintmax_t n, char *base, int precision);
+char	*ft_utoa_base(uintmax_t n, char *base);
 
 void	ft_putchar(char c);
 void	ft_putstr(char const *s);
@@ -119,8 +102,8 @@ char	*ft_strpbrk (const char *s, const char *accept);
 size_t	ft_strcspn(const char *s, const char *reject);
 
 int		ft_ischar(const char *format, int c);
-int		ft_isonlycharset(const char *format, const char *charset);
-int		ft_isnotonlycharset(const char *format, const char *charset);
+bool	ft_isonlycharset(const char *format, const char *charset);
+bool	ft_isnotonlycharset(const char *format, const char *charset);
 
 char	*ft_strndupfree(const char *src, size_t n, int free_src);
 char	*ft_strndup(const char *src, size_t n);
@@ -145,5 +128,7 @@ char	*ft_itoa_octa(long long int nbr);
 char	*ft_itoa_unsigned_deci(unsigned int nbr);
 
 void	ft_get_leaks(char *prog_name, char *msg);
+
+size_t	ft_strskip(char *str, char to_skip);
 
 #endif

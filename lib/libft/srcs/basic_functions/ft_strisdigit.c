@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 15:18:01 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/21 15:17:58 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/17 20:02:55 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	ft_strisdigit(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])

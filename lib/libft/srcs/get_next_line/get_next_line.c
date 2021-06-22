@@ -6,20 +6,19 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 15:41:14 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/31 16:30:28 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/19 15:47:06 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static t_gnl		*fdselect(t_gnl **rootp, int fd)
+static t_gnl	*fdselect(t_gnl **rootp, int fd)
 {
 	t_gnl				*head;
 
 	if (*rootp == NULL)
 	{
-		if (!(*rootp = malloc(sizeof(t_gnl)))
-			|| !((*rootp)->vct = gnl_vct_new(VCT_DEFSIZE)))
+		if (malloc_root_gnl(rootp) == false)
 			return (NULL);
 		(*rootp)->next = NULL;
 		return (*rootp);
@@ -33,14 +32,13 @@ static t_gnl		*fdselect(t_gnl **rootp, int fd)
 			break ;
 		head = head->next;
 	}
-	if (!(head->next = malloc(sizeof(t_gnl)))
-		|| !(head->next->vct = gnl_vct_new(VCT_DEFSIZE)))
+	if (malloc_next_gnl(head) == false)
 		return (NULL);
 	head->next->next = NULL;
 	return (head->next);
 }
 
-void				gnl_freenode(t_gnl **rootp, int fd, t_gnl *head)
+void	gnl_freenode(t_gnl **rootp, int fd, t_gnl *head)
 {
 	t_gnl				*prev;
 
@@ -68,48 +66,25 @@ void				gnl_freenode(t_gnl **rootp, int fd, t_gnl *head)
 	}
 }
 
-static char			*gnl_strndup(const char *src, int len)
+int	get_next_line(int fd, char **line)
 {
-	int		i;
-	char	*ret;
-
-	if (len <= 0)
-		return (NULL);
-	if (!(ret = malloc(sizeof(char) * len + 1)))
-		return (NULL);
-	ret[len] = '\0';
-	i = 0;
-	while (i < len)
-	{
-		ret[i] = src[i];
-		i++;
-	}
-	return (ret);
-}
-
-int					get_next_line(int fd, char **line)
-{
-	static	t_gnl	*root;
+	static t_gnl	*root;
 	t_gnl			*head;
-	char			buf[BUFFER_SIZE];
 	int				ret;
 	int				i;
 
-	if (!line || fd < 0 || !(head = fdselect(&root, fd)) || read(fd, 0, 0) < 0)
+	head = fdselect(&root, fd);
+	if (!line || fd < 0 || head == NULL || read(fd, 0, 0) < 0)
 		return (-1);
 	head->fd = fd;
-	while (gnl_strnchr_idx(head->vct->str, '\n', head->vct->len, 1) == -1)
-	{
-		if ((ret = read(fd, buf, BUFFER_SIZE)) <= 0)
-			break ;
-		gnl_vct_appnstr(head->vct, &(*buf), ret);
-	}
-	if (ret != -1 && (ret = read(fd, buf, BUFFER_SIZE)) != -2)
-		gnl_vct_appnstr(head->vct, buf, ret);
-	i = gnl_strnchr_idx(head->vct->str, '\n', head->vct->len, 2);
-	*line = (i == 0 ? gnl_strndup("", 1) : gnl_strndup(head->vct->str, i));
+	ret = create_gnl_content(head, line, fd, &i);
 	if (ret != -1)
-		ret = (head->vct->str[i] == '\n') ? 1 : 0;
+	{
+		if (head->vct->str[i] == '\n')
+			ret = 1;
+		else
+			ret = 0;
+	}
 	gnl_vct_cutnfrom(head->vct, 0, i + 1);
 	if (head->vct->len == 0)
 		gnl_freenode(&root, head->fd, head);

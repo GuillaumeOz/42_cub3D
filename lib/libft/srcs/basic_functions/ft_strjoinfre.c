@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 23:57:11 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/09/11 11:41:53 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/17 20:01:44 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strjoinfre(const char *s1, const char *s2, int free_s1, int free_s2)
 {
-	char *new_str;
+	char	*new_str;
 
 	new_str = ft_strjoin(s1, s2);
 	if (s1 && free_s1)

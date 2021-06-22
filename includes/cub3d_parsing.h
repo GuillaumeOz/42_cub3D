@@ -5,40 +5,49 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/17 19:33:03 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/10 13:47:20 by gozsertt         ###   ########.fr       */
+/*   Created: 2021/04/14 14:24:19 by gozsertt          #+#    #+#             */
+/*   Updated: 2021/06/17 19:31:12 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_PARSING_H
 # define CUB3D_PARSING_H
 
-bool	set_thread_option(t_game_engine *engine);
-bool	set_monster_image(t_game_engine *engine, char *path);
-bool	set_medikit_image(t_game_engine *engine, char *path);
-bool	set_door_image(t_game_engine *engine, char *path);
-bool	set_secret_image(t_game_engine *engine, char *path);
-bool	set_texture_image(t_game_engine *engine, t_direction dir, char *path);
-bool	set_sprite_image(t_game_engine *engine, char *path);
-bool	set_color_type(t_game_engine *engine, int type, char *content);
+void	parse_secret_door_bonus(t_engine *engine, char *line);
+void	parse_floor_texture_bonus(t_engine *engine, char *line);
+void	parse_ceiling_texture_bonus(t_engine *engine, char *line);
+void	parse_sprite_basic_bonus(t_engine *engine, char *line);
+void	parse_resolution_bonus(t_engine *engine, char *line);
 
-bool	parse_environement_color(t_game_engine *engine,
-			char *descriptor, char *content);
-bool	parse_environement_texture(t_game_engine *engine,
-			char *descriptor, char *content);
-void	parse_game_engine(t_game_engine *engine,
-			int fd, t_vector2 *resolution);
-void	get_resolution(t_vector2 *resolution);
-bool	parse_resolution(char *descriptor,
-			char *content, t_vector2 *resolution);
-bool	diagonal_check(t_list *map, size_t y, size_t x);
-bool	cross_check(t_list *map, t_vector2 map_size, size_t y, size_t x);
-void	parse_map(t_game_engine *engine, int fd);
-void	parse_game_engine(t_game_engine *engine, int fd, t_vector2 *resolution);
+bool	it_is_secret_door_bonus(t_engine *engine, char *id);
+bool	it_is_floor_texture_bonus(t_engine *engine, char *id);
+bool	it_is_ceiling_texture_bonus(t_engine *engine, char *id);
+bool	it_is_sprite_basic_bonus(t_engine *engine, char *id);
+bool	it_is_resolution_bonus(t_engine *engine, char *id);
 
-bool	is_engine_full(t_game_engine *engine, t_vector2 *resolution);
-void	**malloc_param_tab(void **param);
-void	cub3d_parsing(t_game_engine *engine, int argc,
-			char **argv, t_vector2 *resolution);
+bool	it_is_bonus(char *id);
+
+void	parse_bonus(t_engine *engine, char *line, char *id, int i);
+
+void	load_secret_door_bonus(t_engine *engine);
+void	load_sprite_basic(t_engine *engine, t_sprite_id id, int x, int y);
+void	load_player(t_engine *engine, char direction, int x, int y);
+
+void	load_map_informations(t_engine *engine, int size_x, int size_y);
+
+void	analyse_map(t_engine *engine, int size_x, int size_y);
+
+void	parse_map(t_engine *engine, int fd);
+
+void	parse_texture(t_engine *engine, char *line, t_texture_id direction);
+void	parse_color(t_engine *engine, char *line, char *id);
+
+bool	it_is_texture(t_engine *engine, char *id, t_texture_id *direction);
+bool	it_is_color(t_engine *engine, char *id);
+
+void	parse_engine(t_engine *engine, int fd);
+
+void	check_arguments(t_engine *engine, int argc, char **argv);
+void	parsing(t_engine *engine, int argc, char **argv);
 
 #endif

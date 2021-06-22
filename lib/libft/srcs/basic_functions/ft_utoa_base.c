@@ -6,32 +6,41 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 19:38:58 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/09/16 16:50:55 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/17 19:57:46 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_utoa_base(uintmax_t n, char *base, int precision)
+static	size_t	ft_uintlen_base(uintmax_t nb, int base)
 {
-	unsigned short	intbase;
-	unsigned short	col;
-	char			*buf;
+	size_t	length;
 
-	if (!ft_valid_base(base))
-		return (NULL);
-	col = ft_uintmaxlen_base(n, ft_strlen(base));
-	precision = (precision - col > 0) ? precision - col : 0;
-	col += precision;
-	if (!(buf = (char*)malloc(sizeof(char) * (col + 1))))
-		return (NULL);
-	buf = ft_memset(buf, '0', col);
-	buf[col] = '\0';
-	intbase = ft_strlen(base);
-	while (col - precision > 0)
+	length = 1;
+	while (nb >= (uintmax_t)base)
 	{
-		buf[--col] = base[n % intbase];
-		n /= intbase;
+		nb /= base;
+		length++;
 	}
-	return (buf);
+	return (length);
+}
+
+char	*ft_utoa_base(uintmax_t nb, char *base)
+{
+	char	*format;
+	int		baselen;
+	int		size;
+
+	size = ft_uintlen_base(nb, ft_strlen(base));
+	format = (char *)ft_memalloc(sizeof(char) * (size + 1));
+	if (format == NULL)
+		return (NULL);
+	ft_memset(format, '0', size);
+	baselen = ft_strlen(base);
+	while (size > 0)
+	{
+		format[--size] = base[nb % baselen];
+		nb /= baselen;
+	}
+	return (format);
 }

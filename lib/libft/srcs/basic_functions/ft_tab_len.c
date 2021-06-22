@@ -6,15 +6,15 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 14:53:22 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/17 14:53:33 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/17 19:46:30 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_tab_len(char **tab)
+int	ft_tab_len(char **tab)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (tab[i] != NULL)

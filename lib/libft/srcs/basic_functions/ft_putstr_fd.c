@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 16:43:43 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/11 17:43:47 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/17 19:55:51 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (s)

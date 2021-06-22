@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 16:34:45 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/04/17 17:59:46 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/17 20:27:42 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	if (s)
 	{
 		len_s = ft_strlen(s);
-		str = (char*)malloc(len_s + 1);
+		str = (char *)malloc(len_s + 1);
 		if (str == NULL)
 			return (str);
 		while (s[i])

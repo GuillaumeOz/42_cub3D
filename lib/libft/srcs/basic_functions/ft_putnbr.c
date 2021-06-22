@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 13:52:35 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/04/20 16:19:46 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/17 20:07:38 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnbr(int nb)
 {
-	long i;
+	long	i;
 
 	i = nb;
 	if (i < 0)

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 14:35:47 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/04/30 15:02:00 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/17 20:17:45 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 size_t	ft_strcspn(const char *s, const char *reject)
 {
-	size_t nb;
-	size_t i;
-	size_t j;
+	size_t	nb;
+	size_t	i;
+	size_t	j;
 
 	i = -1;
 	j = -1;

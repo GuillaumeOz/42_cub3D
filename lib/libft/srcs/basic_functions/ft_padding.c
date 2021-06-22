@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 17:25:12 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/09/16 10:22:35 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/17 19:51:53 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 
 char	*ft_padding(int size, char c)
 {
-	char	*buf;
+	char	*buffer;
 	int		i;
 
-	buf = NULL;
+	buffer = NULL;
 	if (size > 0)
 	{
-		if (!(buf = (char*)malloc(sizeof(char) * (size + SENTINAL))))
+		buffer = (char *)malloc(sizeof(char) * (size + 1));
+		if (buffer == NULL)
 			return (NULL);
 		i = 0;
 		while (i < size)
-			buf[i++] = c;
-		buf[i] = '\0';
+			buffer[i++] = c;
+		buffer[i] = '\0';
 	}
-	return (buf);
+	return (buffer);
 }

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 19:35:37 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/18 16:20:23 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/17 20:15:42 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		s2[0] = '\0';
 		return (s2);
 	}
-	if (!(s2 = (char *)malloc((sizeof(char) * (len + 1)))))
+	s2 = (char *)malloc((sizeof(char) * (len + 1)));
+	if (s2 == NULL)
 		return (NULL);
 	while (s[start] && i < len)
 	{

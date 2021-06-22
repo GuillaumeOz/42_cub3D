@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 15:01:48 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/08 19:55:12 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/17 20:18:09 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strpbrk(const char *s, const char *accept)
 	size_t	len;
 
 	i = 0;
-	str = (char*)s;
+	str = (char *)s;
 	len = ft_strlen(s);
 	while (*str)
 	{

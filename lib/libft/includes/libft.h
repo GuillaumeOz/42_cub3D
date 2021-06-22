@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 15:28:26 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/10 20:20:30 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/18 12:12:38 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdarg.h>
-# include <stddef.h>
 # include <stdint.h>
-# include <limits.h>
+# include "maths.h"
 # include "basic_functions.h"
 # include "get_next_line.h"
-# include "ft_printf.h"
+# include "t_list.h"
 
 #endif

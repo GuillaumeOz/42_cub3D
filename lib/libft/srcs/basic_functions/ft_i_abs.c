@@ -6,13 +6,13 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 09:03:19 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/15 18:53:20 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/17 20:03:12 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_i_abs(int p_value)
+int	ft_i_abs(int p_value)
 {
 	if (p_value == 0)
 		return (0);

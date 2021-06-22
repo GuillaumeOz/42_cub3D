@@ -5,60 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/17 13:25:29 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/10 14:30:20 by gozsertt         ###   ########.fr       */
+/*   Created: 2021/03/16 14:19:11 by gozsertt          #+#    #+#             */
+/*   Updated: 2021/06/22 12:28:30 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int				quit(void *param)
+int	quit(void *param)
 {
-	t_game_engine *engine;
+	t_engine	*engine;
 
-	engine = (t_game_engine*)(((void**)param)[2]);
-	free_game_engine(engine);
-	close_application();
-	return (0);
+	engine = (t_engine *)param;
+	free_engine(engine);
+	printf("The game has been closed\n");
+	exit(EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }
 
-static void		do_save(void *param)
+int	main(int argc, char **argv)
 {
-	t_game_engine *engine;
+	t_engine	*engine;
 
-	engine = (t_game_engine*)(((void**)param)[2]);
-	if (engine->save == true)
-	{
-		if (save_bmp(engine, engine->map, engine->player) == FAILURE)
-			catch_error(DO_SAVE_1);
-		ft_putstr("A photo was taken\n");
-		exit(EXIT_SUCCESS);
-	}
-}
-
-int				main(int argc, char **argv)
-{
-	void			*param[3];
-	t_game_engine	*engine;
-	t_vector2		resolution;
-
-	if (argc < 2 || argc >= 4)
-		catch_error(MAIN_1);
-	XInitThreads();
-	start_application(600, 600, "Cub3D (c)");
-	engine = malloc_game_engine();
-	cub3d_parsing(engine, argc, argv, &resolution);
-	resize_application((int)resolution.x, (int)resolution.y);
-	param[0] = engine->map;
-	param[1] = engine->player;
-	param[2] = engine;
-	do_save(param);
-	add_interaction_to_application(&cube3d_key_release_manager,
-	KEYRELEASE, KEYRELEASEMASK, param);
-	add_interaction_to_application(&cube3d_key_press_manager,
-	KEYPRESS, KEYPRESSMASK, param);
-	add_interaction_exit_control(&quit,
-	DESTROYNOTIFY, DESTROYNOTIFYMASK, param);
-	application_update(&update, param);
-	return (run_application());
+	engine = malloc_engine();
+	parsing(engine, argc, argv);
+	if (engine->bonus & RESOLUTION_BONUS)
+		resize_application(engine->app,
+			engine->resolution.x, engine->resolution.y);
+	if (engine->bonus & SAVE_BONUS)
+		save_bmp(engine);
+	mlx_loop_hook(engine->app->mlx_ptr, &routine, engine);
+	mlx_loop(engine->app->mlx_ptr);
+	return (EXIT_SUCCESS);
 }

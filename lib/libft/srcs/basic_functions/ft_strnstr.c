@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 11:03:47 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/20 18:07:18 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/17 20:05:46 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_strnstr_cmp(const char *s1, const char *s2)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
@@ -24,14 +24,14 @@ static int	ft_strnstr_cmp(const char *s1, const char *s2)
 	return (0);
 }
 
-char		*ft_strnstr(const char *src, const char *word, size_t n)
+char	*ft_strnstr(const char *src, const char *word, size_t n)
 {
 	int		result;
 	size_t	len_word;
 
 	len_word = 0;
 	if (*word == '\0')
-		return ((char*)src);
+		return ((char *)src);
 	while (word[len_word] != '\0')
 		len_word++;
 	while (*src != '\0' && n-- >= len_word)
@@ -40,7 +40,7 @@ char		*ft_strnstr(const char *src, const char *word, size_t n)
 		{
 			result = ft_strnstr_cmp(src, word);
 			if (result)
-				return ((char*)src);
+				return ((char *)src);
 		}
 		src++;
 	}

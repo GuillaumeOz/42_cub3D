@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 20:15:13 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/20 11:51:44 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/17 20:08:22 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 size_t	ft_count_elems(char const *s, int c)
 {
-	size_t count;
-	size_t i;
+	size_t	count;
+	size_t	i;
 
 	count = 0;
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 19:58:11 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/18 19:17:22 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/17 20:07:24 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ size_t	ft_intlen(intmax_t n)
 	size_t		length;
 
 	length = 1;
-	num = (n < 0) ? -n : n;
+	if (n < 0)
+		num = n * (-1);
+	else
+		num = n;
 	while (num >= 10)
 	{
 		num /= 10;

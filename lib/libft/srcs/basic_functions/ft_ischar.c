@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 16:02:49 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/28 15:15:35 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/04/19 17:45:50 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	ft_ischar(const char *charset, int c)
 	while (*charset)
 	{
 		if (*charset == c)
-			return (SUCCESS);
+			return (true);
 		charset++;
 	}
-	return (FAILURE);
+	return (false);
 }

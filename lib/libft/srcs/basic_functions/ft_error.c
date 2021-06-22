@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 18:05:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/24 19:38:10 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/04/16 14:36:08 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_error(char *error_msg)
 {
+	ft_putstr("Error\n ");
 	ft_putstr(error_msg);
-	exit(0);
+	exit(EXIT_FAILURE);
 }

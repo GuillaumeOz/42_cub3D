@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 12:40:03 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/05 12:49:31 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/19 15:24:09 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ t_gnl_vector	*gnl_vct_new(size_t size)
 	size_t			i;
 
 	size += 1;
-	if (!(vct = malloc(sizeof(t_gnl_vector))))
+	vct = (t_gnl_vector *)malloc(sizeof(t_gnl_vector));
+	if (vct == NULL)
 		return (NULL);
 	if (vct != NULL)
 	{
 		vct->size = size;
-		if (!(vct->str = malloc(size)))
+		vct->str = (char *)malloc(sizeof(char) * size);
+		if (vct->str == NULL)
 			return (NULL);
 		vct->quart = size / 4;
 		vct->len = 0;
@@ -37,21 +39,22 @@ t_gnl_vector	*gnl_vct_new(size_t size)
 	return (vct);
 }
 
-int				gnl_vct_extend(t_gnl_vector *vct, size_t expected_len)
+bool	gnl_vct_extend(t_gnl_vector *vct, size_t expected_len)
 {
 	char	*tmp;
 	size_t	i;
 
 	if (vct == NULL || vct->size == 0)
-		return (SUCCESS);
+		return (true);
 	tmp = vct->str;
 	while (vct->size <= expected_len)
 	{
 		vct->size *= 2;
 		vct->quart *= 2;
 	}
-	if (!(vct->str = malloc(vct->size)))
-		return (FAILURE);
+	vct->str = (char *)malloc((sizeof(char) * vct->size));
+	if (vct->str == NULL)
+		return (false);
 	i = 0;
 	while (i < vct->len)
 	{
@@ -60,22 +63,22 @@ int				gnl_vct_extend(t_gnl_vector *vct, size_t expected_len)
 	}
 	free(tmp);
 	tmp = NULL;
-	return (SUCCESS);
+	return (true);
 }
 
-int				gnl_vct_appnstr(t_gnl_vector *vct, char *addens, size_t n)
+bool	gnl_vct_appnstr(t_gnl_vector *vct, char *addens, size_t n)
 {
 	unsigned long	i;
 	size_t			expected_len;
 
 	if (addens == NULL || vct == NULL || vct->str == NULL || n <= 0)
-		return (SUCCESS);
+		return (true);
 	i = 0;
 	expected_len = vct->len + n;
 	if (expected_len >= vct->size)
 	{
-		if (gnl_vct_extend(vct, expected_len) == FAILURE)
-			return (FAILURE);
+		if (gnl_vct_extend(vct, expected_len) == false)
+			return (false);
 	}
 	while (addens[i] && i < n)
 	{
@@ -84,16 +87,16 @@ int				gnl_vct_appnstr(t_gnl_vector *vct, char *addens, size_t n)
 		i++;
 	}
 	vct->str[vct->len] = '\0';
-	return (SUCCESS);
+	return (true);
 }
 
-int				gnl_vct_cutnfrom(t_gnl_vector *vct, size_t idx, size_t n)
+bool	gnl_vct_cutnfrom(t_gnl_vector *vct, size_t idx, size_t n)
 {
 	size_t	i;
 	size_t	j;
 
 	if (vct == NULL || vct->str == NULL || idx >= vct->len)
-		return (SUCCESS);
+		return (true);
 	if (idx + n > vct->len)
 		n = vct->len - idx;
 	i = idx;
@@ -105,10 +108,10 @@ int				gnl_vct_cutnfrom(t_gnl_vector *vct, size_t idx, size_t n)
 		j++;
 	}
 	vct->len -= n;
-	return (SUCCESS);
+	return (true);
 }
 
-int				gnl_strnchr_idx(char *s, char c, size_t n, int mode)
+int	gnl_strnchr_idx(char *s, char c, size_t n, int mode)
 {
 	size_t	i;
 

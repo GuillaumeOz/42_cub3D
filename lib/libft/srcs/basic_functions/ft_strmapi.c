@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 18:04:31 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/11 18:47:53 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/17 19:44:37 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (s)
 	{
 		len = ft_strlen(s);
-		if (!(str = (char*)malloc(sizeof(char) * (len + SENTINAL))))
+		str = (char *)malloc(sizeof(char) * (len + 1));
+		if (str == NULL)
 			return (NULL);
 		while (s[i])
 		{

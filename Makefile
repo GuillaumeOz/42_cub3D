@@ -5,55 +5,43 @@
 #                                                     +:+ +:+         +:+      #
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/12/28 13:23:39 by gozsertt          #+#    #+#              #
-#    Updated: 2020/05/11 12:33:49 by gozsertt         ###   ########.fr        #
+#    Created: 2021/03/08 14:46:10 by gozsertt          #+#    #+#              #
+#    Updated: 2021/06/21 16:09:43 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME        =   cub3D
+NAME        	=   cub3D
 
-CC          =   gcc
+CC          	=   gcc
 
-MLX_DIR		= 	$(shell find lib/guillaume_graphical_lib -type d)
-SRC_DIR		= 	$(shell find srcs -type d)
-INC_DIR		= 	$(shell find includes -type d) \
-				$(shell find lib/guillaume_graphical_lib -type d) \
-				$(shell find lib/guillaume_graphical_lib/lib -type d) \
-				$(shell find lib/libft/includes -type d)
-LIB_DIR		=	lib/libft lib/guillaume_graphical_lib \
-				lib/guillaume_graphical_lib/lib/mlx
-OBJ_DIR		=	obj
+SRC_DIR			= 	$(shell find srcs -type d)
+INC_DIR			= 	$(shell find includes -type d) \
+					$(shell find lib/mlx -type d) \
+					$(shell find lib/libft/includes -type d)
+LIB_DIR			=	lib/libft lib/mlx
+OBJ_DIR			=	obj
 
 vpath %.c $(foreach dir, $(SRC_DIR), $(dir):)
 
-# MACOS framework
-# FRAMEWORK = OpenGL AppKit
-# LINUX Flags
-LINUXFLAG	=	-lm -lX11 -lXext -lpthread
+LINUXFLAG	=	-lm -lX11 -lXext
 
-# List of all of the library linked to the project (the name without the lib part and without the .a)
-LIB			=	ft gg mlx_Linux
+# library -----------------------------------------------------------
 
-SRC			= 	cub3d.c controlers_utils.c controlers.c cub3d_event_manager.c \
-		cub3d_catch_error.c cub3d_draw_wall_multi_thread.c \
-		cub3d_check_manager_utils.c cub3d_draw_sprite.c cub3d_draw_block.c \
-		cub3d_check_manager.c cub3d_draw_wall.c cub3d_draw_2d_map.c \
-		cub3d_draw_hud.c cub3d_draw_health.c cub3d_draw_game_over.c \
-		cub3d_draw_gun.c game_engine_builder.c map_checker.c \
-		parse_game_engine_bonus.c parse_game_engine.c cub3d_parsing.c \
-		parse_map.c game_engine_constructors.c tile.c game_engine_destructors.c \
-		cub3d_draw_constructor.c cub3d_draw_seter.c cub3d_draw_destructor.c \
-		player_behavior.c player_constructors.c monster.c player_destructors.c \
-		medikit.c ray_destructors.c ray_constructors.c texture_constructors.c \
-		texture_destructors.c map_destructors.c map_constructors.c \
-		cub3d_multithread_creators.c cub3d_multithread_destructors.c save.c \
-		sprites_constructors.c sprites_destructors.c
+LIB			=	ft mlx_Linux
+
+SRC			= 	$(foreach dir, $(SRC_DIR), $(foreach file, $(wildcard $(dir)/*.c), $(notdir $(file))))
 
 OBJ			=	$(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
 
-# Compilation flags
+OBJ_BONUS	=	$(addprefix $(OBJ_DIR_BONUS)/, $(SRC:%.c=%.o))
 
-CFLAGS      =	-Wall -Wextra -Werror #-fsanitize=address -g3
+# Compilation flags -------------------------------------------------
+
+CFLAGS		=	-Wall -Wextra -Werror -fsanitize=address -g3
+
+D_NO_BONUS  =	-DBONUS=0
+
+D_BONUS		=	-DBONUS=1
 
 IFLAGS		=	$(foreach dir, $(INC_DIR), -I $(dir))
 
@@ -61,25 +49,26 @@ LFLAGS		=	$(foreach dir, $(LIB_DIR), -L $(dir)) \
 				$(foreach lib, $(LIB), -l $(lib)) \
 				$(LINUXFLAG)
 
-# MACOS framework	
-# $(foreach framework, $(FRAMEWORK), -framework $(framework))
+# Colors ------------------------------------------------------------
 
-# Colors
+_GREY	=	$'\e[30m
+_RED	=	$'\e[31m
+_GREEN	=	$'\e[32m
+_YELLOW	=	$'\e[33m
+_BLUE	=	$'\e[34m
+_PURPLE	=	$'\e[35m
+_CYAN	=	$'\e[36m
+_WHITE	=	$'\e[37m
 
-_GREY=	$'\e[30m
-_RED=	$'\e[31m
-_GREEN=	$'\e[32m
-_YELLOW=$'\e[33m
-_BLUE=	$'\e[34m
-_PURPLE=$'\e[35m
-_CYAN=	$'\e[36m
-_WHITE=	$'\e[37m
-
-# MAIN part --------------------------------------------------------
+# main part ---------------------------------------------------------
 
 all:
 	@echo "\n$(_BLUE)___$(NAME) Setting___\n$(_WHITE)"
-	@make $(NAME)
+	@make BONUS=$(D_NO_BONUS) $(NAME)
+
+bonus: fclean
+	@echo "\n$(_BLUE)___$(NAME) Setting___\n$(_WHITE)"
+	@make BONUS=$(D_BONUS) $(NAME)
 
 show:
 	@echo "$(_BLUE)SRC :\n$(_YELLOW)$(SRC)$(_WHITE)"
@@ -102,13 +91,13 @@ fclean-install:
 
 $(NAME): install $(OBJ)
 	@echo "-----\nCreating Binary File $(_YELLOW)$@$(_WHITE) ... \c"
-	@$(CC) $(CFLAGS) $(OBJ) $(LFLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(BONUS) $(OBJ) $(LFLAGS) -o $(NAME)
 	@echo "$(_GREEN)DONE$(_WHITE)\n-----"
 
 $(OBJ_DIR)/%.o : %.c
 	@echo "Compiling $(_YELLOW)$@$(_WHITE) ... \c"
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $<
+	@$(CC) $(CFLAGS) $(BONUS) $(IFLAGS) -o $@ -c $<
 	@echo "$(_GREEN)DONE$(_WHITE)"
 
 re:	fclean all
@@ -123,4 +112,4 @@ fclean:	clean
 	@rm -f $(NAME)
 	@echo "$(_GREEN)DONE$(_WHITE)\n-----"
 
-.PHONY: all show install re-install re clean flcean
+.PHONY: all bonus show install re-install re clean flcean

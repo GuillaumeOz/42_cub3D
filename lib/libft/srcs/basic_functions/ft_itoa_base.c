@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 09:03:19 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/04/20 17:14:20 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/17 19:54:18 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static size_t	ft_itoa_nbrlen(long long int nbr, size_t base_len)
 	return (nbr_len);
 }
 
-char			*ft_itoa_base(long long int nbr, char *base)
+char	*ft_itoa_base(long long int nbr, char *base)
 {
 	size_t					base_len;
 	size_t					nbr_len;

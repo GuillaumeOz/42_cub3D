@@ -6,11 +6,17 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:54:42 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/19 20:23:06 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/17 20:27:19 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static void	set_negatif_info(char *output, int *n)
+{
+	output[0] = '-';
+	(*n) *= (-1);
+}
 
 char	*ft_itoa(int n)
 {
@@ -25,10 +31,13 @@ char	*ft_itoa(int n)
 	nb_len = (int)ft_intlen(n);
 	if (n < 0)
 		nb_len++;
-	if (!(output = (char *)malloc(sizeof(char) * (nb_len + SENTINAL))))
+	output = (char *)malloc(sizeof(char) * (nb_len + 1));
+	if (output == NULL)
 		return (NULL);
-	output[0] = n < 0 ? '-' : '0';
-	n = n < 0 ? -n : n;
+	if (n < 0)
+		set_negatif_info(output, &n);
+	else
+		output[0] = '0';
 	output[nb_len] = '\0';
 	while (n != 0)
 	{

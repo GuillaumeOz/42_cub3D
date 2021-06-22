@@ -6,7 +6,7 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/06 15:28:16 by gozsertt          #+#    #+#              #
-#    Updated: 2020/05/10 20:20:52 by gozsertt         ###   ########.fr        #
+#    Updated: 2021/06/19 15:30:06 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,11 +37,9 @@ SRC		= ft_f_floor.c ft_isdigit.c ft_strnew.c ft_strdup.c ft_strchr.c \
 	ft_itoa_unsigned_deci.c ft_strlcpy.c ft_strcat.c ft_tab_free.c ft_strcpy.c ft_bzero.c \
 	ft_memmove.c ft_strndup.c ft_strnequ.c ft_f_round.c ft_itoa_base.c ft_seglen.c ft_strncpy.c \
 	ft_putendl.c ft_strlcat.c ft_putnbr_fd.c ft_striter.c ft_i_roof.c ft_padding.c ft_get_leaks.c \
-	ft_strndupfree.c ft_isnotonlycharset.c ft_strnlen.c ft_uintmaxlen_base.c ft_tab_len.c ft_strstr.c \
-	ft_strncat.c ft_isprint.c ft_strrev.c ft_strmapi.c get_next_line.c get_next_line_utils.c \
-	s_handler.c p_handler.c mod_handler.c i_handler.c o_handler.c u_handler.c x_handler.c \
-	style_handler.c c_handler.c v_handler.c d_handler.c xx_handler.c ft_vdprintf.c \
-	ft_printf.c formatter.c parser.c
+	ft_strndupfree.c ft_isnotonlycharset.c ft_strnlen.c ft_tab_len.c ft_strstr.c ft_strskip.c ft_warning.c\
+	ft_strncat.c ft_isprint.c ft_strrev.c ft_strmapi.c get_next_line.c get_next_line_utils.c\
+	get_next_line_constructor.c double_vector2.c float_vector2.c int_vector2.c t_list_utils.c t_list.c
 
 OBJ		= $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
 

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 20:00:50 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/10 14:49:07 by gozsertt         ###   ########.fr       */
+/*   Updated: 2021/06/17 20:29:48 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,16 @@ char	*ft_strdup(const char *s)
 	int		i;
 	size_t	size;
 
-	size = ft_strlen(s);
+	size = ft_strlen((char *)s);
 	i = 0;
-	if (!(str = (char*)malloc(sizeof(char) * (size + SENTINAL))))
+	str = (char *)malloc(sizeof(char) * (size + 1));
+	if (str == NULL)
 		return (NULL);
+	str[size] = '\0';
 	while (s[i] != '\0')
 	{
 		str[i] = s[i];
 		i++;
 	}
-	str[size] = '\0';
 	return (str);
 }
