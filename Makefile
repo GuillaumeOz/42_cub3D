@@ -62,7 +62,7 @@ OBJ_BONUS	=	$(addprefix $(OBJ_DIR_BONUS)/, $(SRC:%.c=%.o))
 
 # Compilation flags -------------------------------------------------
 
-CFLAGS		=	-Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS		=	-Wall -Wextra -Werror
 
 D_NO_BONUS  =	-DBONUS=0
 
